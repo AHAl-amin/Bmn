@@ -34,6 +34,8 @@ import AiChat from './component/UsersDashboard/UserDashboardPages/AiChat/AiChat.
 import RecipesDettails from './component/UsersDashboard/UserDashboardPages/RecipesDettails/RecipesDettails.jsx';
 import Community from './component/UsersDashboard/UserDashboardPages/Community.jsx';
 import SaveRecipes from './component/UsersDashboard/UserDashboardPages/SaveRecipes.jsx';
+import CommunityPost from './component/UsersDashboard/UserDashboardPages/CommunityPost.jsx';
+import ProfileAndSetting from './component/UsersDashboard/UserDashboardPages/ProfileAndSetting.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -75,7 +77,18 @@ const router = createBrowserRouter([
       {
         path:'save_recipes',
         element:<SaveRecipes/>
-      }
+      },
+     
+      {
+        path:'community_post',
+        element:<CommunityPost/>
+      },
+     
+      {
+        path:'profile_settings',
+        element:<ProfileAndSetting/>
+      },
+     
       
      
       

@@ -57,11 +57,14 @@ function Community() {
                                 <span className='ml-2'>41</span>
                             </button>
 
-                            <button className="">
+                            <button className="flex items-center gap-2">
+                                
                                 <BsSave />
+                                <span className='mb-2'>save</span>
                             </button>
-                            <button className="">
+                            <button className="flex items-center gap-2">
                                 <BsShare />
+                            <span className=''>share</span>
                             </button>
                         </div>
                     </div>
@@ -100,7 +103,7 @@ function Community() {
 
                     {/* Interaction Buttons */}
                     <div className="flex justify-center  items-center mt-3 text-[#004C3F] lora py-6">
-                        <div className="flex text-[30px] text-center space-x-10 gap-10">
+                    <div className="flex text-[30px] text-center space-x-10 gap-10">
                             <button className="flex items-center space-x-1 ">
                                 <IoIosHeartEmpty />
                                 <span className='ml-2'>41</span>
@@ -110,11 +113,14 @@ function Community() {
                                 <span className='ml-2'>41</span>
                             </button>
 
-                            <button className="">
+                            <button className="flex items-center gap-2">
+                                
                                 <BsSave />
+                                <span className='mb-2'>save</span>
                             </button>
-                            <button className="">
+                            <button className="flex items-center gap-2">
                                 <BsShare />
+                            <span className=''>share</span>
                             </button>
                         </div>
                     </div>
