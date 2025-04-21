@@ -5,7 +5,7 @@ import { FaLightbulb } from "react-icons/fa";
 import { GoBellFill } from "react-icons/go";
 import { IoIosArrowDown, IoMdAdd } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const UserDashboardNavbar = () => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -31,10 +31,10 @@ const UserDashboardNavbar = () => {
             <div className="flex items-center space-x-8">
                 <div className="hidden md:block">
                     <div className="flex gap-10">
-                        <button className="flex items-center gap-2 px-4 py-2 text-white bg-[#004C3F] rounded-[10px] cursor-pointer">
+                        <Link to='/' className="flex items-center gap-2 px-4 py-2 text-white bg-[#004C3F] rounded-[10px] cursor-pointer">
                             <FaLightbulb />
                             <span className="font-medium">Add Chefs </span><IoMdAdd />
-                        </button>
+                        </Link>
                         <button className="flex items-center text-[#004C3F] gap-2 px-4 py-2 border-[#B0BFB6] border rounded-[10px] cursor-pointer">
                             <FaLightbulb />
                             <span className="text-teal-800 font-medium">Bobon lina</span>

@@ -10,6 +10,7 @@ import { FaHeart, FaRegLightbulb } from "react-icons/fa";
 import { BsChatDotsFill } from "react-icons/bs";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useState } from "react";
+import { PiChefHatFill } from "react-icons/pi";
 
 const UserDashboardSidebar = () => {
   const location = useLocation();
@@ -50,7 +51,7 @@ const UserDashboardSidebar = () => {
               }`}
 
           >
-            <FaRegLightbulb className="h-6 w-6" />
+            <PiChefHatFill className="h-6 w-6" />
             <h1 className="text-lg font-medium text-white">Recipes</h1>
           </NavLink>
 
