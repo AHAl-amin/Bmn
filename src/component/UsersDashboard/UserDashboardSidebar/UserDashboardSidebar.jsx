@@ -69,7 +69,7 @@ const UserDashboardSidebar = () => {
           </NavLink>
 
           <NavLink
-            to="/dashboard/user_notifications"
+            to="/dashboard/community"
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                 ? 'bg-[#004C3F] text-white rounded-md'
