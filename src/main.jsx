@@ -40,6 +40,10 @@ import ProfileAndSetting from './component/UsersDashboard/UserDashboardPages/Pro
 import ChefDashboardLayout from './component/ChefDashboard/ChefDashboardLayout/ChefDashboardLayout.jsx';
 import ChefDashboardPage from './component/ChefDashboard/ChefDashboardPage/ChefDashboardPage.jsx';
 import ChefAllRecipes from './component/ChefDashboard/ChefDashboardPage/ChefAllRecipes.jsx';
+import ChefRecipesDettilsView from './component/ChefDashboard/ChefDashboardPage/ChefRecipesDettilsView.jsx';
+import ChefRecipesEditPage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesEditPage.jsx';
+import AiTraining from './component/ChefDashboard/ChefDashboardPage/AiTraining.jsx';
+import ChefSettingAndPrivecy from './component/ChefDashboard/ChefDashboardPage/ChefSettingAndPrivecy.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -114,9 +118,25 @@ const router = createBrowserRouter([
     },
 
     {
-      index:'/chef_dashboard/chef_all_recipes',
+      path:'chef_all_recipes',
       element: <ChefAllRecipes/>
-    }
+    },
+    {
+      path:'chef_recipese_dettails_view',
+      element: <ChefRecipesDettilsView/>
+    },
+    {
+      path:'chef_recipese_edit_page',
+      element: <ChefRecipesEditPage/>
+    },
+    {
+      path:'ai_training',
+      element: <AiTraining/>
+    },
+    {
+      path:'chef_settings_privecy',
+      element: <ChefSettingAndPrivecy/>
+    },
 
 
 

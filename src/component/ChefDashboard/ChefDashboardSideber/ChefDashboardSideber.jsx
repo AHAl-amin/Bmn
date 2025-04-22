@@ -16,7 +16,7 @@ import { MdOutlineDashboard } from "react-icons/md";
 const ChefDashboardSideber = () => {
     const location = useLocation();
     const isProjectActive = location.pathname.startsWith('/dashboard/user_notifications');
-    const isDashboardActive = ["/chef_dashboard", "/dashboard/recipes_dettails", "/dashboard/createBuyerOrder", "/dashboard/buyer_candidate_list"].includes(location.pathname);
+    const isDashboardActive = ["/chef_dashboard", "/chef_all_recipes/chef_recipese_dettails_view", "/dashboard/createBuyerOrder", "/dashboard/buyer_candidate_list"].includes(location.pathname);
 
     // State to control sidebar visibility on small devices
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -46,7 +46,7 @@ const ChefDashboardSideber = () => {
                 </NavLink>
                 <div className="flex flex-col gap-2 pt-5 mx-5">
                     <NavLink
-                        to="/"
+                        to="/chef_dashboard"
 
                         className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${isDashboardActive ?
                             'bg-[#0077B6]  text-white rounded-md' : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
@@ -57,13 +57,16 @@ const ChefDashboardSideber = () => {
                         <h1 className="text-lg font-medium text-white">Dashboard</h1>
                     </NavLink>
 
+
+
                     <NavLink
                         to="/chef_dashboard/chef_all_recipes"
-                        className={({ isActive }) =>
-                            `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
-                            }`
+                        className={() =>
+                            location.pathname.startsWith('/chef_dashboard/chef_all_recipes') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md w-full'
                         }
                     >
                         <PiChefHatFill className="h-6 w-6" />
@@ -71,7 +74,7 @@ const ChefDashboardSideber = () => {
                     </NavLink>
 
                     <NavLink
-                        to="/dashboard/community"
+                        to="/chef_dashboard/ai_training"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                                 ? 'bg-[#0077B6] text-white rounded-md'
@@ -121,7 +124,7 @@ const ChefDashboardSideber = () => {
                         <h1 className="text-lg font-medium text-white">Subscription</h1>
                     </NavLink>
                     <NavLink
-                        to="/dashboard/profile_settings"
+                        to="/chef_dashboard/chef_settings_privecy"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                                 ? 'bg-[#0077B6] text-white rounded-md'
