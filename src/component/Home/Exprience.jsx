@@ -2,34 +2,34 @@ import React from 'react'
 
 function Exprience() {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
-  {/* Expertise Header */}
-  <h2 className="text-2xl font-bold text-[#004C3F] mb-4 border-b pb-2">Expertise</h2>
-  
-  {/* Expertise List */}
-  <div className="space-y-3 mb-6">
-    <div className="flex items-center">
-      <div className="w-2 h-2 bg-[#004C3F] rounded-full mr-3"></div>
-      <span className="font-medium text-gray-700">Exposure</span>
-    </div>
-    <div className="flex items-center">
-      <div className="w-2 h-2 bg-[#004C3F] rounded-full mr-3"></div>
-      <span className="font-medium text-gray-700">French Pastry</span>
-    </div>
-    <div className="flex items-center">
-      <div className="w-2 h-2 bg-[#004C3F] rounded-full mr-3"></div>
-      <span className="font-medium text-gray-700">Desserts</span>
-    </div>
-  </div>
+    <div className=" space-y-2 mt-[60px] ">
+      {/* Expertise Header */}
+      <h2 className="text-2xl font-bold text-[#004C3F]   pb-2">Expertise</h2>
 
-  {/* Divider */}
-  <div className="border-t border-gray-200 my-4"></div>
+   
+      <div className="space-y-3  flex items-center gap-6 ">
+        <div className="">
 
-  {/* Select Button */}
-  <button className="w-full bg-[#004C3F] hover:bg-[#00382D] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
-    Select This Chef
-  </button>
-</div>
+          <p className="font-medium text-[#004C3F] rounded-full px-3 py-1 bg-[#B0BFB6]">Exposure</p>
+        </div>
+        <div className="">
+
+          <p className="font-medium text-[#004C3F] rounded-full px-3 py-1 bg-[#B0BFB6]">French Pastry</p>
+        </div>
+        <div className=" mb-2">
+
+          <p className="font-medium text-[#004C3F] rounded-full px-3 py-1 bg-[#B0BFB6]">Desserts</p>
+        </div>
+      </div>
+
+   
+    
+
+    
+      <button className="w-full bg-[#004C3F] cursor-pointer text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200">
+        Select This Chef
+      </button>
+    </div>
   )
 }
 

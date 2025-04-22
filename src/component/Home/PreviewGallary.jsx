@@ -1,67 +1,217 @@
-import React from 'react'
+// import React from 'react'
+// import { IoIosHeartEmpty } from 'react-icons/io';
+// import { Link } from 'react-router-dom';
+
+// function PreviewGallary() {
+
+//   const recipes = [
+//     {
+//       id: 1,
+//       title: 'joss Chocolate Soufflé',
+//       category: 'Chocolate',
+//       description: 'A light and airy chocolate dessert with a molten center....',
+//       image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+//       rating: 4.8,
+//       updated: '2023-11-15',
+//     },
+//     {
+//       id: 2,
+//       title: 'Classic Chocolate Soufflé',
+//       category: 'Chocolate',
+//       description: 'A light and airy chocolate dessert with a molten center....',
+//       image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+//       rating: 4.8,
+//       updated: '2023-11-15',
+//     },
+//     {
+//       id: 3,
+//       title: 'Classic Chocolate Soufflé',
+//       category: 'Chocolate',
+//       description: 'A light and airy chocolate dessert with a molten center....',
+//       image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+//       rating: 4.8,
+//       updated: '2023-11-15',
+//     },
+//     {
+//       id: 4,
+//       title: 'dessers Chocolate Soufflé',
+//       category: 'Chocolate',
+//       description: 'A light and airy chocolate dessert with a molten center....',
+//       image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+//       rating: 4.8,
+//       updated: '2023-11-15',
+//     },
+//     {
+//       id: 5,
+//       title: 'Classic Chocolate Soufflé',
+//       category: 'Chocolate',
+//       description: 'A light and airy chocolate dessert with a molten center....',
+//       image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+//       rating: 4.8,
+//       updated: '2023-11-15',
+//     },
+//     {
+//       id: 6,
+//       title: 'Classic Chocolate Soufflé',
+//       category: 'Chocolate',
+//       description: 'A light and airy chocolate dessert with a molten center....',
+//       image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+//       rating: 4.8,
+//       updated: '2023-11-15',
+//     },
+//   ];
+//   return (
+//    <div>
+//      <div className="grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 grid-cols-1  justify-between gap-6 pt-6">
+//       {recipes.map((recipe) => (
+//         <div
+//           key={recipe.id}
+//           className="w-full bg-white rounded-xl h-[451px] overflow-hidden"
+//         >
+//           {/* Image Section */}
+//           <div className="relative">
+//             <img
+//               className="w-full h-48 object-cover"
+//               src={recipe.image}
+//               alt={recipe.title}
+//             />
+//           </div>
+
+//           {/* Content Section */}
+//           <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
+//             {/* Title */}
+//             <div className="flex justify-between">
+//               <h2 className="text-xl font-semibold text-[#004C3F] lora">
+//                 {recipe.title}
+//               </h2>
+//               <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
+//             </div>
+
+//             {/* Category */}
+//             <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline-block px-4 py-1 rounded-[29px]">
+//               {recipe.category}
+//             </p>
+
+//             {/* Description */}
+//             <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
+
+//             {/* Rating and Update Date */}
+//             <div className="mt-3 flex justify-between items-center">
+//               <div className="flex items-center">
+//                 <svg
+//                   className="w-5 h-5 text-yellow-400"
+//                   fill="currentColor"
+//                   viewBox="0 0 20 20"
+//                   xmlns="http://www.w3.org/2000/svg"
+//                 >
+//                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+//                 </svg>
+//                 <span className="ml-1 text-gray-600">{recipe.rating}</span>
+//               </div>
+//               <p className="text-sm text-gray-500">Updated: {recipe.updated}</p>
+//             </div>
+
+//             {/* Button */}
+//             <div className='w-full  bg-teal-800 py-2 rounded-[29px] text-center'>
+//               <Link to="/dashboard/recipes_dettails" className="mt-4   text-white py-2 rounded-[29px] cursor-pointer">
+//                 View Details
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+
+    
+//     </div>
+
+//     <div className=''>
+//         <button className="w-full bg-[#004C3F] border mt-2 cursor-pointer text-white font-bold py-3 px-4 rounded-[10px] transition-colors duration-200">
+//           Select This Chef
+//         </button>
+//       </div>
+//    </div>
+    
+//   )
+// }
+
+// export default PreviewGallary
+
+
+import React, { useState } from 'react'
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 function PreviewGallary() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const recipes = [
-        {
-          id: 1,
-          title: 'joss Chocolate Soufflé',
-          category: 'Chocolate',
-          description: 'A light and airy chocolate dessert with a molten center....',
-          image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
-          rating: 4.8,
-          updated: '2023-11-15',
-        },
-        {
-          id: 2,
-          title: 'Classic Chocolate Soufflé',
-          category: 'Chocolate',
-          description: 'A light and airy chocolate dessert with a molten center....',
-          image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
-          rating: 4.8,
-          updated: '2023-11-15',
-        },
-        {
-          id: 3,
-          title: 'Classic Chocolate Soufflé',
-          category: 'Chocolate',
-          description: 'A light and airy chocolate dessert with a molten center....',
-          image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
-          rating: 4.8,
-          updated: '2023-11-15',
-        },
-        {
-          id: 4,
-          title: 'dessers Chocolate Soufflé',
-          category: 'Chocolate',
-          description: 'A light and airy chocolate dessert with a molten center....',
-          image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
-          rating: 4.8,
-          updated: '2023-11-15',
-        },
-        {
-          id: 5,
-          title: 'Classic Chocolate Soufflé',
-          category: 'Chocolate',
-          description: 'A light and airy chocolate dessert with a molten center....',
-          image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
-          rating: 4.8,
-          updated: '2023-11-15',
-        },
-        {
-          id: 6,
-          title: 'Classic Chocolate Soufflé',
-          category: 'Chocolate',
-          description: 'A light and airy chocolate dessert with a molten center....',
-          image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
-          rating: 4.8,
-          updated: '2023-11-15',
-        },
-      ];
+  const recipes = [
+    {
+      id: 1,
+      title: 'joss Chocolate Soufflé',
+      category: 'Chocolate',
+      description: 'A light and airy chocolate dessert with a molten center....',
+      image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+      rating: 4.8,
+      updated: '2023-11-15',
+    },
+    {
+      id: 2,
+      title: 'Classic Chocolate Soufflé',
+      category: 'Chocolate',
+      description: 'A light and airy chocolate dessert with a molten center....',
+      image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+      rating: 4.8,
+      updated: '2023-11-15',
+    },
+    {
+      id: 3,
+      title: 'Classic Chocolate Soufflé',
+      category: 'Chocolate',
+      description: 'A light and airy chocolate dessert with a molten center....',
+      image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+      rating: 4.8,
+      updated: '2023-11-15',
+    },
+    {
+      id: 4,
+      title: 'dessers Chocolate Soufflé',
+      category: 'Chocolate',
+      description: 'A light and airy chocolate dessert with a molten center....',
+      image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+      rating: 4.8,
+      updated: '2023-11-15',
+    },
+    {
+      id: 5,
+      title: 'Classic Chocolate Soufflé',
+      category: 'Chocolate',
+      description: 'A light and airy chocolate dessert with a molten center....',
+      image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+      rating: 4.8,
+      updated: '2023-11-15',
+    },
+    {
+      id: 6,
+      title: 'Classic Chocolate Soufflé',
+      category: 'Chocolate',
+      description: 'A light and airy chocolate dessert with a molten center....',
+      image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+      rating: 4.8,
+      updated: '2023-11-15',
+    },
+  ];
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 grid-cols-1  justify-between gap-6 pt-6">
+    <div>
+      <div className="grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
@@ -111,15 +261,52 @@ function PreviewGallary() {
               </div>
 
               {/* Button */}
-             <div className='w-full  bg-teal-800 py-2 rounded-[29px] text-center'>
-             <Link to="/dashboard/recipes_dettails" className="mt-4   text-white py-2 rounded-[29px] cursor-pointer">
-                View Details
-              </Link>
-             </div>
+              <div className='w-full bg-teal-800 py-2 rounded-[29px] text-center'>
+                <Link to="/dashboard/recipes_dettails" className="mt-4 text-white py-2 rounded-[29px] cursor-pointer">
+                  View Details
+                </Link>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      <div className=''>
+        <button 
+          onClick={openModal}
+          className="w-full bg-[#004C3F] border mt-2 cursor-pointer text-white font-bold py-3 px-4 rounded-[10px] transition-colors duration-200"
+        >
+          Select This Chef
+        </button>
+      </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-[#004C3FCC] bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full">
+            <h2 className="text-2xl font-bold text-[#004C3F] mb-4">Confirm Selection</h2>
+            <p className="mb-6">Are you sure you want to select this chef?</p>
+            <div className="flex justify-end space-x-4">
+              <button 
+                onClick={closeModal}
+                className="px-4 py-2 border border-gray-300 rounded-[10px] hover:bg-gray-100 transition-colors duration-200"
+              >
+                Cancel
+              </button>
+              <button 
+                onClick={() => {
+                  // Add your confirmation logic here
+                  closeModal();
+                }}
+                className="px-4 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E] transition-colors duration-200"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
