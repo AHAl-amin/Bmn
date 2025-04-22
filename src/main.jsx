@@ -44,6 +44,7 @@ import ChefRecipesDettilsView from './component/ChefDashboard/ChefDashboardPage/
 import ChefRecipesEditPage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesEditPage.jsx';
 import AiTraining from './component/ChefDashboard/ChefDashboardPage/AiTraining.jsx';
 import ChefSettingAndPrivecy from './component/ChefDashboard/ChefDashboardPage/ChefSettingAndPrivecy.jsx';
+import FacebookUser from './component/ChefDashboard/ChefDashboardPage/FacebookUser.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -136,6 +137,10 @@ const router = createBrowserRouter([
     {
       path:'chef_settings_privecy',
       element: <ChefSettingAndPrivecy/>
+    },
+    {
+      path:'facebook_user',
+      element: <FacebookUser/>
     },
 
 

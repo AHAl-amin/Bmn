@@ -87,7 +87,7 @@ const ChefDashboardSideber = () => {
                     </NavLink>
 
                     <NavLink
-                        to="/dashboard/save_recipes"
+                        to="/chef_dashboard/facebook_user"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                                 ? 'bg-[#0077B6] text-white rounded-md'
