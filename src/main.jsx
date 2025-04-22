@@ -37,6 +37,8 @@ import Community from './component/UsersDashboard/UserDashboardPages/Community.j
 import SaveRecipes from './component/UsersDashboard/UserDashboardPages/SaveRecipes.jsx';
 import CommunityPost from './component/UsersDashboard/UserDashboardPages/CommunityPost.jsx';
 import ProfileAndSetting from './component/UsersDashboard/UserDashboardPages/ProfileAndSetting.jsx';
+import ChefDashboardLayout from './component/ChefDashboard/ChefDashboardLayout/ChefDashboardLayout.jsx';
+import ChefDashboardPage from './component/ChefDashboard/ChefDashboardPage/ChefDashboardPage.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -97,6 +99,24 @@ const router = createBrowserRouter([
     ]
   },
 
+  //.................Chef Dashboard.............
+
+
+{
+  path: "/chef_dashboard",
+  element: (<ChefDashboardLayout/>),
+  children:[
+
+    {
+      index: true,
+      element: <ChefDashboardPage/>
+    }
+
+
+
+  ]
+}
+,
 
 
   //--------------admin dashboard----------

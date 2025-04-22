@@ -5,11 +5,8 @@
 // import landingPageIcon from '../../assets/image/Admin_login_img.png';
 // import { IoSearchOutline } from 'react-icons/io5';
 // import { useState } from 'react';
-
-
 // import PreviewGallary from './PreviewGallary';
 // import Exprience from './Exprience';
-
 
 // const Home = () => {
 //     const homepageData = [
@@ -69,15 +66,15 @@
 //         }
 //     ];
 
-//     // State to control modal visibility and selected chef
+//     // State to control modal visibility, selected chef, and search query
 //     const [isModalOpen, setIsModalOpen] = useState(false);
 //     const [selectedChef, setSelectedChef] = useState(null);
-
 //     const [activeButton, setActiveButton] = useState('about');
+//     const [searchQuery, setSearchQuery] = useState('');
+
 //     const handleButtonClick = (button) => {
 //         setActiveButton(button);
 //     };
-
 
 //     // Function to open modal with specific chef data
 //     const openModalWithChef = (chef) => {
@@ -89,7 +86,27 @@
 //     const closeModal = () => {
 //         setIsModalOpen(false);
 //         setSelectedChef(null);
+//         setActiveButton('about'); // Reset to about tab when closing modal
 //     };
+
+//     // Handle search input change
+//     const handleSearchChange = (e) => {
+//         const query = e.target.value.trim();
+//         setSearchQuery(query);
+//         console.log('Search Query:', query); // Debugging: Log the search query
+//     };
+
+//     // Filter homepageData based on search query
+//     const filteredData = homepageData.filter((item) => {
+//         const title = item.title?.trim().toLowerCase() || '';
+//         const subTitle = item.sub_title?.trim().toLowerCase() || '';
+//         const query = searchQuery.toLowerCase();
+//         const matches = title.includes(query) || subTitle.includes(query);
+//         return matches;
+//     });
+
+//     // Debugging: Log filtered data
+//     console.log('Filtered Data:', filteredData);
 
 //     return (
 //         <div className='bg-[#E6EBE8] min-h-screen py-10'>
@@ -111,174 +128,100 @@
 //                         type="search"
 //                         className='placeholder:text-[#004C3F] w-1/3 border border-[#B0BFB6] py-2 rounded-full pl-10'
 //                         placeholder='Search by name, specialty, or keyword'
+//                         value={searchQuery}
+//                         onChange={handleSearchChange}
 //                     />
 //                     <button className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2'>
 //                         <CiFilter />
 //                         <span>filter</span>
 //                     </button>
 //                 </div>
+
+//                 <style jsx>{`
+//                         input[type="search"]::-webkit-search-cancel-button {
+//                             display: none;
+//                         }
+//                         input[type="search"]::-ms-clear {
+//                             display: none;
+//                         }
+//                     `}</style>
 //             </div>
 
 //             <h1 className="text-[40px] lora font-semibold pl-10 text-[#004C3F] pt-4">All Culinary Experts</h1>
-//             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10">
-//                 {homepageData.map((item) => (
-//                     <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora">
-//                         <div className="h-48  overflow-hidden">
-//                             <img
-//                                 src={item.image}
-//                                 alt={item.sub_title}
-//                                 className="w-full h-full object-cover"
-//                                 onError={(e) => {
-//                                     e.target.onerror = null;
-//                                     e.target.src = "https://via.placeholder.com/400x300?text=Pastry+Image";
-//                                 }}
-//                             />
-//                         </div>
-
-//                         <div className="p-6">
-//                             <div className="flex justify-between items-start mb-2">
-//                                 <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
-//                             </div>
-
-//                             <h3 className="text-lg font-medium text-[#515151] mb-3">{item.sub_title}</h3>
-//                             <p className="text-gray-600 mb-4">{item.description}</p>
-
-//                             <div className="flex justify-between items-center absolute top-5">
-//                                 {item.user_profile.startsWith('http') ? (
-//                                     <img
-//                                         src={item.user_profile}
-//                                         alt="User profile"
-//                                         className="w-10 h-10 rounded-full object-cover"
-//                                         onError={(e) => {
-//                                             e.target.onerror = null;
-//                                             e.target.src = "https://via.placeholder.com/32?text=User";
-//                                         }}
-//                                     />
-//                                 ) : (
-//                                     <span className="text-sm text-gray-500">{item.user_profile}</span>
-//                                 )}
-//                             </div>
-
-//                             <div className='flex justify-between'>
-//                                 <div className="flex items-center px-2 py-1 rounded">
-//                                     <svg className="w-4 h-4 ml-1 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
-//                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-//                                     </svg>
-//                                     <span className="text-[#676767] font-medium ml-1">{item.rating}</span>
-//                                 </div>
-
-//                                 <button
-//                                     className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
-//                                     onClick={() => openModalWithChef(item)}
-//                                 >
-//                                     Details
-//                                 </button>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 ))}
-//             </div>
-
-//             {/* Modal */}
-//             {/* {isModalOpen && selectedChef && (
-//                 <div className="fixed inset-0 flex items-center justify-center  bg-[#004C3FCC] bg-opacity-50 z-50">
-//                     <div className="bg-white rounded-lg p-6  w-1/2">
-//                         <div className="flex justify-between items-start mb-4">
-//                             <div>
-//                                 <h2 className="text-2xl font-semibold text-[#004C3F]">{selectedChef.title}</h2>
-//                                 <p className='text-[#515151]'> {selectedChef.sub_title}</p>
-//                             </div>
-//                             <button
-//                                 className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded "
-//                                 onClick={closeModal}
-//                             >
-//                                 Back
-//                             </button>
-//                         </div>
-
-//                         <div className="  ">
-//                             <div className="h-[250px] relative ">
+//             {filteredData.length === 0 ? (
+//                 <p className="text-center text-[#515151] text-lg p-10">No culinary experts found matching your search.</p>
+//             ) : (
+//                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10">
+//                     {filteredData.map((item) => (
+//                         <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora">
+//                             <div className="h-48 overflow-hidden">
 //                                 <img
-//                                     src={selectedChef.image}
-//                                     alt=''
-//                                     className="w-full h-full rounded-lg object-cover"
+//                                     src={item.image}
+//                                     alt={item.sub_title}
+//                                     className="w-full h-full object-cover"
+//                                     onError={(e) => {
+//                                         e.target.onerror = null;
+//                                         e.target.src = "https://via.placeholder.com/400x300?text=Pastry+Image";
+//                                     }}
 //                                 />
-//                                 <div className='bottom-4  left-6 absolute'>
-//                                     <img
-//                                         src={selectedChef.user_profile}
-//                                         alt="User profile"
-//                                         className="w-10 h-10 rounded-full object-cover"
-//                                     />
-//                                 </div>
 //                             </div>
-//                             <div className='flex justify-between gap-10 py-4'>
-//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>recipes:12</div>
-//                                 <div className='bg-[#D9E0DC]  px-4 py-2 w-full rounded-[10px] text-center'>Students:3,120</div>
-//                                 <div className="flex items-center justify-center bg-[#D9E0DC]  px-4 py-2 w-full rounded-[10px] text-center">
-//                                     <span className="mr-1 text-[#676767] font-medium">{selectedChef.rating}</span>
-//                                     <svg className="w-5 h-5 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
-//                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-//                                     </svg>
+
+//                             <div className="p-6">
+//                                 <div className="flex justify-between items-start mb-2">
+//                                     <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
 //                                 </div>
 
-//                             </div>
-//                             <div className="bg-[#D9E0DC] rounded-[10px] py-2 flex gap-6 justify-between px-10 mt-4">
-//                                 <button
-//                                     className={`w-1/3 py-2 rounded-[10px] ${activeButton === 'about'
-//                                             ? 'bg-[#004C3F] text-white'
-//                                             : 'text-[#004C3F]'
-//                                         }`}
-//                                     onClick={() => handleButtonClick('about')}
-//                                 >
-//                                     About (<span>2</span>)
-//                                 </button>
-//                                 <button
-//                                     className={`w-1/3 py-2 rounded-[10px] ${activeButton === 'preview'
-//                                             ? 'bg-[#004C3F] text-white'
-//                                             : 'text-[#004C3F]'
-//                                         }`}
-//                                     onClick={() => handleButtonClick('preview')}
-//                                 >
-//                                     Preview gallery (<span>10</span>)
-//                                 </button>
-//                             </div>
-                          
-//                             {activeButton === 'about' ? <Exprience /> : <PreviewGallary />}
-//                             <div>
+//                                 <h3 className="text-lg font-medium text-[#515151] mb-3">{item.sub_title}</h3>
+//                                 <p className="text-gray-600 mb-4">{item.description}</p>
 
+//                                 <div className="flex justify-between items-center absolute top-5">
+//                                     {item.user_profile.startsWith('http') ? (
+//                                         <img
+//                                             src={item.user_profile}
+//                                             alt="User profile"
+//                                             className="w-10 h-10 rounded-full object-cover"
+//                                             onError={(e) => {
+//                                                 e.target.onerror = null;
+//                                                 e.target.src = "https://via.placeholder.com/32?text=User";
+//                                             }}
+//                                         />
+//                                     ) : (
+//                                         <span className="text-sm text-gray-500">{item.user_profile}</span>
+//                                     )}
+//                                 </div>
 
+//                                 <div className='flex justify-between'>
+//                                     <div className="flex items-center px-2 py-1 rounded">
+//                                         <svg className="w-4 h-4 ml-1 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
+//                                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+//                                         </svg>
+//                                         <span className="text-[#676767] font-medium ml-1">{item.rating}</span>
+//                                     </div>
 
-
-
-
-//                                 <p className="text-gray-600 mb-6">{selectedChef.description}</p>
-
-                              
-
-//                                 <div className="flex justify-end mt-6">
 //                                     <button
-//                                         className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
-//                                         onClick={closeModal}
+//                                         className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
+//                                         onClick={() => openModalWithChef(item)}
 //                                     >
-//                                         Close
+//                                         Details
 //                                     </button>
 //                                 </div>
 //                             </div>
 //                         </div>
-//                     </div>
+//                     ))}
 //                 </div>
-//             )} */}
+//             )}
 
+//             {/* Modal */}
 //             {isModalOpen && selectedChef && (
 //                 <div className="fixed inset-0 flex items-center justify-center bg-[#004C3FCC] bg-opacity-50 z-50 overflow-y-auto py-10">
-//                     <div className="bg-white rounded-lg p-6 w-1/2 max-h-[90vh] flex flex-col">
+//                     <div className="bg-white rounded-lg p-6 w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] flex flex-col">
 //                         <div className="flex justify-between items-start mb-4">
 //                             <div>
 //                                 <h2 className="text-2xl font-semibold text-[#004C3F]">{selectedChef.title}</h2>
 //                                 <p className='text-[#515151]'> {selectedChef.sub_title}</p>
 //                             </div>
 //                             <button
-//                                 className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded"
+//                                 className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
 //                                 onClick={closeModal}
 //                             >
 //                                 Back
@@ -289,42 +232,57 @@
 //                             <div className="h-[250px] relative">
 //                                 <img
 //                                     src={selectedChef.image}
-//                                     alt=''
+//                                     alt={selectedChef.title}
 //                                     className="w-full h-full rounded-lg object-cover"
+//                                     onError={(e) => {
+//                                         e.target.onerror = null;
+//                                         e.target.src = "https://via.placeholder.com/800x400?text=Chef+Image";
+//                                     }}
 //                                 />
 //                                 <div className='bottom-4 left-6 absolute'>
-//                                     <img
-//                                         src={selectedChef.user_profile}
-//                                         alt="User profile"
-//                                         className="w-10 h-10 rounded-full object-cover"
-//                                     />
+//                                     {selectedChef.user_profile.startsWith('http') ? (
+//                                         <img
+//                                             src={selectedChef.user_profile}
+//                                             alt="User profile"
+//                                             className="w-10 h-10 rounded-full object-cover"
+//                                             onError={(e) => {
+//                                                 e.target.onerror = null;
+//                                                 e.target.src = "https://via.placeholder.com/32?text=User";
+//                                             }}
+//                                         />
+//                                     ) : (
+//                                         <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
+//                                             <span className="text-xs text-gray-600">{selectedChef.user_profile.charAt(0).toUpperCase()}</span>
+//                                         </div>
+//                                     )}
 //                                 </div>
 //                             </div>
-//                             <div className='flex justify-between gap-10 py-4'>
-//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>recipes:12</div>
-//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Students:3,120</div>
+                            
+//                             <div className='flex justify-between gap-4 py-4'>
+//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
+//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
 //                                 <div className="flex items-center justify-center bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center">
 //                                     <span className="mr-1 text-[#676767] font-medium">{selectedChef.rating}</span>
 //                                     <svg className="w-5 h-5 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
-//                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+//                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3 .921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784 .57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81 .588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
 //                                     </svg>
 //                                 </div>
 //                             </div>
 
-//                             <div className="bg-[#D9E0DC] rounded-[10px] py-2 flex gap-6 justify-between px-10 mt-4">
+//                             <div className="bg-[#D9E0DC] rounded-[10px] py-2 flex gap-6 justify-between px-4 sm:px-10 mt-4">
 //                                 <button
-//                                     className={`w-1/3 py-2 rounded-[10px] cursor-pointer ${activeButton === 'about'
+//                                     className={`w-1/3 py-2 rounded-[10px] transition-colors ${activeButton === 'about'
 //                                         ? 'bg-[#004C3F] text-white'
-//                                         : 'text-[#004C3F]'
+//                                         : 'text-[#004C3F] hover:bg-[#004C3F20]'
 //                                         }`}
 //                                     onClick={() => handleButtonClick('about')}
 //                                 >
 //                                     About
 //                                 </button>
 //                                 <button
-//                                     className={`w-1/3 py-2 rounded-[10px] cursor-pointer ${activeButton === 'preview'
+//                                     className={`w-1/3 py-2 rounded-[10px] transition-colors ${activeButton === 'preview'
 //                                         ? 'bg-[#004C3F] text-white'
-//                                         : 'text-[#004C3F]'
+//                                         : 'text-[#004C3F] hover:bg-[#004C3F20]'
 //                                         }`}
 //                                     onClick={() => handleButtonClick('preview')}
 //                                 >
@@ -332,24 +290,18 @@
 //                                 </button>
 //                             </div>
 
-//                             {activeButton === 'about' ? <Exprience hideAboutText={false} /> :
-//                             <PreviewGallary hideAboutText={true} />}
-//                             {!hideAboutText && (
-//   <div className='absolute bottom-38'>
-//     <p className='text-[26px] font-semibold text-[#004C3F]'>About chef sohia pattisserrie</p>
-//     <p className="text-gray-600 mb-6">{selectedChef.description}</p>
-//   </div>
-// )}
+//                             <div className="relative mt-2">
+//                                 {activeButton === 'about' ? (
+//                                     <>
+//                                         <p className='text-[26px] font-semibold text-[#004C3F] mb-4'>About chef {selectedChef.user_profile}</p>
+//                                         <Exprience />
+//                                         <p className="text-gray-600 mt-4">{selectedChef.description}</p>
+//                                     </>
+//                                 ) : (
+//                                     <PreviewGallary />
+//                                 )}
+//                             </div>
 //                         </div>
-
-//                         {/* <div className="flex justify-end mt-6">
-//                 <button
-//                     className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
-//                     onClick={closeModal}
-//                 >
-//                     Close
-//                 </button>
-//             </div> */}
 //                     </div>
 //                 </div>
 //             )}
@@ -363,7 +315,7 @@
 import { CiFilter } from 'react-icons/ci';
 import landingPageIcon from '../../assets/image/Admin_login_img.png';
 import { IoSearchOutline } from 'react-icons/io5';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PreviewGallary from './PreviewGallary';
 import Exprience from './Exprience';
 
@@ -425,10 +377,14 @@ const Home = () => {
         }
     ];
 
-    // State to control modal visibility and selected chef
+    // State to control modal visibility, selected chef, search query, filter dropdown, and selected subtitle
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedChef, setSelectedChef] = useState(null);
     const [activeButton, setActiveButton] = useState('about');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [selectedSubTitle, setSelectedSubTitle] = useState('');
+    const filterRef = useRef(null);
 
     const handleButtonClick = (button) => {
         setActiveButton(button);
@@ -444,8 +400,55 @@ const Home = () => {
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedChef(null);
-        setActiveButton('about'); // Reset to about tab when closing modal
+        setActiveButton('about');
     };
+
+    // Handle search input change
+    const handleSearchChange = (e) => {
+        const query = e.target.value.trim();
+        setSearchQuery(query);
+        console.log('Search Query:', query);
+    };
+
+    // Toggle filter dropdown
+    const toggleFilterDropdown = () => {
+        setIsFilterOpen((prev) => !prev);
+    };
+
+    // Handle subtitle selection
+    const handleSubTitleSelect = (subTitle) => {
+        setSelectedSubTitle(subTitle);
+        setIsFilterOpen(false);
+        console.log('Selected SubTitle:', subTitle);
+    };
+
+    // Close dropdown on outside click
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (filterRef.current && !filterRef.current.contains(event.target)) {
+                setIsFilterOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    // Get unique subtitles
+    const uniqueSubTitles = [...new Set(homepageData.map((item) => item.sub_title))];
+
+    // Filter homepageData based on search query and selected subtitle
+    const filteredData = homepageData.filter((item) => {
+        const title = item.title?.trim().toLowerCase() || '';
+        const subTitle = item.sub_title?.trim().toLowerCase() || '';
+        const query = searchQuery.toLowerCase();
+        const matchesSearch = title.includes(query) || subTitle.includes(query);
+        const matchesFilter = selectedSubTitle ? item.sub_title === selectedSubTitle : true;
+        return matchesSearch && matchesFilter;
+    });
+
+    console.log('Filtered Data:', filteredData);
 
     return (
         <div className='bg-[#E6EBE8] min-h-screen py-10'>
@@ -467,73 +470,114 @@ const Home = () => {
                         type="search"
                         className='placeholder:text-[#004C3F] w-1/3 border border-[#B0BFB6] py-2 rounded-full pl-10'
                         placeholder='Search by name, specialty, or keyword'
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        style={{ WebkitAppearance: 'none' }}
                     />
-                    <button className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2'>
-                        <CiFilter />
-                        <span>filter</span>
-                    </button>
+                    <div className='relative' ref={filterRef}>
+                        <button
+                            className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2'
+                            onClick={toggleFilterDropdown}
+                        >
+                            <CiFilter />
+                            <span>filter</span>
+                        </button>
+                        {isFilterOpen && (
+                            <div className='absolute right-0 mt-2 w-48 bg-white border border-[#B0BFB6] rounded-lg shadow-lg z-10'>
+                                <ul className='py-1'>
+                                    <li
+                                        className='px-4 py-2 text-[#004C3F] hover:bg-[#E6EBE8] cursor-pointer'
+                                        onClick={() => handleSubTitleSelect('')}
+                                    >
+                                        All
+                                    </li>
+                                    {uniqueSubTitles.map((subTitle) => (
+                                        <li
+                                            key={subTitle}
+                                            className='px-4 py-2 text-[#004C3F] hover:bg-[#E6EBE8] cursor-pointer'
+                                            onClick={() => handleSubTitleSelect(subTitle)}
+                                        >
+                                            {subTitle}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                    <style jsx>{`
+                        input[type="search"]::-webkit-search-cancel-button {
+                            display: none;
+                        }
+                        input[type="search"]::-ms-clear {
+                            display: none;
+                        }
+                    `}</style>
                 </div>
             </div>
 
             <h1 className="text-[40px] lora font-semibold pl-10 text-[#004C3F] pt-4">All Culinary Experts</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10">
-                {homepageData.map((item) => (
-                    <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora">
-                        <div className="h-48 overflow-hidden">
-                            <img
-                                src={item.image}
-                                alt={item.sub_title}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src = "https://via.placeholder.com/400x300?text=Pastry+Image";
-                                }}
-                            />
-                        </div>
-
-                        <div className="p-6">
-                            <div className="flex justify-between items-start mb-2">
-                                <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
+            {filteredData.length === 0 ? (
+                <p className="text-center text-[#515151] text-lg p-10">No culinary experts found matching your search or filter.</p>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10">
+                    {filteredData.map((item) => (
+                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora">
+                            <div className="h-48 overflow-hidden">
+                                <img
+                                    src={item.image}
+                                    alt={item.sub_title}
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = "https://via.placeholder.com/400x300?text=Pastry+Image";
+                                    }}
+                                />
                             </div>
 
-                            <h3 className="text-lg font-medium text-[#515151] mb-3">{item.sub_title}</h3>
-                            <p className="text-gray-600 mb-4">{item.description}</p>
-
-                            <div className="flex justify-between items-center absolute top-5">
-                                {item.user_profile.startsWith('http') ? (
-                                    <img
-                                        src={item.user_profile}
-                                        alt="User profile"
-                                        className="w-10 h-10 rounded-full object-cover"
-                                        onError={(e) => {
-                                            e.target.onerror = null;
-                                            e.target.src = "https://via.placeholder.com/32?text=User";
-                                        }}
-                                    />
-                                ) : (
-                                    <span className="text-sm text-gray-500">{item.user_profile}</span>
-                                )}
-                            </div>
-
-                            <div className='flex justify-between'>
-                                <div className="flex items-center px-2 py-1 rounded">
-                                    <svg className="w-4 h-4 ml-1 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <span className="text-[#676767] font-medium ml-1">{item.rating}</span>
+                            <div className="p-6">
+                                <div className="flex justify-between items-start mb-2">
+                                    <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
                                 </div>
 
-                                <button
-                                    className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
-                                    onClick={() => openModalWithChef(item)}
-                                >
-                                    Details
-                                </button>
+                                <h3 className="text-lg font-medium text-[#515151] mb-3">{item.sub_title}</h3>
+                                <p className="text-gray-600 mb-4">{item.description}</p>
+
+                                <div className="flex justify-between items-center absolute top-5">
+                                    {item.user_profile.startsWith('http') ? (
+                                        <img
+                                            src={item.user_profile}
+                                            alt="User profile"
+                                            className="w-10 h-10 rounded-full object-cover"
+                                            onError={(e) => {
+                                                e.target.onerror = null;
+                                                e.target.src = "https://via.placeholder.com/32?text=User";
+                                            }}
+                                        />
+                                    ) : (
+                                        <span className="text-sm text-gray-500">{item.user_profile}</span>
+                                    )}
+                                </div>
+
+                                <div className='flex justify-between'>
+                                    <div className="flex items-center px-2 py-1 rounded">
+                                        <svg className="w-4 h-4 ml-1 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3 .921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784 .57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81 .588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <span className="text-[#676767] font｜medium ml-1">{item.rating}</span>
+                                    </div>
+
+                                    <button
+                                        className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
+                                        onClick={() => openModalWithChef(item)}
+                                    >
+                                        Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
 
             {/* Modal */}
             {isModalOpen && selectedChef && (
@@ -588,7 +632,7 @@ const Home = () => {
                                 <div className="flex items-center justify-center bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center">
                                     <span className="mr-1 text-[#676767] font-medium">{selectedChef.rating}</span>
                                     <svg className="w-5 h-5 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3 .921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784 .57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81 .588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
                                 </div>
                             </div>
@@ -619,7 +663,7 @@ const Home = () => {
                                     <>
                                         <p className='text-[26px] font-semibold text-[#004C3F] mb-4'>About chef {selectedChef.user_profile}</p>
                                         <Exprience />
-                                        <p className="text-gray-600 mt-4 absolute top-5">{selectedChef.description}</p>
+                                        <p className="text-gray-600 mt-4">{selectedChef.description}</p>
                                     </>
                                 ) : (
                                     <PreviewGallary />
@@ -634,3 +678,4 @@ const Home = () => {
 }
 
 export default Home;
+
