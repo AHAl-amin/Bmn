@@ -124,6 +124,18 @@ const ChefDashboardSideber = () => {
                         <h1 className="text-lg font-medium text-white">Subscription</h1>
                     </NavLink>
                     <NavLink
+                        to="/chef_dashboard/branding"
+                        className={({ isActive }) =>
+                            `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
+                                ? 'bg-[#0077B6] text-white rounded-md'
+                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                            }`
+                        }
+                    >
+                        <FaChessQueen className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">Branding</h1>
+                    </NavLink>
+                    <NavLink
                         to="/chef_dashboard/chef_settings_privecy"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
