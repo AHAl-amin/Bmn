@@ -661,9 +661,9 @@ const Home = () => {
                             <div className="relative mt-2">
                                 {activeButton === 'about' ? (
                                     <>
-                                        <p className='text-[26px] font-semibold text-[#004C3F] mb-4'>About chef {selectedChef.user_profile}</p>
+                                        <p className='text-[26px] font-semibold text-[#004C3F] mb-4'>About chef {selectedChef.title}</p>
                                         <Exprience />
-                                        <p className="text-gray-600 mt-4">{selectedChef.description}</p>
+                                        <p className="text-gray-600 mt-4 absolute top-4">{selectedChef.description}</p>
                                     </>
                                 ) : (
                                     <PreviewGallary />

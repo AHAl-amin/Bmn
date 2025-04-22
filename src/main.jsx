@@ -39,6 +39,7 @@ import CommunityPost from './component/UsersDashboard/UserDashboardPages/Communi
 import ProfileAndSetting from './component/UsersDashboard/UserDashboardPages/ProfileAndSetting.jsx';
 import ChefDashboardLayout from './component/ChefDashboard/ChefDashboardLayout/ChefDashboardLayout.jsx';
 import ChefDashboardPage from './component/ChefDashboard/ChefDashboardPage/ChefDashboardPage.jsx';
+import ChefAllRecipes from './component/ChefDashboard/ChefDashboardPage/ChefAllRecipes.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -110,6 +111,11 @@ const router = createBrowserRouter([
     {
       index: true,
       element: <ChefDashboardPage/>
+    },
+
+    {
+      index:'/chef_dashboard/chef_all_recipes',
+      element: <ChefAllRecipes/>
     }
 
 

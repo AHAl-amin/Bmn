@@ -140,6 +140,7 @@
 import React, { useState } from 'react'
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import Subscribsion from './Subscribsion';
 
 function PreviewGallary() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -283,26 +284,22 @@ function PreviewGallary() {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-[#004C3FCC] bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h2 className="text-2xl font-bold text-[#004C3F] mb-4">Confirm Selection</h2>
-            <p className="mb-6">Are you sure you want to select this chef?</p>
-            <div className="flex justify-end space-x-4">
-              <button 
-                onClick={closeModal}
-                className="px-4 py-2 border border-gray-300 rounded-[10px] hover:bg-gray-100 transition-colors duration-200"
-              >
-                Cancel
-              </button>
+          <div className="bg-white rounded-lg h-11/12  w-3/5">
+           
+            <div className="flex space-x-4 p-2">
+             
               <button 
                 onClick={() => {
                   // Add your confirmation logic here
                   closeModal();
                 }}
-                className="px-4 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E] transition-colors duration-200"
+                className="px-6 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E] transition-colors cursor-pointer duration-200"
               >
-                Confirm
+                Back
               </button>
             </div>
+
+            <Subscribsion/>
           </div>
         </div>
       )}

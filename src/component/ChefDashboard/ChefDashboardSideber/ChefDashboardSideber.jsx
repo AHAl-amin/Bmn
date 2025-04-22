@@ -46,7 +46,7 @@ const ChefDashboardSideber = () => {
                 </NavLink>
                 <div className="flex flex-col gap-2 pt-5 mx-5">
                     <NavLink
-                        to="/chef_dashboard"
+                        to="/"
 
                         className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${isDashboardActive ?
                             'bg-[#0077B6]  text-white rounded-md' : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
@@ -58,7 +58,7 @@ const ChefDashboardSideber = () => {
                     </NavLink>
 
                     <NavLink
-                        to="/dashboard/ai_chat"
+                        to="/chef_dashboard/chef_all_recipes"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                                 ? 'bg-[#0077B6] text-white rounded-md'
