@@ -293,7 +293,7 @@ function ChefAllRecipes() {
         <div>
             <div className="md:px-10 py-6 lora">
                 <h1 className="text-[#0077B6] text-[34px] font-semibold">All Recipes</h1>
-                <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
+                <p className="text-[#A2A2A2] text-[20px]">Manage Your Recipes</p>
 
                 {/* Card section */}
                 <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">

@@ -36,8 +36,8 @@ function ChefSettingAndPrivecy() {
 
         <div className='px-10 py-4 lora'>
             <h1 className="text-[#0077B6] text-[45px] font-semibold">Profile information</h1>
-            <p className="text-[#A2A2A2] text-[20px]">
-                Update your information Nd public details
+            <p className="text-[#A2A2A2] text-[20px] capitalize">
+                Update Your information and public details
             </p>
 
             <form action="">
