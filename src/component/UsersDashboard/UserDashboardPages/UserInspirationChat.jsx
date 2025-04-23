@@ -10,9 +10,9 @@ import { VscRobot } from "react-icons/vsc";
 import { GoPaperAirplane } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import aiIcon from '../../../../assets/image/ai_icon.png';
+import aiIcon from '../../../assets/image/ai_icon.png';
 
-const AiChat = () => {
+const UserInspirationChat = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -173,10 +173,7 @@ const AiChat = () => {
                     <div className="flex gap-10">
                         <h1 className="text-[#004C3F] font-bold text-[35px]">AI Chat</h1>
                         <div className="flex space-x-6">
-                            <button className="border border-[#B0BFB6] text-[#004C3F] rounded-xl px-4 flex items-center cursor-pointer font-semibold">
-                                Select Recipe
-                                <IoIosArrowDown className="ml-2" />
-                            </button>
+                            
                             <div className="relative">
                                 <button
                                     onClick={toggleDropdown}
@@ -203,8 +200,8 @@ const AiChat = () => {
                     </p>
                     <div className="border w-screen mt-4 border-[#E7E7E7]"></div>
                     <div className="py-2">
-                        <p className="font-semibold text-[24px] text-[#004C3F]">Dark Chocolate Ganache</p>
-                        <p className="text-[#A2A2A2]">Ask questions specific to this recipe</p>
+                        <p className="font-semibold text-[24px] text-[#004C3F]">Recipe Inspiration</p>
+                        <p className="text-[#A2A2A2]">Get creative recipe ideas based on your preferences</p>
                     </div>
                 </div>
             </div>
@@ -218,7 +215,7 @@ const AiChat = () => {
                                     <img src={aiIcon} className="h-10 w-10 mt-1 text-white" />
                                 </div>
                                 <div className="px-5 py-4 rounded-lg bg-gray-200 dark:bg-[#E6EBE8] text-black dark:text-[#595959] lg:text-[16px] shadow-sm w-full">
-                                    <ReactMarkdown>Hello! I'm your AI assistant. How can I help you today?</ReactMarkdown>
+                                    <ReactMarkdown>Hello! I m your AI assistant. How can I help you today?</ReactMarkdown>
                                 </div>
                             </div>
                         </div>
@@ -379,6 +376,6 @@ const AiChat = () => {
     );
 };
 
-export default AiChat;
+export default UserInspirationChat;
 
 

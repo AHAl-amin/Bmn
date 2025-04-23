@@ -52,6 +52,7 @@ import AdminDashboardChefs from './component/AdminDashboard/AdminDashboardPages/
 import AdminDashboardUser from './component/AdminDashboard/AdminDashboardPages/AdminDashboardUser.jsx';
 import AdminDashboardSubscription from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSubscription.jsx';
 import AdminDashboardSettingPrivecy from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSettingPrivecy.jsx';
+import UserInspirationChat from './component/UsersDashboard/UserDashboardPages/UserInspirationChat.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -104,6 +105,11 @@ const router = createBrowserRouter([
         path:'profile_settings',
         element:<ProfileAndSetting/>
       },
+      
+      {
+        path:"inspiration_chat",
+        element:<UserInspirationChat/>
+      }
      
       
      
@@ -162,6 +168,7 @@ const router = createBrowserRouter([
       path:'chef_community',
       element:<ChefCommunity/>
     },
+    
 
 
 
@@ -203,7 +210,8 @@ const router = createBrowserRouter([
       {
         path:"settings_privecy",
         element:<AdminDashboardSettingPrivecy/>
-      }
+      },
+    
     ]
   },
 
