@@ -284,7 +284,7 @@ function PreviewGallary() {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-[#004C3FCC] bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg h-11/12  w-3/5">
+          <div className="bg-white rounded-lg h-11/12  w-4/6">
            
             <div className="flex space-x-4 p-2">
              

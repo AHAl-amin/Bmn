@@ -111,7 +111,7 @@ const ChefDashboardSideber = () => {
         </NavLink> */}
 
                     <NavLink
-                        to="/dashboard/profile_settings"
+                        to="/chef_dashboard/chef_subscribtion"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                                 ? 'bg-[#0077B6] text-white rounded-md'

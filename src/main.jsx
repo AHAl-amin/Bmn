@@ -46,6 +46,7 @@ import AiTraining from './component/ChefDashboard/ChefDashboardPage/AiTraining.j
 import ChefSettingAndPrivecy from './component/ChefDashboard/ChefDashboardPage/ChefSettingAndPrivecy.jsx';
 import FacebookUser from './component/ChefDashboard/ChefDashboardPage/FacebookUser.jsx';
 import Branding from './component/ChefDashboard/ChefDashboardPage/Branding.jsx';
+import ChefSubscribtion from './component/ChefDashboard/ChefDashboardPage/ChefSubscribtion.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -142,6 +143,14 @@ const router = createBrowserRouter([
     {
       path:'branding',
       element: <Branding/>
+    },
+    {
+      path:'chef_subscribtion',
+      element: <ChefSubscribtion/>
+    },
+    {
+      path:'facebook_user',
+      element: <FacebookUser/>
     },
 
 
