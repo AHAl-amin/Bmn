@@ -13,10 +13,10 @@ import UserDashboardLayout from './component/UsersDashboard/UserDashboardLayout/
 // import OderManangement from './component/UsersDashboard/UserDashboardPages/OderManangement.jsx';
 import AdminDashboardLayout from './component/AdminDashboard/AdminDashboardLayout/AdminDashboardLayout.jsx';
 import AdminDashboard from './component/AdminDashboard/AdminDashboardPages/AdminDashboard.jsx';
-import AdminDashboardMessage from './component/AdminDashboard/AdminDashboardPages/AdminDashboardMessage.jsx';
+import AdminDashboardMessage from './component/AdminDashboard/AdminDashboardPages/AdminDashboardUser.jsx';
 // import AdminDashboardChats from './component/AdminDashboard/AdminDashboardPages/AdminDashboardChats.jsx';
-import AdminDashboardAiChat from './component/AdminDashboard/AdminDashboardPages/AdminDashboardAiChat.jsx';
-import AdminDashboardNotification from './component/AdminDashboard/AdminDashboardPages/AdminDashboardNotification.jsx';
+import AdminDashboardAiChat from './component/AdminDashboard/AdminDashboardPages/AdminDashboardChefs.jsx';
+import AdminDashboardNotification from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSubscription.jsx';
 
 import Registration from './component/Shared/Registration/Registration.jsx';
 
@@ -47,6 +47,11 @@ import ChefSettingAndPrivecy from './component/ChefDashboard/ChefDashboardPage/C
 import FacebookUser from './component/ChefDashboard/ChefDashboardPage/FacebookUser.jsx';
 import Branding from './component/ChefDashboard/ChefDashboardPage/Branding.jsx';
 import ChefSubscribtion from './component/ChefDashboard/ChefDashboardPage/ChefSubscribtion.jsx';
+import ChefCommunity from './component/ChefDashboard/ChefDashboardPage/ChefCommunity.jsx';
+import AdminDashboardChefs from './component/AdminDashboard/AdminDashboardPages/AdminDashboardChefs.jsx';
+import AdminDashboardUser from './component/AdminDashboard/AdminDashboardPages/AdminDashboardUser.jsx';
+import AdminDashboardSubscription from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSubscription.jsx';
+import AdminDashboardSettingPrivecy from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSettingPrivecy.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -153,6 +158,11 @@ const router = createBrowserRouter([
       element: <FacebookUser/>
     },
 
+    {
+      path:'chef_community',
+      element:<ChefCommunity/>
+    },
+
 
 
   ]
@@ -171,8 +181,8 @@ const router = createBrowserRouter([
         element: <AdminDashboard />
       },
       {
-        path: "Message", // Relative path under /Admin_Dashboard
-        element: <AdminDashboardMessage />,
+        path: "chefs", // Relative path under /Admin_Dashboard
+        element: <AdminDashboardChefs/>,
         children: [
           
           {
@@ -181,12 +191,24 @@ const router = createBrowserRouter([
           }
         ]
       },
+   
       {
-        path:"/Admin_Dashboard/notification",
-        element:<AdminDashboardNotification/>
+        path:"users",
+        element:<AdminDashboardUser/>
+      },
+      {
+        path:"subscriber",
+        element:<AdminDashboardSubscription/>
+      },
+      {
+        path:"settings_privecy",
+        element:<AdminDashboardSettingPrivecy/>
       }
     ]
   },
+
+
+
   // .................user Authentications.................
 
   {

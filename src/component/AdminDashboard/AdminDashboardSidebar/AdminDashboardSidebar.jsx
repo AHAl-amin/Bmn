@@ -1,97 +1,141 @@
-import { NavLink, useLocation } from "react-router-dom";
-import { Users } from "lucide-react";
-import { TbBrandWechat } from "react-icons/tb";
-import { MdOutlineDashboard } from "react-icons/md";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { IoWalletOutline } from "react-icons/io5";
-import { BiSupport } from "react-icons/bi";
 
+
+
+import { NavLink, useLocation } from "react-router-dom";
+
+import { IoReorderThreeOutline, IoSettingsOutline } from "react-icons/io5";
+
+import login_img2 from '../../../assets/image/Admin_login_img.png';
+import { FaChessQueen, FaCloudRain, FaUser, FaUsers } from "react-icons/fa";
+import { GiAchievement } from "react-icons/gi";
+import { useState } from "react";
+import { PiChefHatFill } from "react-icons/pi";
+import { MdOutlineDashboard } from "react-icons/md";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 const AdminDashboardSidebar = () => {
     const location = useLocation();
-    const isProjectActive = location.pathname.startsWith('/dashboard/Project');
+    const isProjectActive = location.pathname.startsWith('/dashboard/user_notifications');
+    const isDashboardActive = ["/Admin_Dashboard", "/chef_all_recipes/chef_recipese_dettails_view", "/dashboard/createBuyerOrder", "/dashboard/buyer_candidate_list"].includes(location.pathname);
+
+    // State to control sidebar visibility on small devices
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    // Function to toggle sidebar
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
     return (
-        <div className="pt-24">
-            <NavLink to="/" className="nunito text-center">
-                <h1 className="text-[22px]">Cameron Malek</h1>
-                <h1 className="text-[16px] text-gray-400">Ui/Ux</h1>
-            </NavLink>
-            <div className="flex flex-col gap-2 pt-10 mx-10">
-                <NavLink
-                    to="/Admin_Dashboard"
-                    end
-                    className={({ isActive }) =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors duration-200 ${isActive ? 'bg-[#0D95DD] text-white rounded-md' : 'hover:bg-[#0daddd] hover:text-white rounded-md'
-                        }`
-                    }
-                >
-                    <MdOutlineDashboard className="h-6 w-6" />
-                    <h1 className="text-lg font-medium">Dashboard</h1>
-                </NavLink>
-
-                <NavLink
-                    to="/Admin_Dashboard/Message"
-                    className={({ isActive }) =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors duration-200 ${isActive ? 'bg-[#0D95DD] text-white rounded-md' : 'hover:bg-[#0daddd] hover:text-white rounded-md'
-                        }`
-                    }
-                >
-                    <TbBrandWechat
-                        className="h-6 w-6" />
-                    <h1 className="text-lg font-medium">Chats</h1>
-                </NavLink>
-
-                <NavLink
-                    to="/Admin_Dashboard/notification"
-                    className={() =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors duration-200 ${isProjectActive ? 'bg-[#0D95DD] text-white rounded-md' : 'hover:bg-[#0daddd] hover:text-white rounded-md'
-                        }`
-                    }
-                >
-                    <IoMdNotificationsOutline className="h-6 w-6" />
-                    <h1 className="text-lg font-medium">Notification</h1>
-                </NavLink>
-
-                <NavLink
-                    to="/dashboard/addEmploye"
-                    className={({ isActive }) =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors duration-200 ${isActive ? 'bg-[#0D95DD] text-white rounded-md' : 'hover:bg-[#0daddd] hover:text-white rounded-md'
-                        }`
-                    }
-                >
-                    <Users className="h-6 w-6" />
-                    <h1 className="text-lg font-medium">Profile</h1>
-                </NavLink>
-
-                <NavLink
-                    to="/dashboard/taskProgress"
-                    className={({ isActive }) =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors duration-200 ${isActive ? 'bg-[#0D95DD] text-white rounded-md' : 'hover:bg-[#0daddd] hover:text-white rounded-md'
-                        }`
-                    }
-                >
-                    <IoWalletOutline className="h-6 w-6" />
-                    <h1 className="text-lg font-medium">Wallet</h1>
-                </NavLink>
-
-                <NavLink
-                    to="/dashboard/manageSubscription"
-                    className={({ isActive }) =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors duration-200 ${isActive ? 'bg-[#0D95DD] text-white rounded-md' : 'hover:bg-[#0daddd] hover:text-white rounded-md'
-                        }`
-                    }
-                >
-                    <BiSupport className="h-6 w-6" />
-                    <h1 className="text-lg font-medium">Support</h1>
-                </NavLink>
+        <div className="lora">
+            {/* Toggle Icon for Small Devices */}
+            <div className="md:hidden flex justify-start p-4 bg-[#B0D5E8]">
+                <IoReorderThreeOutline
+                    className="h-8 w-8 text-[#004C3F] cursor-pointer"
+                    onClick={toggleSidebar}
+                />
             </div>
 
-            {/* logout */}
-            <div className="text-center w-full bg-[#B8E5FF] rounded-sm py-3 absolute bottom-0 cursor-pointer">
-                <button className="text-lg font-medium cursor-pointer">Logout</button>
+            {/* Sidebar */}
+            <div
+                className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#B0D5E8] pt-10 lora transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                    } md:relative md:translate-x-0 md:block h-screen`}
+            >
+                <NavLink className="flex justify-center">
+                    <img src={login_img2} alt="logo" className="w-[129px] h-[110px]" />
+                </NavLink>
+                <div className="flex flex-col gap-2 pt-5 mx-5">
+                    <NavLink
+                        to="/Admin_Dashboard"
+
+                        className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${isDashboardActive ?
+                            'bg-[#0077B6]  text-white rounded-md' : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                            }`}
+
+                    >
+                        <MdOutlineDashboard className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">Dashboard</h1>
+                    </NavLink>
+
+
+
+                    <NavLink
+                        to="/Admin_Dashboard/chefs"
+                        className={() =>
+                            location.pathname.startsWith('/Admin_Dashboard/chefs') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md w-full'
+                        }
+                    >
+                        <PiChefHatFill className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">Chefs</h1>
+                    </NavLink>
+                    
+                   
+
+                    <NavLink
+                        to="/Admin_dashboard/users"
+                        className={() =>
+                            location.pathname.startsWith('/Admin_dashboard/users') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md w-full'
+                        }
+                    >
+                        <FaUser
+                            className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">Users</h1>
+                    </NavLink>
+                    <NavLink
+                        to="/Admin_dashboard/subscriber"
+                        className={() =>
+                            location.pathname.startsWith('/Admin_dashboard/subscriber') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md w-full'
+                        }
+                    >
+                        <FaChessQueen
+                            className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">Subscription</h1>
+                    </NavLink>
+                    <NavLink
+                        to="/Admin_dashboard/settings_privecy"
+                        className={() =>
+                            location.pathname.startsWith('/Admin_dashboard/settings_privecy') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md w-full'
+                        }
+                    >
+                        <IoSettingsOutline
+                            className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">Profile & setting</h1>
+                    </NavLink>
+
+
+
+
+
+
+                   
+                </div>
             </div>
+
+            {/* Overlay for Small Devices */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0  bg-opacity-50 z-40 md:hidden"
+                    onClick={toggleSidebar}
+                ></div>
+            )}
         </div>
     );
-}
+};
 
 export default AdminDashboardSidebar;
