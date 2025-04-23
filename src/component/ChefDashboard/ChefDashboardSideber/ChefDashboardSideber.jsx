@@ -6,9 +6,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { IoReorderThreeOutline, IoSettingsOutline } from "react-icons/io5";
 
 import login_img2 from '../../../assets/image/Admin_login_img.png';
-import { FaChessQueen, FaCloudRain, FaHeart, FaRegLightbulb, FaUsers } from "react-icons/fa";
-import { BsChatDotsFill } from "react-icons/bs";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { FaChessQueen, FaCloudRain, FaUsers } from "react-icons/fa";
+import { GiAchievement } from "react-icons/gi";
 import { useState } from "react";
 import { PiChefHatFill } from "react-icons/pi";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -132,7 +131,7 @@ const ChefDashboardSideber = () => {
                             }`
                         }
                     >
-                        <FaChessQueen className="h-6 w-6" />
+                       <GiAchievement className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">Branding</h1>
                     </NavLink>
                     <NavLink
