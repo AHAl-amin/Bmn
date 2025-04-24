@@ -1,8 +1,5 @@
 
 
-
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -87,11 +84,8 @@ function ChefAllRecipes() {
   }, []);
 
   const handleDelete = (id) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
-    if (confirmDelete) {
-      setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe.id !== id));
-      setOpenDropdownId(null); // Close dropdown after deletion
-    }
+    setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe.id !== id));
+    setOpenDropdownId(null); // Close dropdown after deletion
   };
 
   return (
@@ -131,16 +125,16 @@ function ChefAllRecipes() {
                       }
                       className="btn btn-ghost btn-circle"
                     >
-                      <HiDotsHorizontal className="text-[#0077B6] w-[16px] h-[16px]" />
+                      <HiDotsHorizontal className="text-[#0077B6] w-[16px] h-[16px] cursor-pointer" />
                     </button>
 
                     {openDropdownId === recipe.id && (
-                      <ul className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-md bg-base-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+                      <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-blue-400  bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
                         <li>
-                          <button>Edit</button>
+                          <button className='cursor-pointer'>Edit</button>
                         </li>
                         <li>
-                          <button onClick={() => handleDelete(recipe.id)}>Delete</button>
+                          <button onClick={() => handleDelete(recipe.id)} className='cursor-pointer'>Delete</button>
                         </li>
                       </ul>
                     )}
