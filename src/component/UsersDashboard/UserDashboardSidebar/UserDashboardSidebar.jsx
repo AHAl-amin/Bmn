@@ -3,7 +3,7 @@
 
 import { NavLink, useLocation } from "react-router-dom";
 
-import { IoReorderThreeOutline, IoSettingsOutline} from "react-icons/io5";
+import { IoReorderThreeOutline, IoSettingsOutline } from "react-icons/io5";
 
 import login_img2 from '../../../assets/image/Admin_login_img.png';
 import { FaHeart, FaRegLightbulb } from "react-icons/fa";
@@ -55,7 +55,7 @@ const UserDashboardSidebar = () => {
             <h1 className="text-lg font-medium text-white">Recipes</h1>
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/dashboard/ai_chat"
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
@@ -66,6 +66,20 @@ const UserDashboardSidebar = () => {
           >
             <BsChatDotsFill
               className="h-6 w-6  " />
+            <h1 className="text-lg font-medium text-white">AI Chat</h1>
+          </NavLink> */}
+
+          <NavLink
+            to="/dashboard/ai_chat"
+            className={() =>
+              location.pathname.startsWith('/dashboard/ai_chat') ||
+                location.pathname.startsWith('/dashboard/inspiration_chat') 
+               
+                ? 'flex items-center gap-3 px-3 py-2 bg-[#004C3F] text-white rounded-md w-full'
+                : 'flex items-center gap-3 px-3 py-2 text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md '
+            }
+          >
+             <BsChatDotsFill className="h-6 w-6" />
             <h1 className="text-lg font-medium text-white">AI Chat</h1>
           </NavLink>
 

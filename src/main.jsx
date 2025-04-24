@@ -13,10 +13,9 @@ import UserDashboardLayout from './component/UsersDashboard/UserDashboardLayout/
 // import OderManangement from './component/UsersDashboard/UserDashboardPages/OderManangement.jsx';
 import AdminDashboardLayout from './component/AdminDashboard/AdminDashboardLayout/AdminDashboardLayout.jsx';
 import AdminDashboard from './component/AdminDashboard/AdminDashboardPages/AdminDashboard.jsx';
-import AdminDashboardMessage from './component/AdminDashboard/AdminDashboardPages/AdminDashboardUser.jsx';
-// import AdminDashboardChats from './component/AdminDashboard/AdminDashboardPages/AdminDashboardChats.jsx';
+
 import AdminDashboardAiChat from './component/AdminDashboard/AdminDashboardPages/AdminDashboardChefs.jsx';
-import AdminDashboardNotification from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSubscription.jsx';
+
 
 import Registration from './component/Shared/Registration/Registration.jsx';
 
@@ -53,6 +52,7 @@ import AdminDashboardUser from './component/AdminDashboard/AdminDashboardPages/A
 import AdminDashboardSubscription from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSubscription.jsx';
 import AdminDashboardSettingPrivecy from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSettingPrivecy.jsx';
 import UserInspirationChat from './component/UsersDashboard/UserDashboardPages/UserInspirationChat.jsx';
+import { ApiProvider } from './context/ApiProvider.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -261,7 +261,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <React.StrictMode>
+    <ApiProvider> {/* ✅ Wrap everything */}
       <RouterProvider router={router} />
+    </ApiProvider>
     </React.StrictMode>
   </StrictMode>,
 )
