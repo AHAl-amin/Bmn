@@ -76,9 +76,9 @@ const AdminDashboardSidebar = () => {
                    
 
                     <NavLink
-                        to="/Admin_dashboard/users"
+                        to="/Admin_Dashboard/users"
                         className={() =>
-                            location.pathname.startsWith('/Admin_dashboard/users') ||
+                            location.pathname.startsWith('/Admin_Dashboard/users') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
                                 ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
@@ -90,9 +90,9 @@ const AdminDashboardSidebar = () => {
                         <h1 className="text-lg font-medium text-white">Users</h1>
                     </NavLink>
                     <NavLink
-                        to="/Admin_dashboard/subscriber"
+                        to="/Admin_Dashboard/subscriber"
                         className={() =>
-                            location.pathname.startsWith('/Admin_dashboard/subscriber') ||
+                            location.pathname.startsWith('/Admin_Dashboard/subscriber') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
                                 ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
@@ -104,9 +104,9 @@ const AdminDashboardSidebar = () => {
                         <h1 className="text-lg font-medium text-white">Subscription</h1>
                     </NavLink>
                     <NavLink
-                        to="/Admin_dashboard/settings_privecy"
+                        to="/Admin_Dashboard/settings_privecy"
                         className={() =>
-                            location.pathname.startsWith('/Admin_dashboard/settings_privecy') ||
+                            location.pathname.startsWith('/Admin_Dashboard/settings_privecy') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
                                 ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
