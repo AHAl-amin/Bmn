@@ -100,14 +100,14 @@ function ChefDashboardNavber() {
   return (
     <div className="flex items-center justify-end pt-10 lora h-16 px-6 md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)]">
       <div className="flex items-center space-x-8">
-        <button
+        {/* <button
           onClick={toggleAddChefModal}
           className="flex items-center gap-2 px-4 py-2 text-white bg-[#0077B6] rounded-[10px] cursor-pointer"
         >
           <FaLightbulb />
           <span className="font-medium">Add Chefs</span>
           <IoMdAdd />
-        </button>
+        </button> */}
 
         <NavLink to="/dashboard/user_notifications">
           <div className="relative">

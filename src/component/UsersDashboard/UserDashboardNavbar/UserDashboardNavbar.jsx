@@ -6,6 +6,7 @@ import { FaLightbulb } from "react-icons/fa";
 import { GoBellFill } from "react-icons/go";
 import { IoIosArrowDown, IoMdAdd } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
+import { PiChefHatFill } from 'react-icons/pi';
 import {  Link, NavLink, useLocation } from "react-router-dom";
 
 const UserDashboardNavbar = () => {
@@ -53,11 +54,11 @@ const UserDashboardNavbar = () => {
                                 onClick={toggleAddChefModal}
                                 className="flex items-center gap-2 px-4 py-2 text-white bg-[#004C3F] rounded-[10px] cursor-pointer"
                             >
-                                <FaLightbulb />
+                                <PiChefHatFill />
                                 <span className="font-medium">Add Chefs </span><IoMdAdd />
                             </Link>
                             <button className="flex items-center text-[#004C3F] gap-2 px-4 py-2 border-[#B0BFB6] border rounded-[10px] cursor-pointer">
-                                <FaLightbulb />
+                            <PiChefHatFill />
                                 <span className="text-teal-800 font-medium">Bobon lina</span>
                                 <IoIosArrowDown className="h-5 w-5 text-teal-800" />
                             </button>

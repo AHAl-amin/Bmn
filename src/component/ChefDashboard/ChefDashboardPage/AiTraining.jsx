@@ -265,7 +265,7 @@ const AiTraining = () => {
 
         {/* Modal for Step 4 */}
         {isModalOpen && (
-          <div className="fixed inset-0 backdrop-blur bg-[#0076b662] flex justify-center items-center z-50">
+          <div className="fixed inset-0 backdrop-blur bg-[#0076b662] flex justify-center items-center z-100">
             <div className="bg-white rounded-lg p-6 w-full max-w-lg">
               <h2 className="text-xl font-bold mb-4 text-[#0077B6]">Training Started Successfully!</h2>
               <p className="mb-6 text-gray-300">
