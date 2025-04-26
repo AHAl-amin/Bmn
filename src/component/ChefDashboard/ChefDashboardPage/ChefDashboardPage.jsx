@@ -395,7 +395,7 @@ function ChefDashboardPage() {
                             <li key={index} className="flex items-center">
                                 <span className="w-48 text-gray-700">{recipe.name}</span>
                                 <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div className="h-full bg-blue-500" style={{ width: recipe.width }}></div>
+                                    <div className="h-full bg-[#B0D5E8]" style={{ width: recipe.width }}></div>
                                 </div>
                             </li>
                         ))}
@@ -480,7 +480,7 @@ function ChefDashboardPage() {
                                 content={({ active, payload }) => {
                                     if (active && payload && payload.length) {
                                         return (
-                                            <div className={`px-3 py-1 rounded shadow-md text-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-blue-800 text-white'}`}>
+                                            <div className={`px-3 py-1 rounded shadow-md text-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-[#2088bd] text-white'}`}>
                                                 <p className="text-sm font-medium">${payload[0].value.toLocaleString()}</p>
                                             </div>
                                         );
@@ -490,18 +490,18 @@ function ChefDashboardPage() {
                             />
                             <defs>
                                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#1e40af" stopOpacity={0.8} />
-                                    <stop offset="95%" stopColor="#1e40af" stopOpacity={0} />
+                                    <stop offset="50%" stopColor="#B0D5E8" stopOpacity={0.8} />
+                                    <stop offset="98%" stopColor="#B0D5E8" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
                             <Area
                                 type="monotone"
                                 dataKey="value"
-                                stroke="#1e40af"
+                                stroke="#B0D5E8"
                                 strokeWidth={2}
                                 fill="url(#colorValue)"
-                                dot={{ r: 4, fill: "#1e40af", strokeWidth: 0 }}
-                                activeDot={{ r: 6, fill: "#1e40af", stroke: "#fff", strokeWidth: 2 }}
+                                dot={{ r: 4, fill: "#B0D5E8", strokeWidth: 0 }}
+                                activeDot={{ r: 6, fill: "#B0D5E8", stroke: "#fff", strokeWidth: 2 }}
                             />
                         </AreaChart>
                     </ResponsiveContainer>

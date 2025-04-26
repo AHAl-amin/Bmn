@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { IoReorderThreeOutline, IoSettingsOutline } from "react-icons/io5";
 
 import login_img2 from '../../../assets/image/Admin_login_img.png';
-import { FaHeart, FaRegLightbulb } from "react-icons/fa";
+import { FaBrain, FaHeart, FaRegLightbulb } from "react-icons/fa";
 import { BsChatDotsFill } from "react-icons/bs";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useState } from "react";
@@ -79,7 +79,7 @@ const UserDashboardSidebar = () => {
                 : 'flex items-center gap-3 px-3 py-2 text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md '
             }
           >
-             <BsChatDotsFill className="h-6 w-6" />
+             <FaBrain className="h-6 w-6" />
             <h1 className="text-lg font-medium text-white">AI Chat</h1>
           </NavLink>
 

@@ -1,7 +1,212 @@
 
 
+// import React, { useEffect, useRef, useState } from 'react';
+// import { CiFilter } from 'react-icons/ci';
+// import { HiDotsHorizontal } from 'react-icons/hi';
+// import { IoMdAdd } from 'react-icons/io';
+// import { Link } from 'react-router-dom';
+
+// // JSON data for recipes
+// const initialRecipes = [
+//   {
+//     id: 1,
+//     title: 'Joss Chocolate Soufflé',
+//     category: 'Chocolate',
+//     description: 'A light and airy chocolate dessert with a molten center....',
+//     image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+//     rating: 4.8,
+//     updated: '2023-11-15',
+//   },
+//   {
+//     id: 2,
+//     title: 'Classic Chocolate Soufflé',
+//     category: 'Desserts',
+//     description: 'A light and airy chocolate dessert with a molten center....',
+//     image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+//     rating: 4.8,
+//     updated: '2023-11-15',
+//   },
+//   {
+//     id: 3,
+//     title: 'Classic Chocolate Soufflé',
+//     category: 'Chocolate',
+//     description: 'A light and airy chocolate dessert with a molten center....',
+//     image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+//     rating: 4.8,
+//     updated: '2023-11-15',
+//   },
+//   {
+//     id: 4,
+//     title: 'Dessers Chocolate Soufflé',
+//     category: 'Desserts',
+//     description: 'A light and airy chocolate dessert with a molten center....',
+//     image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+//     rating: 4.8,
+//     updated: '2023-11-15',
+//   },
+//   {
+//     id: 5,
+//     title: 'Classic Chocolate Soufflé',
+//     category: 'Chocolate',
+//     description: 'A light and airy chocolate dessert with a molten center....',
+//     image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+//     rating: 4.8,
+//     updated: '2023-11-15',
+//   },
+//   {
+//     id: 6,
+//     title: 'Classic Chocolate Soufflé',
+//     category: 'Ice-creem',
+//     description: 'A light and airy chocolate dessert with a molten center....',
+//     image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+//     rating: 4.8,
+//     updated: '2023-11-15',
+//   },
+// ];
+
+// function ChefAllRecipes() {
+//   const [recipes, setRecipes] = useState(initialRecipes);
+//   const [openDropdownId, setOpenDropdownId] = useState(null);
+//   const dropdownRefs = useRef({}); // Store refs for each dropdown
+
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       if (
+//         !Object.values(dropdownRefs.current).some((ref) =>
+//           ref && ref.contains(event.target)
+//         )
+//       ) {
+//         setOpenDropdownId(null);
+//       }
+//     };
+//     document.addEventListener('mousedown', handleClickOutside);
+//     return () => {
+//       document.removeEventListener('mousedown', handleClickOutside);
+//     };
+//   }, []);
+
+//   const handleDelete = (id) => {
+//     setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe.id !== id));
+//     setOpenDropdownId(null); // Close dropdown after deletion
+//   };
+
+//   return (
+//     <div>
+//       <div className="md:px-10 py-6 lora">
+//       <div className='flex justify-between items-center px-2'>
+//           <div>
+//             <h1 className="text-[#0077B6] text-[34px] font-semibold">All Recipes</h1>
+//             <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
+//           </div>
+//           <button
+//             className='text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer'
+
+//           >
+//             <CiFilter />
+//             <span>filter</span>
+//           </button>
+//         </div>
+
+//         {/* Card section */}
+//         <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
+//           {recipes.map((recipe) => (
+//             <div key={recipe.id} className="w-full shadow rounded-xl overflow-hidden">
+//               {/* Image Section */}
+//               <div className="relative">
+//                 <img
+//                   className="w-full h-48 object-cover"
+//                   src={recipe.image}
+//                   alt={recipe.title}
+//                 />
+//               </div>
+
+//               {/* Content Section */}
+//               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
+//                 {/* Title and Dropdown */}
+//                 <div className="flex justify-between items-center">
+//                   <h2 className="text-xl font-semibold text-[#0077B6] lora">{recipe.title}</h2>
+
+//                   <div
+//                     className="relative inline-block text-left"
+//                     ref={(el) => (dropdownRefs.current[recipe.id] = el)}
+//                   >
+//                     <button
+//                       onClick={() =>
+//                         setOpenDropdownId((prevId) =>
+//                           prevId === recipe.id ? null : recipe.id
+//                         )
+//                       }
+//                       className="btn btn-ghost btn-circle"
+//                     >
+//                       <HiDotsHorizontal className="text-[#0077B6] w-[16px] h-[16px] cursor-pointer" />
+//                     </button>
+
+//                     {openDropdownId === recipe.id && (
+//                       <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-blue-400  bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+//                         <li>
+//                           <button className='cursor-pointer'>Edit</button>
+//                         </li>
+//                         <li>
+//                           <button onClick={() => handleDelete(recipe.id)} className='cursor-pointer'>Delete</button>
+//                         </li>
+//                       </ul>
+//                     )}
+//                   </div>
+//                 </div>
+
+//                 {/* Category */}
+//                 <div className="flex gap-4 py-2">
+//                   <p className="text-sm text-white bg-[#0077B6] inline-block px-4 py-1 rounded-[29px]">
+//                     {recipe.category}
+//                   </p>
+//                   <p className="text-white text-sm bg-[#003214] px-4 py-1 rounded-full">
+//                     Published
+//                   </p>
+//                 </div>
+
+//                 {/* Description */}
+//                 <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
+
+//                 {/* Rating and Update Date */}
+//                 <div className="mt-3 flex justify-between items-center">
+//                   <div className="flex items-center">
+//                     <svg
+//                       className="w-5 h-5 text-yellow-400"
+//                       fill="currentColor"
+//                       viewBox="0 0 20 20"
+//                       xmlns="http://www.w3.org/2000/svg"
+//                     >
+//                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+//                     </svg>
+//                     <span className="ml-1 text-gray-600">{recipe.rating}</span>
+//                   </div>
+//                   <p className="text-sm text-gray-500">Updated: {recipe.updated}</p>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         <Link to="/chef_dashboard/chef_recipese_dettails_view" className=" shadow  h-full rounded-xl p-2 text-white flex justify-center items-center cursor-pointer">
+//                        <div className=' space-y-4'>
+//                        <div className='bg-[#0077B6] rounded-full flex justify-center items-center mx-auto w-[50px] h-[50px]'>
+//                             <span className='text-[25px]  '><IoMdAdd /></span>
+//                         </div>
+//                         <p className='text-[#0077B6] text-center'>Add New Recipe</p>
+//                         <button className='flex bg-[#0077B6] py-1 px-3 rounded-full  items-center gap-2 cursor-pointer'>add new member <IoMdAdd /></button>
+//                        </div>
+//                     </Link>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ChefAllRecipes;
+
 import React, { useEffect, useRef, useState } from 'react';
+import { CiFilter } from 'react-icons/ci';
 import { HiDotsHorizontal } from 'react-icons/hi';
+import { IoMdAdd } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 // JSON data for recipes
@@ -54,7 +259,7 @@ const initialRecipes = [
   {
     id: 6,
     title: 'Classic Chocolate Soufflé',
-    category: 'Desserts',
+    category: 'Ice-cream',
     description: 'A light and airy chocolate dessert with a molten center....',
     image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
     rating: 4.8,
@@ -64,17 +269,26 @@ const initialRecipes = [
 
 function ChefAllRecipes() {
   const [recipes, setRecipes] = useState(initialRecipes);
+  const [filteredRecipes, setFilteredRecipes] = useState(initialRecipes); // State for filtered recipes
   const [openDropdownId, setOpenDropdownId] = useState(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // State for filter dropdown
   const dropdownRefs = useRef({}); // Store refs for each dropdown
+  const filterRef = useRef(null); // Ref for filter dropdown
+
+  // Get unique categories
+  const categories = ['All', ...new Set(initialRecipes.map((recipe) => recipe.category))];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Close recipe dropdowns
       if (
-        !Object.values(dropdownRefs.current).some((ref) =>
-          ref && ref.contains(event.target)
-        )
+        !Object.values(dropdownRefs.current).some((ref) => ref && ref.contains(event.target))
       ) {
         setOpenDropdownId(null);
+      }
+      // Close filter dropdown
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setIsFilterOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -84,19 +298,58 @@ function ChefAllRecipes() {
   }, []);
 
   const handleDelete = (id) => {
-    setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe.id !== id));
+    const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
+    setRecipes(updatedRecipes);
+    setFilteredRecipes(updatedRecipes); // Update filtered recipes after deletion
     setOpenDropdownId(null); // Close dropdown after deletion
+  };
+
+  const handleFilter = (category) => {
+    if (category === 'All') {
+      setFilteredRecipes(recipes);
+    } else {
+      const filtered = recipes.filter((recipe) => recipe.category === category);
+      setFilteredRecipes(filtered);
+    }
+    setIsFilterOpen(false); // Close filter dropdown after selection
   };
 
   return (
     <div>
       <div className="md:px-10 py-6 lora">
-        <h1 className="text-[#0077B6] text-[34px] font-semibold">All Recipes</h1>
-        <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
+        <div className="flex justify-between items-center px-2">
+          <div>
+            <h1 className="text-[#0077B6] text-[34px] font-semibold">All Recipes</h1>
+            <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
+          </div>
+          <div className="relative" ref={filterRef}>
+            <button
+              onClick={() => setIsFilterOpen((prev) => !prev)}
+              className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+            >
+              <CiFilter />
+              <span>Filter</span>
+            </button>
+            {isFilterOpen && (
+              <ul className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-md border border-blue-400 bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+                {categories.map((category) => (
+                  <li key={category}>
+                    <button
+                      onClick={() => handleFilter(category)}
+                      className="w-full text-left px-4 py-2 hover:bg-gray-300 cursor-pointer"
+                    >
+                      {category}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
 
         {/* Card section */}
         <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
-          {recipes.map((recipe) => (
+          {filteredRecipes.map((recipe) => (
             <div key={recipe.id} className="w-full shadow rounded-xl overflow-hidden">
               {/* Image Section */}
               <div className="relative">
@@ -112,7 +365,6 @@ function ChefAllRecipes() {
                 {/* Title and Dropdown */}
                 <div className="flex justify-between items-center">
                   <h2 className="text-xl font-semibold text-[#0077B6] lora">{recipe.title}</h2>
-
                   <div
                     className="relative inline-block text-left"
                     ref={(el) => (dropdownRefs.current[recipe.id] = el)}
@@ -127,14 +379,18 @@ function ChefAllRecipes() {
                     >
                       <HiDotsHorizontal className="text-[#0077B6] w-[16px] h-[16px] cursor-pointer" />
                     </button>
-
                     {openDropdownId === recipe.id && (
-                      <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-blue-400  bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+                      <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-blue-400 bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
                         <li>
-                          <button className='cursor-pointer'>Edit</button>
+                          <Link to='/chef_dashboard/chef_recipese_dettails_view' className="cursor-pointer">Edit</Link>
                         </li>
                         <li>
-                          <button onClick={() => handleDelete(recipe.id)} className='cursor-pointer'>Delete</button>
+                          <button
+                            onClick={() => handleDelete(recipe.id)}
+                            className="cursor-pointer"
+                          >
+                            Delete
+                          </button>
                         </li>
                       </ul>
                     )}
@@ -172,11 +428,23 @@ function ChefAllRecipes() {
               </div>
             </div>
           ))}
+          <Link
+            to="/chef_dashboard/chef_recipese_dettails_view"
+            className="shadow h-full rounded-xl p-2 text-white flex justify-center items-center cursor-pointer"
+          >
+            <div className="space-y-4">
+              <div className="bg-[#0077B6] rounded-full flex justify-center items-center mx-auto w-[50px] h-[50px]">
+                <span className="text-[25px]">
+                  <IoMdAdd />
+                </span>
+              </div>
+              <p className="text-[#0077B6] text-center">Add New Recipe</p>
+              <button className="flex bg-[#0077B6] py-1 px-3 rounded-full items-center gap-2 cursor-pointer">
+                add new member <IoMdAdd />
+              </button>
+            </div>
+          </Link>
         </div>
-
-        <Link to="/chef_dashboard/chef_recipese_dettails_view" className="bg-[#0077B6] p-2 text-white inline-block mt-6">
-          Add New Recipe
-        </Link>
       </div>
     </div>
   );

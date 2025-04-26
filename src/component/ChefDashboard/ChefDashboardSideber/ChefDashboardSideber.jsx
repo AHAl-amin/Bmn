@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { IoReorderThreeOutline, IoSettingsOutline } from "react-icons/io5";
 
 import login_img2 from '../../../assets/image/Admin_login_img.png';
-import { FaChessQueen, FaCloudRain, FaUsers } from "react-icons/fa";
+import { FaBrain, FaChessQueen, FaCloudRain, FaUsers } from "react-icons/fa";
 import { GiAchievement } from "react-icons/gi";
 import { useState } from "react";
 import { PiChefHatFill } from "react-icons/pi";
@@ -82,7 +82,7 @@ const ChefDashboardSideber = () => {
                             }`
                         }
                     >
-                        <FaCloudRain className="h-6 w-6" />
+                        <FaBrain className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">AI Training</h1>
                     </NavLink>
 
