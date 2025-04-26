@@ -1,11 +1,13 @@
 
 
-// import React from 'react';
+
+// import React, { useState } from 'react';
+// import { CiFilter } from 'react-icons/ci';
 // import { IoIosHeartEmpty } from 'react-icons/io';
 // import { IoSearchOutline } from 'react-icons/io5';
 // import { Link } from 'react-router-dom';
 
-// // JSON data for recipes
+// // JSON data for recipes (remains unchanged)
 // const recipes = [
 //   {
 //     id: 1,
@@ -37,7 +39,7 @@
 //   {
 //     id: 4,
 //     title: 'dessers Chocolate Soufflé',
-//     category: 'Chocolate',
+//     category: 'Ice-creem',
 //     description: 'A light and airy chocolate dessert with a molten center....',
 //     image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
 //     rating: 4.8,
@@ -46,7 +48,7 @@
 //   {
 //     id: 5,
 //     title: 'millssic Chocolate Soufflé',
-//     category: 'Chocolate',
+//     category: 'Desserts',
 //     description: 'A light and airy chocolate dessert with a molten center....',
 //     image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
 //     rating: 4.8,
@@ -64,88 +66,114 @@
 // ];
 
 // function AllRecipes() {
+//   // State for search term
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//   // Filter recipes based on search term
+//   const filteredRecipes = recipes.filter((recipe) =>
+//     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+//   );
+
 //   return (
 //     <div className="md:px-10 py-6 lora">
 //       <div className='flex justify-between'>
-//         <div>
+//         <div className='w-1/2'>
 //           <h1 className="text-[#004C3F] text-[45px] font-semibold">All Recipes</h1>
 //           <p className="text-[#A2A2A2] text-[20px]">
 //             Browse and discover recipes from your favorite culinary experts.
 //           </p>
+
+//         </div>
+//         <div className='w-1/2 flex items-center gap-6'>
+//           <div className="flex items-center relative w-4/6">
+//             <IoSearchOutline
+//               className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200"
+//             />
+//             <input
+//               type="search"
+//               placeholder="Search recipes"
+//               className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-[10px] pl-8"
+//               value={searchTerm}
+//               onChange={(e) => setSearchTerm(e.target.value)}
+//             />
+//           </div>
+//           <button
+//             className='text-[#004C3F]  w-2/6 py-3 border border-[#B0BFB6] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer'
+
+//           >
+//             <CiFilter />
+//             <span>filter</span>
+//           </button>
 //         </div>
 
-//         <div className="flex items-center md:w-[30%]  relative">
-//           <IoSearchOutline
-//             className={`text-[#004C3F] absolute ml-3 'opacity-0' : 'opacity-100'} transition-opacity duration-200`}
-//           />
-//           <input
-//             type="search"
-//             placeholder="Search recipes"
-//             className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-[10px] pl-8"
-
-//           />
-//         </div>
+       
 //       </div>
 
 //       {/* Card section */}
-//       <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1  justify-between gap-6 pt-6">
-//         {recipes.map((recipe) => (
-//           <div
-//             key={recipe.id}
-//             className="w-full bg-white rounded-xl h-[451px] overflow-hidden"
-//           >
-//             {/* Image Section */}
-//             <div className="relative">
-//               <img
-//                 className="w-full h-48 object-cover"
-//                 src={recipe.image}
-//                 alt={recipe.title}
-//               />
-//             </div>
-
-//             {/* Content Section */}
-//             <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
-//               {/* Title */}
-//               <div className="flex justify-between">
-//                 <h2 className="text-xl font-semibold text-[#004C3F] lora">
-//                   {recipe.title}
-//                 </h2>
-//                 <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
+//       <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
+//         {filteredRecipes.length > 0 ? (
+//           filteredRecipes.map((recipe) => (
+//             <div
+//               key={recipe.id}
+//               className="w-full bg-white rounded-xl h-[451px] overflow-hidden"
+//             >
+//               {/* Image Section */}
+//               <div className="relative">
+//                 <img
+//                   className="w-full h-48 object-cover"
+//                   src={recipe.image}
+//                   alt={recipe.title}
+//                 />
 //               </div>
 
-//               {/* Category */}
-//               <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline-block px-4 py-1 rounded-[29px]">
-//                 {recipe.category}
-//               </p>
-
-//               {/* Description */}
-//               <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
-
-//               {/* Rating and Update Date */}
-//               <div className="mt-3 flex justify-between items-center">
-//                 <div className="flex items-center">
-//                   <svg
-//                     className="w-5 h-5 text-yellow-400"
-//                     fill="currentColor"
-//                     viewBox="0 0 20 20"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                   >
-//                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-//                   </svg>
-//                   <span className="ml-1 text-gray-600">{recipe.rating}</span>
+//               {/* Content Section */}
+//               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
+//                 {/* Title */}
+//                 <div className="flex justify-between">
+//                   <h2 className="text-xl font-semibold text-[#004C3F] lora">
+//                     {recipe.title}
+//                   </h2>
+//                   <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
 //                 </div>
-//                 <p className="text-sm text-gray-500">Updated: {recipe.updated}</p>
-//               </div>
 
-//               {/* Button */}
-//               <div className='w-full  bg-teal-800 py-2 rounded-[29px] text-center'>
-//                 <Link to="/dashboard/recipes_dettails" className="mt-4   text-white py-2 rounded-[29px] cursor-pointer">
-//                   View Details
-//                 </Link>
+//                 {/* Category */}
+//                 <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline FSM-block px-4 py-1 rounded-[29px]">
+//                   {recipe.category}
+//                 </p>
+
+//                 {/* Description */}
+//                 <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
+
+//                 {/* Rating and Update Date */}
+//                 <div className="mt-3 flex justify-between items-center">
+//                   <div className="flex items-center">
+//                     <svg
+//                       className="w-5 h-5 text-yellow-400"
+//                       fill="currentColor"
+//                       viewBox="0 0 20 20"
+//                       xmlns="http://www.w3.org/2000/svg"
+//                     >
+//                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+//                     </svg>
+//                     <span className="ml-1 text-gray-600">{recipe.rating}</span>
+//                   </div>
+//                   <p className="text-sm text-gray-500">Updated: {recipe.updated}</p>
+//                 </div>
+
+//                 {/* Button */}
+//                 <div className='w-full bg-teal-800 py-2 rounded-[29px] text-center'>
+//                   <Link to="/dashboard/recipes_dettails" className="mt-4 text-white py-2 rounded-[29px] cursor-pointer">
+//                     View Details
+//                   </Link>
+//                 </div>
 //               </div>
 //             </div>
+//           ))
+//         ) : (
+//           <div className="col-span-full text-center py-10">
+//             <p className="text-[#004C3F] text-xl">No recipes found matching your search.</p>
 //           </div>
-//         ))}
+//         )}
 //       </div>
 //     </div>
 //   );
@@ -155,11 +183,12 @@
 
 
 import React, { useState } from 'react';
+import { CiFilter } from 'react-icons/ci';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { IoSearchOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
-// JSON data for recipes (remains unchanged)
+// JSON data for recipes (unchanged)
 const recipes = [
   {
     id: 1,
@@ -191,7 +220,7 @@ const recipes = [
   {
     id: 4,
     title: 'dessers Chocolate Soufflé',
-    category: 'Chocolate',
+    category: 'Ice-creem',
     description: 'A light and airy chocolate dessert with a molten center....',
     image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
     rating: 4.8,
@@ -200,7 +229,7 @@ const recipes = [
   {
     id: 5,
     title: 'millssic Chocolate Soufflé',
-    category: 'Chocolate',
+    category: 'Desserts',
     description: 'A light and airy chocolate dessert with a molten center....',
     image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
     rating: 4.8,
@@ -218,35 +247,74 @@ const recipes = [
 ];
 
 function AllRecipes() {
-  // State for search term
+  // State for search term and selected category
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All'); // Default to 'All'
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle dropdown visibility
 
-  // Filter recipes based on search term
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Get unique categories from recipes
+  const categories = ['All', ...new Set(recipes.map((recipe) => recipe.category))];
+
+  // Filter recipes based on search term and selected category
+  const filteredRecipes = recipes.filter((recipe) => {
+    const matchesSearch = recipe.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || recipe.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Toggle filter dropdown
+  const toggleFilterDropdown = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  // Handle category selection
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setIsFilterOpen(false); // Close dropdown after selection
+  };
 
   return (
     <div className="md:px-10 py-6 lora">
-      <div className='flex justify-between'>
-        <div>
+      <div className="flex justify-between">
+        <div className="w-1/2">
           <h1 className="text-[#004C3F] text-[45px] font-semibold">All Recipes</h1>
           <p className="text-[#A2A2A2] text-[20px]">
             Browse and discover recipes from your favorite culinary experts.
           </p>
         </div>
-
-        <div className="flex items-center md:w-[30%] relative">
-          <IoSearchOutline
-            className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200"
-          />
-          <input
-            type="search"
-            placeholder="Search recipes"
-            className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-[10px] pl-8"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="w-1/2 flex items-center gap-6">
+          <div className="flex items-center relative w-4/6">
+            <IoSearchOutline className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200" />
+            <input
+              type="search"
+              placeholder="Search recipes"
+              className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-[10px] pl-8"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div className="relative w-2/6">
+            <button
+              className="text-[#004C3F] w-full py-3 border border-[#B0BFB6] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer"
+              onClick={toggleFilterDropdown}
+            >
+              <CiFilter />
+              <span>Filter</span>
+            </button>
+            {isFilterOpen && (
+              <div className="absolute top-15 left-0 w-full bg-white border border-[#B0BFB6] rounded-[10px] shadow-lg z-10">
+                {categories.map((category) => (
+                  <div
+                    key={category}
+                    className="px-4 py-2 hover:bg-[#B0BFB6] cursor-pointer text-[#004C3F]"
+                    onClick={() => handleCategorySelect(category)}
+                  >
+                    {category}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -302,8 +370,11 @@ function AllRecipes() {
                 </div>
 
                 {/* Button */}
-                <div className='w-full bg-teal-800 py-2 rounded-[29px] text-center'>
-                  <Link to="/dashboard/recipes_dettails" className="mt-4 text-white py-2 rounded-[29px] cursor-pointer">
+                <div className="w-full bg-teal-800 py-2 rounded-[29px] text-center">
+                  <Link
+                    to="/dashboard/recipes_dettails"
+                    className="mt-4 text-white py-2 rounded-[29px] cursor-pointer"
+                  >
                     View Details
                   </Link>
                 </div>
@@ -312,7 +383,7 @@ function AllRecipes() {
           ))
         ) : (
           <div className="col-span-full text-center py-10">
-            <p className="text-[#004C3F] text-xl">No recipes found matching your search.</p>
+            <p className="text-[#004C3F] text-xl">No recipes found matching your search or category.</p>
           </div>
         )}
       </div>

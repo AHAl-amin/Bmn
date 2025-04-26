@@ -476,7 +476,7 @@ const Home = () => {
                     />
                     <div className='relative' ref={filterRef}>
                         <button
-                            className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2'
+                            className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer'
                             onClick={toggleFilterDropdown}
                         >
                             <CiFilter />
