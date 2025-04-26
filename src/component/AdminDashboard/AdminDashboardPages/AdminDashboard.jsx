@@ -386,7 +386,7 @@ function AdminDashboard() {
                                 <p className="text-gray-500 text-sm">{item.title}</p>
                                 <p className="text-[#0077B6] text-3xl font-bold">{item.value}</p>
                             </div>
-                            <div className="bg-[#8280ff1c] px-4 py-2 rounded-full">
+                            <div className="bg-[#8280ff1c] px-4 py-4 rounded-full">
                                 {item.icon}
                             </div>
                         </div>
@@ -453,7 +453,7 @@ function AdminDashboard() {
                                 content={({ active, payload }) => {
                                     if (active && payload && payload.length) {
                                         return (
-                                            <div className={`px-3 py-1 rounded shadow-md text-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-blue-800 text-white'}`}>
+                                            <div className={`px-3 py-1 rounded shadow-md text-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-[#2088bd] text-white'}`}>
                                                 <p className="text-sm font-medium">{payload[0].value.toLocaleString()} users</p>
                                             </div>
                                         );
