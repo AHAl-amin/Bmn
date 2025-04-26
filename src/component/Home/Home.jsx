@@ -453,8 +453,8 @@ const Home = () => {
     return (
         <div className='bg-[#E6EBE8] min-h-screen py-10'>
             <div>
-                <div className='flex justify-center'>
-                    <img src={landingPageIcon} alt="Culinary Experts Logo" className='w-[200px] h-[120px]' />
+                <div className='flex justify-center mb-4'>
+                    <img src={landingPageIcon} alt="Culinary Experts Logo" className='w-[200px] h-[150px]' />
                 </div>
                 <h1 className='text-[60px] font-semibold text-[#004C3F] text-center'>Choose Your Culinary Expert</h1>
                 <p className='text-[20px] text-[#8F8F8F] text-center pb-8 pt-4'>
