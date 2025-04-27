@@ -262,11 +262,7 @@ function PreviewGallary() {
               </div>
 
               {/* Button */}
-              <div className='w-full bg-teal-800 py-2 rounded-[29px] text-center'>
-                <Link to="/dashboard/recipes_dettails" className="mt-4 text-white py-2 rounded-[29px] cursor-pointer">
-                  View Details
-                </Link>
-              </div>
+             
             </div>
           </div>
         ))}

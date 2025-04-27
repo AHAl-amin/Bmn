@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         element:<AiChat/>
       },
       {
-        path:'recipes_dettails',
+        path:'recipes_dettails/:id',
         element:<RecipesDettails/>
       },
 

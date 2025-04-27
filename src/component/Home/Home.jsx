@@ -519,9 +519,9 @@ const Home = () => {
             {filteredData.length === 0 ? (
                 <p className="text-center text-[#515151] text-lg p-10">No culinary experts found matching your search or filter.</p>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10 " >
                     {filteredData.map((item) => (
-                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora">
+                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora"onClick={() => openModalWithChef(item)} >
                             <div className="h-52 overflow-hidden">
                                 <img
                                     src={item.image}
@@ -568,7 +568,7 @@ const Home = () => {
 
                                     <button
                                         className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
-                                        onClick={() => openModalWithChef(item)}
+                                        // onClick={() => openModalWithChef(item)}
                                     >
                                         Details
                                     </button>
@@ -597,7 +597,7 @@ const Home = () => {
                         </div>
 
                         <div className="flex-1 overflow-y-auto relative">
-                            <div className="h-[250px] relative">
+                            <div className="h-[300px] relative">
                                 <img
                                     src={selectedChef.image}
                                     alt={selectedChef.title}

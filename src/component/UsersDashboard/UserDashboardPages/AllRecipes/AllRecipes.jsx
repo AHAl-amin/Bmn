@@ -7,7 +7,7 @@
 // import { IoSearchOutline } from 'react-icons/io5';
 // import { Link } from 'react-router-dom';
 
-// // JSON data for recipes (remains unchanged)
+// // JSON data for recipes (unchanged)
 // const recipes = [
 //   {
 //     id: 1,
@@ -66,29 +66,44 @@
 // ];
 
 // function AllRecipes() {
-//   // State for search term
+//   // State for search term and selected category
 //   const [searchTerm, setSearchTerm] = useState('');
+//   const [selectedCategory, setSelectedCategory] = useState('All'); // Default to 'All'
+//   const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle dropdown visibility
 
-//   // Filter recipes based on search term
-//   const filteredRecipes = recipes.filter((recipe) =>
-//     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-//   );
+//   // Get unique categories from recipes
+//   const categories = ['All', ...new Set(recipes.map((recipe) => recipe.category))];
+
+//   // Filter recipes based on search term and selected category
+//   const filteredRecipes = recipes.filter((recipe) => {
+//     const matchesSearch = recipe.title.toLowerCase().includes(searchTerm.toLowerCase());
+//     const matchesCategory = selectedCategory === 'All' || recipe.category === selectedCategory;
+//     return matchesSearch && matchesCategory;
+//   });
+
+//   // Toggle filter dropdown
+//   const toggleFilterDropdown = () => {
+//     setIsFilterOpen(!isFilterOpen);
+//   };
+
+//   // Handle category selection
+//   const handleCategorySelect = (category) => {
+//     setSelectedCategory(category);
+//     setIsFilterOpen(false); // Close dropdown after selection
+//   };
 
 //   return (
 //     <div className="md:px-10 py-6 lora">
-//       <div className='flex justify-between'>
-//         <div className='w-1/2'>
+//       <div className="flex justify-between">
+//         <div className="w-1/2">
 //           <h1 className="text-[#004C3F] text-[45px] font-semibold">All Recipes</h1>
 //           <p className="text-[#A2A2A2] text-[20px]">
 //             Browse and discover recipes from your favorite culinary experts.
 //           </p>
-
 //         </div>
-//         <div className='w-1/2 flex items-center gap-6'>
+//         <div className="w-1/2 flex items-center gap-6">
 //           <div className="flex items-center relative w-4/6">
-//             <IoSearchOutline
-//               className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200"
-//             />
+//             <IoSearchOutline className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200" />
 //             <input
 //               type="search"
 //               placeholder="Search recipes"
@@ -97,16 +112,29 @@
 //               onChange={(e) => setSearchTerm(e.target.value)}
 //             />
 //           </div>
-//           <button
-//             className='text-[#004C3F]  w-2/6 py-3 border border-[#B0BFB6] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer'
-
-//           >
-//             <CiFilter />
-//             <span>filter</span>
-//           </button>
+//           <div className="relative w-2/6">
+//             <button
+//               className="text-[#004C3F] w-full py-3 border border-[#B0BFB6] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer"
+//               onClick={toggleFilterDropdown}
+//             >
+//               <CiFilter />
+//               <span>Filter</span>
+//             </button>
+//             {isFilterOpen && (
+//               <div className="absolute top-15 left-0 w-full bg-white border border-[#B0BFB6] rounded-[10px] shadow-lg z-10">
+//                 {categories.map((category) => (
+//                   <div
+//                     key={category}
+//                     className="px-4 py-2 hover:bg-[#B0BFB6] cursor-pointer text-[#004C3F]"
+//                     onClick={() => handleCategorySelect(category)}
+//                   >
+//                     {category}
+//                   </div>
+//                 ))}
+//               </div>
+//             )}
+//           </div>
 //         </div>
-
-       
 //       </div>
 
 //       {/* Card section */}
@@ -161,8 +189,11 @@
 //                 </div>
 
 //                 {/* Button */}
-//                 <div className='w-full bg-teal-800 py-2 rounded-[29px] text-center'>
-//                   <Link to="/dashboard/recipes_dettails" className="mt-4 text-white py-2 rounded-[29px] cursor-pointer">
+//                 <div className="w-full bg-teal-800 py-2 rounded-[29px] text-center">
+//                   <Link
+//                     to="/dashboard/recipes_dettails"
+//                     className="mt-4 text-white py-2 rounded-[29px] cursor-pointer"
+//                   >
 //                     View Details
 //                   </Link>
 //                 </div>
@@ -171,7 +202,7 @@
 //           ))
 //         ) : (
 //           <div className="col-span-full text-center py-10">
-//             <p className="text-[#004C3F] text-xl">No recipes found matching your search.</p>
+//             <p className="text-[#004C3F] text-xl">No recipes found matching your search or category.</p>
 //           </div>
 //         )}
 //       </div>
@@ -182,6 +213,7 @@
 // export default AllRecipes;
 
 
+// AllRecipes.jsx
 import React, { useState } from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { IoIosHeartEmpty } from 'react-icons/io';
@@ -195,7 +227,7 @@ const recipes = [
     title: 'joss Chocolate Soufflé',
     category: 'Chocolate',
     description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+    image: 'https://i.ibb.co/NdC53ZPN/image-1.jpg',
     rating: 4.8,
     updated: '2023-11-15',
   },
@@ -204,7 +236,7 @@ const recipes = [
     title: 'Classic Chocolate Soufflé',
     category: 'Chocolate',
     description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+    image: 'https://i.ibb.co/XfKX16Nq/image.png',
     rating: 4.8,
     updated: '2023-11-15',
   },
@@ -213,7 +245,7 @@ const recipes = [
     title: 'Classic Chocolate Soufflé',
     category: 'Chocolate',
     description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+    image: 'https://i.ibb.co/9k6pmKqJ/image-1.png',
     rating: 4.8,
     updated: '2023-11-15',
   },
@@ -222,7 +254,7 @@ const recipes = [
     title: 'dessers Chocolate Soufflé',
     category: 'Ice-creem',
     description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
+    image: 'https://i.ibb.co/NdC53ZPN/image-1.jpg',
     rating: 4.8,
     updated: '2023-11-15',
   },
@@ -231,7 +263,7 @@ const recipes = [
     title: 'millssic Chocolate Soufflé',
     category: 'Desserts',
     description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
+    image: 'https://i.ibb.co/XfKX16Nq/image.png',
     rating: 4.8,
     updated: '2023-11-15',
   },
@@ -240,37 +272,32 @@ const recipes = [
     title: 'Classic Chocolate Soufflé',
     category: 'Chocolate',
     description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
+    image: 'https://i.ibb.co/9k6pmKqJ/image-1.png',
     rating: 4.8,
     updated: '2023-11-15',
   },
 ];
 
 function AllRecipes() {
-  // State for search term and selected category
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All'); // Default to 'All'
-  const [isFilterOpen, setIsFilterOpen] = useState(false); // Toggle dropdown visibility
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // Get unique categories from recipes
   const categories = ['All', ...new Set(recipes.map((recipe) => recipe.category))];
 
-  // Filter recipes based on search term and selected category
   const filteredRecipes = recipes.filter((recipe) => {
     const matchesSearch = recipe.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || recipe.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  // Toggle filter dropdown
   const toggleFilterDropdown = () => {
     setIsFilterOpen(!isFilterOpen);
   };
 
-  // Handle category selection
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    setIsFilterOpen(false); // Close dropdown after selection
+    setIsFilterOpen(false);
   };
 
   return (
@@ -318,7 +345,6 @@ function AllRecipes() {
         </div>
       </div>
 
-      {/* Card section */}
       <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe) => (
@@ -326,7 +352,6 @@ function AllRecipes() {
               key={recipe.id}
               className="w-full bg-white rounded-xl h-[451px] overflow-hidden"
             >
-              {/* Image Section */}
               <div className="relative">
                 <img
                   className="w-full h-48 object-cover"
@@ -334,26 +359,17 @@ function AllRecipes() {
                   alt={recipe.title}
                 />
               </div>
-
-              {/* Content Section */}
               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
-                {/* Title */}
                 <div className="flex justify-between">
                   <h2 className="text-xl font-semibold text-[#004C3F] lora">
                     {recipe.title}
                   </h2>
                   <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
                 </div>
-
-                {/* Category */}
                 <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline FSM-block px-4 py-1 rounded-[29px]">
                   {recipe.category}
                 </p>
-
-                {/* Description */}
                 <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
-
-                {/* Rating and Update Date */}
                 <div className="mt-3 flex justify-between items-center">
                   <div className="flex items-center">
                     <svg
@@ -368,16 +384,14 @@ function AllRecipes() {
                   </div>
                   <p className="text-sm text-gray-500">Updated: {recipe.updated}</p>
                 </div>
-
-                {/* Button */}
-                <div className="w-full bg-teal-800 py-2 rounded-[29px] text-center">
                   <Link
-                    to="/dashboard/recipes_dettails"
+                    to={`/dashboard/recipes_dettails/${recipe.id}`} // Updated Link with recipe ID
                     className="mt-4 text-white py-2 rounded-[29px] cursor-pointer"
                   >
+                <div className="w-full bg-teal-800 py-2 rounded-[29px] text-center">
                     View Details
-                  </Link>
                 </div>
+                  </Link>
               </div>
             </div>
           ))

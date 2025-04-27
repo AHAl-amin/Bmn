@@ -191,7 +191,7 @@ const AiChat = () => {
                                             onClick={handleInspirationClick}
                                             className="block w-full text-left px-4 py-2 text-[#004C3F] hover:bg-gray-100"
                                         >
-                                            Inspiration
+                                            New Creation
                                         </Link>
                                     </div>
                                 )}

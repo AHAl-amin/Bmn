@@ -179,16 +179,16 @@ const UserInspirationChat = () => {
                                     onClick={toggleDropdown}
                                     className="border border-[#B0BFB6] h-full text-[#004C3F] rounded-xl px-4 flex items-center cursor-pointer font-semibold"
                                 >
-                                    Recipe Chat
+                                   New Creation
                                     <IoIosArrowDown className="ml-2" />
                                 </button>
                                 {showDropdown && (
                                     <div className="absolute top-full mt-2 w-40 bg-white border border-[#B0BFB6] rounded-lg shadow-lg z-10">
                                         <Link to='/dashboard/inspiration_chat'
                                             onClick={handleInspirationClick}
-                                            className="block w-full text-left px-4 py-2 text-[#004C3F] hover:bg-gray-100"
+                                            className="block w-full text-left px-4 py-2 text-[#004C3F] rounded-lg hover:bg-gray-100"
                                         >
-                                            Inspiration
+                                            New Creation
                                         </Link>
                                     </div>
                                 )}
