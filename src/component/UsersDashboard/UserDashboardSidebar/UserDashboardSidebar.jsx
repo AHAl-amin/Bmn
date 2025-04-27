@@ -11,6 +11,7 @@ import { BsChatDotsFill } from "react-icons/bs";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useState } from "react";
 import { PiChefHatFill } from "react-icons/pi";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 const UserDashboardSidebar = () => {
   const location = useLocation();
@@ -26,7 +27,7 @@ const UserDashboardSidebar = () => {
   };
 
   return (
-    <div>
+    <div className="">
       {/* Toggle Icon for Small Devices */}
       <div className="md:hidden flex justify-start p-4 bg-[#B0BFB6]">
         <IoReorderThreeOutline
@@ -38,12 +39,12 @@ const UserDashboardSidebar = () => {
       {/* Sidebar */}
       <div
         className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#B0BFB6] pt-10 lora transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } md:relative md:translate-x-0 md:block h-screen`}
+          } md:relative md:translate-x-0 md:block  h-screen   `}
       >
         <NavLink className="flex justify-center">
           <img src={login_img2} alt="logo" className="w-[129px] h-[110px]" />
         </NavLink>
-        <div className="flex flex-col gap-2 pt-5 mx-5">
+        <div className="flex flex-col gap-2 pt-5 mx-5  ">
           <NavLink
             to="/dashboard"
 
@@ -73,13 +74,13 @@ const UserDashboardSidebar = () => {
             to="/dashboard/ai_chat"
             className={() =>
               location.pathname.startsWith('/dashboard/ai_chat') ||
-                location.pathname.startsWith('/dashboard/inspiration_chat') 
-               
+                location.pathname.startsWith('/dashboard/inspiration_chat')
+
                 ? 'flex items-center gap-3 px-3 py-2 bg-[#004C3F] text-white rounded-md w-full'
                 : 'flex items-center gap-3 px-3 py-2 text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md '
             }
           >
-             <FaBrain className="h-6 w-6" />
+            <FaBrain className="h-6 w-6" />
             <h1 className="text-lg font-medium text-white">AI Chat</h1>
           </NavLink>
 
@@ -133,16 +134,22 @@ const UserDashboardSidebar = () => {
             <IoSettingsOutline className="h-6 w-6" />
             <h1 className="text-lg font-medium text-white">Profile & setting</h1>
           </NavLink>
+
         </div>
+
+        <NavLink className='flex items-center gap-2 justify-center text-[#004C3F] h-full '>
+          <RiLogoutCircleLine /> <p>Logout</p>
+        </NavLink>
       </div>
 
       {/* Overlay for Small Devices */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0  bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0  bg-opacity-50 z-50 md:hidden"
           onClick={toggleSidebar}
         ></div>
       )}
+
     </div>
   );
 };

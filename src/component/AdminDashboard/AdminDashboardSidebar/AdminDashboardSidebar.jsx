@@ -12,6 +12,7 @@ import { useState } from "react";
 import { PiChefHatFill } from "react-icons/pi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 const AdminDashboardSidebar = () => {
     const location = useLocation();
@@ -72,8 +73,8 @@ const AdminDashboardSidebar = () => {
                         <PiChefHatFill className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">Chefs</h1>
                     </NavLink>
-                    
-                   
+
+
 
                     <NavLink
                         to="/Admin_Dashboard/users"
@@ -123,8 +124,11 @@ const AdminDashboardSidebar = () => {
 
 
 
-                   
+
                 </div>
+                <NavLink className='flex items-center gap-2 justify-center text-[#0077B6]  h-full '>
+                    <RiLogoutCircleLine /> <p>Logout</p>
+                </NavLink>
             </div>
 
             {/* Overlay for Small Devices */}

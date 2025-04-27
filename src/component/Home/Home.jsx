@@ -13,7 +13,7 @@
 //         {
 //             "id": 1,
 //             "title": "Parisian Delights",
-//             "sub_title": "Mommy's Special Collection",
+//             "category": "Mommy's Special Collection",
 //             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
 //             "rating": 4.8,
 //             "user_profile": "mommy_chef",
@@ -22,7 +22,7 @@
 //         {
 //             "id": 2,
 //             "title": "tarisian Delights",
-//             "sub_title": "Happy Chef's Favorites",
+//             "category": "Happy Chef's Favorites",
 //             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
 //             "rating": 4.8,
 //             "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
@@ -31,7 +31,7 @@
 //         {
 //             "id": 3,
 //             "title": "karisian Delights",
-//             "sub_title": "Cook Finder's Picks",
+//             "category": "Cook Finder's Picks",
 //             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
 //             "rating": 4.8,
 //             "user_profile": "cook_finder",
@@ -40,7 +40,7 @@
 //         {
 //             "id": 4,
 //             "title": "harisian Delights",
-//             "sub_title": "Hello Chef's Delicacies",
+//             "category": "Hello Chef's Delicacies",
 //             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
 //             "rating": 4.8,
 //             "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
@@ -49,7 +49,7 @@
 //         {
 //             "id": 5,
 //             "title": "marisian Delights",
-//             "sub_title": "Foodie's Choice",
+//             "category": "Foodie's Choice",
 //             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
 //             "rating": 4.8,
 //             "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
@@ -58,7 +58,7 @@
 //         {
 //             "id": 6,
 //             "title": "garisian Delights",
-//             "sub_title": "Gourmet Selection",
+//             "category": "Gourmet Selection",
 //             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
 //             "rating": 4.8,
 //             "user_profile": "foodie_2",
@@ -99,7 +99,7 @@
 //     // Filter homepageData based on search query
 //     const filteredData = homepageData.filter((item) => {
 //         const title = item.title?.trim().toLowerCase() || '';
-//         const subTitle = item.sub_title?.trim().toLowerCase() || '';
+//         const subTitle = item.category?.trim().toLowerCase() || '';
 //         const query = searchQuery.toLowerCase();
 //         const matches = title.includes(query) || subTitle.includes(query);
 //         return matches;
@@ -157,7 +157,7 @@
 //                             <div className="h-48 overflow-hidden">
 //                                 <img
 //                                     src={item.image}
-//                                     alt={item.sub_title}
+//                                     alt={item.category}
 //                                     className="w-full h-full object-cover"
 //                                     onError={(e) => {
 //                                         e.target.onerror = null;
@@ -171,7 +171,7 @@
 //                                     <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
 //                                 </div>
 
-//                                 <h3 className="text-lg font-medium text-[#515151] mb-3">{item.sub_title}</h3>
+//                                 <h3 className="text-lg font-medium text-[#515151] mb-3">{item.category}</h3>
 //                                 <p className="text-gray-600 mb-4">{item.description}</p>
 
 //                                 <div className="flex justify-between items-center absolute top-5">
@@ -218,7 +218,7 @@
 //                         <div className="flex justify-between items-start mb-4">
 //                             <div>
 //                                 <h2 className="text-2xl font-semibold text-[#004C3F]">{selectedChef.title}</h2>
-//                                 <p className='text-[#515151]'> {selectedChef.sub_title}</p>
+//                                 <p className='text-[#515151]'> {selectedChef.category}</p>
 //                             </div>
 //                             <button
 //                                 className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
@@ -324,34 +324,34 @@ const Home = () => {
         {
             "id": 1,
             "title": "Parisian Delights",
-            "sub_title": "Mommy's Special Collection",
+            "category": "Mommy's Special Collection",
             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
             "rating": 4.8,
-            "user_profile": "mommy_chef",
-            "image": "https://i.ibb.co.com/PZHThmVf/Elegant-Morning-Treats-1.png"
+            "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
+            "image": "https://i.ibb.co.com/d0HMfYdn/image-3.png"
         },
         {
             "id": 2,
             "title": "tarisian Delights",
-            "sub_title": "Happy Chef's Favorites",
+            "category": "Happy Chef's Favorites",
             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
             "rating": 4.8,
             "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
-            "image": "https://i.ibb.co.com/PZHThmVf/Elegant-Morning-Treats-1.png"
+            "image": "https://i.ibb.co.com/d0HMfYdn/image-3.png"
         },
         {
             "id": 3,
             "title": "karisian Delights",
-            "sub_title": "Cook Finder's Picks",
+            "category": "Cook Finder's Picks",
             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
             "rating": 4.8,
-            "user_profile": "cook_finder",
+            "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
             "image": "https://i.ibb.co.com/pBTdN8Bn/image-2.jpg"
         },
         {
             "id": 4,
             "title": "harisian Delights",
-            "sub_title": "Hello Chef's Delicacies",
+            "category": "Hello Chef's Delicacies",
             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
             "rating": 4.8,
             "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
@@ -360,19 +360,19 @@ const Home = () => {
         {
             "id": 5,
             "title": "marisian Delights",
-            "sub_title": "Foodie's Choice",
+            "category": "Foodie's Choice",
             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
             "rating": 4.8,
             "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
-            "image": "https://i.ibb.co.com/PZHThmVf/Elegant-Morning-Treats-1.png"
+            "image": "https://i.ibb.co.com/d0HMfYdn/image-3.png"
         },
         {
             "id": 6,
             "title": "garisian Delights",
-            "sub_title": "Gourmet Selection",
+            "category": "Gourmet Selection",
             "description": "Award winning chocolate specializing in artisanal bonbons with unique flavor combinations and stunning",
             "rating": 4.8,
-            "user_profile": "foodie_2",
+            "user_profile": "https://i.ibb.co.com/60hvPZRS/bannerimg-01.png",
             "image": "https://i.ibb.co.com/pBTdN8Bn/image-2.jpg"
         }
     ];
@@ -436,15 +436,15 @@ const Home = () => {
     }, []);
 
     // Get unique subtitles
-    const uniqueSubTitles = [...new Set(homepageData.map((item) => item.sub_title))];
+    const uniqueSubTitles = [...new Set(homepageData.map((item) => item.category))];
 
     // Filter homepageData based on search query and selected subtitle
     const filteredData = homepageData.filter((item) => {
         const title = item.title?.trim().toLowerCase() || '';
-        const subTitle = item.sub_title?.trim().toLowerCase() || '';
+        const subTitle = item.category?.trim().toLowerCase() || '';
         const query = searchQuery.toLowerCase();
         const matchesSearch = title.includes(query) || subTitle.includes(query);
-        const matchesFilter = selectedSubTitle ? item.sub_title === selectedSubTitle : true;
+        const matchesFilter = selectedSubTitle ? item.category === selectedSubTitle : true;
         return matchesSearch && matchesFilter;
     });
 
@@ -522,10 +522,10 @@ const Home = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10">
                     {filteredData.map((item) => (
                         <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora">
-                            <div className="h-48 overflow-hidden">
+                            <div className="h-52 overflow-hidden">
                                 <img
                                     src={item.image}
-                                    alt={item.sub_title}
+                                    alt={item.category}
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
                                         e.target.onerror = null;
@@ -539,7 +539,7 @@ const Home = () => {
                                     <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
                                 </div>
 
-                                <h3 className="text-lg font-medium text-[#515151] mb-3">{item.sub_title}</h3>
+                                <h3 className="text-lg font-medium text-[#515151] mb-3">{item.category}</h3>
                                 <p className="text-gray-600 mb-4">{item.description}</p>
 
                                 <div className="flex justify-between items-center absolute top-5">
@@ -586,7 +586,7 @@ const Home = () => {
                         <div className="flex justify-between items-start mb-4">
                             <div>
                                 <h2 className="text-2xl font-semibold text-[#004C3F]">{selectedChef.title}</h2>
-                                <p className='text-[#515151]'> {selectedChef.sub_title}</p>
+                                <p className='text-[#515151]'> {selectedChef.category}</p>
                             </div>
                             <button
                                 className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"

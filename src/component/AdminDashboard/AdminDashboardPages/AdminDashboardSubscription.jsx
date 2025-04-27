@@ -1,6 +1,5 @@
 
 
-
 // import React, { useState } from 'react';
 // import { CiFilter } from 'react-icons/ci';
 // import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -88,6 +87,11 @@
 
 //   const [isModalOpen, setIsModalOpen] = useState(false);
 //   const [selectedId, setSelectedId] = useState(null);
+//   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+//   const [selectedPlan, setSelectedPlan] = useState('All');
+
+//   // Get unique plan values from tableData
+//   const planOptions = ['All', ...new Set(tableData.map((row) => row.Plan))];
 
 //   const handleDeleteClick = (id) => {
 //     setSelectedId(id);
@@ -105,23 +109,55 @@
 //     setSelectedId(null);
 //   };
 
+//   const toggleDropdown = () => {
+//     setIsDropdownOpen(!isDropdownOpen);
+//   };
+
+//   const handlePlanSelect = (plan) => {
+//     setSelectedPlan(plan);
+//     setIsDropdownOpen(false);
+//   };
+
+//   // Filter table data based on selected plan
+//   const filteredData =
+//     selectedPlan === 'All'
+//       ? tableData
+//       : tableData.filter((row) => row.Plan === selectedPlan);
+
 //   return (
 //     <div className="px-10 py-6">
-//       <div className='flex md:gap-30 items-center'>
+//       <div className="flex md:gap-30 items-center">
 //         <div>
-//           <h2 className="text-[34px] font-semibold text-[#0077B6] mb-1">Subscription Management</h2>
-//           <p className="text-xl text-gray-500 mb-8">View and manage user subscriptions.</p>
+//           <h2 className="text-[34px] font-semibold text-[#0077B6] mb-1">
+//             Subscription Management
+//           </h2>
+//           <p className="text-xl text-gray-500 mb-8">
+//             View and manage user subscriptions.
+//           </p>
 //         </div>
-//         <div>
+//         <div className="relative">
 //           <button
-                        
-//                         className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
-//                       >
-//                         <CiFilter />
-//                         <span>Filter</span>
-//                       </button>
-//         </div>
+//             onClick={toggleDropdown}
+//             className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+//           >
+//             <CiFilter />
+//             <span>Filter</span>
+//           </button>
 
+//           {isDropdownOpen && (
+//             <div className="absolute right-0 mt-2 w-48 bg-white border border-[#0077B6]  rounded-md shadow-lg z-10">
+//               {planOptions.map((plan) => (
+//                 <button
+//                   key={plan}
+//                   onClick={() => handlePlanSelect(plan)}
+//                   className="block w-full text-left px-4 py-2 text-sm text-[#3a7494] hover:bg-gray-100 rounded-2xl"
+//                 >
+//                   {plan}
+//                 </button>
+//               ))}
+//             </div>
+//           )}
+//         </div>
 //       </div>
 //       <table className="w-full text-sm">
 //         {/* Table Header */}
@@ -138,7 +174,7 @@
 //         </thead>
 //         {/* Table Body */}
 //         <tbody>
-//           {tableData.map((row, index) => (
+//           {filteredData.map((row, index) => (
 //             <tr
 //               key={row.id}
 //               className={`border-b border-[#E4E4E4] ${index === 1 ? '' : ''}`}
@@ -164,18 +200,27 @@
 //               </td>
 //               <td className="p-3">
 //                 <span
-//                   className={`px-2 py-1 rounded-full text-xs font-semibold ${row.Plan === 'Pro'
+//                   className={`px-2 py-1 rounded-full text-xs font-semibold ${
+//                     row.Plan === 'Pro'
 //                       ? 'bg-blue-200 text-blue-800'
 //                       : row.Plan === 'Basic'
-//                         ? 'bg-gray-200 text-gray-800'
-//                         : 'bg-purple-200 text-purple-800'
-//                     }`}
+//                       ? 'bg-gray-200 text-gray-800'
+//                       : 'bg-purple-200 text-purple-800'
+//                   }`}
 //                 >
 //                   {row.Plan}
 //                 </span>
 //               </td>
 //               <td className="p-3">
-//                 <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
+//                 <span
+//                   className={`px-2 py-1 rounded-full text-xs font-semibold ${
+//                     row.Status === 'Active'
+//                       ? 'bg-green-100 text-green-800'
+//                       : row.Status === 'Inactive'
+//                       ? 'bg-red-100 text-red-800'
+//                       : 'bg-yellow-100 text-yellow-800'
+//                   }`}
+//                 >
 //                   {row.Status}
 //                 </span>
 //               </td>
@@ -188,7 +233,7 @@
 //               <td className="p-3">{row['Next Billing']}</td>
 //               <td className="p-3">
 //                 <button onClick={() => handleDeleteClick(row.id)}>
-//                   <RiDeleteBin6Line className="text-[#FF0000] border border-[#B0D5E8] rounded-[10px] flex justify-center items-center size-10 p-2" />
+//                   <RiDeleteBin6Line className="text-[#FF0000] border border-[#B0D5E8] rounded-[10px] flex justify-center items-center size-10 p-2 cursor-pointer" />
 //                 </button>
 //               </td>
 //             </tr>
@@ -230,9 +275,14 @@
 
 // export default AdminDashboardSubscription;
 
+
+
+
 import React, { useState } from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 function AdminDashboardSubscription() {
   const [tableData, setTableData] = useState([
@@ -354,6 +404,24 @@ function AdminDashboardSubscription() {
       ? tableData
       : tableData.filter((row) => row.Plan === selectedPlan);
 
+  // Export data to Excel
+  const handleExportData = () => {
+    // Prepare data for export (excluding 'img' and 'id' fields)
+    const exportData = filteredData.map(({ id, img, ...rest }) => rest);
+
+    // Create a worksheet
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+
+    // Create a workbook
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Subscriptions');
+
+    // Generate Excel file and trigger download
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const data = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    saveAs(data, 'subscriptions.xlsx');
+  };
+
   return (
     <div className="px-10 py-6">
       <div className="flex md:gap-30 items-center">
@@ -366,15 +434,24 @@ function AdminDashboardSubscription() {
           </p>
         </div>
         <div className="relative">
-          <button
-            onClick={toggleDropdown}
-            className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
-          >
-            <CiFilter />
-            <span>Filter</span>
-          </button>
+          <div className="flex gap-10">
+            <button
+              onClick={toggleDropdown}
+              className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+            >
+              <CiFilter />
+              <span>Filter</span>
+            </button>
+            <button
+              onClick={handleExportData}
+              className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full cursor-pointer"
+            >
+              Export Data
+            </button>
+          </div>
+
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-[#0077B6]  rounded-md shadow-lg z-10">
+            <div className="absolute right-0 mt-2 w-48 bg-white border border-[#0077B6] rounded-md shadow-lg z-10">
               {planOptions.map((plan) => (
                 <button
                   key={plan}
