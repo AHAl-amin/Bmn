@@ -1,5 +1,6 @@
 
 
+
 import { useState } from 'react';
 import img from '../../../assets/image/cercalImg.png'; // Single icon for all steps
 import { IoEyeOutline } from 'react-icons/io5';
@@ -7,6 +8,7 @@ import { SiVerizon } from "react-icons/si";
 
 const AiTraining = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [maxStepReached, setMaxStepReached] = useState(1); // Track highest step reached
   const [selectedOption, setSelectedOption] = useState('');
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
@@ -21,6 +23,7 @@ const AiTraining = () => {
   const nextStep = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
+      setMaxStepReached(Math.max(maxStepReached, currentStep + 1)); // Update max step reached
       console.log('Current Step:', currentStep + 1);
     }
     if (currentStep === 3) {
@@ -56,7 +59,8 @@ const AiTraining = () => {
     console.log('Form submitted:', { selectedOption, files, formData });
     alert('Form submitted successfully!');
     setIsModalOpen(false); // Close modal on submit
-    setCurrentStep(1); // Reset to Step 1 (optional, based on your flow)
+    setCurrentStep(1); // Reset to Step 1
+    setMaxStepReached(1); // Reset max step
   };
 
   const getStepImage = () => {
@@ -85,7 +89,7 @@ const AiTraining = () => {
             <div
               className="absolute bottom-14 left-0 h-1 bg-[#0077B6] z-10 transition-all duration-300"
               style={{
-                width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%`,
+                width: `${((maxStepReached - 1) / (totalSteps - 1)) * 100}%`, // Progress bar tied to maxStepReached
                 transform: 'translateY(-50%)'
               }}
             ></div>
@@ -93,22 +97,22 @@ const AiTraining = () => {
 
             {[1, 2, 3, 4].map((step) => (
               <div key={step} className="relative z-100">
-                <div className={`relative w-14 h-14 mx-auto mb-2 ${currentStep >= step ? 'bg-[#0077B6] rounded-full' : ''}`}>
+                <div className={`relative w-14 h-14 mx-auto mb-2 ${maxStepReached >= step ? 'bg-[#0077B6] rounded-full' : ''}`}>
                   <img
                     src={getStepImage()}
                     alt={`Step ${step}`}
-                    className={`w-14 h-14 ${currentStep >= step ? 'opacity-100 filter-blue' : 'opacity-50'}`}
+                    className={`w-14 h-14 ${maxStepReached >= step ? 'opacity-100 filter-blue' : 'opacity-50'}`}
                   />
                   <span
                     className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold
-                      ${currentStep >= step ? 'text-white' : 'text-gray-500'}`}
+                      ${maxStepReached >= step ? 'text-white' : 'text-gray-500'}`}
                   >
                     {step}
                   </span>
                 </div>
                 <div
                   className={`text-[18px] font-bold text-center 
-                    ${currentStep >= step ? 'text-[#0077B6] font-bold' : 'text-gray-500'}`}
+                    ${maxStepReached >= step ? 'text-[#0077B6] font-bold' : 'text-gray-500'}`}
                 >
                   {step === 1 && 'Select Type'}
                   {step === 2 && 'Upload Files'}
@@ -269,33 +273,27 @@ const AiTraining = () => {
             <div className="bg-white rounded-lg p-6 w-full max-w-lg">
               <h2 className="text-xl font-bold mb-4 text-[#0077B6]">Training Started Successfully!</h2>
               <p className="mb-6 text-gray-300">
-              Your AI model is now being trained with your content. You'll receive a notification when it's ready.
+                Your AI model is now being trained with your content. You'll receive a notification when it's ready.
               </p>
 
-            <div className='flex justify-center'>
-            <div className='bg-[#DCFCE7] p-10 rounded-full flex justify-center'>
-             <SiVerizon className='text-[#00B23D]' />
-             </div>
-            </div>
-             <p className='text-[20px] text-center text-[#0077B6]'>Training progress</p>
-             <p className='text-gray-300 text-center'>Your AI model is now being trained with your culinary content. This process typically takes 2 minutes.</p>
+              <div className='flex justify-center'>
+                <div className='bg-[#DCFCE7] p-10 rounded-full flex justify-center'>
+                  <SiVerizon className='text-[#00B23D]' />
+                </div>
+              </div>
+              <p className='text-[20px] text-center text-[#0077B6]'>Training progress</p>
+              <p className='text-gray-300 text-center'>Your AI model is now being trained with your culinary content. This process typically takes 2 minutes.</p>
 
               <div className="flex justify-between mt-8">
                 <button
                   className="px-8 py-2 bg-[#0077B6] mx-auto cursor-pointer rounded text-white"
                   onClick={() => {
-                    setIsModalOpen(false);
-                    prevStep();
+                    setCurrentStep(3); // Go back to Step 3
+                    setIsModalOpen(false); // Close modal
                   }}
                 >
                   Back
                 </button>
-                {/* <button
-                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                  onClick={submitForm}
-                >
-                  Submit
-                </button> */}
               </div>
             </div>
           </div>
@@ -306,3 +304,5 @@ const AiTraining = () => {
 };
 
 export default AiTraining;
+
+
