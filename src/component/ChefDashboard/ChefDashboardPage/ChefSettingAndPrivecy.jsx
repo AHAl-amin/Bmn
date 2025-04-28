@@ -35,7 +35,7 @@ function ChefSettingAndPrivecy() {
 
 
         <div className='px-10 py-4 lora'>
-            <h1 className="text-[#0077B6] text-[45px] font-semibold">Profile information</h1>
+            <h1 className="text-[#5B21BD] text-[45px] font-semibold">Profile information</h1>
             <p className="text-[#A2A2A2] text-[20px] capitalize">
                 Update Your information and public details
             </p>
@@ -54,7 +54,7 @@ function ChefSettingAndPrivecy() {
                     </div>
 
                     <div className="flex justify-center mb-4">
-                        <label className="text-[#0077B6] border border-[#0077B6] p-2 rounded-[10px] cursor-pointer flex items-center">
+                        <label className="text-[#5B21BD] border border-[#5B21BD] p-2 rounded-[10px] cursor-pointer flex items-center">
                             <span className="mr-2 text-[20px]">Change Photo</span>
                             <MdOutlineCameraAlt />
                             <input
@@ -71,54 +71,54 @@ function ChefSettingAndPrivecy() {
                     <div className='py-10 '>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-4 text-[20px]">
                             <div>
-                                <label className="block text-sm font-medium text-[#0077B6] text-[20px]">First Name</label>
+                                <label className="block text-sm font-medium text-[#5B21BD] text-[20px]">First Name</label>
                                 <input
                                     type="text"
                                     name="firstName"
                                     placeholder='Enter your first name'
                                     // value={formData.firstName}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border border-[#0077B6] rounded-md focus:outline-none bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full border border-[#5B21BD] rounded-md focus:outline-none bg-[#FFFFFF]"
                                 />
                             </div>
                             <div>
-                                <label className="block font-medium text-[#0077B6] text-[20px]">Last Name</label>
+                                <label className="block font-medium text-[#5B21BD] text-[20px]">Last Name</label>
                                 <input
                                     type="text"
                                     name="lastName"
                                     placeholder='Enter your last name'
                                     // value={formData.lastName}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border border-[#0077B6] rounded-md focus:outline-none focus:ring-2  bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full border border-[#5B21BD] rounded-md focus:outline-none focus:ring-2  bg-[#FFFFFF]"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="block font-medium text-[#0077B6] text-[20px]">Bio</label>
-                            <textarea name="" id="" placeholder='Enter your bio' className='w-full p-2 text-xl h-[100px] bg-[#FFFFFF] border border-[#0077B6] rounded-md'></textarea>
+                            <label className="block font-medium text-[#5B21BD] text-[20px]">Bio</label>
+                            <textarea name="" id="" placeholder='Enter your bio' className='w-full p-2 text-xl h-[100px] bg-[#FFFFFF] border border-[#5B21BD] rounded-md'></textarea>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-4">
                             <div className=''>
-                                <label className="block text-[#0077B6] text-[20px] font-medium">Email Address</label>
+                                <label className="block text-[#5B21BD] text-[20px] font-medium">Email Address</label>
                                 <input
                                     type="email"
                                     placeholder='Enter your email'
                                     name="email"
                                     // value={formData.email}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border border-[#0077B6] rounded-md focus:outline-none  bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full border border-[#5B21BD] rounded-md focus:outline-none  bg-[#FFFFFF]"
                                 />
                             </div>
                             <div>
-                                <label className="block text-[#0077B6] text-[20px] font-medium ">Phone Number</label>
+                                <label className="block text-[#5B21BD] text-[20px] font-medium ">Phone Number</label>
                                 <input
                                     type="tel"
                                     name="phone"
                                     placeholder='Enter your number'
                                     // value={formData.phone}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border border-[#0077B6] rounded-md focus:outline-none  bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full border border-[#5B21BD] rounded-md focus:outline-none  bg-[#FFFFFF]"
                                 />
                             </div>
                         </div>
@@ -126,7 +126,7 @@ function ChefSettingAndPrivecy() {
                     <div>
                         <button
                             onClick={handleSubmit}
-                            className=" bg-[#0077B6] text-[20px] text-white p-2 rounded-[10px]  px-4"
+                            className=" bg-[#5B21BD] text-[20px] text-white p-2 rounded-[10px]  px-4"
                         >
                             Save Changes
                         </button>

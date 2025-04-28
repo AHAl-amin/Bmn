@@ -30,7 +30,7 @@ const ChefDashboardSideber = () => {
     return (
         <div className="lora">
             {/* Toggle Icon for Small Devices */}
-            <div className="md:hidden flex justify-start p-4 bg-[#B0D5E8]">
+            <div className="md:hidden flex justify-start p-4 bg-[#CCBAEB]">
                 <IoReorderThreeOutline
                     className="h-8 w-8 text-[#004C3F] cursor-pointer"
                     onClick={toggleSidebar}
@@ -39,7 +39,7 @@ const ChefDashboardSideber = () => {
 
             {/* Sidebar */}
             <div
-                className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#B0D5E8] pt-10 lora transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#CCBAEB] pt-10 lora transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                     } md:relative md:translate-x-0 md:block h-screen `}
             >
                 <NavLink className="flex justify-center">
@@ -50,7 +50,7 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard"
 
                         className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${isDashboardActive ?
-                            'bg-[#0077B6]  text-white rounded-md' : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                            'bg-[#5B21BD]  text-white rounded-md' : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`}
 
                     >
@@ -66,8 +66,8 @@ const ChefDashboardSideber = () => {
                             location.pathname.startsWith('/chef_dashboard/chef_all_recipes') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
                                 location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
-                                ? 'flex items-center gap-3 px-3 py-2 bg-[#0077B6] text-white rounded-md w-full'
-                                : 'flex items-center gap-3 px-3 py-2 text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md w-full'
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#5B21BD] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md w-full'
                         }
                     >
                         <PiChefHatFill className="h-6 w-6" />
@@ -78,8 +78,8 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard/ai_training"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                                ? 'bg-[#5B21BD] text-white rounded-md'
+                                : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`
                         }
                     >
@@ -91,8 +91,8 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard/facebook_user"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                                ? 'bg-[#5B21BD] text-white rounded-md'
+                                : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`
                         }
                     >
@@ -116,8 +116,8 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard/chef_subscribtion"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                                ? 'bg-[#5B21BD] text-white rounded-md'
+                                : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`
                         }
                     >
@@ -128,8 +128,8 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard/chef_community"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                                ? 'bg-[#5B21BD] text-white rounded-md'
+                                : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`
                         }
                     >
@@ -140,8 +140,8 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard/branding"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                                ? 'bg-[#5B21BD] text-white rounded-md'
+                                : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`
                         }
                     >
@@ -152,15 +152,15 @@ const ChefDashboardSideber = () => {
                         to="/chef_dashboard/chef_settings_privecy"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-                                ? 'bg-[#0077B6] text-white rounded-md'
-                                : 'text-[#0077B6] hover:bg-[#77b2d1] hover:text-white rounded-md'
+                                ? 'bg-[#5B21BD] text-white rounded-md'
+                                : 'text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md'
                             }`
                         }
                     >
                         <IoSettingsOutline className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">Profile & setting</h1>
                     </NavLink>
-                    <NavLink className='flex items-center gap-2 justify-center text-[#0077B6]   h-full '>
+                    <NavLink className='flex items-center gap-2 justify-center text-[#5B21BD]   h-full '>
                         <RiLogoutCircleLine /> <p>Logout</p>
                     </NavLink>
                 </div>

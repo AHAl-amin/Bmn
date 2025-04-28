@@ -112,14 +112,14 @@ const AiTraining = () => {
   return (
     <div className=" ">
       <div className="rounded-lg p-6 px-14 lora">
-        <h1 className="text-[34px] text-[#0077B6]">AI Training</h1>
+        <h1 className="text-[34px] text-[#5B21BD]">AI Training</h1>
         <p className="text-[#9E9E9E] text-xl mb-4">Upload and manage your culinary content</p>
 
         {/* Progress Steps */}
         <div className="relative mb-8 px-6">
           <div className="flex justify-between relative">
             <div
-              className="absolute bottom-14 left-0 h-1 bg-[#0077B6] z-10 transition-all duration-300"
+              className="absolute bottom-14 left-0 h-1 bg-[#5B21BD] z-10 transition-all duration-300"
               style={{
                 width: `${((maxStepReached - 1) / (totalSteps - 1)) * 100}%`,
                 transform: 'translateY(-50%)'
@@ -129,7 +129,7 @@ const AiTraining = () => {
 
             {[1, 2, 3, 4].map((step) => (
               <div key={step} className="relative z-10">
-                <div className={`relative w-14 h-14 mx-auto mb-2 ${maxStepReached >= step ? 'bg-[#0077B6] rounded-full' : ''}`}>
+                <div className={`relative w-14 h-14 mx-auto mb-2 ${maxStepReached >= step ? 'bg-[#5B21BD] rounded-full' : ''}`}>
                   <img
                     src={getStepImage()}
                     alt={`Step ${step}`}
@@ -144,7 +144,7 @@ const AiTraining = () => {
                 </div>
                 <div
                   className={`text-[18px] font-bold text-center 
-                    ${maxStepReached >= step ? 'text-[#0077B6] font-bold' : 'text-gray-500'}`}
+                    ${maxStepReached >= step ? 'text-[#5B21BD] font-bold' : 'text-gray-500'}`}
                 >
                   {step === 1 && 'Select Type'}
                   {step === 2 && 'Upload Files'}
@@ -158,18 +158,18 @@ const AiTraining = () => {
 
         {/* Step Content */}
         {currentStep === 1 && (
-          <div className="border rounded-xl p-10 bg-[#FFFFFF] border-[#B0D5E8]">
-            <h2 className="text-xl text-[#0077B6] font-bold mb-4">Select Content Type</h2>
+          <div className="border rounded-xl p-10 bg-[#FFFFFF] border-[#EFE9F8]">
+            <h2 className="text-xl text-[#5B21BD] font-bold mb-4">Select Content Type</h2>
             <p className="mb-6 text-[#9E9E9E]">
               Choose the type of content key. Write to update it in form for a vendor.
             </p>
 
-            <div className="space-y-3 mb-6 flex justify-between text-center text-[20px] font-semibold text-[#0077B6]">
+            <div className="space-y-3 mb-6 flex justify-between text-center text-[20px] font-semibold text-[#5B21BD]">
               {['recipes', 'calculators', 'other materials'].map((option) => (
                 <div
                   key={option}
                   className={`p-4 border rounded cursor-pointer transition-all w-full ml-10 h-full
-                    ${selectedOption === option ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300'}`}
+                    ${selectedOption === option ? 'border-[#5B21BD] bg-blue-50' : 'border-gray-200 '}`}
                   onClick={() => handleOptionClick(option)}
                 >
                   <h3 className="font-medium">{option}</h3>
@@ -185,15 +185,15 @@ const AiTraining = () => {
         )}
 
         {currentStep === 2 && (
-          <div className="border border-[#0077B6] p-10 rounded-xl bg-[#FFFFFF]">
-            <h2 className="text-xl text-[#0077B6] font-bold mb-4">Upload Files</h2>
+          <div className="border border-[#5B21BD] p-10 rounded-xl bg-[#FFFFFF]">
+            <h2 className="text-xl text-[#5B21BD] font-bold mb-4">Upload Files</h2>
             <p className="mb-6 text-[#9E9E9E]">
               Drag and drop your files or click to browse. We accept PDF, DOC, DOCX, XLS, and XLSX files up to 50MB.
             </p>
 
             <div
               className={`border-2 border-dashed rounded-lg p-8 h-[250px] text-center mb-6 transition-all
-                ${isDragging ? 'border-[#0077B6] bg-blue-50' : 'border-[#0077B6]'}`}
+                ${isDragging ? 'border-[#5B21BD] bg-blue-50' : 'border-[#5B21BD]'}`}
               onDragOver={handleDragOver}
               onDragEnter={handleDragEnter}
               onDragLeave={handleDragLeave}
@@ -216,7 +216,7 @@ const AiTraining = () => {
                 </p>
                 <button
                   type="button"
-                  className="px-4 py-2 bg-[#0077B6] text-white rounded "
+                  className="px-4 py-2 bg-[#5B21BD] text-white rounded "
                   onClick={() => document.getElementById('file-upload').click()}
                 >
                   Browse Files
@@ -243,7 +243,7 @@ const AiTraining = () => {
                 Previous
               </button>
               <button
-                className="px-4 py-2 bg-[#0077B6] text-white rounded disabled:opacity-50"
+                className="px-4 py-2 bg-[#5B21BD] text-white rounded disabled:opacity-50"
                 onClick={nextStep}
                 disabled={files.length === 0}
               >
@@ -319,7 +319,7 @@ const AiTraining = () => {
                 Previous
               </button>
               <button
-                className="px-4 py-2 bg-[#0077B6] text-white rounded disabled:opacity-50"
+                className="px-4 py-2 bg-[#5B21BD] text-white rounded disabled:opacity-50"
                 onClick={nextStep}
                 disabled={!isStep3Valid()}
               >
@@ -330,15 +330,15 @@ const AiTraining = () => {
         )}
 
         {currentStep === 4 && (
-          <div className="mt-8 bg-white rounded-xl border border-[#B0D5E8] lora p-10">
+          <div className="mt-8 bg-white rounded-xl border border-[#EFE9F8] lora p-10">
             <h2 className="text-lg font-bold text-gray-800">Review & Confirm</h2>
             <p className="text-sm text-gray-500 mt-1">
               Review your uploaded files and metadata before submitting them for AI training.
             </p>
-            <hr className="text-[#B0D5E8] mt-2" />
+            <hr className="text-[#EFE9F8] mt-2" />
 
             <div className="mt-4">
-              <div className="grid grid-cols-6 gap-4 p-3 bg-[#B0D5E8] text-[#0077B6] text-sm font-semibold">
+              <div className="grid grid-cols-6 gap-4 p-3 bg-[#EFE9F8] text-[#5B21BD] text-sm font-semibold">
                 <div>File name</div>
                 <div>Title</div>
                 <div>Category</div>
@@ -396,7 +396,7 @@ const AiTraining = () => {
                 Previous
               </button>
               <button
-                className="px-4 py-2 bg-[#0077B6] text-white rounded cursor-pointer"
+                className="px-4 py-2 bg-[#5B21BD] text-white rounded cursor-pointer"
                 onClick={submitForm}
               >
                 Confirm & Submit for Training
@@ -407,9 +407,9 @@ const AiTraining = () => {
 
         {/* Modal for Submission Confirmation */}
         {isModalOpen && (
-          <div className="fixed inset-0 bg-[#0076B680] flex justify-center items-center z-50">
+          <div className="fixed inset-0 bg-[#5B21BDCC] flex justify-center items-center z-100">
             <div className="bg-white rounded-lg p-6 w-full max-w-lg">
-              <h2 className="text-xl font-bold mb-4 text-[#0077B6]">
+              <h2 className="text-xl font-bold mb-4 text-[#5B21BD]">
                 Training Started Successfully!
               </h2>
               <p className="mb-6 text-gray-600">
@@ -421,14 +421,14 @@ const AiTraining = () => {
                   <SiVerizon className="text-[#00B23D]" />
                 </div>
               </div>
-              <p className="text-[20px] text-center text-[#0077B6]">Training progress</p>
+              <p className="text-[20px] text-center text-[#5B21BD]">Training progress</p>
               <p className="text-gray-600 text-center">
                 Your AI model is now being trained with your culinary content. This process typically takes 2 minutes.
               </p>
 
               <div className="flex justify-center mt-8">
                 <button
-                  className="px-8 py-2 bg-[#0077B6] text-white rounded cursor-pointer"
+                  className="px-8 py-2 bg-[#5B21BD] text-white rounded cursor-pointer"
                   onClick={resetForm}
                 >
                   Back

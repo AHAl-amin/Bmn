@@ -57,12 +57,12 @@ function FacebookUser() {
     ];
     return (
         <div className="py-2 px-10 lora">
-        <h1 className="text-[#0077B6] text-[34px] font-semibold">User Facebook</h1>
+        <h1 className="text-[#5B21BD] text-[34px] font-semibold">User Facebook</h1>
         <p className="text-[#9E9E9E] mb-6">Manage feedback from users on your recipes</p>
         <div className="">
             <table className="w-full  bg-white border border-[#E4E4E4] ">
                 <thead className="">
-                    <tr className="bg-[#0077B6] text-white ">
+                    <tr className="bg-[#5B21BD] text-white ">
                         <th className="p-2 text-left md:pl-6">User</th>
                         <th className="p-2 text-left">Recipe</th>
                         <th className="p-2 text-left">Rating</th>

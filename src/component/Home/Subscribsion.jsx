@@ -129,7 +129,7 @@ const Subscribsion = () => {
                     <h3 className="text-[#2D4162] font-medium mb-2 text-sm md:text-2xl">
                         Our Powerful Features
                     </h3>
-                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#004C3F] mb-3 md:mb-4">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4">
                     Choose your subscription
                     </h1>
                     <p className="text-gray-600 max-w-full md:max-w-2xl mx-auto text-xs md:text-base">
@@ -148,7 +148,7 @@ const Subscribsion = () => {
                         Monthly
                     </span>
                     <button
-                        className="w-12 md:w-16 h-6 md:h-8 bg-gray-200 dark:bg-gray-700 rounded-full p-1  flex items-center cursor-pointer"
+                        className="w-12 md:w-16 h-6 md:h- bg-[#EFE9F8] dark:bg-gray-700 rounded-full p-1  flex items-center cursor-pointer"
                         onClick={() => setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")}
                     >
                         <motion.div
@@ -182,11 +182,11 @@ const Subscribsion = () => {
                                 {monthlyPlans.map((plan, index) => (
                                     <motion.div
                                         key={`monthly-${index}`}
-                                        className="bg-white hover:bg-[#D9EBF4] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
+                                        className="bg-white hover:bg-[#EFE9F8] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
                                         variants={cardVariants}
                                     >
                                         <div className="p-4 md:p-8 flex flex-col flex-grow">
-                                            <h2 className="text-lg md:text-2xl font-bold  text-[#004C3F] mb-4 md:mb-8 text-center">
+                                            <h2 className="text-lg md:text-2xl font-bold  text-[#5B21BD] mb-4 md:mb-8 text-center">
                                                 {plan.name}
                                             </h2>
                                             <div className="md:-mx-8 md:p-8 text-gray-100 dark:text-gray-100 md:mb-8">
@@ -203,14 +203,14 @@ const Subscribsion = () => {
                                             <ul className="space-y-2 md:space-y-4 flex-grow">
                                                 {plan.features.map((feature, featureIndex) => (
                                                     <li key={featureIndex} className="flex items-center">
-                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-full bg-gray-200   mr-2" />
-                                                        <span className=" text-[#004C3F] text-xs md:text-base">
+                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-ful bg-[#EFE9F8]   mr-2" />
+                                                        <span className=" text-[#5B21BD] text-xs md:text-base">
                                                             {feature}
                                                         </span>
                                                     </li>
                                                 ))}
                                             </ul>
-                                            <button className="mt-4 md:mt-8 w-full bg-[#004C3F]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
+                                            <button className="mt-4 md:mt-8 w-full bg-[#5B21BD]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
                                                 Get Started <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                                             </button>
                                         </div>
@@ -229,7 +229,7 @@ const Subscribsion = () => {
                                 {yearlyPlans.map((plan, index) => (
                                     <motion.div
                                         key={`yearly-${index}`}
-                                        className="bg-white hover:bg-[#D9EBF4] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
+                                        className="bg-white hover:bg-[#EFE9F8] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
                                         variants={cardVariants}
                                     >
                                         <div className="p-4 md:p-8 flex flex-col flex-grow">
@@ -250,14 +250,14 @@ const Subscribsion = () => {
                                             <ul className="space-y-2 md:space-y-4 flex-grow">
                                                 {plan.features.map((feature, featureIndex) => (
                                                     <li key={featureIndex} className="flex items-center">
-                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-full bg-gray-200 dark:bg-gray-600 dark:text-blue-400 mr-2" />
+                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-ful bg-[#EFE9F8] dark:bg-gray-600 dark:text-blue-400 mr-2" />
                                                         <span className="text-slate-700 dark:text-gray-300 text-xs md:text-base">
                                                             {feature}
                                                         </span>
                                                     </li>
                                                 ))}
                                             </ul>
-                                            <button className="mt-4 md:mt-8 w-full bg-[#004C3F]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
+                                            <button className="mt-4 md:mt-8 w-full bg-[#5B21BD]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
                                                 Get Started <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                                             </button>
                                         </div>

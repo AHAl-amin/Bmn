@@ -54,7 +54,7 @@ function Admin_ConfirmPassword() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito lora">
-      <div className="flex justify-center items-center w-[45%] h-screen bg-[#B0D5E8]">
+      <div className="flex justify-center items-center w-[45%] h-screen bg-[#CCBAEB]">
         <img
           src={login_img}
           alt="Registration illustration"
@@ -63,7 +63,7 @@ function Admin_ConfirmPassword() {
       </div>
       <div className="w-1/2 lg:px-40">
         <div className="mb-6">
-          <p className="text-[50px] font-semibold text-[#0077B6]">
+          <p className="text-[50px] font-semibold text-[#5B21BD]">
             Set New Password
           </p>
         </div>
@@ -72,7 +72,7 @@ function Admin_ConfirmPassword() {
        
 
           <div className="relative">
-            <label className="block text-[#005989] mb-2">Password</label>
+            <label className="block text-[#5B21BD] mb-2">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -81,8 +81,8 @@ function Admin_ConfirmPassword() {
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => setPasswordFocused(true)}
                 onBlur={() => setPasswordFocused(password !== '')}
-                className={`w-full px-4 py-2 border bg-[#F8FCFF] border-[#0077B6] rounded-[8px]  pr-10 ${
-                  passwordFocused ? 'ring-2 ring-[#0077B6]' : ''
+                className={`w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px]  pr-10 ${
+                  passwordFocused ? 'ring-2 ring-[#5B21BD]' : ''
                 }`}
                 required
               />
@@ -90,7 +90,7 @@ function Admin_ConfirmPassword() {
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#0077B6] cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD] cursor-pointer"
               >
                 {showPassword ? (
                   <IoEyeOffOutline size={20} />
@@ -102,7 +102,7 @@ function Admin_ConfirmPassword() {
           </div>
 
           <div className="relative">
-            <label className="block text-[#005989] mb-2">Confirm Password</label>
+            <label className="block text-[#5B21BD] mb-2">Confirm Password</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
@@ -111,8 +111,8 @@ function Admin_ConfirmPassword() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 onFocus={() => setConfirmPasswordFocused(true)}
                 onBlur={() => setConfirmPasswordFocused(confirmPassword !== '')}
-                className={`w-full px-4 py-2 border bg-[#F8FCFF] border-[#0077B6] rounded-[8px]  pr-10 ${
-                  confirmPasswordFocused ? 'ring-2 ring-[#0077B6]' : ''
+                className={`w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px]  pr-10 ${
+                  confirmPasswordFocused ? 'ring-2 ring-[#5B21BD]' : ''
                 }`}
                 required
               />
@@ -120,7 +120,7 @@ function Admin_ConfirmPassword() {
               <button
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#0077B6] cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD] cursor-pointer"
               >
                 {showConfirmPassword ? (
                   <IoEyeOffOutline size={20} />
@@ -135,7 +135,7 @@ function Admin_ConfirmPassword() {
           <div>
             <button
               type="submit"
-              className="bg-[#0077B6] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full"
+              className="bg-[#5B21BD] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full"
             >
               Send
             </button>

@@ -1,75 +1,9 @@
 
-// import { FaLightbulb } from 'react-icons/fa';
-// import { GoBellFill } from 'react-icons/go';
-// import { IoMdAdd } from 'react-icons/io';
-
-// import { Link, NavLink } from 'react-router-dom';
-
-// function ChefDashboardNavber() {
 
 
-//     return (
-//         <div className="flex items-center justify-end pt-10 lora h-16 px-6  md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)]">
-
-//             {/* <div className="flex items-center md:w-[30%] relative">
-//         <IoSearchOutline 
-//             className={`text-[#0077B6] absolute ml-3 ${isSearchFocused ? 'opacity-0' : 'opacity-100'} transition-opacity duration-200`}
-//         />
-//         <input
-//             type="search"
-//             placeholder="Search recipes"
-//             className="placeholder-[color:#0077B6] focus:placeholder-transparent w-full py-3 border border-[#0077B6] rounded-full pl-8"
-//             onFocus={() => setIsSearchFocused(true)}
-//             onBlur={() => setIsSearchFocused(false)}
-
-//         />
-//     </div> */}
-
-
-//             <div className="flex items-center space-x-8">
-//                 <button
-
-//                     className="flex items-center gap-2 px-4 py-2 text-white bg-[#0077B6] rounded-[10px] cursor-pointer"
-//                 >
-//                     <FaLightbulb />
-//                     <span className="font-medium">Add Chefs </span><IoMdAdd />
-//                 </button>
-
-//                 <NavLink to='/dashboard/user_notifications'>
-//                     <div className="relative">
-//                         <button className="p-2 rounded-full hover:bg-gray-100 transition-transform duration-200 cursor-pointer">
-//                             <GoBellFill className="h-7 w-7 text-[#0077B6]" />
-//                         </button>
-//                         <div className="absolute text-[10px] p-[5px] top-[6px] right-[10px] bg-gray-200 rounded-full"></div>
-//                     </div>
-//                 </NavLink>
-//                 <div className="flex items-center space-x-2">
-//                     <div className="hidden md:block">
-//                         <img
-//                             src="https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
-//                             alt="User profile"
-//                             className="h-10 w-10 rounded-full"
-//                         />
-//                     </div>
-//                     <span className="text-[17px] font-medium md:block hidden">Cameron</span>
-//                 </div>
-//             </div>
-
-//             <style jsx>{`
-//         input[type="search"]::-webkit-search-cancel-button {
-//             display: none;
-//         }
-//     `}</style>
-//         </div>
-//     )
-// }
-
-// export default ChefDashboardNavber
-
-import { FaLightbulb } from 'react-icons/fa';
 import { GoBellFill } from 'react-icons/go';
-import { IoMdAdd } from 'react-icons/io';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+
+import {  NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 function AdminDashboardNavbar() {
@@ -112,7 +46,7 @@ function AdminDashboardNavbar() {
         <NavLink to="/dashboard/user_notifications">
           <div className="relative">
             <button className="p-2 rounded-full hover:bg-gray-100 transition-transform duration-200 cursor-pointer">
-              <GoBellFill className="h-7 w-7 text-[#0077B6]" />
+              <GoBellFill className="h-7 w-7 text-[#5B21BD]" />
             </button>
             <div className="absolute text-[10px] p-[5px] top-[6px] right-[10px] bg-gray-200 rounded-full"></div>
           </div>
@@ -132,10 +66,10 @@ function AdminDashboardNavbar() {
 
       {/* Modal - Only show on /chef_dashboard/chef_community */}
       {isModalOpen && isChefCommunityPath && (
-        <div className="fixed inset-0 bg-[#0077B6CC] bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-[#5B21BD] bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-[#004C3F]">Share Your Creation</h2>
+              <h2 className="text-xl font-bold text-[#5B21BD]">Share Your Creation</h2>
               <button
                 onClick={toggleAddChefModal}
                 className="text-gray-500 hover:text-gray-700"
@@ -150,7 +84,7 @@ function AdminDashboardNavbar() {
                 <input
                   type="text"
                   placeholder=""
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#5B21BD]"
                 />
               </div>
 
@@ -158,7 +92,7 @@ function AdminDashboardNavbar() {
                 <label className="block text-gray-700 mb-2">Description</label>
                 <textarea
                   placeholder="Share Details About Your Creation, Modification You Made “‘Share Details About Your Creation, Modification You Made Or Tips For Others’"
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#5B21BD]"
                   rows="4"
                 ></textarea>
               </div>
@@ -203,12 +137,12 @@ function AdminDashboardNavbar() {
               <div className="flex justify-end space-x-3 pt-4">
                 <button
                   onClick={toggleAddChefModal}
-                  className="px-4 py-2 border border-[#B0BFB6] rounded-[10px] text-[#004C3F] hover:bg-gray-50"
+                  className="px-4 py-2 border border-[#B0BFB6] rounded-[10px] text-[#5B21BD] hover:bg-gray-50"
                 >
                   Cancel
                 </button>
                 <button
-                  className="px-4 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E]"
+                  className="px-4 py-2 bg-[#5B21BD] text-white rounded-[10px] hover:bg-[#5B21BD]"
                 >
                   Share Post
                 </button>

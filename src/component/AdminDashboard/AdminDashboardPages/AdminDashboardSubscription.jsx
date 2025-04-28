@@ -138,7 +138,7 @@
 //         <div className="relative">
 //           <button
 //             onClick={toggleDropdown}
-//             className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+//             className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
 //           >
 //             <CiFilter />
 //             <span>Filter</span>
@@ -150,7 +150,7 @@
 //                 <button
 //                   key={plan}
 //                   onClick={() => handlePlanSelect(plan)}
-//                   className="block w-full text-left px-4 py-2 text-sm text-[#3a7494] hover:bg-gray-100 rounded-2xl"
+//                   className="block w-full text-left px-4 py-2 text-sm text-[#5B21BD] hover:bg-gray-100 rounded-2xl"
 //                 >
 //                   {plan}
 //                 </button>
@@ -426,7 +426,7 @@ function AdminDashboardSubscription() {
     <div className="px-10 py-6">
       <div className="flex md:gap-30 items-center">
         <div>
-          <h2 className="text-[34px] font-semibold text-[#0077B6] mb-1">
+          <h2 className="text-[34px] font-semibold text-[#5B21BD] mb-1">
             Subscription Management
           </h2>
           <p className="text-xl text-gray-500 mb-8">
@@ -437,14 +437,14 @@ function AdminDashboardSubscription() {
           <div className="flex gap-10">
             <button
               onClick={toggleDropdown}
-              className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+              className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
             >
               <CiFilter />
               <span>Filter</span>
             </button>
             <button
               onClick={handleExportData}
-              className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full cursor-pointer"
+              className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full cursor-pointer"
             >
               Export Data
             </button>
@@ -456,7 +456,7 @@ function AdminDashboardSubscription() {
                 <button
                   key={plan}
                   onClick={() => handlePlanSelect(plan)}
-                  className="block w-full text-left px-4 py-2 text-sm text-[#3a7494] hover:bg-gray-100 rounded-2xl"
+                  className="block w-full text-left px-4 py-2 text-sm text-[#5B21BD] hover:bg-gray-100 rounded-2xl"
                 >
                   {plan}
                 </button>
@@ -468,7 +468,7 @@ function AdminDashboardSubscription() {
       <table className="w-full text-sm">
         {/* Table Header */}
         <thead>
-          <tr className="bg-[#B0D5E8] text-left">
+          <tr className="bg-[#CCBAEB] text-left">
             <th className="p-3 pl-10 font-semibold">User</th>
             <th className="p-3 font-semibold">Plan</th>
             <th className="p-3 font-semibold">Status</th>
@@ -483,7 +483,7 @@ function AdminDashboardSubscription() {
           {filteredData.map((row, index) => (
             <tr
               key={row.id}
-              className={`border-b border-[#E4E4E4] ${index === 1 ? '' : ''}`}
+              className={`border-b border-[#CCBAEB] ${index === 1 ? '' : ''}`}
             >
               <td className="p-3 flex items-center">
                 <div className="flex">
@@ -539,7 +539,7 @@ function AdminDashboardSubscription() {
               <td className="p-3">{row['Next Billing']}</td>
               <td className="p-3">
                 <button onClick={() => handleDeleteClick(row.id)}>
-                  <RiDeleteBin6Line className="text-[#FF0000] border border-[#B0D5E8] rounded-[10px] flex justify-center items-center size-10 p-2 cursor-pointer" />
+                  <RiDeleteBin6Line className="text-[#FF0000] border border-[#CCBAEB] rounded-[10px] flex justify-center items-center size-10 p-2 cursor-pointer" />
                 </button>
               </td>
             </tr>

@@ -27,7 +27,7 @@ function Admin_login() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito lora">
-      <div className="flex justify-center items-center w-[45%] h-screen bg-[#B0D5E8]">
+      <div className="flex justify-center items-center w-[45%] h-screen bg-[#CCBAEB]">
         <img
           src={login_img}
           alt="Registration illustration"
@@ -36,12 +36,12 @@ function Admin_login() {
       </div>
       <div className="w-1/2 lg:px-40">
         <div className="mb-6">
-          <p className="text-[50px] font-semibold text-[#0077B6]">Login</p>
+          <p className="text-[50px] font-semibold text-[#5B21BD]">Login</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
-            <label className="block text-[#005989] mb-2">Email</label>
+            <label className="block text-[#5B21BD] mb-2">Email</label>
             <div className="relative">
               <input
                 type="email"
@@ -50,7 +50,7 @@ function Admin_login() {
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => setEmailFocused(true)}
                 onBlur={() => setEmailFocused(email !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#0077B6] rounded-[8px] "
+                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] "
                 required
               />
              
@@ -58,7 +58,7 @@ function Admin_login() {
           </div>
 
           <div className="relative">
-            <label className="block text-[#005989] mb-2">Password</label>
+            <label className="block text-[#5B21BD] mb-2">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'} // Toggle input type
@@ -67,14 +67,14 @@ function Admin_login() {
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => setPasswordFocused(true)}
                 onBlur={() => setPasswordFocused(password !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#0077B6] rounded-[8px] pr-10"
+                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] pr-10"
                 required
               />
              
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#0077B6] cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD] cursor-pointer"
               >
                 {showPassword ? (
                   <IoEyeOffOutline size={20} />
@@ -88,7 +88,7 @@ function Admin_login() {
           <div>
             <button
               type="submit"
-              className="bg-[#0077B6] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full"
+              className="bg-[#5B21BD] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full"
             >
               Login
             </button>

@@ -96,36 +96,36 @@
 //     <div className="md:px-10 py-6 lora">
 //       <div className="flex justify-between">
 //         <div className="w-1/2">
-//           <h1 className="text-[#004C3F] text-[45px] font-semibold">All Recipes</h1>
+//           <h1 className="text-[#5B21BD] text-[45px] font-semibold">All Recipes</h1>
 //           <p className="text-[#A2A2A2] text-[20px]">
 //             Browse and discover recipes from your favorite culinary experts.
 //           </p>
 //         </div>
 //         <div className="w-1/2 flex items-center gap-6">
 //           <div className="flex items-center relative w-4/6">
-//             <IoSearchOutline className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200" />
+//             <IoSearchOutline className="text-[#5B21BD] absolute ml-3 opacity-100 transition-opacity duration-200" />
 //             <input
 //               type="search"
 //               placeholder="Search recipes"
-//               className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-[10px] pl-8"
+//               className="placeholder-[color:#5B21BD] focus:placeholder-transparent w-full py-3 border border-[#CCBAEB] rounded-[10px] pl-8"
 //               value={searchTerm}
 //               onChange={(e) => setSearchTerm(e.target.value)}
 //             />
 //           </div>
 //           <div className="relative w-2/6">
 //             <button
-//               className="text-[#004C3F] w-full py-3 border border-[#B0BFB6] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer"
+//               className="text-[#5B21BD] w-full py-3 border border-[#CCBAEB] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer"
 //               onClick={toggleFilterDropdown}
 //             >
 //               <CiFilter />
 //               <span>Filter</span>
 //             </button>
 //             {isFilterOpen && (
-//               <div className="absolute top-15 left-0 w-full bg-white border border-[#B0BFB6] rounded-[10px] shadow-lg z-10">
+//               <div className="absolute top-15 left-0 w-full bg-white border border-[#CCBAEB] rounded-[10px] shadow-lg z-10">
 //                 {categories.map((category) => (
 //                   <div
 //                     key={category}
-//                     className="px-4 py-2 hover:bg-[#B0BFB6] cursor-pointer text-[#004C3F]"
+//                     className="px-4 py-2 hover:bg-[#CCBAEB] cursor-pointer text-[#5B21BD]"
 //                     onClick={() => handleCategorySelect(category)}
 //                   >
 //                     {category}
@@ -158,14 +158,14 @@
 //               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
 //                 {/* Title */}
 //                 <div className="flex justify-between">
-//                   <h2 className="text-xl font-semibold text-[#004C3F] lora">
+//                   <h2 className="text-xl font-semibold text-[#5B21BD] lora">
 //                     {recipe.title}
 //                   </h2>
-//                   <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
+//                   <IoIosHeartEmpty className="text-[#5B21BD] w-[16px] h-[16px]" />
 //                 </div>
 
 //                 {/* Category */}
-//                 <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline FSM-block px-4 py-1 rounded-[29px]">
+//                 <p className="mt-1 text-sm text-[#5B21BD] bg-[#CCBAEB] inline FSM-block px-4 py-1 rounded-[29px]">
 //                   {recipe.category}
 //                 </p>
 
@@ -202,7 +202,7 @@
 //           ))
 //         ) : (
 //           <div className="col-span-full text-center py-10">
-//             <p className="text-[#004C3F] text-xl">No recipes found matching your search or category.</p>
+//             <p className="text-[#5B21BD] text-xl">No recipes found matching your search or category.</p>
 //           </div>
 //         )}
 //       </div>
@@ -304,36 +304,36 @@ function AllRecipes() {
     <div className="md:px-10 py-6 lora">
       <div className="flex justify-between">
         <div className="w-1/2">
-          <h1 className="text-[#004C3F] text-[45px] font-semibold">All Recipes</h1>
+          <h1 className="text-[#5B21BD] text-[45px] font-semibold">All Recipes</h1>
           <p className="text-[#A2A2A2] text-[20px]">
             Browse and discover recipes from your favorite culinary experts.
           </p>
         </div>
         <div className="w-1/2 flex items-center gap-6">
           <div className="flex items-center relative w-4/6">
-            <IoSearchOutline className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200" />
+            <IoSearchOutline className="text-[#5B21BD] absolute ml-3 opacity-100 transition-opacity duration-200" />
             <input
               type="search"
               placeholder="Search recipes"
-              className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-[10px] pl-8"
+              className="placeholder-[color:#5B21BD] focus:placeholder-transparent w-full py-3 border border-[#CCBAEB] rounded-[10px] pl-8"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <div className="relative w-2/6">
             <button
-              className="text-[#004C3F] w-full py-3 border border-[#B0BFB6] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer"
+              className="text-[#5B21BD] w-full py-3 border border-[#CCBAEB] rounded-[10px] flex justify-center items-center gap-2 cursor-pointer"
               onClick={toggleFilterDropdown}
             >
               <CiFilter />
               <span>Filter</span>
             </button>
             {isFilterOpen && (
-              <div className="absolute top-15 left-0 w-full bg-white border border-[#B0BFB6] rounded-[10px] shadow-lg z-10">
+              <div className="absolute top-15 left-0 w-full bg-white border border-[#CCBAEB] rounded-[10px] shadow-lg z-10">
                 {categories.map((category) => (
                   <div
                     key={category}
-                    className="px-4 py-2 hover:bg-[#B0BFB6] cursor-pointer text-[#004C3F]"
+                    className="px-4 py-2 hover:bg-[#CCBAEB] cursor-pointer text-[#5B21BD]"
                     onClick={() => handleCategorySelect(category)}
                   >
                     {category}
@@ -361,12 +361,12 @@ function AllRecipes() {
               </div>
               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
                 <div className="flex justify-between">
-                  <h2 className="text-xl font-semibold text-[#004C3F] lora">
+                  <h2 className="text-xl font-semibold text-[#5B21BD] lora">
                     {recipe.title}
                   </h2>
-                  <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
+                  <IoIosHeartEmpty className="text-[#5B21BD] w-[16px] h-[16px]" />
                 </div>
-                <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline FSM-block px-4 py-1 rounded-[29px]">
+                <p className="mt-1 text-sm text-[#5B21BD] bg-[#CCBAEB] inline FSM-block px-4 py-1 rounded-[29px]">
                   {recipe.category}
                 </p>
                 <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
@@ -388,7 +388,7 @@ function AllRecipes() {
                     to={`/dashboard/recipes_dettails/${recipe.id}`} // Updated Link with recipe ID
                     className="mt-4 text-white py-2 rounded-[29px] cursor-pointer"
                   >
-                <div className="w-full bg-teal-800 py-2 rounded-[29px] text-center">
+                <div className="w-full bg-[#5B21BD] py-2 rounded-[29px] text-center">
                     View Details
                 </div>
                   </Link>
@@ -397,7 +397,7 @@ function AllRecipes() {
           ))
         ) : (
           <div className="col-span-full text-center py-10">
-            <p className="text-[#004C3F] text-xl">No recipes found matching your search or category.</p>
+            <p className="text-[#5B21BD] text-xl">No recipes found matching your search or category.</p>
           </div>
         )}
       </div>

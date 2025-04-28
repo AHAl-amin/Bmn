@@ -171,25 +171,25 @@ const AiChat = () => {
             <div className="lora flex items-center justify-between p-4">
                 <div className="flex flex-col items-start">
                     <div className="flex gap-10">
-                        <h1 className="text-[#004C3F] font-bold text-[35px]">AI Chat</h1>
+                        <h1 className="text-[#5B21BD] font-bold text-[35px]">AI Chat</h1>
                         <div className="flex space-x-6">
-                            <button className="border border-[#B0BFB6] text-[#004C3F] rounded-xl px-4 flex items-center cursor-pointer font-semibold">
+                            <button className="border border-[#EFE9F8] text-[#5B21BD] rounded-xl px-4 flex items-center cursor-pointer font-semibold">
                                 Select Recipe
                                 <IoIosArrowDown className="ml-2" />
                             </button>
                             <div className="relative">
                                 <button
                                     onClick={toggleDropdown}
-                                    className="border border-[#B0BFB6] h-full text-[#004C3F] rounded-xl px-4 flex items-center cursor-pointer font-semibold"
+                                    className="border border-[#EFE9F8] h-full text-[#5B21BD] rounded-xl px-4 flex items-center cursor-pointer font-semibold"
                                 >
                                     Recipe Chat
                                     <IoIosArrowDown className="ml-2" />
                                 </button>
                                 {showDropdown && (
-                                    <div className="absolute top-full mt-2 w-40 bg-white border border-[#B0BFB6] rounded-lg shadow-lg z-10">
+                                    <div className="absolute top-full mt-2 w-40 bg-white border border-[#EFE9F8] rounded-lg shadow-lg z-10">
                                         <Link to='/dashboard/inspiration_chat'
                                             onClick={handleInspirationClick}
-                                            className="block w-full text-left px-4 py-2 text-[#004C3F] hover:bg-gray-100"
+                                            className="block w-full text-left px-4 py-2 text-[#5B21BD] hover:bg-gray-100"
                                         >
                                             New Creation
                                         </Link>
@@ -201,9 +201,9 @@ const AiChat = () => {
                     <p className="text-[#A2A2A2] font-medium text-[20px] mt-2">
                         Chat with your culinary AI assistant to get recipe ideas, modifications, and more.
                     </p>
-                    <div className="border w-screen mt-4 border-[#E7E7E7]"></div>
+                    <div className="border w-screen mt-4 border-[#CCBAEB]"></div>
                     <div className="py-2">
-                        <p className="font-semibold text-[24px] text-[#004C3F]">Dark Chocolate Ganache</p>
+                        <p className="font-semibold text-[24px] text-[#5B21BD]">Dark Chocolate Ganache</p>
                         <p className="text-[#A2A2A2]">Ask questions specific to this recipe</p>
                     </div>
                 </div>
@@ -217,7 +217,7 @@ const AiChat = () => {
                                 <div className="rounded-full text-white flex items-center justify-center">
                                     <img src={aiIcon} className="h-10 w-10 mt-1 text-white" />
                                 </div>
-                                <div className="px-5 py-4 rounded-lg bg-gray-200 dark:bg-[#E6EBE8] text-black dark:text-[#595959] lg:text-[16px] shadow-sm w-full">
+                                <div className="px-5 py-4 rounded-lg bg-gray-200 dark:bg-[#EFE9F8] text-black dark:text-[#595959] lg:text-[16px] shadow-sm w-full">
                                     <ReactMarkdown>Hello! I'm your AI assistant. How can I help you today?</ReactMarkdown>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@ const AiChat = () => {
                                 <div className="flex flex-col items-end w-full">
                                     <div className="flex justify-end items-end space-x-3">
                                         {message.text ? (
-                                            <div className="px-4 py-3 rounded-xl bg-[#004C3F] text-white lg:text-[16px] shadow-md w-full">
+                                            <div className="px-4 py-3 rounded-xl bg-[#5B21BD] text-white lg:text-[16px] shadow-md w-full">
                                                 <span>{message.text}</span>
                                             </div>
                                         ) : (
@@ -247,11 +247,11 @@ const AiChat = () => {
                                                 </div>
                                             </div>
                                         )}
-                                        <div className="h-10 w-18 rounded-full bg-gray-300 flex items-center justify-center">
+                                        <div className=" rounded-full bg-gray-300 flex items-center justify-center">
                                             <img
                                                 src="https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
                                                 alt=""
-                                                className="rounded-full h-full w-full"
+                                                className="rounded-full h-10 min-w-10"
                                             />
                                         </div>
                                     </div>
@@ -259,10 +259,10 @@ const AiChat = () => {
                             ) : (
                                 <div className="flex flex-col items-start w-full">
                                     <div className="flex items-start space-x-3 w-[80%]">
-                                        <div className="h-10 w-10 rounded-full bg-[#2F80A9] flex items-center justify-center">
+                                        <div className="h-10 w-10 rounded-full bg-[#5B21BD] flex items-center justify-center">
                                             <img src={aiIcon} className="h-10 w-10 text-white" />
                                         </div>
-                                        <div className="px-5 py-4 rounded-lg dark:bg-[#E6EBE8] text-black dark:text-[#595959] lg:text-[16px] max-w-[80%]">
+                                        <div className="px-5 py-4 rounded-lg dark:bg-[#EFE9F8] text-black dark:text-[#595959] lg:text-[16px] max-w-[80%]">
                                             <ReactMarkdown>{message.text}</ReactMarkdown>
                                         </div>
                                     </div>
@@ -292,10 +292,10 @@ const AiChat = () => {
                         <div className="flex w-full">
                             <div className="flex flex-col items-start w-full">
                                 <div className="flex items-start space-x-3 mb-12">
-                                    <div className="h-10 w-10 rounded-full bg-[#E6EBE8] flex items-center justify-center">
+                                    <div className="h-10 w-10 rounded-full bg-[#EFE9F8] flex items-center justify-center">
                                         <img src={aiIcon} className="h-10 w-10 text-white" />
                                     </div>
-                                    <div className="px-5 py-4 rounded-lg bg-[#E6EBE8] text-black dark:text-gray-200 shadow-sm">
+                                    <div className="px-5 py-4 rounded-lg bg-[#EFE9F8] text-black dark:text-gray-200 shadow-sm">
                                         <div className="flex space-x-1">
                                             <div
                                                 className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
@@ -331,7 +331,7 @@ const AiChat = () => {
                                     setSelectedImage(null);
                                     setSelectedFileName("");
                                 }}
-                                className="absolute top-1 right-1 bg-[#2F80A9] text-white rounded-full p-[2px] hover:bg-[#2f6ea9] cursor-pointer"
+                                className="absolute top-1 right-1 bg-[#5B21BD] text-white rounded-full p-[2px] hover:bg-[#2f6ea9] cursor-pointer"
                             >
                                 <GoPaperAirplane />
                             </button>
@@ -341,7 +341,7 @@ const AiChat = () => {
                 )}
 
                 <div className="p-3 fixed bottom-0 w-6/7 bg-white left-[250px] z-50">
-                    <div className="flex items-center border border-[#004C3F] rounded-[10px] px-4 py-3">
+                    <div className="flex items-center border border-[#5B21BD] rounded-[10px] px-4 py-3">
                         <input
                             type="file"
                             accept="image/*"
@@ -366,11 +366,11 @@ const AiChat = () => {
                             ref={inputRef}
                         />
                         <button
-                            className={`${isLoading ? "text-gray-400" : "text-blue-500 hover:text-blue-700"}`}
+                            className={`${isLoading ? "text-gray-400" : "text-blue-500 "}`}
                             onClick={handleSendMessage}
                             disabled={isLoading}
                         >
-                            <SendIcon className="h-5 w-5 cursor-pointer text-[#004C3F]" />
+                            <SendIcon className="h-5 w-5 cursor-pointer text-[#5B21BD]" />
                         </button>
                     </div>
                 </div>

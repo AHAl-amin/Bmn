@@ -126,7 +126,7 @@ const ChefSubscribtion = () => {
                
 
                 <div className="mb-6 md:mb-12">
-                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#0077B6] mb-3 md:mb-4">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4">
                         Subscription Settings
                     </h1>
                     <p className="text-gray-600 text-[20px] md:text-base">
@@ -134,7 +134,7 @@ const ChefSubscribtion = () => {
                     </p>
                 </div>
                 <div className="flex justify-end mb-4">
-                    <p className="bg-[#0077B6] px-4 py-2 rounded-xl text-white cursor-pointer">add new plan +</p>
+                    <p className="bg-[#5B21BD] px-4 py-2 rounded-xl text-white cursor-pointer">Add New Plan +</p>
                 </div>
 
                 {/* Toggle Switch */}
@@ -182,11 +182,11 @@ const ChefSubscribtion = () => {
                                 {monthlyPlans.map((plan, index) => (
                                     <motion.div
                                         key={`monthly-${index}`}
-                                        className="bg-white hover:bg-[#D9EBF4] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
+                                        className="bg-white hover:bg-[#CCBAEB] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
                                         variants={cardVariants}
                                     >
                                         <div className="p-4 md:p-8 flex flex-col flex-grow">
-                                            <h2 className="text-lg md:text-2xl font-bold  text-[#0077B6] mb-4 md:mb-8 text-center">
+                                            <h2 className="text-lg md:text-2xl font-bold  text-[#5B21BD] mb-4 md:mb-8 text-center">
                                                 {plan.name}
                                             </h2>
                                             <div className="md:-mx-8 md:p-8 text-gray-100 dark:text-gray-100 md:mb-8">
@@ -203,14 +203,14 @@ const ChefSubscribtion = () => {
                                             <ul className="space-y-2 md:space-y-4 flex-grow">
                                                 {plan.features.map((feature, featureIndex) => (
                                                     <li key={featureIndex} className="flex items-center">
-                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-full bg-gray-200  text-blue-600 dark:text-blue-400 mr-2" />
-                                                        <span className=" text-[#0077B6] text-xs md:text-base">
+                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-full bg-gray-200  text-[#5B21BD] dark:text-[#5B21BD] mr-2" />
+                                                        <span className=" text-[#5B21BD] text-xs md:text-base">
                                                             {feature}
                                                         </span>
                                                     </li>
                                                 ))}
                                             </ul>
-                                            <button className="mt-4 md:mt-8 w-full bg-[#0077B6]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
+                                            <button className="mt-4 md:mt-8 w-full bg-[#5B21BD]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
                                                 Get Started <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                                             </button>
                                         </div>
@@ -229,7 +229,7 @@ const ChefSubscribtion = () => {
                                 {yearlyPlans.map((plan, index) => (
                                     <motion.div
                                         key={`yearly-${index}`}
-                                        className="bg-white hover:bg-[#D9EBF4] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
+                                        className="bg-white hover:bg-[#CCBAEB] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
                                         variants={cardVariants}
                                     >
                                         <div className="p-4 md:p-8 flex flex-col flex-grow">
@@ -250,14 +250,14 @@ const ChefSubscribtion = () => {
                                             <ul className="space-y-2 md:space-y-4 flex-grow">
                                                 {plan.features.map((feature, featureIndex) => (
                                                     <li key={featureIndex} className="flex items-center">
-                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-full bg-gray-200 dark:bg-gray-600 text-blue-600 dark:text-blue-400 mr-2" />
+                                                        <Check className="h-4 w-4 md:h-5 md:w-5 p-[2px] md:p-[3px] rounded-full bg-gray-200 dark:bg-gray-600 text-[#5B21BD] dark:text-[#5B21BD] mr-2" />
                                                         <span className="text-slate-700 dark:text-gray-300 text-xs md:text-base">
                                                             {feature}
                                                         </span>
                                                     </li>
                                                 ))}
                                             </ul>
-                                            <button className="mt-4 md:mt-8 w-full bg-[#0077B6]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
+                                            <button className="mt-4 md:mt-8 w-full bg-[#5B21BD]  text-white py-2 md:py-3 px-4 md:px-6 rounded-full font-medium flex items-center justify-center transition-colors duration-300 text-sm md:text-base cursor-pointer">
                                                 Get Started <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                                             </button>
                                         </div>
@@ -270,38 +270,38 @@ const ChefSubscribtion = () => {
 
                 <div className="p-6 bg-gray-100  flex justify-center items-center">
           <div className=" w-full py-10 space-y-4">
-            <h1 className="text-[34px] font-semibold text-[#0077B6] mb-2">Annual Discount Settings</h1>
+            <h1 className="text-[34px] font-semibold text-[#5B21BD] mb-2">Annual Discount Settings</h1>
             <p className="text-gray-500 mb-6">Configure discounts for annual subscriptions</p>
             
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               <div className="flex-1">
-                <label className="block text-[#0077B6] mb-2">Basic Plan Discount (%)</label>
+                <label className="block text-[#5B21BD] mb-2">Basic Plan Discount (%)</label>
                 <input
                   type="number"
                   defaultValue="15"
-                  className="w-full p-2 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-[#0077B6] mb-2">Professional Plan Discount (%)</label>
+                <label className="block text-[#5B21BD] mb-2">Professional Plan Discount (%)</label>
                 <input
                   type="number"
                   defaultValue="20"
-                  className="w-full p-2 border border-gray-300  bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border border-gray-300  bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
                 />
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row gap-4 items-end">
               <div className="flex-1">
-                <label className="block text-[#0077B6] mb-2">Premium Plan Discount (%)</label>
+                <label className="block text-[#5B21BD] mb-2">Premium Plan Discount (%)</label>
                 <input
                   type="number"
                   defaultValue="15"
-                  className="w-full p-2 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
                 />
               </div>
-              <button className="bg-[#0077B6] cursor-pointer text-white px-4 py-2 rounded-lg">
+              <button className="bg-[#5B21BD] cursor-pointer text-white px-4 py-2 rounded-lg">
                 Save Changes
               </button>
             </div>

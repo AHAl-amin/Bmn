@@ -138,29 +138,29 @@ function ChefAllRecipes() {
       <div className="md:px-10 py-6 lora">
         <div className="flex items-center justify-between px-2">
           <div className='md:w-1/2'>
-            <h1 className="text-[#0077B6] text-[34px] font-semibold">All Recipes</h1>
+            <h1 className="text-[#5B21BD] text-[34px] font-semibold">All Recipes</h1>
             <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
           </div>
           <div className="relative flex gap-6 md:w-2/5" ref={filterRef}>
             <div className="flex items-center relative w-full">
-              <IoSearchOutline className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200" />
+              <IoSearchOutline className="text-[#5B21BD] absolute ml-3 opacity-100 transition-opacity duration-200" />
               <input
                 type="search"
                 placeholder="Search recipes"
-                className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-full pl-8"
+                className="placeholder-[color:#5B21BD] focus:placeholder-transparent w-full py-3 border border-[#5B21BD] rounded-full pl-8"
                 value={searchQuery}
                 onChange={handleSearchInput}
               />
             </div>
             <button
               onClick={() => setIsFilterOpen((prev) => !prev)}
-              className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+              className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
             >
               <CiFilter />
               <span>Filter</span>
             </button>
             {isFilterOpen && (
-              <ul className="absolute right-0 z-50 mt-2 w-40 origin-top-right top-12 rounded-md border border-blue-400 bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+              <ul className="absolute right-0 z-50 mt-2 w-40 origin-top-right top-12 rounded-md border border-[#5B21BD] bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
                 {categories.map((category) => (
                   <li key={category}>
                     <button
@@ -189,7 +189,7 @@ function ChefAllRecipes() {
               </div>
               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-semibold text-[#0077B6] lora">{recipe.title}</h2>
+                  <h2 className="text-xl font-semibold text-[#5B21BD] lora">{recipe.title}</h2>
                   <div
                     className="relative inline-block text-left"
                     ref={(el) => (dropdownRefs.current[recipe.id] = el)}
@@ -202,10 +202,10 @@ function ChefAllRecipes() {
                       }
                       className="btn btn-ghost btn-circle"
                     >
-                      <HiDotsHorizontal className="text-[#0077B6] w-[16px] h-[16px] cursor-pointer" />
+                      <HiDotsHorizontal className="text-[#5B21BD] w-[16px] h-[16px] cursor-pointer" />
                     </button>
                     {openDropdownId === recipe.id && (
-                      <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-blue-400 bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+                      <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-[#5B21BD] bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
                         <li>
                           <Link to='/chef_dashboard/chef_recipese_dettails_view' className="cursor-pointer">Edit</Link>
                         </li>
@@ -222,10 +222,10 @@ function ChefAllRecipes() {
                   </div>
                 </div>
                 <div className="flex gap-4 py-2">
-                  <p className="text-sm text-white bg-[#0077B6] inline-block px-4 py-1 rounded-[29px]">
+                  <p className="text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px]">
                     {recipe.category}
                   </p>
-                  <p className="text-white text-sm bg-[#003214] px-4 py-1 rounded-full">
+                  <p className="text-white text-sm bg-[#5B21BD] px-4 py-1 rounded-full">
                     Published
                   </p>
                 </div>
@@ -252,13 +252,13 @@ function ChefAllRecipes() {
             className="shadow h-full rounded-xl p-2 text-white flex justify-center items-center cursor-pointer"
           >
             <div className="space-y-4 py-4">
-              <div className="bg-[#0077B6] rounded-full flex justify-center items-center mx-auto w-[50px] h-[50px]">
+              <div className="bg-[#5B21BD] rounded-full flex justify-center items-center mx-auto w-[50px] h-[50px]">
                 <span className="text-[25px]">
                   <IoMdAdd />
                 </span>
               </div>
-              <p className="text-[#0077B6] text-center">Add New Recipe</p>
-              <button className="flex bg-[#0077B6] py-1 px-3 rounded-full items-center gap-2 cursor-pointer">
+              <p className="text-[#5B21BD] text-center">Add New Recipe</p>
+              <button className="flex bg-[#5B21BD] py-1 px-3 rounded-full items-center gap-2 cursor-pointer">
                 Add New Recipe <IoMdAdd />
               </button>
             </div>

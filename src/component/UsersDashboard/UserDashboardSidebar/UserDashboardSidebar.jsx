@@ -31,7 +31,7 @@
 //       {/* Toggle Icon for Small Devices */}
 //       <div className="md:hidden flex justify-start p-4 bg-[#B0BFB6]">
 //         <IoReorderThreeOutline
-//           className="h-8 w-8 text-[#004C3F] cursor-pointer"
+//           className="h-8 w-8 text-[#5B21BD] cursor-pointer"
 //           onClick={toggleSidebar}
 //         />
 //       </div>
@@ -48,7 +48,7 @@
 //           <NavLink
 //             to="/dashboard"
 
-//             className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${isDashboardActive ? 'bg-[#004C3F]  text-white rounded-md' : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+//             className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${isDashboardActive ? 'bg-[#5B21BD]  text-white rounded-md' : 'text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md'
 //               }`}
 
 //           >
@@ -60,8 +60,8 @@
 //             to="/dashboard/ai_chat"
 //             className={({ isActive }) =>
 //               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-//                 ? 'bg-[#004C3F] text-white rounded-md'
-//                 : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+//                 ? 'bg-[#5B21BD] text-white rounded-md'
+//                 : 'text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md'
 //               }`
 //             }
 //           >
@@ -76,8 +76,8 @@
 //               location.pathname.startsWith('/dashboard/ai_chat') ||
 //                 location.pathname.startsWith('/dashboard/inspiration_chat')
 
-//                 ? 'flex items-center gap-3 px-3 py-2 bg-[#004C3F] text-white rounded-md w-full'
-//                 : 'flex items-center gap-3 px-3 py-2 text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md '
+//                 ? 'flex items-center gap-3 px-3 py-2 bg-[#5B21BD] text-white rounded-md w-full'
+//                 : 'flex items-center gap-3 px-3 py-2 text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md '
 //             }
 //           >
 //             <FaBrain className="h-6 w-6" />
@@ -88,8 +88,8 @@
 //             to="/dashboard/community"
 //             className={({ isActive }) =>
 //               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-//                 ? 'bg-[#004C3F] text-white rounded-md'
-//                 : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+//                 ? 'bg-[#5B21BD] text-white rounded-md'
+//                 : 'text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md'
 //               }`
 //             }
 //           >
@@ -101,8 +101,8 @@
 //             to="/dashboard/save_recipes"
 //             className={({ isActive }) =>
 //               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-//                 ? 'bg-[#004C3F] text-white rounded-md'
-//                 : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+//                 ? 'bg-[#5B21BD] text-white rounded-md'
+//                 : 'text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md'
 //               }`
 //             }
 //           >
@@ -118,7 +118,7 @@
 //             }`
 //           }
 //         >
-//           <IoSettingsOutline className="h-6 w-6 text-[#004C3F] hover:text-white  " />
+//           <IoSettingsOutline className="h-6 w-6 text-[#5B21BD] hover:text-white  " />
 //           <h1 className="text-lg font-medium text-white">Profile & setting</h1>
 //         </NavLink> */}
 
@@ -126,8 +126,8 @@
 //             to="/dashboard/profile_settings"
 //             className={({ isActive }) =>
 //               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
-//                 ? 'bg-[#004C3F] text-white rounded-md'
-//                 : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+//                 ? 'bg-[#5B21BD] text-white rounded-md'
+//                 : 'text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md'
 //               }`
 //             }
 //           >
@@ -137,7 +137,7 @@
 
 //         </div>
 
-//         <NavLink className='flex items-center gap-2 justify-center text-[#004C3F] h-full '>
+//         <NavLink className='flex items-center gap-2 justify-center text-[#5B21BD] h-full '>
 //           <RiLogoutCircleLine /> <p>Logout</p>
 //         </NavLink>
 //       </div>
@@ -186,16 +186,16 @@ const UserDashboardSidebar = () => {
   return (
     <div className="">
       {/* Toggle Icon for Small Devices */}
-      <div className="md:hidden flex justify-start p-4 bg-[#B0BFB6]">
+      <div className="md:hidden flex justify-start p-4 bg-[#5B21BD]">
         <IoReorderThreeOutline
-          className="h-8 w-8 text-[#004C3F] cursor-pointer"
+          className="h-8 w-8 text-[#5B21BD] cursor-pointer"
           onClick={toggleSidebar}
         />
       </div>
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#B0BFB6] pt-10 lora transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#CCBAEB] pt-10 lora transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } md:relative md:translate-x-0 md:block h-screen`}
       >
@@ -207,8 +207,8 @@ const UserDashboardSidebar = () => {
             to="/dashboard"
             className={`flex items-center gap-3 px-3 py-3 transition-colors duration-200 ${
               isDashboardActive
-                ? 'bg-[#004C3F] text-white rounded-md'
-                : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+                ? 'bg-[#5B21BD] text-white rounded-md'
+                : 'text-[#5B21BD] hover:bg-[#CCBAEB] hover:text-white rounded-md'
             }`}
           >
             <PiChefHatFill className="h-6 w-6" />
@@ -220,8 +220,8 @@ const UserDashboardSidebar = () => {
             className={() =>
               location.pathname.startsWith('/dashboard/ai_chat') ||
               location.pathname.startsWith('/dashboard/inspiration_chat')
-                ? 'flex items-center gap-3 px-3 py-2 bg-[#004C3F] text-white rounded-md w-full'
-                : 'flex items-center gap-3 px-3 py-2 text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+                ? 'flex items-center gap-3 px-3 py-2 bg-[#5B21BD] text-white rounded-md w-full'
+                : 'flex items-center gap-3 px-3 py-2 text-[#5B21BD] hover:bg-[#a07eda] hover:text-white rounded-md'
             }
           >
             <FaBrain className="h-6 w-6" />
@@ -233,8 +233,8 @@ const UserDashboardSidebar = () => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${
                 isActive
-                  ? 'bg-[#004C3F] text-white rounded-md'
-                  : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+                  ? 'bg-[#5B21BD] text-white rounded-md'
+                  : 'text-[#5B21BD] hover:bg-[#a07eda] hover:text-white rounded-md'
               }`
             }
           >
@@ -247,8 +247,8 @@ const UserDashboardSidebar = () => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${
                 isActive
-                  ? 'bg-[#004C3F] text-white rounded-md'
-                  : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+                  ? 'bg-[#5B21BD] text-white rounded-md'
+                  : 'text-[#5B21BD] hover:bg-[#a07eda] hover:text-white rounded-md'
               }`
             }
           >
@@ -261,8 +261,8 @@ const UserDashboardSidebar = () => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${
                 isActive
-                  ? 'bg-[#004C3F] text-white rounded-md'
-                  : 'text-[#004C3F] hover:bg-[#4c6460] hover:text-white rounded-md'
+                  ? 'bg-[#5B21BD] text-white rounded-md'
+                  : 'text-[#5B21BD] hover:bg-[#a07eda] hover:text-white rounded-md'
               }`
             }
           >
@@ -271,7 +271,7 @@ const UserDashboardSidebar = () => {
           </NavLink>
         </div>
 
-        <NavLink className="flex items-center gap-2 justify-center text-[#004C3F] h-full">
+        <NavLink className="flex items-center gap-2 justify-center text-[#5B21BD] h-full">
           <RiLogoutCircleLine /> <p>Logout</p>
         </NavLink>
       </div>

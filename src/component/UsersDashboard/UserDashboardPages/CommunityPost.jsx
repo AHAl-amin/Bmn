@@ -19,7 +19,7 @@ function CommunityPost() {
                     <div className="    p-6 flex flex-col justify-between h-full">
                         {/* Text Content */}
                         <div>
-                            <h2 className="text-xl font-bold text-[#004C3F]">Chef Bonbon Lina</h2>
+                            <h2 className="text-xl font-bold text-[#5B21BD]">Chef Bonbon Lina</h2>
                             <h3 className="text-lg font-semibold text-[#9A9A9A]">Mirror Glaze for Bonbons</h3>
                             <p className="mt-2 text-[#9A9A9A]">
                                 I'M excited to share this new technique I've been perfecting for creating mirror-glazed bonbons. The secret is in the temperature
@@ -27,7 +27,7 @@ function CommunityPost() {
                         </div>
 
                         {/* Button */}
-                        <button className="mt-4 bg-[#004C3F] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
+                        <button className="mt-4 bg-[#5B21BD] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
                             view post
                         </button>
                     </div>
@@ -42,7 +42,7 @@ function CommunityPost() {
                     <div className="    p-6 flex flex-col justify-between h-full">
                         {/* Text Content */}
                         <div>
-                            <h2 className="text-xl font-bold text-[#004C3F]">Chef Bonbon Lina</h2>
+                            <h2 className="text-xl font-bold text-[#5B21BD]">Chef Bonbon Lina</h2>
                             <h3 className="text-lg font-semibold text-[#9A9A9A]">Mirror Glaze for Bonbons</h3>
                             <p className="mt-2 text-[#9A9A9A]">
                                 I'M excited to share this new technique I've been perfecting for creating mirror-glazed bonbons. The secret is in the temperature
@@ -50,7 +50,7 @@ function CommunityPost() {
                         </div>
 
                         {/* Button */}
-                        <button className="mt-4 bg-[#004C3F] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
+                        <button className="mt-4 bg-[#5B21BD] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
                             view post
                         </button>
                     </div>
@@ -65,7 +65,7 @@ function CommunityPost() {
                     <div className="    p-6 flex flex-col justify-between h-full">
                         {/* Text Content */}
                         <div>
-                            <h2 className="text-xl font-bold text-[#004C3F]">Chef Bonbon Lina</h2>
+                            <h2 className="text-xl font-bold text-[#5B21BD]">Chef Bonbon Lina</h2>
                             <h3 className="text-lg font-semibold text-[#9A9A9A]">Mirror Glaze for Bonbons</h3>
                             <p className="mt-2 text-[#9A9A9A]">
                                 I'M excited to share this new technique I've been perfecting for creating mirror-glazed bonbons. The secret is in the temperature
@@ -73,7 +73,7 @@ function CommunityPost() {
                         </div>
 
                         {/* Button */}
-                        <button className="mt-4 bg-[#004C3F] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
+                        <button className="mt-4 bg-[#5B21BD] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
                             view post
                         </button>
                     </div>
@@ -88,7 +88,7 @@ function CommunityPost() {
                     <div className="    p-6 flex flex-col justify-between h-full">
                         {/* Text Content */}
                         <div>
-                            <h2 className="text-xl font-bold text-[#004C3F]">Chef Bonbon Lina</h2>
+                            <h2 className="text-xl font-bold text-[#5B21BD]">Chef Bonbon Lina</h2>
                             <h3 className="text-lg font-semibold text-[#9A9A9A]">Mirror Glaze for Bonbons</h3>
                             <p className="mt-2 text-[#9A9A9A]">
                                 I'M excited to share this new technique I've been perfecting for creating mirror-glazed bonbons. The secret is in the temperature
@@ -96,7 +96,7 @@ function CommunityPost() {
                         </div>
 
                         {/* Button */}
-                        <button className="mt-4 bg-[#004C3F] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
+                        <button className="mt-4 bg-[#5B21BD] text-white font-semibold rounded-[29px] py-2 px-4 cursor-pointer ">
                             view post
                         </button>
                     </div>

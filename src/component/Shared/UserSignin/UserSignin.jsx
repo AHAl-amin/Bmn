@@ -44,13 +44,13 @@ function UserSingin() {
         <div className="flex justify-center">
           <img src={login_img2} className='h-[220px] ' alt="img" />
         </div>
-        <h1 className='text-[50px] text-[#0077B6] font-bold text-center'>Welcome </h1>
+        <h1 className='text-[50px] text-[#5B21BD] font-bold text-center'>Welcome </h1>
         <p className='text-[#A8A8A8] text-[16px] text-center mb-3'>Enter your email & password to access your account</p>
 
         <form onSubmit={handleSubmit} className="space-y-1">
          
           <div className="relative">
-            <label className="block text-[#005989] mb-1 text-[20px]">Email</label>
+            <label className="block text-[#5B21BD] mb-1 text-[20px]">Email</label>
             <div className="relative">
               <input
                 type="email"
@@ -59,7 +59,7 @@ function UserSingin() {
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => setEmailFocused(true)}
                 onBlur={() => setEmailFocused(email !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#0077B6] rounded-[8px] "
+                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] "
                 required
               />
              
@@ -68,7 +68,7 @@ function UserSingin() {
           
 
           <div className="relative">
-            <label className="block text-[#005989] mb-1 text-[20px]">Password</label>
+            <label className="block text-[#5B21BD] mb-1 text-[20px]">Password</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'} // Toggle input type
@@ -77,14 +77,14 @@ function UserSingin() {
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => setPasswordFocused(true)}
                 onBlur={() => setPasswordFocused(password !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#0077B6] rounded-[8px] pr-10"
+                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] pr-10"
                 required
               />
              
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#0077B6] cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD] cursor-pointer"
               >
                 {showPassword ? (
                   <IoEyeOffOutline size={20} />
@@ -105,13 +105,13 @@ function UserSingin() {
     <input
       type="checkbox"
       id="rememberMe"
-      className="mr-2 h-4 w-4 text-[#0077B6] border-[#0077B6] rounded focus:ring-[#0077B6]"
+      className="mr-2 h-4 w-4 text-[#5B21BD] border-[#5B21BD] rounded focus:ring-[#5B21BD]"
     />
-    <label htmlFor="rememberMe" className="text-[#005989]">
+    <label htmlFor="rememberMe" className="text-[#5B21BD]">
       Remember me
     </label>
   </div>
-  <Link className="text-[#003214]" to="/forgot-password">
+  <Link className="text-[#5B21BD]" to="/forgot-password">
     Forget Password
   </Link>
 </div>
@@ -122,7 +122,7 @@ function UserSingin() {
           <div>
             <button
               type="submit"
-              className="bg-[#0077B6] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full text-[20px]"
+              className="bg-[#5B21BD] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full text-[20px]"
             >
              SIGN IN
             </button>
@@ -131,7 +131,7 @@ function UserSingin() {
           don't have an account?
             <Link
               to="/user_signup"
-              className="text-[#003214] cursor-pointer underline"
+              className="text-[#5B21BD] cursor-pointer underline"
             >
               Sign Up
             </Link>

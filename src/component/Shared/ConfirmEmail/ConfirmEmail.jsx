@@ -45,7 +45,7 @@ function ConfirmEmail() {
                             onChange={(e) => setEmail(e.target.value)}
                             onFocus={() => setEmailFocused(true)}
                             onBlur={() => setEmailFocused(email !== "")}
-                            className="w-full  px-4 py-3 border bg-[#F8FCFF] border-[#5C91B1] rounded pl-10"
+                            className="w-full  px-4 py-3 border bg-[#F8FCFF] border-[#5B21BD] rounded pl-10"
                             required
                         />
                         {!emailFocused && (
@@ -61,7 +61,7 @@ function ConfirmEmail() {
                     <div className="flex justify-center mt-16">
                         <button
                             type="submit"
-                            className="bg-[#1B97D8] text-white rounded-[8px] mx-auto px-6 py-2 cursor-pointer w-[123px]"
+                            className="bg-[#5B21BD] text-white rounded-[8px] mx-auto px-6 py-2 cursor-pointer w-[123px]"
                         >
                             Confirm
                         </button>

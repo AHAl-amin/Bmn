@@ -81,14 +81,14 @@
 //           <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
 //             {/* Title */}
 //             <div className="flex justify-between">
-//               <h2 className="text-xl font-semibold text-[#004C3F] lora">
+//               <h2 className="text-xl font-semibold text-[#5B21BD] lora">
 //                 {recipe.title}
 //               </h2>
-//               <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
+//               <IoIosHeartEmpty className="text-[#5B21BD] w-[16px] h-[16px]" />
 //             </div>
 
 //             {/* Category */}
-//             <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline-block px-4 py-1 rounded-[29px]">
+//             <p className="mt-1 text-sm text-[#5B21BD] bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px]">
 //               {recipe.category}
 //             </p>
 
@@ -125,7 +125,7 @@
 //     </div>
 
 //     <div className=''>
-//         <button className="w-full bg-[#004C3F] border mt-2 cursor-pointer text-white font-bold py-3 px-4 rounded-[10px] transition-colors duration-200">
+//         <button className="w-full bg-[#5B21BD] border mt-2 cursor-pointer text-white font-bold py-3 px-4 rounded-[10px] transition-colors duration-200">
 //           Select This Chef
 //         </button>
 //       </div>
@@ -231,14 +231,14 @@ function PreviewGallary() {
             <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
               {/* Title */}
               <div className="flex justify-between">
-                <h2 className="text-xl font-semibold text-[#004C3F] lora">
+                <h2 className="text-xl font-semibold text-[#5B21BD] lora">
                   {recipe.title}
                 </h2>
-                <IoIosHeartEmpty className="text-[#004C3F] w-[16px] h-[16px]" />
+                <IoIosHeartEmpty className="text-[#5B21BD] w-[16px] h-[16px]" />
               </div>
 
               {/* Category */}
-              <p className="mt-1 text-sm text-[#004C3F] bg-[#B0BFB6] inline-block px-4 py-1 rounded-[29px]">
+              <p className="mt-1 text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px]">
                 {recipe.category}
               </p>
 
@@ -271,7 +271,7 @@ function PreviewGallary() {
       <div className=''>
         <button 
           onClick={openModal}
-          className="w-full bg-[#004C3F] border mt-2 cursor-pointer text-white font-bold py-3 px-4 rounded-[10px] transition-colors duration-200"
+          className="w-full bg-[#5B21BD] border mt-2 cursor-pointer text-white font-bold py-3 px-4 rounded-[10px] transition-colors duration-200"
         >
           Select This Chef
         </button>
@@ -279,7 +279,7 @@ function PreviewGallary() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-[#004C3FCC] bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-[#5B21BDCC] bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg h-11/12  w-4/6">
            
             <div className="flex space-x-4 p-2">
@@ -289,7 +289,7 @@ function PreviewGallary() {
                   // Add your confirmation logic here
                   closeModal();
                 }}
-                className="px-6 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E] transition-colors cursor-pointer duration-200"
+                className="px-6 py-2 bg-[#5B21BD] text-white rounded-[10px] hover:bg-[#5B21BD] transition-colors cursor-pointer duration-200"
               >
                 Back
               </button>

@@ -75,14 +75,14 @@ function Verification() {
                 <div className="w-1/2 flex mx-auto bg-[#F8FCFF] shadow-md rounded px-10 py-20">
                     <div className="text-center space-y-8">
                         {/* Header Text */}
-                        <p className="text-lg text-[#012939] font-semibold">
+                        <p className="text-lg text-[#5B21BD] font-semibold">
                             We have sent you an activation code.
                         </p>
                         <p className="text-sm text-gray-600">
                             An email has been sent to your email address containing a <br />
                             code to reset your password.
                         </p>
-                        <h2 className="text-[16px] font-semibold text-[#012939]">
+                        <h2 className="text-[16px] font-semibold text-[#5B21BD]">
                             Enter verification code
                         </h2>
 
@@ -100,7 +100,7 @@ function Verification() {
                                     onFocus={() => handleFocus(index)}
                                     onBlur={() => handleBlur(index)}
                                     ref={(el) => (inputRefs.current[index] = el)}
-                                    className="w-12 h-12 text-center text-xl border border-gray-300 rounded-full pt-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="w-12 h-12 text-center text-xl border border-gray-300 rounded-full pt-2 focus:outline-none focus:ring-2 focus:ring-#5B21BD"
                                 />
                             ))}
                         </div>
@@ -110,7 +110,7 @@ function Verification() {
                             If you didn’t receive a code!{' '}
                             <span
                                 onClick={handleResendClick}
-                                className="text-blue-500 cursor-pointer underline"
+                                className="text-[#5B21BD] cursor-pointer underline"
                             >
                                 click here..
                             </span>
@@ -119,7 +119,7 @@ function Verification() {
                         {/* Confirm Button */}
                         <button
                             onClick={handleSubmit}
-                            className="bg-[#1B97D8] text-[#F6F8FA] px-6 py-2 rounded-[8px] text-[16px] font-bold w-[123px] cursor-pointer"
+                            className="bg-[#5B21BD] text-[#F6F8FA] px-6 py-2 rounded-[8px] text-[16px] font-bold w-[123px] cursor-pointer"
                         >
                             Confirm
                         </button>
@@ -134,7 +134,7 @@ function Verification() {
                     onClick={handleBackdropClick} // Add click handler to backdrop
                 >
                     <div className="bg-white rounded-lg p-6 w-96 shadow-lg space-y-8 py-10 ">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full mx-auto bg-[#1B97D8] text-white">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full mx-auto bg-[#5B21BD] text-white">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-8 w-8"

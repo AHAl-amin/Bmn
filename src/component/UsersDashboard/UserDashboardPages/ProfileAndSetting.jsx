@@ -33,7 +33,7 @@ function ProfileAndSetting() {
     };
     return (
         <div className='px-10 py-4 lora'>
-            <h1 className="text-[#004C3F] text-[45px] font-semibold">Profile information</h1>
+            <h1 className="text-[#5B21BD] text-[45px] font-semibold">Profile information</h1>
             <p className="text-[#A2A2A2] text-[20px] capitalize">
                 Update your information and public details
             </p>
@@ -52,7 +52,7 @@ function ProfileAndSetting() {
                     </div>
 
                     <div className="flex justify-center mb-4">
-                        <label className="text-[#004C3F] border border-[#004C3F] p-2 rounded-[10px] cursor-pointer flex items-center">
+                        <label className="text-[#5B21BD] border border-[#5B21BD] p-2 rounded-[10px] cursor-pointer flex items-center">
                             <span className="mr-2 text-[20px]">Change Photo</span>
                             <MdOutlineCameraAlt />
                             <input
@@ -68,7 +68,7 @@ function ProfileAndSetting() {
                     <div className='py-10 '>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-4 text-[20px]">
                             <div>
-                                <label className="block text-sm font-medium text-[#004C3F] text-[20px]">First Name</label>
+                                <label className="block text-sm font-medium text-[#5B21BD] text-[20px]">First Name</label>
                                 <input
                                     type="text"
                                     name="firstName"
@@ -79,7 +79,7 @@ function ProfileAndSetting() {
                                 />
                             </div>
                             <div>
-                                <label className="block font-medium text-[#004C3F] text-[20px]">Last Name</label>
+                                <label className="block font-medium text-[#5B21BD] text-[20px]">Last Name</label>
                                 <input
                                     type="text"
                                     name="lastName"
@@ -93,7 +93,7 @@ function ProfileAndSetting() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-4">
                             <div className='bg-[#FFFFFF]'>
-                                <label className="block text-[#004C3F] text-[20px] font-medium">Email Address</label>
+                                <label className="block text-[#5B21BD] text-[20px] font-medium">Email Address</label>
                                 <input
                                     type="email"
                                     placeholder='Enter your email'
@@ -104,7 +104,7 @@ function ProfileAndSetting() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-[#004C3F] text-[20px] font-medium ">Phone Number</label>
+                                <label className="block text-[#5B21BD] text-[20px] font-medium ">Phone Number</label>
                                 <input
                                     type="tel"
                                     name="phone"
@@ -119,7 +119,7 @@ function ProfileAndSetting() {
                         <div>
                             <button
                                 onClick={handleSubmit}
-                                className=" bg-[#004C3F] text-[20px] text-white p-2 rounded-[10px]  px-4"
+                                className=" bg-[#5B21BD] text-[20px] text-white p-2 rounded-[10px]  px-4"
                             >
                                 Save Changes
                             </button>

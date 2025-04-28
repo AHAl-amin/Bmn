@@ -73,12 +73,12 @@ const chefsData = [
 const AdminDashboardChefs = () => {
     return (
         <div className='px-10 py-6'>
-            <p className='text-[30px] text-[#0077B6] font-semibold mb-4'>Manage Chefs & Influencers</p>
+            <p className='text-[30px] text-[#5B21BD] font-semibold mb-4'>Manage Chefs & Influencers</p>
 
             <div className="overflow-x-auto rounded-lx">
                 <table className="min-w-full border-collapse">
                     <thead>
-                        <tr className="bg-blue-100 text-[#0077B6] uppercase text-sm">
+                        <tr className="bg-[#CCBAEB] text-[#5B21BD] uppercase text-sm">
                             <th className="py-3 px-4 text-left">Chef</th>
                             <th className="py-3 px-4 text-left">Specialty</th>
                             <th className="py-3 px-4 text-left">Subscribers</th>
@@ -91,8 +91,7 @@ const AdminDashboardChefs = () => {
                         {chefsData.map((chef, index) => (
                             <tr
                                 key={index}
-                                className={`${index % 2 === 0 ? 'bg-white' : 'bg-blue-50'
-                                    } hover:bg-gray-100`}
+                                className='border-b border-b-[#CCBAEB]'
                             >
                                 <td className="py-3 px-4 flex items-center">
                                     <img

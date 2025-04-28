@@ -71,11 +71,11 @@ function AdminDashboardUser() {
   return (
     <div>
       <div className="px-10 py-6">
-        <h2 className="text-[34px] font-semibold text-[#0077B6] mb-1">All users</h2>
+        <h2 className="text-[34px] font-semibold text-[#5B21BD] mb-1">All users</h2>
         <p className="text-xl text-gray-500 mb-8">Manage end users and their subscriptions</p>
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-blue-100 text-gray-700">
+            <tr className="bg-[#CCBAEB] text-gray-700">
               <th className="py-2 px-4 text-left">User</th>
               <th className="py-2 px-4 text-left">Subscribed To</th>
               <th className="py-2 px-4 text-left">Status</th>
@@ -86,7 +86,7 @@ function AdminDashboardUser() {
           </thead>
           <tbody>
             {userData.map((row, index) => (
-              <tr key={index} className="border-b border-[#E4E4E4]">
+              <tr key={index} className="border-b border-[#CCBAEB]">
                 <td className="py-2 px-4 flex items-center">
                   <img
                     src="https://i.ibb.co.com/60hvPZRS/bannerimg-01.png"

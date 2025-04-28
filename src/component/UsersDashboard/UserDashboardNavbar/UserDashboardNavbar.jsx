@@ -46,7 +46,7 @@ const UserDashboardNavbar = () => {
                             {isCommunityPath ? (
                                 <button
                                     onClick={toggleAddChefModal}
-                                    className="flex items-center gap-2 px-4 py-2 text-white bg-[#004C3F] rounded-[10px] cursor-pointer"
+                                    className="flex items-center gap-2 px-4 py-2 text-white bg-[#5B21BD] rounded-[10px] cursor-pointer"
                                 >
                                     <span className="font-medium">New Creation</span>
                                     <IoMdAdd />
@@ -55,7 +55,7 @@ const UserDashboardNavbar = () => {
                                 <Link
                                     to="/"
                                     onClick={toggleAddChefModal}
-                                    className="flex items-center gap-2 px-4 py-2 text-white bg-[#004C3F] rounded-[10px] cursor-pointer"
+                                    className="flex items-center gap-2 px-4 py-2 text-white bg-[#5B21BD] rounded-[10px] cursor-pointer"
                                 >
                                     <PiChefHatFill />
                                     <span className="font-medium">Add Chefs</span>
@@ -64,10 +64,10 @@ const UserDashboardNavbar = () => {
                             )}
 
                             {/* Profile button */}
-                            <button className="flex items-center text-[#004C3F] gap-2 px-4 py-2 border-[#B0BFB6] border rounded-[10px] cursor-pointer">
+                            <button className="flex items-center text-[#5B21BD] gap-2 px-4 py-2 border-[#CCBAEB] border rounded-[10px] cursor-pointer">
                                 <PiChefHatFill />
-                                <span className="text-teal-800 font-medium">Bobon lina</span>
-                                <IoIosArrowDown className="h-5 w-5 text-teal-800" />
+                                <span className="text-[#5B21BD] font-medium">Bobon lina</span>
+                                <IoIosArrowDown className="h-5 w-5 text-[#5B21BD]" />
                             </button>
                         </div>
                     </div>
@@ -76,7 +76,7 @@ const UserDashboardNavbar = () => {
                     <NavLink to="/dashboard/user_notifications">
                         <div className="relative">
                             <button className="p-2 rounded-full hover:bg-gray-100 transition-transform duration-200 cursor-pointer">
-                                <GoBellFill className="h-7 w-7 text-[#004C3F]" />
+                                <GoBellFill className="h-7 w-7 text-[#5B21BD]" />
                             </button>
                             <div className="absolute text-[10px] p-[5px] top-[6px] right-[10px] bg-gray-200 rounded-full"></div>
                         </div>
@@ -104,10 +104,10 @@ const UserDashboardNavbar = () => {
 
             {/* Add Chef Modal - Only shows when path is /dashboard/community */}
             {shouldShowModal && (
-                <div className="fixed inset-0 bg-[#004C3FCC] bg-opacity-50 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-[#5B21BDCC] bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
                         <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-2xl font-bold text-[#004C3F]">Share Your Creation</h2>
+                            <h2 className="text-2xl font-bold text-[#5B21BD]">Share Your Creation</h2>
                             <button
                                 onClick={toggleAddChefModal}
                                 className="text-gray-500 hover:text-gray-700 cursor-pointer"
@@ -163,12 +163,12 @@ const UserDashboardNavbar = () => {
                                 <div className="flex justify-end space-x-3 pt-4">
                                     <button
                                         onClick={toggleAddChefModal}
-                                        className="px-4 py-2 border border-[#B0BFB6] rounded-[10px] text-[#004C3F] hover:bg-gray-50 cursor-pointer"
+                                        className="px-4 py-2 border border-[#CCBAEB] rounded-[10px] text-[#5B21BD] hover:bg-gray-50 cursor-pointer"
                                     >
                                         Cancel
                                     </button>
                                     <button
-                                        className="px-4 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E] cursor-pointer"
+                                        className="px-4 py-2 bg-[#5B21BD] text-white rounded-[10px] hover:bg-[#00382E] cursor-pointer"
                                     >
                                         Share Post
                                     </button>

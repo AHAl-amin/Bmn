@@ -114,7 +114,7 @@
 //                 <div className='flex justify-center'>
 //                     <img src={landingPageIcon} alt="Culinary Experts Logo" className='w-[200px] h-[120px]' />
 //                 </div>
-//                 <h1 className='text-[60px] font-semibold text-[#004C3F] text-center'>Choose Your Culinary Expert</h1>
+//                 <h1 className='text-[60px] font-semibold text-[#5B21BD] text-center'>Choose Your Culinary Expert</h1>
 //                 <p className='text-[20px] text-[#8F8F8F] text-center pb-8 pt-4'>
 //                     Select a chef whose expertise aligns with your culinary interests. You'll get access <br />
 //                     to their exclusive recipes, techniques, and personalized AI assistance.
@@ -122,16 +122,16 @@
 
 //                 <div className='flex justify-center gap-2 relative'>
 //                     <div className='absolute top-4 right-2/3 mr-6'>
-//                         <IoSearchOutline className='text-[#004C3F]' />
+//                         <IoSearchOutline className='text-[#5B21BD]' />
 //                     </div>
 //                     <input
 //                         type="search"
-//                         className='placeholder:text-[#004C3F] w-1/3 border border-[#B0BFB6] py-2 rounded-full pl-10'
+//                         className='placeholder:text-[#5B21BD] w-1/3 border border-[#5B21BD80] py-2 rounded-full pl-10'
 //                         placeholder='Search by name, specialty, or keyword'
 //                         value={searchQuery}
 //                         onChange={handleSearchChange}
 //                     />
-//                     <button className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2'>
+//                     <button className='text-[#5B21BD] border border-[#5B21BD80] py-2 px-6 rounded-full flex items-center gap-2'>
 //                         <CiFilter />
 //                         <span>filter</span>
 //                     </button>
@@ -147,7 +147,7 @@
 //                     `}</style>
 //             </div>
 
-//             <h1 className="text-[40px] lora font-semibold pl-10 text-[#004C3F] pt-4">All Culinary Experts</h1>
+//             <h1 className="text-[40px] lora font-semibold pl-10 text-[#5B21BD] pt-4">All Culinary Experts</h1>
 //             {filteredData.length === 0 ? (
 //                 <p className="text-center text-[#515151] text-lg p-10">No culinary experts found matching your search.</p>
 //             ) : (
@@ -168,7 +168,7 @@
 
 //                             <div className="p-6">
 //                                 <div className="flex justify-between items-start mb-2">
-//                                     <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
+//                                     <h2 className="text-[24px] font-semibold text-[#5B21BD]">{item.title}</h2>
 //                                 </div>
 
 //                                 <h3 className="text-lg font-medium text-[#515151] mb-3">{item.category}</h3>
@@ -199,7 +199,7 @@
 //                                     </div>
 
 //                                     <button
-//                                         className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
+//                                         className="px-4 py-2 text-[#5B21BD] text-[18px] font-medium rounded cursor-pointer"
 //                                         onClick={() => openModalWithChef(item)}
 //                                     >
 //                                         Details
@@ -213,15 +213,15 @@
 
 //             {/* Modal */}
 //             {isModalOpen && selectedChef && (
-//                 <div className="fixed inset-0 flex items-center justify-center bg-[#004C3FCC] bg-opacity-50 z-50 overflow-y-auto py-10">
+//                 <div className="fixed inset-0 flex items-center justify-center bg-[#5B21BDCC] bg-opacity-50 z-50 overflow-y-auto py-10">
 //                     <div className="bg-white rounded-lg p-6 w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] flex flex-col">
 //                         <div className="flex justify-between items-start mb-4">
 //                             <div>
-//                                 <h2 className="text-2xl font-semibold text-[#004C3F]">{selectedChef.title}</h2>
+//                                 <h2 className="text-2xl font-semibold text-[#5B21BD]">{selectedChef.title}</h2>
 //                                 <p className='text-[#515151]'> {selectedChef.category}</p>
 //                             </div>
 //                             <button
-//                                 className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
+//                                 className="px-6 py-2 bg-[#5B21BD] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
 //                                 onClick={closeModal}
 //                             >
 //                                 Back
@@ -259,9 +259,9 @@
 //                             </div>
                             
 //                             <div className='flex justify-between gap-4 py-4'>
-//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
-//                                 <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
-//                                 <div className="flex items-center justify-center bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center">
+//                                 <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
+//                                 <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
+//                                 <div className="flex items-center justify-center bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center">
 //                                     <span className="mr-1 text-[#676767] font-medium">{selectedChef.rating}</span>
 //                                     <svg className="w-5 h-5 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
 //                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3 .921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784 .57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81 .588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -269,11 +269,11 @@
 //                                 </div>
 //                             </div>
 
-//                             <div className="bg-[#D9E0DC] rounded-[10px] py-2 flex gap-6 justify-between px-4 sm:px-10 mt-4">
+//                             <div className="bg-[#EFE9F8] rounded-[10px] py-2 flex gap-6 justify-between px-4 sm:px-10 mt-4">
 //                                 <button
 //                                     className={`w-1/3 py-2 rounded-[10px] transition-colors ${activeButton === 'about'
-//                                         ? 'bg-[#004C3F] text-white'
-//                                         : 'text-[#004C3F] hover:bg-[#004C3F20]'
+//                                         ? 'bg-[#5B21BD] text-white'
+//                                         : 'text-[#5B21BD] hover:bg-[#5B21BD20]'
 //                                         }`}
 //                                     onClick={() => handleButtonClick('about')}
 //                                 >
@@ -281,8 +281,8 @@
 //                                 </button>
 //                                 <button
 //                                     className={`w-1/3 py-2 rounded-[10px] transition-colors ${activeButton === 'preview'
-//                                         ? 'bg-[#004C3F] text-white'
-//                                         : 'text-[#004C3F] hover:bg-[#004C3F20]'
+//                                         ? 'bg-[#5B21BD] text-white'
+//                                         : 'text-[#5B21BD] hover:bg-[#5B21BD20]'
 //                                         }`}
 //                                     onClick={() => handleButtonClick('preview')}
 //                                 >
@@ -293,7 +293,7 @@
 //                             <div className="relative mt-2">
 //                                 {activeButton === 'about' ? (
 //                                     <>
-//                                         <p className='text-[26px] font-semibold text-[#004C3F] mb-4'>About chef {selectedChef.user_profile}</p>
+//                                         <p className='text-[26px] font-semibold text-[#5B21BD] mb-4'>About chef {selectedChef.user_profile}</p>
 //                                         <Exprience />
 //                                         <p className="text-gray-600 mt-4">{selectedChef.description}</p>
 //                                     </>
@@ -456,7 +456,7 @@ const Home = () => {
                 <div className='flex justify-center mb-4'>
                     <img src={landingPageIcon} alt="Culinary Experts Logo" className='w-[200px] h-[150px]' />
                 </div>
-                <h1 className='text-[60px] font-semibold text-[#004C3F] text-center'>Choose Your Culinary Expert</h1>
+                <h1 className='text-[60px] font-semibold text-[#5B21BD] text-center'>Choose Your Culinary Expert</h1>
                 <p className='text-[20px] text-[#8F8F8F] text-center pb-8 pt-4'>
                     Select a chef whose expertise aligns with your culinary interests. You'll get access <br />
                     to their exclusive recipes, techniques, and personalized AI assistance.
@@ -464,11 +464,11 @@ const Home = () => {
 
                 <div className='flex justify-center gap-2 relative'>
                     <div className='absolute top-4 right-2/3 mr-6'>
-                        <IoSearchOutline className='text-[#004C3F]' />
+                        <IoSearchOutline className='text-[#5B21BD]' />
                     </div>
                     <input
                         type="search"
-                        className='placeholder:text-[#004C3F] w-1/3 border border-[#B0BFB6] py-2 rounded-full pl-10'
+                        className='placeholder:text-[#5B21BD] w-1/3 border border-[#5B21BD80] py-2 rounded-full pl-10'
                         placeholder='Search by name, specialty, or keyword'
                         value={searchQuery}
                         onChange={handleSearchChange}
@@ -476,17 +476,17 @@ const Home = () => {
                     />
                     <div className='relative' ref={filterRef}>
                         <button
-                            className='text-[#004C3F] border border-[#B0BFB6] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer'
+                            className='text-[#5B21BD] border border-[#5B21BD80] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer'
                             onClick={toggleFilterDropdown}
                         >
                             <CiFilter />
                             <span>filter</span>
                         </button>
                         {isFilterOpen && (
-                            <div className='absolute right-0 mt-2 w-48 bg-white border border-[#B0BFB6] rounded-lg shadow-lg z-10'>
+                            <div className='absolute right-0 mt-2 w-48 bg-white border border-[#5B21BD80] rounded-lg shadow-lg z-10'>
                                 <ul className='py-1'>
                                     <li
-                                        className='px-4 py-2 text-[#004C3F] hover:bg-[#E6EBE8] cursor-pointer'
+                                        className='px-4 py-2 text-[#5B21BD] hover:bg-[#E6EBE8] cursor-pointer'
                                         onClick={() => handleSubTitleSelect('')}
                                     >
                                         All
@@ -494,7 +494,7 @@ const Home = () => {
                                     {uniqueSubTitles.map((subTitle) => (
                                         <li
                                             key={subTitle}
-                                            className='px-4 py-2 text-[#004C3F] hover:bg-[#E6EBE8] cursor-pointer'
+                                            className='px-4 py-2 text-[#5B21BD] hover:bg-[#E6EBE8] cursor-pointer'
                                             onClick={() => handleSubTitleSelect(subTitle)}
                                         >
                                             {subTitle}
@@ -515,13 +515,13 @@ const Home = () => {
                 </div>
             </div>
 
-            <h1 className="text-[40px] lora font-semibold pl-10 text-[#004C3F] pt-4">All Culinary Experts</h1>
+            <h1 className="text-[40px] lora font-semibold pl-10 text-[#5B21BD] pt-4">All Culinary Experts</h1>
             {filteredData.length === 0 ? (
                 <p className="text-center text-[#515151] text-lg p-10">No culinary experts found matching your search or filter.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10 " >
                     {filteredData.map((item) => (
-                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora"onClick={() => openModalWithChef(item)} >
+                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora "onClick={() => openModalWithChef(item)} >
                             <div className="h-52 overflow-hidden">
                                 <img
                                     src={item.image}
@@ -536,7 +536,7 @@ const Home = () => {
 
                             <div className="p-6">
                                 <div className="flex justify-between items-start mb-2">
-                                    <h2 className="text-[24px] font-semibold text-[#004C3F]">{item.title}</h2>
+                                    <h2 className="text-[24px] font-semibold text-[#5B21BD]">{item.title}</h2>
                                 </div>
 
                                 <h3 className="text-lg font-medium text-[#515151] mb-3">{item.category}</h3>
@@ -567,7 +567,7 @@ const Home = () => {
                                     </div>
 
                                     <button
-                                        className="px-4 py-2 text-[#004C3F] text-[18px] font-medium rounded cursor-pointer"
+                                        className="px-4 py-2 text-[#5B21BD] text-[18px] font-medium rounded cursor-pointer"
                                         // onClick={() => openModalWithChef(item)}
                                     >
                                         Details
@@ -581,15 +581,15 @@ const Home = () => {
 
             {/* Modal */}
             {isModalOpen && selectedChef && (
-                <div className="fixed inset-0 flex items-center justify-center bg-[#004C3FCC] bg-opacity-50 z-50 overflow-y-auto py-10">
+                <div className="fixed inset-0 flex items-center justify-center bg-[#5B21BDCC] bg-opacity-50 z-50 overflow-y-auto py-10">
                     <div className="bg-white rounded-lg p-6 w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] flex flex-col">
                         <div className="flex justify-between items-start mb-4">
                             <div>
-                                <h2 className="text-2xl font-semibold text-[#004C3F]">{selectedChef.title}</h2>
+                                <h2 className="text-2xl font-semibold text-[#5B21BD]">{selectedChef.title}</h2>
                                 <p className='text-[#515151]'> {selectedChef.category}</p>
                             </div>
                             <button
-                                className="px-6 py-2 bg-[#004C3F] text-white font-medium rounded hover:bg-[#00382D] transition-colors"
+                                className="px-6 py-2 bg-[#5B21BD] text-white font-medium rounded hover:bg-[#5B21BD] transition-colors"
                                 onClick={closeModal}
                             >
                                 Back
@@ -627,9 +627,9 @@ const Home = () => {
                             </div>
                             
                             <div className='flex justify-between gap-4 py-4'>
-                                <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
-                                <div className='bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
-                                <div className="flex items-center justify-center bg-[#D9E0DC] px-4 py-2 w-full rounded-[10px] text-center">
+                                <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
+                                <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
+                                <div className="flex items-center justify-center bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center">
                                     <span className="mr-1 text-[#676767] font-medium">{selectedChef.rating}</span>
                                     <svg className="w-5 h-5 text-[#FACC15]" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3 .921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784 .57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81 .588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -637,11 +637,11 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-[#D9E0DC] rounded-[10px] py-2 flex gap-6 justify-between px-4 sm:px-10 mt-4">
+                            <div className="bg-[#EFE9F8] rounded-[10px] py-2 flex gap-6 justify-between px-4 sm:px-10 mt-4">
                                 <button
                                     className={`w-1/3 py-2 rounded-[10px] transition-colors ${activeButton === 'about'
-                                        ? 'bg-[#004C3F] text-white'
-                                        : 'text-[#004C3F] hover:bg-[#004C3F20]'
+                                        ? 'bg-[#5B21BD] text-white'
+                                        : 'text-[#5B21BD] hover:bg-[#5B21BD20]'
                                         }`}
                                     onClick={() => handleButtonClick('about')}
                                 >
@@ -649,8 +649,8 @@ const Home = () => {
                                 </button>
                                 <button
                                     className={`w-1/3 py-2 rounded-[10px] transition-colors ${activeButton === 'preview'
-                                        ? 'bg-[#004C3F] text-white'
-                                        : 'text-[#004C3F] hover:bg-[#004C3F20]'
+                                        ? 'bg-[#5B21BD] text-white'
+                                        : 'text-[#5B21BD] hover:bg-[#5B21BD20]'
                                         }`}
                                     onClick={() => handleButtonClick('preview')}
                                 >
@@ -661,7 +661,7 @@ const Home = () => {
                             <div className="relative mt-2">
                                 {activeButton === 'about' ? (
                                     <>
-                                        <p className='text-[26px] font-semibold text-[#004C3F] mb-4'>About chef {selectedChef.title}</p>
+                                        <p className='text-[26px] font-semibold text-[#5B21BD] mb-4'>About chef {selectedChef.title}</p>
                                         <Exprience />
                                         <p className="text-gray-600 mt-4 absolute top-4">{selectedChef.description}</p>
                                     </>

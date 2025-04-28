@@ -21,7 +21,7 @@ function PasswordChangeSuccesfully() {
           <div className="w-full rounded-lg bg-[#F8FCFF] py-14 shadow-md">
             <div className="flex flex-col items-center justify-center space-y-6">
               {/* Success Icon */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1B97D8] text-white">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#5B21BD] text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
@@ -46,7 +46,7 @@ function PasswordChangeSuccesfully() {
               {/* Back to Login Button */}
               <Link
                 to="/login"
-                className="flex items-center justify-center rounded-[8px] bg-[#1B97D8] px-4 py-2 text-[#F6F8FA] w-[194px] transition-colors"
+                className="flex items-center justify-center rounded-[8px] bg-[#5B21BD] px-4 py-2 text-[#F6F8FA] w-[194px] transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
