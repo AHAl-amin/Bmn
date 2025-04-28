@@ -160,7 +160,7 @@ function ChefRecipesEditPage() {
                             <p className="w-full border bg-[#FFFFFF] border-[#B0D5E8] rounded-[10px] py-3 px-3">
                                 1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
                             </p>
-                            <RiDeleteBin6Line className='text-[#FF0000] border border-[#B0D5E8] rounded-[10px] flex justify-center items-center  size-12 p-2' />
+                            <IoMdAdd className=' border border-[#B0D5E8] rounded-[10px] flex justify-center items-center  size-12 p-2' />
                         </div>
 
 
@@ -194,7 +194,7 @@ function ChefRecipesEditPage() {
                             <p className="w-full border bg-[#FFFFFF] border-[#B0D5E8] rounded-[10px] py-3 px-3">
                                 1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
                             </p>
-                            <RiDeleteBin6Line className='text-[#FF0000] border border-[#B0D5E8] rounded-[10px] flex justify-center items-center  size-12 p-2' />
+                            <IoMdAdd className=' border border-[#B0D5E8] rounded-[10px] flex justify-center items-center  size-12 p-2' />
                         </div>
 
 
@@ -202,8 +202,8 @@ function ChefRecipesEditPage() {
                 </div>
 
                 <div className=' space-x-4 mt-10'>
-                    <Link className='text-xl border border-[#0077B6]  text-[#0077B6] py-1 px-5 rounded-[10px]  cursor-pointer  '>Cancel </Link>
-                    <Link className='text-xl text-white bg-[#0077B6] py-1 px-5 rounded-[10px]  cursor-pointer  '>Save Change</Link>
+                    <Link className='text-xl border border-[#0077B6]  text-[#0077B6] py-2 px-5 rounded-[10px]  cursor-pointer  '>Cancel </Link>
+                    <Link className='text-xl text-white bg-[#0077B6] py-2 px-5 rounded-[10px]  cursor-pointer  '>Save Change</Link>
                 </div>
             </div>
 

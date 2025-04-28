@@ -71,6 +71,7 @@ import { GoBellFill } from 'react-icons/go';
 import { IoMdAdd } from 'react-icons/io';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { FiUpload } from 'react-icons/fi';
 
 function ChefDashboardNavber() {
   // State to manage modal visibility and image upload
@@ -100,14 +101,14 @@ function ChefDashboardNavber() {
   return (
     <div className="flex items-center justify-end pt-10 lora h-16 px-6 md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)]">
       <div className="flex items-center space-x-8">
-        {/* <button
+        <button
           onClick={toggleAddChefModal}
           className="flex items-center gap-2 px-4 py-2 text-white bg-[#0077B6] rounded-[10px] cursor-pointer"
         >
-          <FaLightbulb />
-          <span className="font-medium">Add Chefs</span>
+
+          <span className="font-medium">Share Creation</span>
           <IoMdAdd />
-        </button> */}
+        </button>
 
         <NavLink to="/dashboard/user_notifications">
           <div className="relative">
@@ -138,7 +139,7 @@ function ChefDashboardNavber() {
               <h2 className="text-xl font-bold text-[#004C3F]">Share Your Creation</h2>
               <button
                 onClick={toggleAddChefModal}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 cursor-pointer"
               >
                 ×
               </button>
@@ -165,50 +166,40 @@ function ChefDashboardNavber() {
 
               <div className="mb-6">
                 <label className="block text-gray-700 mb-2">Photo</label>
-                <div className="w-full p-6 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center">
-                  {image ? (
-                    <img
-                      src={image}
-                      alt="Uploaded preview"
-                      className="max-w-full max-h-48 object-contain mb-2"
+                <div className="mb-6">
+                  <label className="block text-gray-700 mb-2 text-xl font-medium">Photo</label>
+                  <div
+                    className="w-full p-6 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer"
+                    onClick={() => document.getElementById('fileInput').click()}
+                  >
+                    {image ? (
+                      <img src={image} alt="Uploaded preview" className="max-w-full max-h-48 object-contain mb-2" />
+                    ) : (
+                      <>
+                        <FiUpload className='text-[25px]' />
+                        <span className="text-gray-500">Upload Image</span>
+                      </>
+                    )}
+                    <input
+                      id="fileInput"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
                     />
-                  ) : (
-                    <>
-                      <svg
-                        className="w-8 h-8 text-gray-400 mb-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M7 16V8a4 4 0 014-4h2a4 4 0 014 4v8a4 4 0 01-4 4h-2a4 4 0 01-4-4zM12 8v8M9 12h6"
-                        ></path>
-                      </svg>
-                      <span className="text-gray-500">Upload Image</span>
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="mt-2 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100"
-                  />
+                  </div>
                 </div>
               </div>
 
               <div className="flex justify-end space-x-3 pt-4">
                 <button
                   onClick={toggleAddChefModal}
-                  className="px-4 py-2 border border-[#B0BFB6] rounded-[10px] text-[#004C3F] hover:bg-gray-50"
+                  className="px-4 py-2 border border-[#B0BFB6] rounded-[10px] text-[#004C3F] hover:bg-gray-50 cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
-                  className="px-4 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E]"
+                  className="px-4 py-2 bg-[#004C3F] text-white rounded-[10px] hover:bg-[#00382E] cursor-pointer"
                 >
                   Share Post
                 </button>

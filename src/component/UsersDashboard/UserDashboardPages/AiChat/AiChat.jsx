@@ -247,7 +247,7 @@ const AiChat = () => {
                                                 </div>
                                             </div>
                                         )}
-                                        <div className="h-10 w-16 rounded-full bg-gray-300 flex items-center justify-center">
+                                        <div className="h-10 w-18 rounded-full bg-gray-300 flex items-center justify-center">
                                             <img
                                                 src="https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
                                                 alt=""

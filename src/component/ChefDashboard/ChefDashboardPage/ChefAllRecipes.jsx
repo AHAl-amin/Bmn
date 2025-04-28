@@ -1,14 +1,14 @@
 
 
 
-
 import React, { useEffect, useRef, useState } from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoMdAdd } from 'react-icons/io';
+import { IoSearchOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
-// JSON data for recipes
+// JSON data for recipes (unchanged)
 const initialRecipes = [
   {
     id: 1,
@@ -68,24 +68,37 @@ const initialRecipes = [
 
 function ChefAllRecipes() {
   const [recipes, setRecipes] = useState(initialRecipes);
-  const [filteredRecipes, setFilteredRecipes] = useState(initialRecipes); // State for filtered recipes
+  const [filteredRecipes, setFilteredRecipes] = useState(initialRecipes);
+  const [searchQuery, setSearchQuery] = useState(''); // New state for search query
   const [openDropdownId, setOpenDropdownId] = useState(null);
-  const [isFilterOpen, setIsFilterOpen] = useState(false); // State for filter dropdown
-  const dropdownRefs = useRef({}); // Store refs for each dropdown
-  const filterRef = useRef(null); // Ref for filter dropdown
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const dropdownRefs = useRef({});
+  const filterRef = useRef(null);
 
-  // Get unique categories
   const categories = ['All', ...new Set(initialRecipes.map((recipe) => recipe.category))];
+
+  // Handle search functionality
+  const handleSearch = (query) => {
+    const filtered = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
+  };
+
+  // Update search query and trigger search
+  const handleSearchInput = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    handleSearch(query);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Close recipe dropdowns
       if (
         !Object.values(dropdownRefs.current).some((ref) => ref && ref.contains(event.target))
       ) {
         setOpenDropdownId(null);
       }
-      // Close filter dropdown
       if (filterRef.current && !filterRef.current.contains(event.target)) {
         setIsFilterOpen(false);
       }
@@ -99,29 +112,46 @@ function ChefAllRecipes() {
   const handleDelete = (id) => {
     const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
     setRecipes(updatedRecipes);
-    setFilteredRecipes(updatedRecipes); // Update filtered recipes after deletion
-    setOpenDropdownId(null); // Close dropdown after deletion
+    // Apply search filter to updated recipes
+    const filtered = updatedRecipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
+    setOpenDropdownId(null);
   };
 
   const handleFilter = (category) => {
-    if (category === 'All') {
-      setFilteredRecipes(recipes);
-    } else {
-      const filtered = recipes.filter((recipe) => recipe.category === category);
-      setFilteredRecipes(filtered);
+    let filtered = recipes;
+    if (category !== 'All') {
+      filtered = recipes.filter((recipe) => recipe.category === category);
     }
-    setIsFilterOpen(false); // Close filter dropdown after selection
+    // Apply search filter after category filter
+    filtered = filtered.filter((recipe) =>
+      recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredRecipes(filtered);
+    setIsFilterOpen(false);
   };
 
   return (
     <div>
       <div className="md:px-10 py-6 lora">
-        <div className="flex md:gap-20  items-center px-2">
-          <div>
+        <div className="flex items-center justify-between px-2">
+          <div className='md:w-1/2'>
             <h1 className="text-[#0077B6] text-[34px] font-semibold">All Recipes</h1>
             <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
           </div>
-          <div className="relative" ref={filterRef}>
+          <div className="relative flex gap-6 md:w-2/5" ref={filterRef}>
+            <div className="flex items-center relative w-full">
+              <IoSearchOutline className="text-[#004C3F] absolute ml-3 opacity-100 transition-opacity duration-200" />
+              <input
+                type="search"
+                placeholder="Search recipes"
+                className="placeholder-[color:#004C3F] focus:placeholder-transparent w-full py-3 border border-[#B0BFB6] rounded-full pl-8"
+                value={searchQuery}
+                onChange={handleSearchInput}
+              />
+            </div>
             <button
               onClick={() => setIsFilterOpen((prev) => !prev)}
               className="text-[#0c85c2] border border-[#0c85c2] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
@@ -130,7 +160,7 @@ function ChefAllRecipes() {
               <span>Filter</span>
             </button>
             {isFilterOpen && (
-              <ul className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-md border border-blue-400 bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
+              <ul className="absolute right-0 z-50 mt-2 w-40 origin-top-right top-12 rounded-md border border-blue-400 bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
                 {categories.map((category) => (
                   <li key={category}>
                     <button
@@ -146,11 +176,10 @@ function ChefAllRecipes() {
           </div>
         </div>
 
-        {/* Card section */}
+        {/* Card section (unchanged) */}
         <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
           {filteredRecipes.map((recipe) => (
             <div key={recipe.id} className="w-full shadow rounded-xl overflow-hidden">
-              {/* Image Section */}
               <div className="relative">
                 <img
                   className="w-full h-48 object-cover"
@@ -158,10 +187,7 @@ function ChefAllRecipes() {
                   alt={recipe.title}
                 />
               </div>
-
-              {/* Content Section */}
               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
-                {/* Title and Dropdown */}
                 <div className="flex justify-between items-center">
                   <h2 className="text-xl font-semibold text-[#0077B6] lora">{recipe.title}</h2>
                   <div
@@ -195,8 +221,6 @@ function ChefAllRecipes() {
                     )}
                   </div>
                 </div>
-
-                {/* Category */}
                 <div className="flex gap-4 py-2">
                   <p className="text-sm text-white bg-[#0077B6] inline-block px-4 py-1 rounded-[29px]">
                     {recipe.category}
@@ -205,11 +229,7 @@ function ChefAllRecipes() {
                     Published
                   </p>
                 </div>
-
-                {/* Description */}
                 <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
-
-                {/* Rating and Update Date */}
                 <div className="mt-3 flex justify-between items-center">
                   <div className="flex items-center">
                     <svg
@@ -228,10 +248,10 @@ function ChefAllRecipes() {
             </div>
           ))}
           <Link
-            to="/chef_dashboard/chef_recipese_dettails_view"
+            to="/chef_dashboard/chef_recipese_edit_page"
             className="shadow h-full rounded-xl p-2 text-white flex justify-center items-center cursor-pointer"
           >
-            <div className="space-y-4">
+            <div className="space-y-4 py-4">
               <div className="bg-[#0077B6] rounded-full flex justify-center items-center mx-auto w-[50px] h-[50px]">
                 <span className="text-[25px]">
                   <IoMdAdd />
@@ -239,7 +259,7 @@ function ChefAllRecipes() {
               </div>
               <p className="text-[#0077B6] text-center">Add New Recipe</p>
               <button className="flex bg-[#0077B6] py-1 px-3 rounded-full items-center gap-2 cursor-pointer">
-                add new member <IoMdAdd />
+                Add New Recipe <IoMdAdd />
               </button>
             </div>
           </Link>
