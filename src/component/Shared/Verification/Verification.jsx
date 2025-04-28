@@ -2,7 +2,7 @@
 
 
 import React, { useRef, useState } from 'react';
-import registration_img from '../../../assets/image/hhhh.png';
+// import registration_img from '../../../assets/image/hhhh.png';
 
 function Verification() {
     const [otp, setOtp] = useState(["", "", "", ""]);

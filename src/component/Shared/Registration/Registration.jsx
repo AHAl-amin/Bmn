@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import registration_img from '../../../assets/image/hhhh.png';
+// import registration_img from '../../../assets/image/hhhh.png';
 import { LuLockKeyhole } from "react-icons/lu";
 import { MdEmail } from "react-icons/md";
 

@@ -33,18 +33,18 @@ function UserSingin() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito lora">
-      <div className="w-1/2 ">
+      <div className="w-1/2  ">
         <img
           src={login_img}
           alt="Registration illustration"
-          className=" h-screen w-full "
+          className=" h-screen w-full  "
         />
       </div>
       <div className="w-1/2 lg:px-40">
-        <div className="flex justify-center">
-          <img src={login_img2} className='h-[220px] ' alt="img" />
+        <div className="flex justify-center mb-4">
+          <img src={login_img2} className='h-[150px] w-[150px]' alt="img" />
         </div>
-        <h1 className='text-[50px] text-[#5B21BD] font-bold text-center'>Welcome </h1>
+        <h1 className='text-[50px] text-[#5B21BD] font-bold text-center'>Welcome Back </h1>
         <p className='text-[#A8A8A8] text-[16px] text-center mb-3'>Enter your email & password to access your account</p>
 
         <form onSubmit={handleSubmit} className="space-y-1">
@@ -124,14 +124,14 @@ function UserSingin() {
               type="submit"
               className="bg-[#5B21BD] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full text-[20px]"
             >
-             SIGN IN
+             Sign In
             </button>
           </div>
           <p className="text-[16px] text-[#3E3E3E] text-center py-4">
           don't have an account?
             <Link
               to="/user_signup"
-              className="text-[#5B21BD] cursor-pointer underline"
+              className="text-[#5B21BD] cursor-pointer underline ml-2"
             >
               Sign Up
             </Link>

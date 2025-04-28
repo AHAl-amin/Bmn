@@ -42,7 +42,7 @@ function UserSignup() {
       </div>
       <div className="w-1/2 lg:px-40">
         <div className="flex justify-center">
-          <img src={login_img2} className='h-[220px] ' alt="img" />
+          <img src={login_img2} className='h-[150px] w-[150px] ' alt="img" />
         </div>
         <h1 className='text-[50px] text-[#5B21BD] font-bold text-center'>Welcome </h1>
         <p className='text-[#A8A8A8] text-[16px] text-center mb-3'>Enter your email & password to access your account</p>
@@ -171,13 +171,13 @@ function UserSignup() {
               type="submit"
               className="bg-[#5B21BD] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full text-[20px]"
             >
-              SIGN Up
+              Sign Up
             </button>
           </div>
           <p className="text-[16px] text-[#3E3E3E] text-center py-4">
             Already have an account?
             <Link
-              to=""
+              to="/user_signin"
               className="text-[#5B21BD] ml-2 cursor-pointer underline"
             >
               Sign In
