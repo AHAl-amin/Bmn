@@ -1,10 +1,9 @@
 
 
-
 import { useState } from 'react';
 import img from '../../../assets/image/cercalImg.png'; // Single icon for all steps
 import { IoEyeOutline } from 'react-icons/io5';
-import { SiVerizon } from "react-icons/si";
+import { SiVerizon } from 'react-icons/si';
 
 const AiTraining = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -14,30 +13,26 @@ const AiTraining = () => {
   const [formData, setFormData] = useState({
     fileTitle: '',
     categoryType: '',
-    menuOption: ''
+    tags: ''
   });
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [isDragging, setIsDragging] = useState(false); // Track drag-over state
 
   const totalSteps = 4;
 
   const nextStep = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
-      setMaxStepReached(Math.max(maxStepReached, currentStep + 1)); // Update max step reached
+      setMaxStepReached(Math.max(maxStepReached, currentStep + 1));
       console.log('Current Step:', currentStep + 1);
-    }
-    if (currentStep === 3) {
-      setIsModalOpen(true); // Open modal when moving to Step 4
     }
   };
 
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      setMaxStepReached(Math.max(1, maxStepReached - 1)); // Decrease maxStepReached, but not below 1
       console.log('Current Step:', currentStep - 1);
-    }
-    if (currentStep === 4) {
-      setIsModalOpen(false); // Close modal when going back
     }
   };
 
@@ -45,6 +40,29 @@ const AiTraining = () => {
     if (e.target.files && e.target.files.length > 0) {
       setFiles(Array.from(e.target.files));
     }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      setFiles(Array.from(e.dataTransfer.files));
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
   };
 
   const handleInputChange = (e) => {
@@ -57,10 +75,20 @@ const AiTraining = () => {
 
   const submitForm = () => {
     console.log('Form submitted:', { selectedOption, files, formData });
-    alert('Form submitted successfully!');
-    setIsModalOpen(false); // Close modal on submit
-    setCurrentStep(1); // Reset to Step 1
-    setMaxStepReached(1); // Reset max step
+    setIsModalOpen(true); // Open modal on submit
+  };
+
+  const resetForm = () => {
+    setCurrentStep(4); // Reset to step 4 (Review & Confirm)
+    setSelectedOption(''); // Clear selected option
+    setFiles([]); // Clear uploaded files
+    setFormData({
+      fileTitle: '',
+      categoryType: '',
+      tags: ''
+    }); // Clear form data
+    setIsModalOpen(false); // Close the modal
+    // Do NOT reset maxStepReached to keep progress bar and images active
   };
 
   const getStepImage = () => {
@@ -74,7 +102,11 @@ const AiTraining = () => {
   };
 
   const isStep3Valid = () => {
-    return formData.fileTitle.trim() !== '' && formData.categoryType.trim() !== '' && formData.menuOption.trim() !== '';
+    return (
+      formData.fileTitle.trim() !== '' &&
+      formData.categoryType.trim() !== '' &&
+      formData.tags.trim() !== ''
+    );
   };
 
   return (
@@ -89,14 +121,14 @@ const AiTraining = () => {
             <div
               className="absolute bottom-14 left-0 h-1 bg-[#0077B6] z-10 transition-all duration-300"
               style={{
-                width: `${((maxStepReached - 1) / (totalSteps - 1)) * 100}%`, // Progress bar tied to maxStepReached
+                width: `${((maxStepReached - 1) / (totalSteps - 1)) * 100}%`,
                 transform: 'translateY(-50%)'
               }}
             ></div>
             <div className="absolute bottom-14 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2"></div>
 
             {[1, 2, 3, 4].map((step) => (
-              <div key={step} className="relative z-100">
+              <div key={step} className="relative z-10">
                 <div className={`relative w-14 h-14 mx-auto mb-2 ${maxStepReached >= step ? 'bg-[#0077B6] rounded-full' : ''}`}>
                   <img
                     src={getStepImage()}
@@ -129,10 +161,10 @@ const AiTraining = () => {
           <div className="border rounded-xl p-10 bg-[#FFFFFF] border-[#B0D5E8]">
             <h2 className="text-xl text-[#0077B6] font-bold mb-4">Select Content Type</h2>
             <p className="mb-6 text-[#9E9E9E]">
-              Choose This Option of Content Key. Write To Update it in Form for A Vendor.
+              Choose the type of content key. Write to update it in form for a vendor.
             </p>
 
-            <div className="space-y-3 mb-6 flex justify-between text-center text-[20px] font-semibold  text-[#0077B6]">
+            <div className="space-y-3 mb-6 flex justify-between text-center text-[20px] font-semibold text-[#0077B6]">
               {['recipes', 'calculators', 'other materials'].map((option) => (
                 <div
                   key={option}
@@ -149,15 +181,6 @@ const AiTraining = () => {
                 </div>
               ))}
             </div>
-
-            <div className="flex justify-between mt-8">
-              <button
-                className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:opacity-50"
-                disabled
-              >
-                Back
-              </button>
-            </div>
           </div>
         )}
 
@@ -168,17 +191,34 @@ const AiTraining = () => {
               Drag and drop your files or click to browse. We accept PDF, DOC, DOCX, XLS, and XLSX files up to 50MB.
             </p>
 
-            <div className="border-2 border-dashed border-[#0077B6] rounded-lg p-8 h-[250px] text-center mb-6">
+            <div
+              className={`border-2 border-dashed rounded-lg p-8 h-[250px] text-center mb-6 transition-all
+                ${isDragging ? 'border-[#0077B6] bg-blue-50' : 'border-[#0077B6]'}`}
+              onDragOver={handleDragOver}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+            >
               <input
                 type="file"
                 id="file-upload"
                 className="hidden"
                 multiple
+                accept=".pdf,.doc,.docx,.xls,.xlsx"
                 onChange={handleFileChange}
               />
-              <label htmlFor="file-upload" className="cursor-pointer block mt-10">
-                <p className="mb-4">Drag & Drop Files Here</p>
-                <button className="px-4 py-2 bg-[#0077B6] text-white rounded cursor-pointer">
+              <label
+                htmlFor="file-upload"
+                className="cursor-pointer flex flex-col items-center justify-center h-full"
+              >
+                <p className="mb-4 text-gray-600">
+                  {isDragging ? 'Drop Files Here' : 'Drag & Drop Files Here or Click to Browse'}
+                </p>
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-[#0077B6] text-white rounded "
+                  onClick={() => document.getElementById('file-upload').click()}
+                >
                   Browse Files
                 </button>
               </label>
@@ -186,7 +226,12 @@ const AiTraining = () => {
 
             {files.length > 0 && (
               <div className="mb-6">
-                <p className="text-sm text-gray-600 mb-2">{files.length} file(s) selected</p>
+                <p className="text-sm text-gray-600 mb-2">{files.length} file(s) selected:</p>
+                <ul className="text-sm text-gray-600">
+                  {files.map((file, index) => (
+                    <li key={index}>{file.name}</li>
+                  ))}
+                </ul>
               </div>
             )}
 
@@ -209,6 +254,82 @@ const AiTraining = () => {
         )}
 
         {currentStep === 3 && (
+          <div className="p-6 bg-white rounded-lg border border-gray-200">
+            <h2 className="text-4xl font-bold text-[#5B21BD] mb-2">
+              Add Metadata & Categorize
+            </h2>
+            <p className="text-sm text-gray-500 mb-6">
+              Add details to your uploaded files to help the AI understand and organize your content.
+            </p>
+
+            <div className="flex w-full gap-6">
+              <div className="mb-4 md:w-1/2">
+                <label className="block text-xl font-medium text-[#5B21BD] mb-1">
+                  File Title
+                </label>
+                <input
+                  type="text"
+                  name="fileTitle"
+                  value={formData.fileTitle}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-[#CCBAEB] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="Enter file title"
+                />
+              </div>
+
+              <div className="mb-4 md:w-1/2">
+                <label className="block text-xl font-medium text-[#5B21BD] mb-1">
+                  Category/Type
+                </label>
+                <select
+                  name="categoryType"
+                  value={formData.categoryType}
+                  onChange={handleInputChange}
+                  className="w-full p-2 py-3 border text-[#999999] border-[#CCBAEB] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                >
+                  <option value="" className="text-[#999999]">
+                    Select category
+                  </option>
+                  <option value="Chocolate souffle">Chocolate souffle</option>
+                  <option value="Vanilla cake">Vanilla cake</option>
+                  <option value="Lemon tart">Lemon tart</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-xl font-medium text-[#5B21BD] mb-1">
+                Tags (Comma separated)
+              </label>
+              <input
+                type="text"
+                name="tags"
+                value={formData.tags}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-[#CCBAEB] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="Enter tags (comma separated)"
+              />
+            </div>
+
+            <div className="flex justify-between mt-8">
+              <button
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+                onClick={prevStep}
+              >
+                Previous
+              </button>
+              <button
+                className="px-4 py-2 bg-[#0077B6] text-white rounded disabled:opacity-50"
+                onClick={nextStep}
+                disabled={!isStep3Valid()}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
+
+        {currentStep === 4 && (
           <div className="mt-8 bg-white rounded-xl border border-[#B0D5E8] lora p-10">
             <h2 className="text-lg font-bold text-gray-800">Review & Confirm</h2>
             <p className="text-sm text-gray-500 mt-1">
@@ -226,26 +347,43 @@ const AiTraining = () => {
                 <div>Preview</div>
               </div>
               <div className="grid grid-cols-6 gap-4 p-3 border border-[#E4E4E4] text-sm">
-                <div>chocolate-souffle.pdf</div>
-                <div>Chocolate Soufflé</div>
-                <div>Dessert</div>
+                <div>{files[0]?.name || 'chocolate-souffle.pdf'}</div>
+                <div>{formData.fileTitle || 'Chocolate Soufflé'}</div>
+                <div>{formData.categoryType || 'Dessert'}</div>
                 <div className="flex gap-1">
-                  <span className="bg-[#e6f0fa] text-[#4a90e2] rounded-full px-2 py-1 text-xs">French</span>
-                  <span className="bg-[#e6f0fa] text-[#4a90e2] rounded-full px-2 py-1 text-xs">French</span>
+                  {formData.tags ? (
+                    formData.tags.split(',').map((tag, index) => (
+                      <span
+                        key={index}
+                        className="bg-[#e6f0fa] text-[#4a90e2] rounded-full px-2 py-1 text-xs"
+                      >
+                        {tag.trim()}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="text-gray-500">No tags</span>
+                  )}
                 </div>
                 <div>
-                  <span className="bg-[#28a745] text-white rounded-full px-2 py-1 text-xs">READY</span>
+                  <span className="bg-[#28a745] text-white rounded-full px-2 py-1 text-xs">
+                    READY
+                  </span>
                 </div>
                 <div>
-                  <span className="text-gray-600 text-[25px] cursor-pointer"><IoEyeOutline /></span>
+                  <span className="text-gray-600 text-[25px] cursor-pointer">
+                    <IoEyeOutline />
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 bg-[#e6f0fa spad] border border-[#d1e0ee] rounded-lg p-4 flex items-center gap-2 py-10 my-6">
+            <div className="mt-6 bg-[#e6f0fa] border border-[#d1e0ee] rounded-lg p-4 flex items-center gap-2 py-10 my-6">
               <span className="text-[#f5a623] text-2xl">⚠️</span>
               <p className="text-sm text-gray-700">
-                <span className="font-bold">READY TO TRAIN YOUR AI</span><br />
+                <span className="font-bold">
+                  READY TO TRAIN YOUR AI: Please review and submit your files.
+                </span>
+                <br />
                 ONCE YOU SUBMIT, YOUR FILES WILL BE PROCESSED AND USED TO TRAIN YOUR CUSTOM AI MODEL.
               </p>
             </div>
@@ -259,7 +397,7 @@ const AiTraining = () => {
               </button>
               <button
                 className="px-4 py-2 bg-[#0077B6] text-white rounded cursor-pointer"
-                onClick={nextStep}
+                onClick={submitForm}
               >
                 Confirm & Submit for Training
               </button>
@@ -267,30 +405,31 @@ const AiTraining = () => {
           </div>
         )}
 
-        {/* Modal for Step 4 */}
+        {/* Modal for Submission Confirmation */}
         {isModalOpen && (
-          <div className="fixed inset-0 backdrop-blur bg-[#0076b662] flex justify-center items-center z-100">
+          <div className="fixed inset-0 bg-[#0076B680] flex justify-center items-center z-50">
             <div className="bg-white rounded-lg p-6 w-full max-w-lg">
-              <h2 className="text-xl font-bold mb-4 text-[#0077B6]">Training Started Successfully!</h2>
-              <p className="mb-6 text-gray-300">
+              <h2 className="text-xl font-bold mb-4 text-[#0077B6]">
+                Training Started Successfully!
+              </h2>
+              <p className="mb-6 text-gray-600">
                 Your AI model is now being trained with your content. You'll receive a notification when it's ready.
               </p>
 
-              <div className='flex justify-center'>
-                <div className='bg-[#DCFCE7] p-10 rounded-full flex justify-center'>
-                  <SiVerizon className='text-[#00B23D]' />
+              <div className="flex justify-center">
+                <div className="bg-[#DCFCE7] p-10 rounded-full flex justify-center">
+                  <SiVerizon className="text-[#00B23D]" />
                 </div>
               </div>
-              <p className='text-[20px] text-center text-[#0077B6]'>Training progress</p>
-              <p className='text-gray-300 text-center'>Your AI model is now being trained with your culinary content. This process typically takes 2 minutes.</p>
+              <p className="text-[20px] text-center text-[#0077B6]">Training progress</p>
+              <p className="text-gray-600 text-center">
+                Your AI model is now being trained with your culinary content. This process typically takes 2 minutes.
+              </p>
 
-              <div className="flex justify-between mt-8">
+              <div className="flex justify-center mt-8">
                 <button
-                  className="px-8 py-2 bg-[#0077B6] mx-auto cursor-pointer rounded text-white"
-                  onClick={() => {
-                    setCurrentStep(3); // Go back to Step 3
-                    setIsModalOpen(false); // Close modal
-                  }}
+                  className="px-8 py-2 bg-[#0077B6] text-white rounded cursor-pointer"
+                  onClick={resetForm}
                 >
                   Back
                 </button>
@@ -304,5 +443,3 @@ const AiTraining = () => {
 };
 
 export default AiTraining;
-
-
