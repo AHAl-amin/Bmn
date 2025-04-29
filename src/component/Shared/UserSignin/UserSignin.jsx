@@ -32,15 +32,15 @@ function UserSingin() {
   };
 
   return (
-    <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito lora">
-      <div className="w-1/2  ">
+    <div className="flex items-center md:justify-between w-full md:flex-row flex-col md:min-h-screen gap-10 nunito lora">
+      <div className="md:w-1/2  ">
         <img
           src={login_img}
           alt="Registration illustration"
-          className=" h-screen w-full  "
+          className=" md:h-screen w-full  "
         />
       </div>
-      <div className="w-1/2 lg:px-40">
+      <div className="md:w-1/2 lg:px-40">
         <div className="flex justify-center mb-4">
           <img src={login_img2} className='h-[150px] w-[150px]' alt="img" />
         </div>
@@ -111,7 +111,7 @@ function UserSingin() {
       Remember me
     </label>
   </div>
-  <Link className="text-[#5B21BD]" to="/forgot-password">
+  <Link className="text-[#5B21BD]" to="/confirm_email">
     Forget Password
   </Link>
 </div>

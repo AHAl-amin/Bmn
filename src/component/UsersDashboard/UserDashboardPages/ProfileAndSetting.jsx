@@ -75,7 +75,7 @@ function ProfileAndSetting() {
                                     placeholder='Enter your first name'
                                     // value={formData.firstName}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border rounded-md focus:outline-none bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full  rounded-md focus:outline-none border border-[#5B21BD] bg-[#FFFFFF]"
                                 />
                             </div>
                             <div>
@@ -86,7 +86,7 @@ function ProfileAndSetting() {
                                       placeholder='Enter your last name'
                                     // value={formData.lastName}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2  bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full  rounded-md focus:outline-none border border-[#5B21BD]  bg-[#FFFFFF]"
                                 />
                             </div>
                         </div>
@@ -100,7 +100,7 @@ function ProfileAndSetting() {
                                     name="email"
                                     // value={formData.email}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border rounded-md focus:outline-none  bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full rounded-md focus:outline-none border border-[#5B21BD] bg-[#FFFFFF]"
                                 />
                             </div>
                             <div>
@@ -111,7 +111,7 @@ function ProfileAndSetting() {
                                     placeholder='Enter your number'
                                     // value={formData.phone}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full border rounded-md focus:outline-none  bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full  rounded-md focus:outline-none border border-[#5B21BD]  bg-[#FFFFFF]"
                                 />
                             </div>
                         </div>

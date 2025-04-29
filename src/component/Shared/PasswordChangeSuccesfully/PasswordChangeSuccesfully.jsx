@@ -1,21 +1,21 @@
 
 import { Link } from 'react-router-dom';
-// import registration_img from '../../../assets/image/hhhh.png'; // Adjust path as needed
+import registration_img from '../../../assets/image/user_login_img.jpg'; // Adjust path as needed
+import registration_img2 from '../../../assets/image/Admin_login_img.png'; // Adjust path as needed
 
 function PasswordChangeSuccesfully() {
   return (
-    <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito">
-      <div className="w-1/2 h-screen">
+    <div className="flex items-center justify-between w-full md:min-h-screen gap-10 nunito">
+      <div className="w-1/2 md:h-screen">
         <img
           src={registration_img}
           alt="Registration illustration"
-          className="w-full h-screen p-10"
+          className="w-full md:h-screen"
         />
       </div>
       <div className="w-1/2 lg:px-40">
-        <div className="text-center mb-20">
-          <h1 className="text-3xl text-[#000000]">ChaskiX</h1>
-          <p className="text-3xl text-[#000000]">Logo here</p>
+        <div className="flex justify-center mb-6">
+          <img src={registration_img2 } className='w-[150px] h-[150px]' alt="" />
         </div>
         <div className="p-4">
           <div className="w-full rounded-lg bg-[#F8FCFF] py-14 shadow-md">
@@ -45,7 +45,7 @@ function PasswordChangeSuccesfully() {
 
               {/* Back to Login Button */}
               <Link
-                to="/login"
+                to="/user_signin"
                 className="flex items-center justify-center rounded-[8px] bg-[#5B21BD] px-4 py-2 text-[#F6F8FA] w-[194px] transition-colors"
               >
                 <svg

@@ -17,7 +17,7 @@ import AdminDashboard from './component/AdminDashboard/AdminDashboardPages/Admin
 import AdminDashboardAiChat from './component/AdminDashboard/AdminDashboardPages/AdminDashboardChefs.jsx';
 
 
-import Registration from './component/Shared/Registration/Registration.jsx';
+
 
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 import Verification from './component/Shared/Verification/Verification.jsx';
@@ -53,6 +53,9 @@ import AdminDashboardSubscription from './component/AdminDashboard/AdminDashboar
 import AdminDashboardSettingPrivecy from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSettingPrivecy.jsx';
 import UserInspirationChat from './component/UsersDashboard/UserDashboardPages/UserInspirationChat.jsx';
 import { ApiProvider } from './context/ApiProvider.jsx';
+import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
+import PasswordChange from './component/Shared/PasswordChange.jsx'
+// import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
 
@@ -109,7 +112,8 @@ const router = createBrowserRouter([
       {
         path:"inspiration_chat",
         element:<UserInspirationChat/>
-      }
+      },
+     
      
       
      
@@ -227,14 +231,27 @@ const router = createBrowserRouter([
     path:'/user_signin',
     element:<UserSingin/>
   },
+  {
+    path:'/confirm_email',
+    element:<ConfirmEmail/>
+  },
+  {
+    path:'/verification',
+    element:<Verification/>
+  },
+  {
+    path:'/change_password',
+    element:<PasswordChange/>
+  },
+
+
+  {
+    path:'/password_change_succesfull',
+    element:<PasswordChangeSuccesfully/>
+  },
   // .................Admin Authentications.................
   
-  {
-    path:"/registration",
-    element:<Registration/>
-    
 
-  },
   {
     path:'/Admin_login',
     element:<Admin_login/>
@@ -243,18 +260,12 @@ const router = createBrowserRouter([
     path:'/admin_confirmPassword',
     element:<Admin_ConfirmPassword/>
   },
-  {
-    path:'/verification',
-    element:<Verification/>
-  },
+ 
   {
     path:'/confirm_password',
     element:<ConfirmPassword/>
   },
-  {
-    path:'/password_change_succesfull',
-    element:<PasswordChangeSuccesfully/>
-  }
+  
 
 ]);
 
