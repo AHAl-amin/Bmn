@@ -70,7 +70,7 @@ function AdminDashboardUser() {
 
   return (
     <div>
-      <div className="px-10 py-6">
+      <div className="px-10 py-6 lora">
         <h2 className="text-[34px] font-semibold text-[#5B21BD] mb-1">All users</h2>
         <p className="text-xl text-gray-500 mb-8">Manage end users and their subscriptions</p>
         <table className="w-full border-collapse">
@@ -94,11 +94,11 @@ function AdminDashboardUser() {
                     className="w-8 h-8 rounded-full mr-2 object-cover"
                   />
                   <div>
-                    <div className="font-semibold">{row.user.name}</div>
+                    <div className="font-semibold capitalize">{row.user.name}</div>
                     <div className="text-gray-500 text-sm">{row.user.email}</div>
                   </div>
                 </td>
-                <td className="py-2 px-4">{row.subscribed_to}</td>
+                <td className="py-2 px-4 capitalize">{row.subscribed_to}</td>
                 <td className="py-2 px-4">
                   <span className="inline-flex items-center px-2 py-1 bg-green-100 text-green-700 rounded-full text-sm">
                     <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>

@@ -345,7 +345,7 @@ function AdminDashboard() {
     const [isOpenMonthlyRevenue, setIsOpenMonthlyRevenue] = useState(false);
 
     return (
-        <div className="px-10 py-6">
+        <div className="px-10 py-6 lora">
             <h2 className="text-[34px] font-semibold text-[#5B21BD] mb-1">Dashboard</h2>
             <p className="text-xl text-gray-500 mb-8">Welcome to your Culinary AI Platform admin dashboard</p>
             {/* Stats Cards */}
@@ -383,7 +383,7 @@ function AdminDashboard() {
                     <div key={index} className="bg-white p-4 rounded-lg space-y-4 border border-[#D9D9D9]">
                         <div className="flex justify-between items-center">
                             <div>
-                                <p className="text-gray-500 text-sm">{item.title}</p>
+                                <p className="text-gray-500 text-sm capitalize">{item.title}</p>
                                 <p className="text-[#5B21BD] text-3xl font-bold">{item.value}</p>
                             </div>
                             <div className="bg-[#8280ff1c] px-4 py-4 rounded-full">

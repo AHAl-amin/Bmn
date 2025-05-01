@@ -231,14 +231,14 @@ function PreviewGallary() {
             <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
               {/* Title */}
               <div className="flex justify-between">
-                <h2 className="text-xl font-semibold text-[#5B21BD] lora">
+                <h2 className="text-xl font-semibold text-[#5B21BD] lora capitalize">
                   {recipe.title}
                 </h2>
                 <IoIosHeartEmpty className="text-[#5B21BD] w-[16px] h-[16px]" />
               </div>
 
               {/* Category */}
-              <p className="mt-1 text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px]">
+              <p className="mt-1 text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px] capitalize">
                 {recipe.category}
               </p>
 

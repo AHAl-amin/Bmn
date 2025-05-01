@@ -33,7 +33,7 @@ function ChefDashboardNavber() {
   };
 
   return (
-    <div className="flex items-center justify-end pt-10 lora h-16 px-6 md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)]">
+    <div className="flex items-center justify-end pt-10 lora h-16 px-6 md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)] lora">
       <div className="flex items-center space-x-8">
         <button
           onClick={toggleAddChefModal}

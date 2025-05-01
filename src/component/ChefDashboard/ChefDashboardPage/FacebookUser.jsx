@@ -74,8 +74,8 @@ function FacebookUser() {
                 <tbody>
                     {facebookUserData.map((item, index) => (
                         <tr key={index} className="border-b border-b-[#E4E4E4] h-[76px]">
-                            <td className="p-2 text-[#939393] md:pl-6">{item.User}</td>
-                            <td className="p-2 text-[#939393]">{item.Recipe}</td>
+                            <td className="p-2 text-[#939393] md:pl-6 capitalize">{item.User}</td>
+                            <td className="p-2 text-[#939393] capitalize">{item.Recipe}</td>
                             <td className="p-2 text-[#FACC15]">{'★'.repeat(item.Rating)}</td>
                             <td className="p-2 text-[#939393] md:pl-20">{item.Comment}</td>
                             <td className="p-2 text-[#939393]">{item.Date}</td>

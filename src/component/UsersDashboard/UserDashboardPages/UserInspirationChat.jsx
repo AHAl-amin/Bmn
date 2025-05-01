@@ -167,7 +167,7 @@ const UserInspirationChat = () => {
     };
 
     return (
-        <div className="p-8 h-full flex flex-col">
+        <div className="p-8 h-full flex flex-col lora">
             <div className="lora flex items-center justify-between p-4">
                 <div className="flex flex-col items-start">
                     <div className="flex gap-10">

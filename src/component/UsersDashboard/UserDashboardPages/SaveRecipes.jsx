@@ -72,7 +72,7 @@ function SaveRecipes() {
 
     // Component to render the recipes grid
     const RecipesGrid = () => (
-        <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
+        <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6 lora">
             {recipes.map((recipe) => (
                 <div
                     key={recipe.id}
@@ -91,14 +91,14 @@ function SaveRecipes() {
                     <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
                         {/* Title */}
                         <div className="flex justify-between">
-                            <h2 className="text-xl font-semibold text-[#5B21BD] lora">
+                            <h2 className="text-xl font-semibold text-[#5B21BD] lora capitalize">
                                 {recipe.title}
                             </h2>
                             <IoMdHeart className="text-[#5B21BD] w-[16px] h-[16px]" />
                         </div>
 
                         {/* Category */}
-                        <p className="mt-1 text-sm text-[#5B21BD] bg-[#EFE9F8] inline-block px-4 py-1 rounded-[29px]">
+                        <p className="mt-1 text-sm text-[#5B21BD] bg-[#EFE9F8] inline-block px-4 py-1 rounded-[29px] capitalize">
                             {recipe.category}
                         </p>
 

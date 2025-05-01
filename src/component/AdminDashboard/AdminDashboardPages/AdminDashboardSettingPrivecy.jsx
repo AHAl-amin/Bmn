@@ -35,7 +35,7 @@ function AdminDashboardSettingPrivecy() {
 
 
         <div className='px-10 py-4 lora'>
-            <h1 className="text-[#5B21BD] text-[45px] font-semibold">Profile information</h1>
+            <h1 className="text-[#5B21BD] text-[45px] font-semibold">Profile Information</h1>
             <p className="text-[#A2A2A2] text-[20px] capitalize">
                 Update your information and public details
             </p>

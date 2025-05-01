@@ -184,7 +184,7 @@ const UserDashboardSidebar = () => {
   };
 
   return (
-    <div className="">
+    <div className="lora">
       {/* Toggle Icon for Small Devices */}
       <div className="md:hidden flex justify-start p-4 bg-[#5B21BD]">
         <IoReorderThreeOutline
@@ -253,7 +253,7 @@ const UserDashboardSidebar = () => {
             }
           >
             <FaHeart className="h-6 w-6" />
-            <h1 className="text-lg font-medium text-white">Saved recipes</h1>
+            <h1 className="text-lg font-medium text-white">Saved Recipes</h1>
           </NavLink>
 
           <NavLink
@@ -267,7 +267,7 @@ const UserDashboardSidebar = () => {
             }
           >
             <IoSettingsOutline className="h-6 w-6" />
-            <h1 className="text-lg font-medium text-white">Profile & setting</h1>
+            <h1 className="text-lg font-medium text-white">Profile & Setting</h1>
           </NavLink>
         </div>
 

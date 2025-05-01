@@ -121,7 +121,7 @@ const ChefSubscribtion = () => {
     };
 
     return (
-        <div id="pricing" className="  md:px-4 ">
+        <div id="pricing" className="  md:px-4 lora">
             <div className="max-w-6xl mx-auto">
                
 

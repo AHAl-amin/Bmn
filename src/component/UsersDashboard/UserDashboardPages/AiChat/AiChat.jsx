@@ -167,7 +167,7 @@ const AiChat = () => {
     };
 
     return (
-        <div className="p-8 h-full flex flex-col">
+        <div className="p-8 h-full flex flex-col lora">
             <div className="lora flex items-center justify-between p-4">
                 <div className="flex flex-col items-start">
                     <div className="flex gap-10">
@@ -242,7 +242,7 @@ const AiChat = () => {
                                                         className="rounded-lg shadow-md w-24 h-12"
                                                     />
                                                     {message.fileName && (
-                                                        <p className="text-xs text-gray-500 mt-1">{message.fileName}</p>
+                                                        <p className="text-xs text-gray-500 mt-1 capitalize">{message.fileName}</p>
                                                     )}
                                                 </div>
                                             </div>

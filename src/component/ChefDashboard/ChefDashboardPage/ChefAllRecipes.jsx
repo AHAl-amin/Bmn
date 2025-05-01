@@ -189,7 +189,7 @@ function ChefAllRecipes() {
               </div>
               <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-semibold text-[#5B21BD] lora">{recipe.title}</h2>
+                  <h2 className="text-xl font-semibold text-[#5B21BD] lora capitalize">{recipe.title}</h2>
                   <div
                     className="relative inline-block text-left"
                     ref={(el) => (dropdownRefs.current[recipe.id] = el)}
@@ -222,7 +222,7 @@ function ChefAllRecipes() {
                   </div>
                 </div>
                 <div className="flex gap-4 py-2">
-                  <p className="text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px]">
+                  <p className="text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px] capitalize">
                     {recipe.category}
                   </p>
                   <p className="text-white text-sm bg-[#5B21BD] px-4 py-1 rounded-full">

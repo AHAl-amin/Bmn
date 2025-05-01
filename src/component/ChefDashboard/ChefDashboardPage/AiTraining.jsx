@@ -288,7 +288,7 @@ const AiTraining = () => {
                   className="w-full p-2 py-3 border text-[#999999] border-[#CCBAEB] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
                   <option value="" className="text-[#999999]">
-                    Select category
+                    Select Category
                   </option>
                   <option value="Chocolate souffle">Chocolate souffle</option>
                   <option value="Vanilla cake">Vanilla cake</option>

@@ -100,7 +100,7 @@ const AdminDashboardChefs = () => {
                                         className="w-10 h-10 rounded-full object-cover mr-3"
                                     />
                                     <div>
-                                        <div className="font-medium">{chef.Chef}</div>
+                                        <div className="font-medium  capitalize">{chef.Chef}</div>
                                         <div className="text-xs text-gray-500">{chef.Email}</div>
                                     </div>
                                 </td>

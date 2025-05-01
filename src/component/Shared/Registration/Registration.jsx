@@ -20,7 +20,7 @@ function Registration() {
     };
 
     return (
-        <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito">
+        <div className="flex items-center justify-between w-full min-h-screen gap-10 lora">
             <div className="w-1/2 h-screen ">
                 <img
                     src={registration_img}

@@ -64,7 +64,7 @@ const communityPosts = [
 
 const ChefCommunity = () => {
   return (
-    <div className="px-10 py-4 font-lora">
+    <div className="px-10 py-4 lora">
       <h1 className="text-[#5B21BD] text-4xl md:text-[45px] font-semibold">Community</h1>
       <p className="text-[#A2A2A2] text-lg md:text-xl mt-2">
         Connect with other culinary enthusiasts, share your creations, and get inspired.
@@ -85,7 +85,7 @@ const ChefCommunity = () => {
                   className="w-10 h-10 bg-gray-300 rounded-full mr-3"
                 />
                 <div>
-                  <p className="font-semibold text-[#5B21BD]">{post.username}</p>
+                  <p className="font-semibold text-[#5B21BD] capitalize">{post.username}</p>
                   <p className="text-sm text-gray-500">{post.timeAgo}</p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ const ChefCommunity = () => {
 
             {/* Post Content */}
             <div className="mt-3">
-              <p className="text-[#5B21BD] font-semibold">{post.title}</p>
+              <p className="text-[#5B21BD] font-semibold capitalize">{post.title}</p>
               <p className="text-[#A2A2A2] text-sm mt-1">{post.content}</p>
             </div>
 

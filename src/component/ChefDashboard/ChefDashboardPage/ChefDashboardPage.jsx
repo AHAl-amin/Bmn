@@ -70,7 +70,7 @@ function ChefDashboardPage() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="px-10 py-6">
+        <div className="px-10 py-6 lora">
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Card Template */}
@@ -134,7 +134,7 @@ function ChefDashboardPage() {
                     <ul className="space-y-4">
                         {topRecipes.map((recipe, index) => (
                             <li key={index} className="flex items-center">
-                                <span className="w-48 text-gray-700">{recipe.name}</span>
+                                <span className="w-48 text-gray-700 capitalize">{recipe.name}</span>
                                 <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                                     <div className="h-full bg-[#5B21BD]" style={{ width: recipe.width }}></div>
                                 </div>
@@ -151,7 +151,7 @@ function ChefDashboardPage() {
                         {feedback.map((item, index) => (
                             <li key={index} className="border-b pb-4 last:border-b-0">
                                 <div className="flex items-center mb-2">
-                                    <span className="text-gray-700 font-medium">{item.recipe}</span>
+                                    <span className="text-gray-700 font-medium capitalize">{item.recipe}</span>
                                     <div className="ml-2 flex">
                                         {[...Array(item.rating)].map((_, i) => (
                                             <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">

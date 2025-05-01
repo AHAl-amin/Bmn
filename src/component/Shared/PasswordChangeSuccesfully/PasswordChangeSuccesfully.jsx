@@ -5,7 +5,7 @@ import registration_img2 from '../../../assets/image/Admin_login_img.png'; // Ad
 
 function PasswordChangeSuccesfully() {
   return (
-    <div className="flex items-center justify-between w-full md:min-h-screen gap-10 nunito">
+    <div className="flex items-center justify-between w-full md:min-h-screen gap-10 lora">
       <div className="w-1/2 md:h-screen">
         <img
           src={registration_img}
@@ -62,7 +62,7 @@ function PasswordChangeSuccesfully() {
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                Back To login
+                Back to sign in
               </Link>
             </div>
           </div>

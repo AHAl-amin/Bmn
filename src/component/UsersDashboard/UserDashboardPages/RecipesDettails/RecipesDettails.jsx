@@ -308,13 +308,13 @@ function RecipesDettails() {
           style={{ backgroundImage: `url('${recipe.image}')` }} // Dynamic background image
         >
           <div className="absolute inset-0 bg-[#5B21BD78] bg-opacity-50 rounded-xl"></div>
-          <h1 className="relative text-5xl font-bold text-white z-10">{recipe.title}</h1> {/* Dynamic title */}
+          <h1 className="relative text-5xl font-bold text-white z-10 capitalize">{recipe.title}</h1> {/* Dynamic title */}
         </div>
 
         {/* Metadata Section */}
         <div className="flex justify-between items-center px-2 mt-2 py-4">
           <div>
-            <span className="bg-[#CCBAEB] rounded-[29px] px-3 py-1 mr-5 text-[#5B21BD]">
+            <span className="bg-[#CCBAEB] rounded-[29px] px-3 py-1 mr-5 text-[#5B21BD] capitalize">
               {recipe.category} {/* Dynamic category */}
             </span>
             <span>Updated: {recipe.updated}</span> {/* Dynamic updated date */}

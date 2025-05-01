@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 
 function ChefDashboardLayout() {
     return (
-        <div className='bg-gray-100'>
+        <div className='bg-gray-100 '>
             <div className="flex h-screen">
                 {/* Sidebar */}
                 <div className=" h-full fixed transition-all duration-300 ease-in-out z-100 md:w-[240px]">

@@ -257,7 +257,7 @@
 //                                     )}
 //                                 </div>
 //                             </div>
-                            
+
 //                             <div className='flex justify-between gap-4 py-4'>
 //                                 <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
 //                                 <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
@@ -451,7 +451,7 @@ const Home = () => {
     console.log('Filtered Data:', filteredData);
 
     return (
-        <div className='bg-[#E6EBE8] min-h-screen py-10'>
+        <div className='bg-[#E6EBE8] min-h-screen py-10 lora'>
             <div>
                 <div className='flex justify-center mb-4'>
                     <img src={landingPageIcon} alt="Culinary Experts Logo" className='w-[200px] h-[150px]' />
@@ -517,11 +517,11 @@ const Home = () => {
 
             <h1 className="text-[40px] lora font-semibold pl-10 text-[#5B21BD] pt-4">All Culinary Experts</h1>
             {filteredData.length === 0 ? (
-                <p className="text-center text-[#515151] text-lg p-10">No culinary experts found matching your search or filter.</p>
+                <p className="text-center text-[#515151] text-lg p-10 ">No culinary experts found matching your search or filter.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-10 " >
                     {filteredData.map((item) => (
-                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora "onClick={() => openModalWithChef(item)} >
+                        <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow relative lora  " onClick={() => openModalWithChef(item)} >
                             <div className="h-52 overflow-hidden">
                                 <img
                                     src={item.image}
@@ -536,10 +536,10 @@ const Home = () => {
 
                             <div className="p-6">
                                 <div className="flex justify-between items-start mb-2">
-                                    <h2 className="text-[24px] font-semibold text-[#5B21BD]">{item.title}</h2>
+                                    <h2 className="text-[24px] font-semibold text-[#5B21BD] capitalize">{item.title}</h2>
                                 </div>
 
-                                <h3 className="text-lg font-medium text-[#515151] mb-3">{item.category}</h3>
+                                <h3 className="text-lg font-medium text-[#515151] mb-3 capitalize">{item.category}</h3>
                                 <p className="text-gray-600 mb-4">{item.description}</p>
 
                                 <div className="flex justify-between items-center absolute top-5">
@@ -568,7 +568,7 @@ const Home = () => {
 
                                     <button
                                         className="px-4 py-2 text-[#5B21BD] text-[18px] font-medium rounded cursor-pointer"
-                                        // onClick={() => openModalWithChef(item)}
+                                    // onClick={() => openModalWithChef(item)}
                                     >
                                         Details
                                     </button>
@@ -585,8 +585,8 @@ const Home = () => {
                     <div className="bg-white rounded-lg p-6 w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] flex flex-col">
                         <div className="flex justify-between items-start mb-4">
                             <div>
-                                <h2 className="text-2xl font-semibold text-[#5B21BD]">{selectedChef.title}</h2>
-                                <p className='text-[#515151]'> {selectedChef.category}</p>
+                                <h2 className="text-2xl font-semibold text-[#5B21BD] capitalize">{selectedChef.title}</h2>
+                                <p className='text-[#515151] capitalize'> {selectedChef.category}</p>
                             </div>
                             <button
                                 className="px-6 py-2 bg-[#5B21BD] text-white font-medium rounded hover:bg-[#5B21BD] transition-colors"
@@ -625,7 +625,7 @@ const Home = () => {
                                     )}
                                 </div>
                             </div>
-                            
+
                             <div className='flex justify-between gap-4 py-4'>
                                 <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Recipes: 12</div>
                                 <div className='bg-[#EFE9F8] px-4 py-2 w-full rounded-[10px] text-center'>Students: 3,120</div>
@@ -661,7 +661,7 @@ const Home = () => {
                             <div className="relative mt-2">
                                 {activeButton === 'about' ? (
                                     <>
-                                        <p className='text-[26px] font-semibold text-[#5B21BD] mb-4'>About chef {selectedChef.title}</p>
+                                        <p className='text-[26px] font-semibold text-[#5B21BD] mb-4 capitalize'>About chef {selectedChef.title}</p>
                                         <Exprience />
                                         <p className="text-gray-600 mt-4 absolute top-4">{selectedChef.description}</p>
                                     </>

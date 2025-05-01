@@ -31,8 +31,8 @@ function ChefRecipesEditPage() {
     };
     return (
         <div>
-            <div className="px-12 py-6">
-                <h1 className="text-[34px] font-semibold text-[#5B21BD] my-2">Recipes Details view</h1>
+            <div className="px-12 py-6 lora">
+                <h1 className="text-[34px] font-semibold text-[#5B21BD] my-2">Recipes Details View</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Left Side */}
                     <div>

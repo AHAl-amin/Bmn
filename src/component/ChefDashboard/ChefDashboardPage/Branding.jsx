@@ -18,7 +18,7 @@ const Branding = () => {
   };
 
   return (
-    <div className='px-14'>
+    <div className='px-14 lora'>
 
       <h2 className="text-[34px] text-[#5B21BD] font-bold mb-4">Branding</h2>
       <p className="mb-6 text-[#9E9E9E]">

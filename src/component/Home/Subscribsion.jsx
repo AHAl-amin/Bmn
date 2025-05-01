@@ -129,7 +129,7 @@ const Subscribsion = () => {
                     <h3 className="text-[#2D4162] font-medium mb-2 text-sm md:text-2xl">
                         Our Powerful Features
                     </h3>
-                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4 capitalize">
                     Choose your subscription
                     </h1>
                     <p className="text-gray-600 max-w-full md:max-w-2xl mx-auto text-xs md:text-base">
@@ -196,8 +196,8 @@ const Subscribsion = () => {
                                                     alt=""
                                                 />
                                                 <div className="flex items-baseline justify-start">
-                                                    <span className="md:text-5xl md:font-bold z-30">{plan.price}</span>
-                                                    <span className="md:text-xl ml-2 z-30">{plan.period}</span>
+                                                    <span className="md:text-5xl md:font-bold z-30 capitalize">{plan.price}</span>
+                                                    <span className="md:text-xl ml-2 z-30 capitalize">{plan.period}</span>
                                                 </div>
                                             </div>
                                             <ul className="space-y-2 md:space-y-4 flex-grow">
