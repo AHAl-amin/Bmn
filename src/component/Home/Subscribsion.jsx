@@ -132,7 +132,7 @@ const Subscribsion = () => {
                     <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4 capitalize">
                     Choose your subscription
                     </h1>
-                    <p className="text-gray-600 max-w-full md:max-w-2xl mx-auto text-xs md:text-base">
+                    <p className="text-gray-600 text-[20px] max-w-full md:max-w-2xl mx-auto text-xs md:text-base">
                         There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.
                     </p>
                 </div>

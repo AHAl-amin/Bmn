@@ -129,7 +129,7 @@ const ChefSubscribtion = () => {
                     <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4">
                         Subscription Settings
                     </h1>
-                    <p className="text-gray-600 text-[20px] md:text-base">
+                    <p className="text-gray-600  text-[20px] ">
                         Manage your subscription plans and payment settings
                     </p>
                 </div>
