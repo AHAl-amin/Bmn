@@ -17,7 +17,7 @@ function AdminDashboardSubscription() {
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Pro',
       Status: 'Active',
-      Chef: 'Chef-Micro',
+      Chef: 'Chef-Alpha',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -27,8 +27,8 @@ function AdminDashboardSubscription() {
       email: 'john.smith2@example.com',
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Basic',
-      Status: 'Active',
-      Chef: 'Chef-Micro',
+      Status: 'Inactive',
+      Chef: 'Chef-Beta',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -39,7 +39,7 @@ function AdminDashboardSubscription() {
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Enterprise',
       Status: 'Active',
-      Chef: 'Chef-Micro',
+      Chef: 'Chef-Gamma',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -49,8 +49,8 @@ function AdminDashboardSubscription() {
       email: 'john.smith4@example.com',
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Pro',
-      Status: 'Active',
-      Chef: 'Chef-Micro',
+      Status: 'Inactive',
+      Chef: 'Chef-Delta',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -61,7 +61,7 @@ function AdminDashboardSubscription() {
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Basic',
       Status: 'Active',
-      Chef: 'Chef-Micro',
+      Chef: 'Chef-Epsilon',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -71,8 +71,8 @@ function AdminDashboardSubscription() {
       email: 'john.smith6@example.com',
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Enterprise',
-      Status: 'Active',
-      Chef: 'Chef-Micro',
+      Status: 'Inactive',
+      Chef: 'Chef-Zeta',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -83,7 +83,7 @@ function AdminDashboardSubscription() {
       img: 'https://i.ibb.co.com/60hvPZRS/bannerimg-01.png',
       Plan: 'Pro',
       Status: 'Active',
-      Chef: 'Chef-Micro',
+      Chef: 'Chef-Eta',
       'Start Date': 'Jan 16, 2025',
       'Next Billing': 'Jan 16, 2026',
     },
@@ -91,11 +91,17 @@ function AdminDashboardSubscription() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPlanDropdownOpen, setIsPlanDropdownOpen] = useState(false);
+  const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
+  const [isChefDropdownOpen, setIsChefDropdownOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('All');
+  const [selectedStatus, setSelectedStatus] = useState('All');
+  const [selectedChef, setSelectedChef] = useState('All');
 
-  // Get unique plan values from tableData
+  // Get unique plan, status, and chef values from tableData
   const planOptions = ['All', ...new Set(tableData.map((row) => row.Plan))];
+  const statusOptions = ['All', ...new Set(tableData.map((row) => row.Status))];
+  const chefOptions = ['All', ...new Set(tableData.map((row) => row.Chef))];
 
   const handleDeleteClick = (id) => {
     setSelectedId(id);
@@ -113,34 +119,56 @@ function AdminDashboardSubscription() {
     setSelectedId(null);
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  // Toggle dropdowns
+  const togglePlanDropdown = () => {
+    setIsPlanDropdownOpen(!isPlanDropdownOpen);
+    setIsStatusDropdownOpen(false);
+    setIsChefDropdownOpen(false);
   };
 
+  const toggleStatusDropdown = () => {
+    setIsStatusDropdownOpen(!isStatusDropdownOpen);
+    setIsPlanDropdownOpen(false);
+    setIsChefDropdownOpen(false);
+  };
+
+  const toggleChefDropdown = () => {
+    setIsChefDropdownOpen(!isChefDropdownOpen);
+    setIsPlanDropdownOpen(false);
+    setIsStatusDropdownOpen(false);
+  };
+
+  // Handle selections
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
-    setIsDropdownOpen(false);
+    setIsPlanDropdownOpen(false);
   };
 
-  // Filter table data based on selected plan
-  const filteredData =
-    selectedPlan === 'All'
-      ? tableData
-      : tableData.filter((row) => row.Plan === selectedPlan);
+  const handleStatusSelect = (status) => {
+    setSelectedStatus(status);
+    setIsStatusDropdownOpen(false);
+  };
+
+  const handleChefSelect = (chef) => {
+    setSelectedChef(chef);
+    setIsChefDropdownOpen(false);
+  };
+
+  // Filter table data based on selected plan, status, and chef
+  const filteredData = tableData.filter((row) => {
+    return (
+      (selectedPlan === 'All' || row.Plan === selectedPlan) &&
+      (selectedStatus === 'All' || row.Status === selectedStatus) &&
+      (selectedChef === 'All' || row.Chef === selectedChef)
+    );
+  });
 
   // Export data to Excel
   const handleExportData = () => {
-    // Prepare data for export (excluding 'img' and 'id' fields)
     const exportData = filteredData.map(({ id, img, ...rest }) => rest);
-
-    // Create a worksheet
     const worksheet = XLSX.utils.json_to_sheet(exportData);
-
-    // Create a workbook
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Subscriptions');
-
-    // Generate Excel file and trigger download
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const data = new Blob([excelBuffer], { type: 'application/octet-stream' });
     saveAs(data, 'subscriptions.xlsx');
@@ -148,7 +176,7 @@ function AdminDashboardSubscription() {
 
   return (
     <div className="px-10 py-6 lora">
-      <div className="flex md:gap-30 items-center">
+      <div className="flex md:gap-8 items-center justify-between">
         <div>
           <h2 className="text-[34px] font-semibold text-[#5B21BD] mb-1">
             Subscription Management
@@ -157,40 +185,89 @@ function AdminDashboardSubscription() {
             View and manage user subscriptions.
           </p>
         </div>
-        <div className="relative">
-          <div className="flex gap-10">
+        <div className="relative flex gap-4">
+          <div className="relative">
             <button
-              onClick={toggleDropdown}
+              onClick={togglePlanDropdown}
               className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+              aria-label="Filter by plan"
             >
               <CiFilter />
-              <span>Filter</span>
+              <span>Filter by plan</span>
             </button>
-            <button
-              onClick={handleExportData}
-              className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full cursor-pointer"
-            >
-              Export Data
-            </button>
+            {isPlanDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-white border border-[#0077B6] rounded-md shadow-lg z-10">
+                {planOptions.map((plan) => (
+                  <button
+                    key={plan}
+                    onClick={() => handlePlanSelect(plan)}
+                    className="block w-full text-left px-4 py-2 text-sm text-[#5B21BD] hover:bg-gray-100 rounded-2xl"
+                    aria-label={`Select plan ${plan}`}
+                  >
+                    {plan}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
-
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-[#0077B6] rounded-md shadow-lg z-10">
-              {planOptions.map((plan) => (
-                <button
-                  key={plan}
-                  onClick={() => handlePlanSelect(plan)}
-                  className="block w-full text-left px-4 py-2 text-sm text-[#5B21BD] hover:bg-gray-100 rounded-2xl"
-                >
-                  {plan}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="relative">
+            <button
+              onClick={toggleStatusDropdown}
+              className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+              aria-label="Filter by status"
+            >
+              <CiFilter />
+              <span>Filter by status</span>
+            </button>
+            {isStatusDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-white border border-[#0077B6] rounded-md shadow-lg z-10">
+                {statusOptions.map((status) => (
+                  <button
+                    key={status}
+                    onClick={() => handleStatusSelect(status)}
+                    className="block w-full text-left px-4 py-2 text-sm text-[#5B21BD] hover:bg-gray-100 rounded-2xl"
+                    aria-label={`Select status ${status}`}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="relative">
+            <button
+              onClick={toggleChefDropdown}
+              className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
+              aria-label="Filter by chef"
+            >
+              <CiFilter />
+              <span>Filter by chef</span>
+            </button>
+            {isChefDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-white border border-[#0077B6] rounded-md shadow-lg z-10">
+                {chefOptions.map((chef) => (
+                  <button
+                    key={chef}
+                    onClick={() => handleChefSelect(chef)}
+                    className="block w-full text-left px-4 py-2 text-sm text-[#5B21BD] hover:bg-gray-100 rounded-2xl"
+                    aria-label={`Select chef ${chef}`}
+                  >
+                    {chef}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* <button
+            onClick={handleExportData}
+            className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full cursor-pointer"
+            aria-label="Export data to Excel"
+          >
+            Export Data
+          </button> */}
         </div>
       </div>
       <table className="w-full text-sm">
-        {/* Table Header */}
         <thead>
           <tr className="bg-[#CCBAEB] text-left">
             <th className="p-3 pl-10 font-semibold">User</th>
@@ -202,13 +279,9 @@ function AdminDashboardSubscription() {
             <th className="p-3 font-semibold">Actions</th>
           </tr>
         </thead>
-        {/* Table Body */}
         <tbody>
-          {filteredData.map((row, index) => (
-            <tr
-              key={row.id}
-              className={`border-b border-[#CCBAEB] ${index === 1 ? '' : ''}`}
-            >
+          {filteredData.map((row) => (
+            <tr key={row.id} className="border-b border-[#CCBAEB]">
               <td className="p-3 flex items-center">
                 <div className="flex">
                   <div className="w-8 h-8 rounded-full">
@@ -216,14 +289,11 @@ function AdminDashboardSubscription() {
                       src={row.img}
                       alt={row.User}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
+                      onError={(e) => (e.target.src = '/fallback-image.png')} // Add a fallback image
                     />
                   </div>
                   <div className="ml-3">
-                    <p className='capitalize'>{row.User}</p>
+                    <p className="capitalize">{row.User}</p>
                     <p>{row.email}</p>
                   </div>
                 </div>
@@ -262,7 +332,10 @@ function AdminDashboardSubscription() {
               <td className="p-3">{row['Start Date']}</td>
               <td className="p-3">{row['Next Billing']}</td>
               <td className="p-3">
-                <button onClick={() => handleDeleteClick(row.id)}>
+                <button
+                  onClick={() => handleDeleteClick(row.id)}
+                  aria-label={`Delete subscription for ${row.User}`}
+                >
                   <RiDeleteBin6Line className="text-[#FF0000] border border-[#CCBAEB] rounded-[10px] flex justify-center items-center size-10 p-2 cursor-pointer" />
                 </button>
               </td>
@@ -273,7 +346,7 @@ function AdminDashboardSubscription() {
 
       {/* Delete Confirmation Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 backdrop-blur bg-opacity-50 flex items-center justify-center z-100">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-md">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
               Confirm Deletion
@@ -286,12 +359,14 @@ function AdminDashboardSubscription() {
               <button
                 onClick={handleCancelDelete}
                 className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                aria-label="Cancel deletion"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmDelete}
                 className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                aria-label="Confirm deletion"
               >
                 Delete
               </button>
