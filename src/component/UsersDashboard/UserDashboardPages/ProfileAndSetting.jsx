@@ -104,11 +104,11 @@ function ProfileAndSetting() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-[#5B21BD] text-[20px] font-medium ">Phone Number</label>
+                                <label className="block text-[#5B21BD] text-[20px] font-medium ">Location / Address</label>
                                 <input
                                     type="tel"
                                     name="phone"
-                                    placeholder='Enter your number'
+                                    placeholder='Enter here'
                                     // value={formData.phone}
                                     onChange={handleInputChange}
                                     className="mt-1 p-2 w-full  rounded-md focus:outline-none border border-[#5B21BD]  bg-[#FFFFFF]"
