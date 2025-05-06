@@ -160,7 +160,7 @@ const ChefDashboardSideber = () => {
                         <IoSettingsOutline className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">Profile & setting</h1>
                     </NavLink>
-                    <NavLink className='flex items-center gap-2 justify-center text-[#5B21BD]   h-full '>
+                    <NavLink to='/user_signin' className='flex items-center gap-2 justify-center text-[#5B21BD]   h-full '>
                         <RiLogoutCircleLine /> <p>Logout</p>
                     </NavLink>
                 </div>

@@ -271,7 +271,7 @@ const UserDashboardSidebar = () => {
           </NavLink>
         </div>
 
-        <NavLink className="flex items-center gap-2 justify-center text-[#5B21BD] h-full">
+        <NavLink to='/user_signin' className="flex items-center gap-2 justify-center text-[#5B21BD] h-full">
           <RiLogoutCircleLine /> <p>Logout</p>
         </NavLink>
       </div>
