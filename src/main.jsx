@@ -55,6 +55,7 @@ import UserInspirationChat from './component/UsersDashboard/UserDashboardPages/U
 import { ApiProvider } from './context/ApiProvider.jsx';
 import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 import PasswordChange from './component/Shared/PasswordChange.jsx'
+import ChefAiChat from './component/ChefDashboard/ChefDashboardPage/ChefAiChat.jsx';
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
@@ -171,6 +172,10 @@ const router = createBrowserRouter([
     {
       path:'chef_community',
       element:<ChefCommunity/>
+    },
+    {
+      path:'chef_ai_chat',
+      element:<ChefAiChat/>
     },
     
 

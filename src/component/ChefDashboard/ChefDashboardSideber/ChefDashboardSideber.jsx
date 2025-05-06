@@ -13,6 +13,7 @@ import { PiChefHatFill } from "react-icons/pi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { BsFillChatDotsFill } from "react-icons/bs";
 
 const ChefDashboardSideber = () => {
     const location = useLocation();
@@ -72,6 +73,19 @@ const ChefDashboardSideber = () => {
                     >
                         <PiChefHatFill className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">Recipes</h1>
+                    </NavLink>
+                    <NavLink
+                        to="/chef_dashboard/chef_ai_chat"
+                        className={() =>
+                            location.pathname.startsWith('/chef_dashboard/chef_ai_chat') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                                ? 'flex items-center gap-3 px-3 py-2 bg-[#5B21BD] text-white rounded-md w-full'
+                                : 'flex items-center gap-3 px-3 py-2 text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md w-full'
+                        }
+                    >
+                        <BsFillChatDotsFill className="h-6 w-6" />
+                        <h1 className="text-lg font-medium text-white">AI Chat</h1>
                     </NavLink>
 
                     <NavLink

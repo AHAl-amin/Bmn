@@ -100,7 +100,7 @@ function ProfileAndSetting() {
                                     name="email"
                                     // value={formData.email}
                                     onChange={handleInputChange}
-                                    className="mt-1 p-2 w-full rounded-md focus:outline-none border border-[#5B21BD] bg-[#FFFFFF]"
+                                    className="mt-1 p-2 w-full  rounded-md focus:outline-none border border-[#5B21BD]  bg-[#FFFFFF]"
                                 />
                             </div>
                             <div>
