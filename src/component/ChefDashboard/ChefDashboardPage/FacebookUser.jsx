@@ -502,10 +502,10 @@ function FacebookUser() {
               <span>Filter by Recipe</span>
             </button>
             {showRecipeDropdown && (
-              <div className="absolute top-12 left-0 bg-white border border-[#E4E4E4] rounded-lg shadow-lg w-48 z-10">
+              <div className="absolute top-12 left-0 text-[#5B21BD] bg-white border border-[#5B21BD]  rounded-lg shadow-lg w-48 z-10">
                 <button
                   onClick={clearRecipeFilter}
-                  className="w-full text-left px-4 py-2 hover:bg-[#5B21BD]/10 cursor-pointer"
+                  className="w-full text-left px-4 py-2 rounded-lg hover:bg-[#5B21BD]/10 cursor-pointer"
                 >
                   All
                 </button>
@@ -534,10 +534,10 @@ function FacebookUser() {
               <span>Filter by Rating</span>
             </button>
             {showRatingDropdown && (
-              <div className="absolute top-12 left-0 bg-white border border-[#E4E4E4] rounded-lg shadow-lg w-48 z-10">
+              <div className="absolute top-12 left-0 text-[#5B21BD] bg-white border border-[#5B21BD] ounded-lg shadow-lg rounded-lg w-48 z-10">
                 <button
                   onClick={clearRatingFilter}
-                  className="w-full text-left px-4 py-2 hover:bg-[#5B21BD]/10 cursor-pointer"
+                  className="w-full text-left px-4 py-2 rounded-lg hover:bg-[#5B21BD]/10 cursor-pointer"
                 >
                   All
                 </button>

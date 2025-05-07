@@ -60,7 +60,7 @@ function AdminDashboardNavbar() {
               className="h-10 w-10 rounded-full"
             />
           </div>
-          <span className="text-[17px] font-medium md:block hidden">Cameron</span>
+          <span className="text-[17px] font-medium md:block hidden text-gray-400">Cameron</span>
         </div>
       </div>
 

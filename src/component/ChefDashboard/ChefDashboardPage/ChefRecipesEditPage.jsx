@@ -204,6 +204,7 @@ function ChefRecipesEditPage() {
                 <div className=' space-x-4 mt-10'>
                     <Link className='text-xl border border-[#5B21BD]  text-[#5B21BD] py-2 px-5 rounded-[10px]  cursor-pointer  '>Cancel </Link>
                     <Link className='text-xl text-white bg-[#5B21BD] py-2 px-5 rounded-[10px]  cursor-pointer  '>Save Change</Link>
+                    <Link to='/chef_dashboard/ai_training' className='text-xl text-white bg-[#5B21BD] py-2 px-5 rounded-[10px]  cursor-pointer  '>Next</Link>
                 </div>
             </div>
 

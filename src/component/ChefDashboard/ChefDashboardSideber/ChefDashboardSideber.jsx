@@ -77,9 +77,9 @@ const ChefDashboardSideber = () => {
                     <NavLink
                         to="/chef_dashboard/chef_ai_chat"
                         className={() =>
-                            location.pathname.startsWith('/chef_dashboard/chef_ai_chat') ||
-                                location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
-                                location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
+                            location.pathname.startsWith('/chef_dashboard/chef_ai_chat') 
+                                // location.pathname.startsWith('/chef_dashboard/chef_recipese_dettails_view') ||
+                                // location.pathname.startsWith('/chef_dashboard/chef_recipese_edit_page')
                                 ? 'flex items-center gap-3 px-3 py-2 bg-[#5B21BD] text-white rounded-md w-full'
                                 : 'flex items-center gap-3 px-3 py-2 text-[#5B21BD] hover:bg-[#9f7addef] hover:text-white rounded-md w-full'
                         }
@@ -174,7 +174,7 @@ const ChefDashboardSideber = () => {
                         <IoSettingsOutline className="h-6 w-6" />
                         <h1 className="text-lg font-medium text-white">Profile & setting</h1>
                     </NavLink>
-                    <NavLink to='/user_signin' className='flex items-center gap-2 justify-center text-[#5B21BD]   h-full '>
+                    <NavLink to='/user_signin' className='flex items-center gap-2 justify-center   text-gray-50  h-full '>
                         <RiLogoutCircleLine /> <p>Logout</p>
                     </NavLink>
                 </div>

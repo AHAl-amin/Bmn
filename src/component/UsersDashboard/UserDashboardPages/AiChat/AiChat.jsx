@@ -1,15 +1,12 @@
 
 
-
-
-
 import { useState, useRef, useEffect } from "react";
 import { PaperclipIcon, SendIcon, ThumbsUp, ThumbsDown } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { VscRobot } from "react-icons/vsc";
 import { GoPaperAirplane } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { Link, useNavigate } from "react-router-dom";
 import aiIcon from '../../../../assets/image/ai_icon.png';
 
 const AiChat = () => {
@@ -19,13 +16,27 @@ const AiChat = () => {
     const [hasUserSentMessage, setHasUserSentMessage] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedFileName, setSelectedFileName] = useState("");
-    const [showDropdown, setShowDropdown] = useState(false); // State for dropdown visibility
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [showRecipeDropdown, setShowRecipeDropdown] = useState(false);
+    const [reactions, setReactions] = useState({});
+    const [selectedRecipe, setSelectedRecipe] = useState("Dark Chocolate Ganache");
+    const navigate = useNavigate();
+
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
     const fileInputRef = useRef(null);
-    const [reactions, setReactions] = useState({});
-    const navigate = useNavigate(); // Hook for navigation
+    const dropdownRef = useRef(null);
+    const recipeDropdownRef = useRef(null);
 
+    const recipes = [
+        "Desserts",
+        "Ice-creem",
+        "Cakes",
+        "Pastries",
+        "Cookies"
+    ];
+
+    // Scroll to bottom of messages
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
@@ -36,6 +47,25 @@ const AiChat = () => {
             inputRef.current?.focus();
         }
     }, [messages, hasUserSentMessage]);
+
+    // Handle clicks outside dropdowns
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target) &&
+                !event.target.closest('.chat-dropdown-button')) {
+                setShowDropdown(false);
+            }
+            if (recipeDropdownRef.current && !recipeDropdownRef.current.contains(event.target) &&
+                !event.target.closest('.recipe-dropdown-button')) {
+                setShowRecipeDropdown(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     const generateAIResponse = async (userMessage) => {
         setIsLoading(true);
@@ -155,15 +185,24 @@ const AiChat = () => {
         });
     };
 
-    // Toggle dropdown visibility
     const toggleDropdown = () => {
         setShowDropdown((prev) => !prev);
+        setShowRecipeDropdown(false);
     };
 
-    // Navigate to inspiration page
+    const toggleRecipeDropdown = () => {
+        setShowRecipeDropdown((prev) => !prev);
+        setShowDropdown(false);
+    };
+
+    const handleRecipeSelect = (recipe) => {
+        setSelectedRecipe(recipe);
+        setShowRecipeDropdown(false);
+    };
+
     const handleInspirationClick = () => {
-        navigate("/inspiration"); // Adjust the route as needed
-        setShowDropdown(false); // Close dropdown after navigation
+        navigate("/inspiration");
+        setShowDropdown(false);
     };
 
     return (
@@ -173,21 +212,41 @@ const AiChat = () => {
                     <div className="flex gap-10">
                         <h1 className="text-[#5B21BD] font-bold text-[35px]">AI Chat</h1>
                         <div className="flex space-x-6">
-                            <button className="border border-[#EFE9F8] text-[#5B21BD] rounded-xl px-4 flex items-center cursor-pointer font-semibold">
-                                Select Recipe
-                                <IoIosArrowDown className="ml-2" />
-                            </button>
-                            <div className="relative">
+                            <div className="relative" ref={recipeDropdownRef}>
+                                <button
+                                    onClick={toggleRecipeDropdown}
+                                    className="recipe-dropdown-button border h-full border-[#EFE9F8] text-[#5B21BD] rounded-xl px-4 flex items-center cursor-pointer font-semibold"
+                                >
+                                    Select Recipe
+                                    <IoIosArrowDown className={`ml-2 transition-transform ${showRecipeDropdown ? 'rotate-180' : ''}`} />
+                                </button>
+                                {showRecipeDropdown && (
+                                    <div className="absolute top-full mt-2 w-48 bg-white border border-[#EFE9F8] rounded-lg shadow-lg z-10">
+                                        {recipes.map((recipe, index) => (
+                                            <button
+                                                key={index}
+                                                className={`block w-full text-left px-4 py-2 text-[#5B21BD] hover:bg-gray-100 ${selectedRecipe === recipe ? 'bg-[#EFE9F8]' : ''}`}
+                                                onClick={() => handleRecipeSelect(recipe)}
+                                            >
+                                                {recipe}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            
+                            <div className="relative" ref={dropdownRef}>
                                 <button
                                     onClick={toggleDropdown}
-                                    className="border border-[#EFE9F8] h-full text-[#5B21BD] rounded-xl px-4 flex items-center cursor-pointer font-semibold"
+                                    className="chat-dropdown-button border h-full border-[#EFE9F8]  text-[#5B21BD] rounded-xl px-4 flex items-center cursor-pointer font-semibold"
                                 >
                                     Recipe Chat
-                                    <IoIosArrowDown className="ml-2" />
+                                    <IoIosArrowDown className={`ml-2 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
                                 </button>
                                 {showDropdown && (
                                     <div className="absolute top-full mt-2 w-40 bg-white border border-[#EFE9F8] rounded-lg shadow-lg z-10">
-                                        <Link to='/dashboard/inspiration_chat'
+                                        <Link
+                                            to='/dashboard/inspiration_chat'
                                             onClick={handleInspirationClick}
                                             className="block w-full text-left px-4 py-2 text-[#5B21BD] hover:bg-gray-100"
                                         >
@@ -203,19 +262,19 @@ const AiChat = () => {
                     </p>
                     <div className="border w-screen mt-4 border-[#CCBAEB]"></div>
                     <div className="py-2">
-                        <p className="font-semibold text-[24px] text-[#5B21BD]">Dark Chocolate Ganache</p>
+                        <p className="font-semibold text-[24px] text-[#5B21BD]">{selectedRecipe}</p>
                         <p className="text-[#A2A2A2]">Ask questions specific to this recipe</p>
                     </div>
                 </div>
             </div>
 
             <div className="flex flex-col flex-1">
-                <div className="flex-1 overflow-y-auto p-4 space-y-6 relative mb-10">
+                <div className="flex-1 p-4 space-y-6 relative mb-10">
                     {!hasUserSentMessage && (
-                        <div className="absolute bottom-4 w-[80%]">
+                        <div className="absolute bottom-4 md:w-[80%]">
                             <div className="flex items-start space-x-3">
                                 <div className="rounded-full text-white flex items-center justify-center">
-                                    <img src={aiIcon} className="h-10 w-10 mt-1 text-white" />
+                                    <img src={aiIcon} className="h-10 w-10 mt-1 text-white" alt="AI Icon" />
                                 </div>
                                 <div className="px-5 py-4 rounded-lg bg-gray-200 dark:bg-[#EFE9F8] text-black dark:text-[#595959] lg:text-[16px] shadow-sm w-full">
                                     <ReactMarkdown>Hello! I'm your AI assistant. How can I help you today?</ReactMarkdown>
@@ -239,7 +298,7 @@ const AiChat = () => {
                                                     <img
                                                         src={message.image}
                                                         alt="Uploaded"
-                                                        className="rounded-lg shadow-md w-24 h-12"
+                                                        className="rounded-lg shadow-md w-24 h-12 object-cover"
                                                     />
                                                     {message.fileName && (
                                                         <p className="text-xs text-gray-500 mt-1 capitalize">{message.fileName}</p>
@@ -247,10 +306,10 @@ const AiChat = () => {
                                                 </div>
                                             </div>
                                         )}
-                                        <div className=" rounded-full bg-gray-300 flex items-center justify-center">
+                                        <div className="rounded-full bg-gray-300 flex items-center justify-center">
                                             <img
                                                 src="https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
-                                                alt=""
+                                                alt="User"
                                                 className="rounded-full h-10 min-w-10"
                                             />
                                         </div>
@@ -260,7 +319,7 @@ const AiChat = () => {
                                 <div className="flex flex-col items-start w-full">
                                     <div className="flex items-start space-x-3 w-[80%]">
                                         <div className="h-10 w-10 rounded-full bg-[#5B21BD] flex items-center justify-center">
-                                            <img src={aiIcon} className="h-10 w-10 text-white" />
+                                            <img src={aiIcon} className="h-10 w-10 text-white" alt="AI Icon" />
                                         </div>
                                         <div className="px-5 py-4 rounded-lg dark:bg-[#EFE9F8] text-black dark:text-[#595959] lg:text-[16px] max-w-[80%]">
                                             <ReactMarkdown>{message.text}</ReactMarkdown>
@@ -269,17 +328,15 @@ const AiChat = () => {
                                     <div className="flex space-x-2 mt-2 ml-14">
                                         <button
                                             onClick={() => handleReaction(index, "like")}
-                                            className={`p-1 rounded-full ${
-                                                reactions[index]?.like ? "text-green-500" : "text-gray-400"
-                                            } hover:text-green-600`}
+                                            className={`p-1 rounded-full ${reactions[index]?.like ? "text-green-500" : "text-gray-400"
+                                                } hover:text-green-600`}
                                         >
                                             <ThumbsUp className="h-5 w-5" />
                                         </button>
                                         <button
                                             onClick={() => handleReaction(index, "dislike")}
-                                            className={`p-1 rounded-full ${
-                                                reactions[index]?.dislike ? "text-red-500" : "text-gray-400"
-                                            } hover:text-red-600`}
+                                            className={`p-1 rounded-full ${reactions[index]?.dislike ? "text-red-500" : "text-gray-400"
+                                                } hover:text-red-600`}
                                         >
                                             <ThumbsDown className="h-5 w-5" />
                                         </button>
@@ -293,7 +350,7 @@ const AiChat = () => {
                             <div className="flex flex-col items-start w-full">
                                 <div className="flex items-start space-x-3 mb-12">
                                     <div className="h-10 w-10 rounded-full bg-[#EFE9F8] flex items-center justify-center">
-                                        <img src={aiIcon} className="h-10 w-10 text-white" />
+                                        <img src={aiIcon} className="h-10 w-10 text-white" alt="AI Icon" />
                                     </div>
                                     <div className="px-5 py-4 rounded-lg bg-[#EFE9F8] text-black dark:text-gray-200 shadow-sm">
                                         <div className="flex space-x-1">
@@ -340,7 +397,7 @@ const AiChat = () => {
                     </div>
                 )}
 
-                <div className="p-3 fixed bottom-0 w-6/7 bg-white left-[250px] z-50">
+                <div className="p-3 fixed bottom-0 md:w-[85%] w-full bg-white left-[270px] z-50">
                     <div className="flex items-center border border-[#5B21BD] rounded-[10px] px-4 py-3">
                         <input
                             type="file"
@@ -353,7 +410,7 @@ const AiChat = () => {
                             onClick={() => fileInputRef.current?.click()}
                             className="text-gray-500 hover:text-gray-700"
                         >
-                            <PaperclipIcon className="h-5 w-5 cursor-pointer bg" />
+                            <PaperclipIcon className="h-5 w-5 cursor-pointer" />
                         </button>
                         <input
                             type="text"
@@ -380,5 +437,6 @@ const AiChat = () => {
 };
 
 export default AiChat;
+
 
 

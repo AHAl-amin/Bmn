@@ -108,14 +108,14 @@ function ChefDashboardPage() {
                         <div className="flex justify-between items-center">
                             <div>
                                 <p className="text-gray-500 text-sm">{item.title}</p>
-                                <p className="text-[#5B21BD] text-3xl font-bold">{item.value}</p>
+                                <p className="text-gray-300 text-3xl font-bold">{item.value}</p>
                             </div>
                             <div className="bg-[#8280ff1c] px-4 py-4 rounded-full">
                                 {item.icon}
                             </div>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
-                            <div className="flex items-center gap-1 text-[#5B21BD]">
+                            <div className="flex items-center gap-1 text-gray-300 ">
                                 <FaArrowTrendUp />
                                 <span>{item.note}</span>
                             </div>
@@ -129,14 +129,14 @@ function ChefDashboardPage() {
             <div className="flex flex-col md:flex-row gap-6 mt-10">
                 {/* Top Recipes */}
                 <div className="flex-1 bg-white rounded-2xl shadow-md p-6">
-                    <h2 className="text-xl font-semibold text-gray-800 mb-1">Top Queried Recipes</h2>
-                    <p className="text-sm text-gray-500 mb-4">The most popular recipes users are asking about</p>
+                    <h2 className="text-xl font-semibold text-gray-400 mb-1">Top Queried Recipes</h2>
+                    <p className="text-sm text-gray-400 mb-4">The most popular recipes users are asking about</p>
                     <ul className="space-y-4">
                         {topRecipes.map((recipe, index) => (
                             <li key={index} className="flex items-center">
-                                <span className="w-48 text-gray-700 capitalize">{recipe.name}</span>
+                                <span className="w-48 text-gray-400 capitalize">{recipe.name}</span>
                                 <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div className="h-full bg-[#5B21BD]" style={{ width: recipe.width }}></div>
+                                    <div className="h-full bg-[#5a21bd9f]" style={{ width: recipe.width }}></div>
                                 </div>
                             </li>
                         ))}
@@ -145,22 +145,22 @@ function ChefDashboardPage() {
 
                 {/* Feedback */}
                 <div className="flex-1 bg-white rounded-2xl shadow-md p-6">
-                    <h2 className="text-xl font-semibold text-gray-800 mb-1">Recent Feedback</h2>
-                    <p className="text-sm text-gray-500 mb-4">Latest User Comments On Your Recipes</p>
+                    <h2 className="text-xl font-semibold text-gray-400 mb-1">Recent Feedback</h2>
+                    <p className="text-sm text-gray-400 mb-4">Latest User Comments On Your Recipes</p>
                     <ul className="space-y-4">
                         {feedback.map((item, index) => (
-                            <li key={index} className="border-b pb-4 last:border-b-0">
+                            <li key={index} className="border-b pb-4 border-gray-300">
                                 <div className="flex items-center mb-2">
-                                    <span className="text-gray-700 font-medium capitalize">{item.recipe}</span>
+                                    <span className="text-gray-400 font-medium capitalize">{item.recipe}</span>
                                     <div className="ml-2 flex">
                                         {[...Array(item.rating)].map((_, i) => (
-                                            <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg key={i} className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.97c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118L2.312 9.397c-.783-.57-.381-1.81.588-1.81h4.15a1 1 0 00.95-.69l1.286-3.97z" />
                                             </svg>
                                         ))}
                                     </div>
                                 </div>
-                                <p className="text-sm text-gray-600">{item.comment}</p>
+                                <p className="text-sm text-gray-400">{item.comment}</p>
                             </li>
                         ))}
                     </ul>
@@ -170,16 +170,16 @@ function ChefDashboardPage() {
             {/* Chart Section */}
             <div className='mt-10 shadow bg-white rounded-xl p-4'>
                 <div className='flex justify-between pb-6 relative'>
-                    <p className='text-[28px] font-medium text-[#5B21BD]'>Monthly Revenue</p>
+                    <p className='text-[28px] font-medium text-gray-400'>Monthly Revenue</p>
                     <div className='relative'>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className='border border-[#5B21BD] rounded-[10px] text-[#5B21BD] py-1 px-8'
+                            className='border border-gray-400 rounded-[10px] text-gray-400  py-1 px-8'
                         >
                             {selectedMonth}
                         </button>
                         {isOpen && (
-                            <div className='absolute right-0 mt-2 w-40 bg-white border border-[#5B21BD] rounded-md shadow-md z-10'>
+                            <div className='absolute right-0 mt-2 w-40 bg-white border border-gray-400 text-gray-400 rounded-md shadow-md z-10'>
                                 {months.map((month) => (
                                     <div
                                         key={month}
