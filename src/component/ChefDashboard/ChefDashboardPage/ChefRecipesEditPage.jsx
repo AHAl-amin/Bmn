@@ -187,6 +187,8 @@ function ChefRecipesEditPage() {
                             <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
                                 1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
                             </p>
+
+                            
                             <RiDeleteBin6Line className='text-[#FF0000] border border-[#CCBAEB] rounded-[10px] flex justify-center items-center  size-12 p-2' />
                         </div>
 

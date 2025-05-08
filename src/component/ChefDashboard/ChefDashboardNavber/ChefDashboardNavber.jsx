@@ -1,48 +1,45 @@
 
 
-import { FaLightbulb } from 'react-icons/fa';
+
 import { GoBellFill } from 'react-icons/go';
-import { IoMdAdd } from 'react-icons/io';
+
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { FiUpload } from 'react-icons/fi';
 
 function ChefDashboardNavber() {
   // State to manage modal visibility and image upload
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [image, setImage] = useState(null);
+ 
 
   // Get current path
   const location = useLocation();
   const isChefCommunityPath = location.pathname === '/chef_dashboard/chef_community';
 
   // Toggle modal visibility
-  const toggleAddChefModal = () => {
-    if (isChefCommunityPath) {
-      setIsModalOpen(!isModalOpen);
-    }
-  };
+  // const toggleAddChefModal = () => {
+  //   if (isChefCommunityPath) {
+  //     setIsModalOpen(!isModalOpen);
+  //   }
+  // };
 
-  // Handle image upload
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl);
-    }
-  };
+  // // Handle image upload
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const imageUrl = URL.createObjectURL(file);
+  //     setImage(imageUrl);
+  //   }
+  // };
 
   return (
     <div className="flex items-center justify-end pt-10 lora h-16 px-6 md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)] lora">
       <div className="flex items-center space-x-8">
-        <button
+        {/* <button
           onClick={toggleAddChefModal}
           className="flex items-center gap-2 px-4 py-2 text-white bg-[#5B21BD] rounded-[10px] cursor-pointer"
         >
 
           <span className="font-medium">Share Creation</span>
           <IoMdAdd />
-        </button>
+        </button> */}
 
         <NavLink to="/dashboard/user_notifications">
           <div className="relative">
@@ -66,7 +63,7 @@ function ChefDashboardNavber() {
       </div>
 
       {/* Modal - Only show on /chef_dashboard/chef_community */}
-      {isModalOpen && isChefCommunityPath && (
+      {/* {isModalOpen && isChefCommunityPath && (
         <div className="fixed inset-0 bg-[#5B21BDCC] bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
             <div className="flex justify-between items-center mb-4">
@@ -141,13 +138,9 @@ function ChefDashboardNavber() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
-      <style jsx>{`
-        input[type="search"]::-webkit-search-cancel-button {
-          display: none;
-        }
-      `}</style>
+    
     </div>
   );
 }
