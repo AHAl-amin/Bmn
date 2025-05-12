@@ -5,7 +5,7 @@ import login_img2 from '../../assets/image/Admin_login_img.png';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 
-function PasswordChange() {
+function NewPassword() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -148,4 +148,4 @@ function PasswordChange() {
     );
 }
 
-export default PasswordChange;
+export default NewPassword;

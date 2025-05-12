@@ -1,192 +1,226 @@
 
 
 
+
+
 import { useState } from 'react';
 import login_img from '../../../assets/image/user_login_img.jpg';
 import login_img2 from '../../../assets/image/Admin_login_img.png';
-
-
-import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5'; // Import eye icons
-import { Link } from 'react-router-dom';
+import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
+import { Link, useNavigate } from 'react-router-dom';
+import { useRegisterMutation } from '../../../Rudux/feature/authApi';
+import { toast, Toaster } from 'react-hot-toast'; // ✅ use only react-hot-toast
 
 function UserSignup() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [emailFocused, setEmailFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [accountType, setAccountType] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const [register, { isLoading }] = useRegisterMutation();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password });
+
+    if (!name || !email || !phone || !password || !confirmPassword || !accountType) {
+      toast.error('Please fill in all required fields.');
+      return;
+    }
+
+    const storedEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
+    if (storedEmails.includes(email)) {
+      toast.error('Email already exists. Please use a different email.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match.');
+      return;
+    }
+
+    const signupData = {
+      name,
+      email,
+      phone,
+      password,
+      accountType
+    };
+
+    try {
+      await register(signupData).unwrap();
+     
+
+      localStorage.setItem("userEmail", email); // Store email in localStorage
+          
+      toast.success('Registration successful!');
+      navigate('/verification');
+    } catch (err) {
+      toast.error(err?.data?.message || 'Registration failed.');
+    }
   };
 
-  // Toggle password visibility
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
 
   return (
-    <div className="flex items-center justify-between w-full min-h-screen gap-10 nunito lora">
-      <div className="w-1/2 ">
+    <div className="flex flex-col items-center md:flex-row justify-between w-full md:min-h-screen gap-10 md:p-0 p-4 font-lora">
+      {/* <div className="md:w-1/2 w-full h-screen">
         <img
           src={login_img}
           alt="Registration illustration"
-          className=" h-screen w-full "
+          className="md:h-screen w-full "
         />
-      </div>
-      <div className="w-1/2 lg:px-40">
+      </div> */}
+
+          <div className="md:w-1/2 w-full md:h-screen ">
+                      <img
+                          src={login_img}
+                          alt="Registration illustration"
+                          className="md:h-screen w-full"
+                      />
+                  </div>
+      <div className="md:w-1/2 w-full lg:px-40">
         <div className="flex justify-center">
-          <img src={login_img2} className='h-[150px] w-[150px] ' alt="img" />
+          <img
+            src={login_img2}
+            className="h-32 w-32"
+            alt="Admin login illustration"
+          />
         </div>
-        <h1 className='text-[50px] text-[#5B21BD] font-bold text-center'>Welcome </h1>
-        <p className='text-[#A8A8A8] text-[16px] text-center mb-3'>Enter your email & password to access your account</p>
+        <h1 className="text-5xl text-[#5B21BD] font-bold text-center">Welcome</h1>
+        <p className="text-[#A8A8A8] text-base text-center mb-3">
+          Enter your details to create an account
+        </p>
 
-        <form onSubmit={handleSubmit} className="space-y-1">
-          <div className="relative">
-            <label className="block text-[#5B21BD] mb-1  text-[20px]">Name</label>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Enter your full name"
-                
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setEmailFocused(true)}
-                onBlur={() => setEmailFocused(email !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] "
-                required
-              />
-             
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-[#5B21BD] mb-1 text-xl">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Enter your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-lg"
+            />
           </div>
-          <div className="relative">
-            <label className="block text-[#5B21BD] mb-1 text-[20px]">Email</label>
-            <div className="relative">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setEmailFocused(true)}
-                onBlur={() => setEmailFocused(email !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] "
-                required
-              />
-             
-            </div>
+          <div>
+            <label htmlFor="email" className="block text-[#5B21BD] mb-1 text-xl">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-lg"
+            />
           </div>
-          <div className="relative">
-            <label className="block text-[#5B21BD] mb-1">Phone number</label>
-            <div className="relative">
-              <input
-                type="number"
-                placeholder="Enter your number"
-               
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] "
-                required
-              />
-             
-            </div>
+          <div>
+            <label htmlFor="phone" className="block text-[#5B21BD] mb-1 text-xl">
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-lg"
+            />
           </div>
-
-          <div className="relative">
-            <label className="block text-[#5B21BD] mb-1 text-[20px]">Password</label>
+          <div>
+            <label htmlFor="password" className="block text-[#5B21BD] mb-1 text-xl">
+              Password
+            </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'} // Toggle input type
+                id="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setPasswordFocused(true)}
-                onBlur={() => setPasswordFocused(password !== '')}
-                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] pr-10"
-                required
+                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-lg pr-10"
               />
-             
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD] cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD]"
               >
-                {showPassword ? (
-                  <IoEyeOffOutline size={20} />
-                ) : (
-                  <IoEyeOutline size={20} />
-                )}
+                {showPassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
               </button>
             </div>
           </div>
-          <div className="relative">
-            <label className="block text-[#5B21BD] mb-1 text-[20px]">Confirm Password</label>
+          <div>
+            <label htmlFor="confirmPassword" className="block text-[#5B21BD] mb-1 text-xl">
+              Confirm Password
+            </label>
             <div className="relative">
               <input
+                id="confirmPassword"
                 type={showConfirmPassword ? 'text' : 'password'}
-                placeholder="Enter your confirm password"
-               
-                className={`w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px]  pr-10
-                }`}
-                required
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-lg pr-10"
               />
-              
               <button
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD] cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5B21BD]"
               >
-                {showConfirmPassword ? (
-                  <IoEyeOffOutline size={20} />
-                ) : (
-                  <IoEyeOutline size={20} />
-                )}
+                {showConfirmPassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
               </button>
             </div>
           </div>
-
-     
-
-<div className="relative">
-  <label className="block text-[#5B21BD] mb-1 text-[20px]">Your Account Type</label>
-  <div className="relative">
-    <select
-      className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-[8px] appearance-none cursor-pointer text-[#A8A8A8]"
-      required
-    >
-      <option  className='cursor-pointer' value="" disabled selected>Select</option>
-      <option className='cursor-pointer'  value="personal">Personal</option>
-      <option className='cursor-pointer'  value="business">Business</option>
-      <option  className='cursor-pointer' value="student">Student</option>
-      <option  className='cursor-pointer' value="premium">Premium</option> 
-    </select>
-  </div>
-</div>
-
-
           <div>
-            <button
-              type="submit"
-              className="bg-[#5B21BD] text-[#FFFFFF] rounded-[8px] mx-auto px-6 py-2 mt-4 cursor-pointer w-full text-[20px]"
+            <label htmlFor="accountType" className="block text-[#5B21BD] mb-1 text-xl">
+              Account Type
+            </label>
+            <select
+              id="accountType"
+              value={accountType}
+              onChange={(e) => setAccountType(e.target.value)}
+              className="w-full px-4 py-2 border bg-[#F8FCFF] border-[#5B21BD] rounded-lg"
             >
-              Sign Up
-            </button>
+              <option value="" disabled>Select</option>
+              <option value="user">User</option>
+              <option value="chef">Chef</option>
+            </select>
           </div>
-          <p className="text-[16px] text-[#3E3E3E] text-center py-4">
-            Already have an account?
-            <Link
-              to="/user_signin"
-              className="text-[#5B21BD] ml-2 cursor-pointer underline"
-            >
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full bg-[#5B21BD] text-white rounded-lg px-6 py-2 mt-4 text-xl ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+            }`}
+          >
+            {isLoading ? 'Signing Up...' : 'Sign Up'}
+          </button>
+          <p className="text-base text-[#3E3E3E] text-center py-4">
+            Already have an account?{' '}
+            <Link to="/user_signin" className="text-[#5B21BD] underline">
               Sign In
             </Link>
           </p>
         </form>
       </div>
+
+      {/*  Toast container */}
+      <Toaster position="top-right" />
     </div>
   );
 }
 
-export default UserSignup;;
+export default UserSignup;
+
+
+

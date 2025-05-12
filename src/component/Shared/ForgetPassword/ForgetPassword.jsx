@@ -5,7 +5,7 @@ import login_img2 from '../../../assets/image/Admin_login_img.png';
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function ConfirmEmail() {
+function ForgetPassword() {
     const [email, setEmail] = useState("");
     const [userType, setUserType] = useState("Student");
 
@@ -76,4 +76,4 @@ function ConfirmEmail() {
     );
 }
 
-export default ConfirmEmail;
+export default ForgetPassword;

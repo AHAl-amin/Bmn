@@ -53,9 +53,13 @@ import AdminDashboardSubscription from './component/AdminDashboard/AdminDashboar
 import AdminDashboardSettingPrivecy from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSettingPrivecy.jsx';
 import UserInspirationChat from './component/UsersDashboard/UserDashboardPages/UserInspirationChat.jsx';
 import { ApiProvider } from './context/ApiProvider.jsx';
-import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
-import PasswordChange from './component/Shared/PasswordChange.jsx'
+
 import ChefAiChat from './component/ChefDashboard/ChefDashboardPage/ChefAiChat.jsx';
+import ForgetPassword from './component/Shared/ForgetPassword/ForgetPassword.jsx';
+import NewPassword from './component/Shared/NewPassword.jsx';
+import { Provider } from 'react-redux';
+import store from './Rudux/store.js';
+import ForgetPasswordVerification from './component/Shared/Verification/ForgetPasswordVerification.jsx';
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
@@ -237,16 +241,20 @@ const router = createBrowserRouter([
     element:<UserSingin/>
   },
   {
-    path:'/confirm_email',
-    element:<ConfirmEmail/>
+    path:'/forget_password',
+    element:<ForgetPassword/>
   },
   {
     path:'/verification',
     element:<Verification/>
   },
   {
-    path:'/change_password',
-    element:<PasswordChange/>
+    path:'/forget_password_verification',
+    element:<ForgetPasswordVerification/>
+  },
+  {
+    path:'/new_password',
+    element:<NewPassword/>
   },
 
 
@@ -276,10 +284,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+     <Provider store={store}>
     <React.StrictMode>
-    <ApiProvider> {/* ✅ Wrap everything */}
+     {/* Wrap everything */}
       <RouterProvider router={router} />
-    </ApiProvider>
     </React.StrictMode>
+   </Provider>
   </StrictMode>,
 )
