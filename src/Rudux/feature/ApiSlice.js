@@ -4,7 +4,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://192.168.10.124:5000/api/auth/v1",
+    baseUrl: "http://192.168.10.124:3000/api/auth/v1",
     prepareHeaders: (headers, { getState }) => {
         const accessToken = localStorage.getItem("access_token");
         console.log(accessToken);
@@ -23,15 +23,15 @@ export const ApiSlice = createApi({
     // List all tag types used in the API slice
     tagTypes: ["Profile", "UserDashboard", "Project", "Employees"],
     endpoints: (builder) => ({
-        getProfile: builder.query({
-            query: () => ({
-                url: "/accounts/profile/",
-                method: "GET",
-            }),
-            providesTags: ["Profile"],
-            keepUnusedDataFor: 0,
-            refetchOnMountOrArgChange: true,
-        }),
+        // getProfile: builder.query({
+        //     query: () => ({
+        //         url: "/accounts/profile/",
+        //         method: "GET",
+        //     }),
+        //     providesTags: ["Profile"],
+        //     keepUnusedDataFor: 0,
+        //     refetchOnMountOrArgChange: true,
+        // }),
 
        
        

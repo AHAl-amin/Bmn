@@ -20,7 +20,6 @@ import AdminDashboardAiChat from './component/AdminDashboard/AdminDashboardPages
 
 
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
-import Verification from './component/Shared/Verification/Verification.jsx';
 import ConfirmPassword from './component/Shared/Admin_ConfirmPassword/Admin_ConfirmPassword.jsx';
 import PasswordChangeSuccesfully from './component/Shared/PasswordChangeSuccesfully/PasswordChangeSuccesfully.jsx';
 
@@ -60,6 +59,7 @@ import NewPassword from './component/Shared/NewPassword.jsx';
 import { Provider } from 'react-redux';
 import store from './Rudux/store.js';
 import ForgetPasswordVerification from './component/Shared/Verification/ForgetPasswordVerification.jsx';
+import Verification from './component/Shared/Verification/Verification.jsx';
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 

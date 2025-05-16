@@ -32,11 +32,6 @@ function UserSignup() {
       return;
     }
 
-    const storedEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
-    if (storedEmails.includes(email)) {
-      toast.error('Email already exists. Please use a different email.');
-      return;
-    }
 
     if (password !== confirmPassword) {
       toast.error('Passwords do not match.');
@@ -53,11 +48,12 @@ function UserSignup() {
 
     try {
       await register(signupData).unwrap();
-     
+
 
       localStorage.setItem("userEmail", email); // Store email in localStorage
-          
+
       toast.success('Registration successful!');
+      
       navigate('/verification');
     } catch (err) {
       toast.error(err?.data?.message || 'Registration failed.');
@@ -69,22 +65,16 @@ function UserSignup() {
 
   return (
     <div className="flex flex-col items-center md:flex-row justify-between w-full md:min-h-screen gap-10 md:p-0 p-4 font-lora">
-      {/* <div className="md:w-1/2 w-full h-screen">
+     
+
+      <div className="md:w-1/2 w-full md:h-screen ">
         <img
           src={login_img}
           alt="Registration illustration"
-          className="md:h-screen w-full "
+          className="md:h-screen w-full"
         />
-      </div> */}
-
-          <div className="md:w-1/2 w-full md:h-screen ">
-                      <img
-                          src={login_img}
-                          alt="Registration illustration"
-                          className="md:h-screen w-full"
-                      />
-                  </div>
-      <div className="md:w-1/2 w-full lg:px-40">
+      </div>
+      <div className="md:w-1/2 w-full md:px-40">
         <div className="flex justify-center">
           <img
             src={login_img2}
@@ -97,7 +87,7 @@ function UserSignup() {
           Enter your details to create an account
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-2">
           <div>
             <label htmlFor="name" className="block text-[#5B21BD] mb-1 text-xl">
               Name
@@ -199,9 +189,8 @@ function UserSignup() {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full bg-[#5B21BD] text-white rounded-lg px-6 py-2 mt-4 text-xl ${
-              isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-            }`}
+            className={`w-full bg-[#5B21BD] text-white rounded-lg px-6 py-2 mt-4 text-xl ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              }`}
           >
             {isLoading ? 'Signing Up...' : 'Sign Up'}
           </button>

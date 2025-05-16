@@ -122,10 +122,10 @@ const Subscribsion = () => {
 
     return (
         <div id="pricing" className="  md:px-4 ">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto">
 
 
-            <div className="text-center mb-6 md:mb-12">
+            <div className="text-center mb-6 md:mb-0">
                     <h3 className="text-[#2D4162] font-medium mb-2 text-sm md:text-2xl">
                         Our Powerful Features
                     </h3>
@@ -182,7 +182,7 @@ const Subscribsion = () => {
                                 {monthlyPlans.map((plan, index) => (
                                     <motion.div
                                         key={`monthly-${index}`}
-                                        className="bg-white hover:bg-[#EFE9F8] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[500px] flex flex-col"
+                                        className="bg-white mt-6 hover:bg-[#EFE9F8] transition duration-500  rounded-3xl shadow-lg overflow-hidden w-full min-h-[450px] md:min-h-[460px] flex flex-col"
                                         variants={cardVariants}
                                     >
                                         <div className="p-4 md:p-8 flex flex-col flex-grow">

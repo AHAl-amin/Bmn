@@ -1,172 +1,589 @@
-import React, { useRef, useState, useEffect } from 'react';
+
+
+
+
+
+// import React, { useRef, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import {
+//   useForgetpasswordVerificationMutation,
+//   useForgetResetVerificationMutation,
+// } from '../../../Rudux/feature/authApi';
+// import { toast, Toaster } from 'react-hot-toast';
+// import registration_img from '../../../assets/image/user_login_img.jpg';
+// import login_img2 from '../../../assets/image/Admin_login_img.png';
+
+// function ForgetPasswordVerification() {
+//   const [otp, setOtp] = useState(['', '', '', '']);
+//   const [focused, setFocused] = useState([false, false, false, false]);
+//   const inputRefs = useRef([]);
+//   const [forgetpasswordVerification, { isLoading: isVerifying }] = useForgetpasswordVerificationMutation();
+//   const [forgetResetVerification, { isLoading: isResending }] = useForgetResetVerificationMutation();
+
+//   const navigate = useNavigate();
+
+//   const handleOtpChange = (index, value) => {
+//     if (/^\d?$/.test(value)) {
+//       const newOtp = [...otp];
+//       newOtp[index] = value;
+//       setOtp(newOtp);
+
+//       // Move to next input if value is entered
+//       if (value && index < 3) {
+//         inputRefs.current[index + 1].focus();
+//       }
+//     }
+//   };
+
+//   const handleKeyDown = (index, e) => {
+//     if (e.key === 'Backspace' && !otp[index] && index > 0) {
+//       inputRefs.current[index - 1].focus();
+//     }
+//   };
+
+//   const handleFocus = (index) => {
+//     setFocused((prev) => {
+//       const newFocused = [...prev];
+//       newFocused[index] = true;
+//       return newFocused;
+//     });
+//   };
+
+//   const handleBlur = (index) => {
+//     setFocused((prev) => {
+//       const newFocused = [...prev];
+//       newFocused[index] = false;
+//       return newFocused;
+//     });
+//   };
+
+//   const handlePaste = (e) => {
+//     e.preventDefault();
+//     const pastedData = e.clipboardData.getData('text').trim();
+//     if (/^\d{4}$/.test(pastedData)) {
+//       const newOtp = pastedData.split('');
+//       setOtp(newOtp);
+//       inputRefs.current[3].focus();
+//     }
+//   };
+
+//   const handleSubmit = async () => {
+//     const email = localStorage.getItem('forgetPasswordEmail');
+//     const otpString = otp.join(''); // Concatenate OTP digits (e.g., ["6", "5", "2", "5"] → "6525")
+
+//     if (!email) {
+//       toast.error('Email not found. Please request a new reset link.');
+//       return;
+//     }
+
+//     if (otpString.length !== 4 || !/^\d{4}$/.test(otpString)) {
+//       toast.error('Please enter a valid 4-digit OTP.');
+//       return;
+//     }
+
+//     const verificationData = {
+//       email,
+//       otp: otpString,
+//     };
+
+//     try {
+//       const res = await forgetpasswordVerification(verificationData).unwrap();
+//       console.log('backendResponse', res);
+
+//       if (res.access_token) {
+//         localStorage.setItem('access_token', res.access_token);
+//         localStorage.setItem('refresh_token', res.refresh_token);
+//         console.log('Access Token:', res.access_token);
+//         console.log('Refresh Token:', res.refresh_token);
+//       } else {
+//         console.warn('No access token found in response');
+//       }
+//       const successMessage = res.message || 'OTP verified successfully!';
+//       console.log('Success:', successMessage);
+//       toast.success(successMessage);
+//       localStorage.setItem('otp', otpString);
+//       navigate('/new_password');
+//     } catch (error) {
+//       const errorMessage = error.data?.message || 'OTP verification failed!';
+//       console.log('Error:', errorMessage);
+//       toast.error(errorMessage);
+//     }
+//   };
+
+//   const handleResendOtp = async () => {
+//     const email = localStorage.getItem('forgetPasswordEmail');
+
+//     if (!email) {
+//       toast.error('Email not found. Please request a new reset link.');
+//       return;
+//     }
+
+//     const resendData = { email };
+
+//     try {
+//       const res = await forgetResetVerification(resendData).unwrap();
+//       console.log('resendOtpResponse', res);
+//       const successMessage = res.message || 'New verification code sent!';
+//       console.log('Resend Success:', successMessage);
+//       toast.success(successMessage);
+//       setOtp(['', '', '', '']); // Clear OTP inputs
+//       inputRefs.current[0].focus();
+//     } catch (error) {
+//       const errorMessage = error.data?.message || 'Failed to resend OTP!';
+//       console.log('Resend Error:', errorMessage);
+//       toast.error(errorMessage);
+//     }
+//   };
+
+//   return (
+//     <div className="flex w tasca-full md:flex-row flex-col min-h-screen justify-between items-center lora">
+//       <div className="md:w-1/2 w-full md:h-screen ">
+//         <img
+//           src={registration_img}
+//           alt="Registration illustration"
+//           className="md:h-screen w-full "
+//         />
+//       </div>
+//       <div className="md:w-1/2 w-full md:px-40 py-8">
+//         <img src={login_img2} className="h-[120px] w-[120px] mb-8 mx-auto" alt="Logo" />
+//         <div className="w-full px-4">
+//           <div className="text-center space-y-6">
+//             <h1 className="text-2xl text-[#5B21BD] font-semibold">Verify Your Email</h1>
+//             <p className="text-sm text-gray-600">
+//               We've sent a 4-digit verification code to your email address. Please enter it below to
+//               reset your password.
+//             </p>
+//             <h2 className="text-xl font-bold text-[#5B21BD]">Enter Verification Code</h2>
+//             <div className="flex justify-center space-x-4 my-6">
+//               {otp.map((digit, index) => (
+//                 <input
+//                   key={index}
+//                   type="tel"
+//                   maxLength="1"
+//                   aria-label={`OTP digit ${index + 1}`}
+//                   placeholder={focused[index] || digit ? '' : '*'}
+//                   value={digit}
+//                   onChange={(e) => handleOtpChange(index, e.target.value)}
+//                   onKeyDown={(e) => handleKeyDown(index, e)}
+//                   onFocus={() => handleFocus(index)}
+//                   onBlur={() => handleBlur(index)}
+//                   onPaste={handlePaste}
+//                   ref={(el) => (inputRefs.current[index] = el)}
+//                   className="w-12 h-12 text-center text-xl border border-gray-300 rounded-full pt-2 focus:outline-none focus:ring-2 focus:ring-[#5B21BD] transition-all"
+//                 />
+//               ))}
+//             </div>
+//             <p className="text-sm text-gray-600">
+//               Didn't receive a code?{' '}
+//               <button
+//                 onClick={handleResendOtp}
+//                 disabled={isResending}
+//                 className={`text-[#5B21BD] underline focus:outline-none ${
+//                   isResending ? 'opacity-50 cursor-not-allowed' : 'hover:text-[#4A1A9C]'
+//                 }`}
+//               >
+//                 Resend Code
+//               </button>
+//             </p>
+//             <button
+//               onClick={handleSubmit}
+//               disabled={isVerifying}
+//               className={`w-1/2 bg-[#5B21BD] text-white py-3 rounded-lg font-semibold transition-all ${
+//                 isVerifying ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#4A1A9C]'
+//               }`}
+//             >
+//               {isVerifying ? 'Verifying...' : 'Verify OTP'}
+//             </button>
+//           </div>
+//         </div>
+//         <Toaster position="top-right" />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ForgetPasswordVerification;
+
+
+// import React, { useRef, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import {
+//   useForgetpasswordVerificationMutation,
+//   useForgetResetVerificationMutation,
+//   useResendOtpMutation,
+// } from '../../../Rudux/feature/authApi';
+// import { toast, Toaster } from 'react-hot-toast';
+// import registration_img from '../../../assets/image/user_login_img.jpg';
+// import login_img2 from '../../../assets/image/Admin_login_img.png';
+
+// function ForgetPasswordVerification() {
+//   const [otp, setOtp] = useState(['', '', '', '']);
+//   const [focused, setFocused] = useState([false, false, false, false]);
+//   const [otpError, setOtpError] = useState(false);
+//   const inputRefs = useRef([]);
+//   const [forgetpasswordVerification, { isLoading: isVerifying }] = useForgetpasswordVerificationMutation();
+//   const [forgetResetVerification, { isLoading: isResending }] = useForgetResetVerificationMutation();
+//    const [resendOtp, { isLoading: isResending }] = useResendOtpMutation();
+//   const navigate = useNavigate();
+
+//   const handleOtpChange = (index, value) => {
+//     if (/^\d?$/.test(value)) {
+//       const newOtp = [...otp];
+//       newOtp[index] = value;
+//       setOtp(newOtp);
+//       if (value && index < 3) {
+//         inputRefs.current[index + 1].focus();
+//       }
+//     }
+//   };
+
+//   const handleKeyDown = (index, e) => {
+//     if (e.key === 'Backspace' && !otp[index] && index > 0) {
+//       inputRefs.current[index - 1].focus();
+//     }
+//   };
+
+//   const handleFocus = (index) => {
+//     setFocused((prev) => {
+//       const newFocused = [...prev];
+//       newFocused[index] = true;
+//       return newFocused;
+//     });
+//   };
+
+//   const handleBlur = (index) => {
+//     setFocused((prev) => {
+//       const newFocused = [...prev];
+//       newFocused[index] = false;
+//       return newFocused;
+//     });
+//   };
+
+//   const handlePaste = (e) => {
+//     e.preventDefault();
+//     const pastedData = e.clipboardData.getData('text').trim();
+//     if (/^\d{4}$/.test(pastedData)) {
+//       const newOtp = pastedData.split('');
+//       setOtp(newOtp);
+//       inputRefs.current[3].focus();
+//     }
+//   };
+
+//   const handleSubmit = async () => {
+//     const email = localStorage.getItem('forgetPasswordEmail');
+//     const otpString = otp.join('');
+
+//     if (!email) {
+//       toast.error('Email not found. Please request a new reset link.');
+//       return;
+//     }
+
+//     if (otpString.length !== 4 || !/^\d{4}$/.test(otpString)) {
+//       toast.error('Please enter a valid 4-digit OTP.');
+//       return;
+//     }
+
+//     const verificationData = { email, otp: otpString };
+
+//     try {
+//       const res = await forgetpasswordVerification(verificationData).unwrap();
+//       if (res.access_token) {
+//         localStorage.setItem('access_token', res.access_token);
+//         localStorage.setItem('refresh_token', res.refresh_token);
+//       }
+//       toast.success(res.message || 'OTP verified successfully!');
+//       localStorage.setItem('otp', otpString);
+//       navigate('/new_password');
+//     } catch (error) {
+//       const errorMessage = error?.data?.message || 'OTP verification failed!';
+//       toast.error(errorMessage);
+//       setOtp(['', '', '', '']);
+//       setOtpError(true);
+//       inputRefs.current[0].focus();
+//       setTimeout(() => setOtpError(false), 500);
+//     }
+//   };
+
+//   const handleResendOtp = async () => {
+//     const email = localStorage.getItem('forgetPasswordEmail');
+//     if (!email) {
+//       toast.error('Email not found. Please request a new reset link.');
+//       return;
+//     }
+
+//     try {
+//       const res = await forgetResetVerification({ email }).unwrap();
+//       toast.success(res.message || 'New verification code sent!');
+//       setOtp(['', '', '', '']);
+//       inputRefs.current[0].focus();
+//     } catch (error) {
+//       const errorMessage = error?.data?.message || 'Failed to resend OTP!';
+//       toast.error(errorMessage);
+//     }
+//   };
+
+//   return (
+//     <div className="flex w-full md:flex-row flex-col min-h-screen justify-between items-center lora">
+//       <div className="md:w-1/2 w-full md:h-screen">
+//         <img src={registration_img} alt="Registration illustration" className="md:h-screen w-full" />
+//       </div>
+//       <div className="md:w-1/2 w-full md:px-40 py-8">
+//         <img src={login_img2} className="h-[120px] w-[120px] mb-8 mx-auto" alt="Logo" />
+//         <div className="w-full px-4">
+//           <div className="text-center space-y-6">
+//             <h1 className="text-2xl text-[#5B21BD] font-semibold">Verify Your Email</h1>
+//             <p className="text-sm text-gray-600">
+//               We've sent a 4-digit verification code to your email address. Please enter it below to reset your password.
+//             </p>
+//             <h2 className="text-xl font-bold text-[#5B21BD]">Enter Verification Code</h2>
+//             <div className="flex justify-center space-x-4 my-6">
+//               {otp.map((digit, index) => (
+//                 <input
+//                   key={index}
+//                   type="tel"
+//                   maxLength="1"
+//                   aria-label={`OTP digit ${index + 1}`}
+//                   placeholder={focused[index] || digit ? '' : '*'}
+//                   value={digit}
+//                   onChange={(e) => handleOtpChange(index, e.target.value)}
+//                   onKeyDown={(e) => handleKeyDown(index, e)}
+//                   onFocus={() => handleFocus(index)}
+//                   onBlur={() => handleBlur(index)}
+//                   onPaste={handlePaste}
+//                   ref={(el) => (inputRefs.current[index] = el)}
+//                   className={`w-12 h-12 text-center text-xl border rounded-full pt-2 transition-all focus:outline-none focus:ring-2 ${
+//                     otpError ? 'border-red-500 animate-shake' : 'border-gray-300 focus:ring-[#5B21BD]'
+//                   }`}
+//                 />
+//               ))}
+//             </div>
+//             <p className="text-sm text-gray-600">
+//               Didn't receive a code?{' '}
+//               <button
+//                 onClick={handleResendOtp}
+//                 disabled={isResending}
+//                 className={`text-[#5B21BD] underline focus:outline-none ${
+//                   isResending ? 'opacity-50 cursor-not-allowed' : 'hover:text-[#4A1A9C]'
+//                 }`}
+//               >
+//                 Resend Code
+//               </button>
+//             </p>
+//             <button
+//               onClick={handleSubmit}
+//               disabled={isVerifying}
+//               className={`w-1/2 bg-[#5B21BD] text-white py-3 rounded-lg font-semibold transition-all ${
+//                 isVerifying ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#4A1A9C]'
+//               }`}
+//             >
+//               {isVerifying ? 'Verifying...' : 'Verify OTP'}
+//             </button>
+//           </div>
+//         </div>
+//         <Toaster position="top-right" />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ForgetPasswordVerification;
+
+
+import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  useForgetpasswordVerificationMutation,
+ 
+  useResendOtpMutation,
+} from '../../../Rudux/feature/authApi';
+import { toast, Toaster } from 'react-hot-toast';
 import registration_img from '../../../assets/image/user_login_img.jpg';
 import login_img2 from '../../../assets/image/Admin_login_img.png';
-import { Link } from 'react-router-dom';
 
 function ForgetPasswordVerification() {
-    const [otp, setOtp] = useState(["", "", "", ""]);
-    const [focused, setFocused] = useState([false, false, false, false]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const inputRefs = useRef([]);
+  const [otp, setOtp] = useState(['', '', '', '']);
+  const [focused, setFocused] = useState([false, false, false, false]);
+  const [otpError, setOtpError] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0); // Cooldown state for resend button
+  const inputRefs = useRef([]);
+  const [forgetpasswordVerification, { isLoading: isVerifying }] = useForgetpasswordVerificationMutation();
+ // Not used, kept for consistency
+  const [resendOtp, { isLoading: isResending }] = useResendOtpMutation();
+  const navigate = useNavigate();
 
-    // Auto-close modal after 2 seconds
-    useEffect(() => {
-        let timer;
-        if (isModalOpen) {
-            timer = setTimeout(() => {
-                setIsModalOpen(false);
-            }, 2000);
-        }
-        return () => clearTimeout(timer); // Cleanup on unmount or modal close
-    }, [isModalOpen]);
+  const handleOtpChange = (index, value) => {
+    if (/^\d?$/.test(value)) {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
+      if (value && index < 3) {
+        inputRefs.current[index + 1].focus();
+      }
+    }
+  };
 
-    const handleChange = (index, value) => {
-        if (!/^\d?$/.test(value)) return;
-        const newOtp = [...otp];
-        newOtp[index] = value;
-        setOtp(newOtp);
-        if (value && index < 3) inputRefs.current[index + 1].focus();
-    };
+  const handleKeyDown = (index, e) => {
+    if (e.key === 'Backspace' && !otp[index] && index > 0) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
 
-    const handleKeyDown = (index, e) => {
-        if (e.key === "Backspace" && !otp[index] && index > 0) {
-            inputRefs.current[index - 1].focus();
-        }
-    };
+  const handleFocus = (index) => {
+    setFocused((prev) => {
+      const newFocused = [...prev];
+      newFocused[index] = true;
+      return newFocused;
+    });
+  };
 
-    const handleFocus = (index) => {
-        const newFocused = [...focused];
-        newFocused[index] = true;
-        setFocused(newFocused);
-    };
+  const handleBlur = (index) => {
+    setFocused((prev) => {
+      const newFocused = [...prev];
+      newFocused[index] = false;
+      return newFocused;
+    });
+  };
 
-    const handleBlur = (index) => {
-        const newFocused = [...focused];
-        newFocused[index] = false;
-        setFocused(newFocused);
-    };
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').trim();
+    if (/^\d{4}$/.test(pastedData)) {
+      const newOtp = pastedData.split('');
+      setOtp(newOtp);
+      inputRefs.current[3].focus();
+    }
+  };
 
-    const handleSubmit = () => {
-        alert(`Entered OTP: ${otp.join("")}`);
-    };
+  const handleSubmit = async () => {
+    const email = localStorage.getItem('forgetPasswordEmail');
+    const otpString = otp.join('');
 
-    const handleResendClick = () => {
-        setIsModalOpen(true);
-    };
+    if (!email) {
+      toast.error('Email not found. Please request a new reset link.');
+      return;
+    }
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
+    if (otpString.length !== 4 || !/^\d{4}$/.test(otpString)) {
+      toast.error('Please enter a valid 4-digit OTP.');
+      return;
+    }
 
-    // Handle click on the backdrop to close the modal
-    const handleBackdropClick = (e) => {
-        if (e.target === e.currentTarget) {
-            closeModal();
-        }
-    };
+    const verificationData = { email, otp: otpString };
 
-    return (
-        <div className="flex w-full md:flex-row flex-col md:h-screen justify-between items-center lora">
-            {/* Left Side: Image */}
-            <div className="md:w-1/2 w-full md:h-screen ">
-                <img
-                    src={registration_img}
-                    alt="Registration illustration"
-                    className="md:h-screen w-full"
+    try {
+      const res = await forgetpasswordVerification(verificationData).unwrap();
+      if (res.access_token) {
+        localStorage.setItem('access_token', res.access_token);
+        localStorage.setItem('refresh_token', res.refresh_token);
+      }
+      toast.success(res.message || 'OTP verified successfully!');
+      localStorage.setItem('otp', otpString);
+      navigate('/new_password');
+    } catch (error) {
+      const errorMessage = error?.data?.message || 'OTP verification failed!';
+      toast.error(errorMessage);
+      setOtp(['', '', '', '']);
+      setOtpError(true);
+      inputRefs.current[0].focus();
+      setTimeout(() => setOtpError(false), 500);
+    }
+  };
+
+  const handleResendOtp = async () => {
+    if (resendCooldown > 0) {
+      toast.error(`Please wait ${resendCooldown} seconds before resending.`);
+      return;
+    }
+
+    const email = localStorage.getItem('forgetPasswordEmail');
+    if (!email) {
+      toast.error('Email not found. Please request a new reset link.');
+      return;
+    }
+
+    try {
+      const res = await resendOtp({ email }).unwrap();
+      toast.success(res.message || 'A new verification code has been sent to your email!');
+      setOtp(['', '', '', '']);
+      inputRefs.current[0].focus();
+      setResendCooldown(60); // Set 60-second cooldown
+      const countdown = setInterval(() => {
+        setResendCooldown((prev) => {
+          if (prev <= 1) {
+            clearInterval(countdown);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } catch (error) {
+      const errorMessage = error?.data?.message || 'Failed to resend OTP!';
+      toast.error(errorMessage);
+    }
+  };
+
+  return (
+    <div className="flex w-full md:flex-row flex-col min-h-screen justify-between items-center lora">
+      <div className="md:w-1/2 w-full md:h-screen">
+        <img src={registration_img} alt="Registration illustration" className="md:h-screen w-full" />
+      </div>
+      <div className="md:w-1/2 w-full md:px-40 py-8">
+        <img src={login_img2} className="h-[120px] w-[120px] mb-8 mx-auto" alt="Logo" />
+        <div className="w-full px-4">
+          <div className="text-center space-y-6">
+            <h1 className="text-2xl text-[#5B21BD] font-semibold">Verify Your Email</h1>
+            <p className="text-sm text-gray-600">
+              We've sent a 4-digit verification code to your email address. Please enter it below to reset your password.
+            </p>
+            <h2 className="text-xl font-bold text-[#5B21BD]">Enter Verification Code</h2>
+            <div className="flex justify-center space-x-4 my-6">
+              {otp.map((digit, index) => (
+                <input
+                  key={index}
+                  type="tel"
+                  maxLength="1"
+                  aria-label={`OTP digit ${index + 1}`}
+                  placeholder={focused[index] || digit ? '' : '*'}
+                  value={digit}
+                  onChange={(e) => handleOtpChange(index, e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(index, e)}
+                  onFocus={() => handleFocus(index)}
+                  onBlur={() => handleBlur(index)}
+                  onPaste={handlePaste}
+                  ref={(el) => (inputRefs.current[index] = el)}
+                  className={`w-12 h-12 text-center text-xl border rounded-full pt-2 transition-all focus:outline-none focus:ring-2 ${
+                    otpError ? 'border-red-500 animate-shake' : 'border-gray-300 focus:ring-[#5B21BD]'
+                  }`}
                 />
+              ))}
             </div>
-
-            {/* Right Side: Verification Form */}
-            <div className="md:w-1/2 w-full">
-                <div className="flex justify-center mb-20">
-                    <img src={login_img2} className='h-[150px] w-[150px]' alt="img" />
-                </div>
-                <div className=" flex mx-auto justify-center rounded md:p-8 p-3 ">
-                    <div className="text-center space-y-8">
-                        {/* Header Text */}
-                        <p className="text-2xl text-[#5B21BD] font-semibold">
-                            We have sent you an activation code.
-                        </p>
-                        <p className="text-sm text-gray-600">
-                            An email has been sent to your email address containing a <br />
-                            code to reset your password.
-                        </p>
-                        <h2 className="text-[20px] font-bold text-[#5B21BD]">
-                            Enter verification code
-                        </h2>
-
-                        {/* OTP Inputs */}
-                        <div className="flex justify-center space-x-4 my-4">
-                            {otp.map((digit, index) => (
-                                <input
-                                    key={index}
-                                    type="text"
-                                    maxLength="1"
-                                    placeholder={focused[index] || digit ? '' : '*'}
-                                    value={digit}
-                                    onChange={(e) => handleChange(index, e.target.value)}
-                                    onKeyDown={(e) => handleKeyDown(index, e)}
-                                    onFocus={() => handleFocus(index)}
-                                    onBlur={() => handleBlur(index)}
-                                    ref={(el) => (inputRefs.current[index] = el)}
-                                    className="w-12 h-12 text-center text-xl border border-gray-300 rounded-full pt-2 focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
-                                />
-                            ))}
-                        </div>
-
-                        {/* Resend Link */}
-                        <p className="text-sm text-gray-600">
-                            If you didn’t receive a code!{' '}
-                            <span
-                                onClick={handleResendClick}
-                                className="text-[#5B21BD] ml-2 cursor-pointer underline"
-                            >
-                                click here..
-                            </span>
-                        </p>
-
-                        {/* Confirm Button */}
-                        <Link to='/change_password'
-                           
-                            className="bg-[#5B21BD] text-[#F6F8FA] px-6 py-3 rounded-[8px] text-[16px] font-bold w-[123px] cursor-pointer"
-                        >
-                            Confirm
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
-            {/* Modal for Resend Link */}
-            {isModalOpen && (
-                <div
-                    className="fixed inset-0 flex items-center justify-center  bg-opacity-50 backdrop-blur-sm z-50"
-                    onClick={handleBackdropClick}
-                >
-                    <div className="bg-white rounded-lg p-6 w-96 shadow-lg space-y-8 py-10">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full mx-auto bg-[#5B21BD] text-white">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-8 w-8"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={3}
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                        </div>
-                        <p className="text-[#012939] text-[20px] font-medium text-center">
-                            Code has been sent again
-                        </p>
-                    </div>
-                </div>
-            )}
+            <p className="text-sm text-gray-600">
+              Didn't receive a code?{' '}
+              <button
+                onClick={handleResendOtp}
+                disabled={isResending || resendCooldown > 0}
+                className={`text-[#5B21BD] underline focus:outline-none ${
+                  isResending || resendCooldown > 0 ? 'opacity-50 cursor-not-allowed' : 'hover:text-[#4A1A9C]'
+                }`}
+              >
+                {resendCooldown > 0 ? `Resend in ${resendCooldown}s` : 'Resend Code'}
+              </button>
+            </p>
+            <button
+              onClick={handleSubmit}
+              disabled={isVerifying}
+              className={`w-1/2 bg-[#5B21BD] text-white py-3 rounded-lg font-semibold transition-all ${
+                isVerifying ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#4A1A9C]'
+              }`}
+            >
+              {isVerifying ? 'Verifying...' : 'Confirm'}
+            </button>
+          </div>
         </div>
-    );
+        <Toaster position="top-right" />
+      </div>
+    </div>
+  );
 }
 
 export default ForgetPasswordVerification;
