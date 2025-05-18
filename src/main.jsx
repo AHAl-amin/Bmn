@@ -42,7 +42,7 @@ import ChefRecipesDettilsView from './component/ChefDashboard/ChefDashboardPage/
 import ChefRecipesEditPage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesEditPage.jsx';
 import AiTraining from './component/ChefDashboard/ChefDashboardPage/AiTraining.jsx';
 import ChefSettingAndPrivecy from './component/ChefDashboard/ChefDashboardPage/ChefSettingAndPrivecy.jsx';
-import FacebookUser from './component/ChefDashboard/ChefDashboardPage/FacebookUser.jsx';
+
 import Branding from './component/ChefDashboard/ChefDashboardPage/Branding.jsx';
 import ChefSubscribtion from './component/ChefDashboard/ChefDashboardPage/ChefSubscribtion.jsx';
 import ChefCommunity from './component/ChefDashboard/ChefDashboardPage/ChefCommunity.jsx';
@@ -51,7 +51,7 @@ import AdminDashboardUser from './component/AdminDashboard/AdminDashboardPages/A
 import AdminDashboardSubscription from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSubscription.jsx';
 import AdminDashboardSettingPrivecy from './component/AdminDashboard/AdminDashboardPages/AdminDashboardSettingPrivecy.jsx';
 import UserInspirationChat from './component/UsersDashboard/UserDashboardPages/UserInspirationChat.jsx';
-import { ApiProvider } from './context/ApiProvider.jsx';
+
 
 import ChefAiChat from './component/ChefDashboard/ChefDashboardPage/ChefAiChat.jsx';
 import ForgetPassword from './component/Shared/ForgetPassword/ForgetPassword.jsx';
@@ -60,6 +60,7 @@ import { Provider } from 'react-redux';
 import store from './Rudux/store.js';
 import ForgetPasswordVerification from './component/Shared/Verification/ForgetPasswordVerification.jsx';
 import Verification from './component/Shared/Verification/Verification.jsx';
+import UserFeedback from './component/ChefDashboard/ChefDashboardPage/UserFeedback.jsx';
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
@@ -169,8 +170,8 @@ const router = createBrowserRouter([
       element: <ChefSubscribtion/>
     },
     {
-      path:'facebook_user',
-      element: <FacebookUser/>
+      path:'user_feedback',
+      element: <UserFeedback/>
     },
 
     {

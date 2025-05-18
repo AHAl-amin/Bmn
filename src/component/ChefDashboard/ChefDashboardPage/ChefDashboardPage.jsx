@@ -41,6 +41,7 @@ const topRecipes = [
     { name: "Strawberry Macarons", width: "40%" },
 ];
 
+
 const feedback = [
     {
         recipe: "Chocolate soufflé",
@@ -63,6 +64,8 @@ const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
+
+
 
 function ChefDashboardPage() {
     const [darkMode, setDarkMode] = useState(false);

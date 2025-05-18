@@ -1,236 +1,22 @@
 
 
-// import React from 'react';
-// import { LuUpload } from 'react-icons/lu';
-// import { Link } from 'react-router-dom';
-// import { LuChevronDown } from 'react-icons/lu';
-
-// function ChefRecipesDettilsView() {
-//     const [formData, setFormData] = React.useState({
-//         title: '',
-//         category: 'Desserts',
-//         description: '',
-//         image: null,
-//     });
-   
-
-//     const categories = ['Desserts', 'Main Course', 'Appetizers', 'Beverages'];
-    
-//     function CategoryDropdown({ formData, setFormData }) {
-//       const [isOpen, setIsOpen] = useState(false);
-    
-//       const handleSelect = (category) => {
-//         setFormData({ ...formData, category });
-//         setIsOpen(false);
-//       };
-//     const handleInputChange = (e) => {
-//         const { name, value } = e.target;
-//         setFormData({ ...formData, [name]: value });
-//     };
-
-//     const handleFileChange = (e) => {
-//         const file = e.target.files[0];
-//         if (file) {
-//             setFormData({ ...formData, image: URL.createObjectURL(file) });
-//         }
-//     };
-
-//     const handleSubmit = () => {
-//         console.log('Form Data:', formData);
-//     };
-
-//     return (
-//         <div>
-//             <div className="px-12 py-6 lora">
-//                 <h1 className="text-[34px] font-semibold text-[#5B21BD] my-2">Recipes Details View</h1>
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//                     {/* Left Side */}
-//                     <div>
-//   <label className="block text-xl font-medium text-[#5B21BD] mb-2">Recipe Title</label>
-//   <input
-//     type="text"
-//     name="title"
-//     value={formData.title}
-//     onChange={handleInputChange}
-//     placeholder="Classic Chocolate Soufflé"
-//     className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md focus:outline-none"
-//   />
-// </div>
-
-// {/* <div>
-//   <label className="block text-xl font-medium text-[#5B21BD] mb-2">Category</label>
-//   <select
-//     name="category"
-//     value={formData.category}
-//     onChange={handleInputChange}
-//     className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] text-[#999999] rounded-md focus:outline-none"
-//   >
-//     <option value="Desserts">Desserts</option>
-//     <option value="Main Course">Main Course</option>
-//     <option value="Appetizers">Appetizers</option>
-//     <option value="Beverages">Beverages</option>
-//   </select>
-
-
-
-// </div> */}
-
-// <div className="relative w-full">
-//       <label className="block text-xl font-medium text-[#5B21BD] mb-2">Category</label>
-
-//       <div
-//         onClick={() => setIsOpen(!isOpen)}
-//         className="cursor-pointer p-2 border border-[#CCBAEB] bg-white rounded-md flex justify-between items-center"
-//       >
-//         <span className="text-[#333]">{formData.category || 'Select Category'}</span>
-//         <LuChevronDown className="text-[#5B21BD]" />
-//       </div>
-
-//       {isOpen && (
-//         <ul className="absolute z-10 mt-1 w-full bg-white border border-[#CCBAEB] rounded-md shadow-md">
-//           {categories.map((item) => (
-//             <li
-//               key={item}
-//               onClick={() => handleSelect(item)}
-//               className="px-4 py-2 text-[#333] hover:bg-transparent cursor-pointer"
-//             >
-//               {item}
-//             </li>
-//           ))}
-//         </ul>
-//       )}
-//     </div>
-//   );
-// }
-
-// <div>
-//   <label className="block text-xl font-medium text-[#5B21BD] mb-2">Description</label>
-//   <textarea
-//     name="description"
-//     value={formData.description}
-//     onChange={handleInputChange}
-//     placeholder="A light and airy dessert with a molten center"
-//     className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md focus:outline-none h-24 resize-none"
-//   />
-// </div>
-
-// <div>
-//   <label className="block text-xl font-medium text-[#5B21BD] mb-2">Upload Image</label>
-//   <div className="w-full h-24 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md flex items-center justify-center resize-none">
-//     {formData.image ? (
-//       <img src={formData.image} alt="Uploaded Preview" className="max-h-full max-w-full object-contain" />
-//     ) : (
-//       <label className="cursor-pointer relative">
-//         <LuUpload className="text-[20px] text-[#5B21BD] absolute bottom-5 left-11" />
-//         <span className="text-[#5B21BD]">Upload Image</span>
-//         <input
-//           type="file"
-//           accept="image/*"
-//           onChange={handleFileChange}
-//           className="hidden"
-//         />
-//       </label>
-//     )}
-//   </div>
-// </div>
-
-//                 </div>
-
-//                 {/* Recipe Ingredients Section */}
-//                 <div>
-//                     <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Recipe Ingredients</h2>
-//                     <div className="space-y-6">
-//                         <div className="flex text-[#999999] gap-6">
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">Dark chocolate</p>
-//                             <p className="w-2/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3">200g</p>
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">70% cocoa solids</p>
-//                         </div>
-//                         <div className="flex text-[#999999] gap-6">
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">Dark chocolate</p>
-//                             <p className="w-2/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3">200g</p>
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">70% cocoa solids</p>
-//                         </div>
-//                         <div className="flex text-[#999999] gap-6">
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">Dark chocolate</p>
-//                             <p className="w-2/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3">200g</p>
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">70% cocoa solids</p>
-//                         </div>
-//                         <div className="flex text-[#999999] gap-6">
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">Dark chocolate</p>
-//                             <p className="w-2/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3">200g</p>
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">70% cocoa solids</p>
-//                         </div>
-//                         <div className="flex text-[#999999] gap-6">
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">Dark chocolate</p>
-//                             <p className="w-2/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3">200g</p>
-//                             <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">70% cocoa solids</p>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 {/* Instructions Section */}
-//                 <div>
-//                     <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Instructions:</h2>
-//                     <div className="space-y-6 text-[#999999]">
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                     </div>
-//                 </div>
-
-//                 {/* Chef's Note Section */}
-//                 <div>
-//                     <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Chef's Note:</h2>
-//                     <div className="space-y-6 text-[#999999]">
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                         <p className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">
-//                             1. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-//                         </p>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div className="mb-10">
-//                 <Link
-//                     to="/chef_dashboard/chef_recipese_edit_page"
-//                     className="text-xl text-white bg-[#5B21BD] py-1 px-5 rounded-[10px] ml-12 cursor-pointer"
-//                 >
-//                     Edit
-//                 </Link>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default ChefRecipesDettilsView;
 
 
 import React, { useState } from 'react';
-import { LuUpload, LuChevronDown } from 'react-icons/lu';
+import { LuUpload, LuChevronDown, LuPlus, LuTrash2 } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
+import { useGetCategoryListQuery, useRecipeCreateMutation } from '../../../Rudux/feature/ApiSlice';
 
 // Reusable Category Dropdown Component
-function CategoryDropdown({ formData, setFormData, categories }) {
+const CategoryDropdown = ({ formData, setFormData }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: categoryList, isLoading, isError } = useGetCategoryListQuery();
+
+  const categories = categoryList?.data || [];
 
   const handleSelect = (category) => {
-    setFormData({ ...formData, category });
+    const { id, name } = category;
+    setFormData({ ...formData, category: name, categoryID: id });
     setIsOpen(false);
   };
 
@@ -246,32 +32,39 @@ function CategoryDropdown({ formData, setFormData, categories }) {
       </div>
 
       {isOpen && (
-        <ul className="absolute z-10 mt-1 w-full bg-white border border-[#CCBAEB] rounded-md shadow-md">
+        <ul className="absolute z-10 mt-1 w-full bg-white border border-[#CCBAEB] rounded-md shadow-md max-h-60 overflow-y-auto">
           {categories.map((item) => (
             <li
-              key={item}
+              key={item.id}
               onClick={() => handleSelect(item)}
-              className="px-4 py-2 text-[#333] hover:bg-transparent cursor-pointer"
+              className="px-4 py-2 text-[#333] hover:bg-gray-100 cursor-pointer"
             >
-              {item}
+              {item.name}
             </li>
           ))}
         </ul>
       )}
     </div>
   );
-}
+};
 
 // Main Component
 function ChefRecipesDettilsView() {
   const [formData, setFormData] = useState({
-    title: '',
+    title: 'Classic Chocolate Soufflé',
     category: 'Desserts',
-    description: '',
+    categoryID: '',
+    description: 'A light and airy dessert with a molten center',
     image: null,
+    imagePreview: null,
+    ingredients: [{ name: 'Flour', quantity: '2 cups', unit: 'cups' }],
+    instructions: [{ text: 'Preheat the oven to 350°F.' }],
+    chef_notes: [{ text: 'Use high-quality cocoa powder for the best flavor.' }],
   });
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const categories = ['Desserts', 'Main Course', 'Appetizers', 'Beverages'];
+  const [recipeCreate, { isLoading: isSubmitting }] = useRecipeCreateMutation();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -281,110 +74,318 @@ function ChefRecipesDettilsView() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFormData({ ...formData, image: URL.createObjectURL(file) });
+      setFormData({
+        ...formData,
+        image: file,
+        imagePreview: URL.createObjectURL(file),
+      });
     }
   };
 
-  const handleSubmit = () => {
-    console.log('Form Data:', formData);
+  const handleIngredientChange = (index, field, value) => {
+    const updatedIngredients = [...formData.ingredients];
+    updatedIngredients[index][field] = value;
+    setFormData({ ...formData, ingredients: updatedIngredients });
   };
+
+  const addIngredient = () => {
+    setFormData({
+      ...formData,
+      ingredients: [...formData.ingredients, { name: '', quantity: '', unit: '' }],
+    });
+  };
+
+  const deleteIngredient = (index) => {
+    const updatedIngredients = formData.ingredients.filter((_, i) => i !== index);
+    setFormData({ ...formData, ingredients: updatedIngredients });
+  };
+
+  const handleInstructionChange = (index, value) => {
+    const updatedInstructions = [...formData.instructions];
+    updatedInstructions[index].text = value;
+    setFormData({ ...formData, instructions: updatedInstructions });
+  };
+
+  const addInstruction = () => {
+    setFormData({
+      ...formData,
+      instructions: [...formData.instructions, { text: '' }],
+    });
+  };
+
+  const deleteInstruction = (index) => {
+    const updatedInstructions = formData.instructions.filter((_, i) => i !== index);
+    setFormData({ ...formData, instructions: updatedInstructions });
+  };
+
+  const handleChefNoteChange = (index, value) => {
+    const updatedChefNotes = [...formData.chef_notes];
+    updatedChefNotes[index].text = value;
+    setFormData({ ...formData, chef_notes: updatedChefNotes });
+  };
+
+  const addChefNote = () => {
+    setFormData({
+      ...formData,
+      chef_notes: [...formData.chef_notes, { text: '' }],
+    });
+  };
+
+  const deleteChefNote = (index) => {
+    const updatedChefNotes = formData.chef_notes.filter((_, i) => i !== index);
+    setFormData({ ...formData, chef_notes: updatedChefNotes });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    setSuccess(null);
+    console.log("formData", formData)
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('category', formData.categoryID);
+      formDataToSend.append('description', formData.description);
+
+      if (formData.image) {
+        formDataToSend.append('image', formData.image);
+      }
+
+      formDataToSend.append('ingredients', JSON.stringify(formData.ingredients));
+      formDataToSend.append('instructions', JSON.stringify(formData.instructions));
+      formDataToSend.append('chef_notes', JSON.stringify(formData.chef_notes));
+
+
+      for (let [key, value] of formDataToSend.entries()) {
+        console.log(`${key}:`, value);
+      }
+
+      const response = await recipeCreate(formDataToSend).unwrap();
+      setSuccess('Recipe created successfully!');
+      console.log('Backend Response:', response);
+
+      // Clean up image preview
+      if (formData.imagePreview) {
+        URL.revokeObjectURL(formData.imagePreview);
+      }
+
+      // Reset form
+      setFormData({
+        title: '',
+        category: '',
+        categoryID: '',
+        description: '',
+        image: null,
+        imagePreview: null,
+        ingredients: [{ name: '', quantity: '', unit: '' }],
+        instructions: [{ text: '' }],
+        chef_notes: [{ text: '' }],
+      });
+    } catch (err) {
+      console.error('Error creating recipe:', err);
+      setError(err.data?.message || 'Failed to create recipe. Please try again.');
+    }
+  };
+
+//   e.preventDefault();
+//   setError(null);
+//   setSuccess(null);
+
+//   try {
+//     // Prepare the data as a plain JS object
+//     const categoryID = localStorage.getItem("categoryID")
+  
+//     const recipeData = {
+//       title: formData.title,
+//       category: categoryID, // send the ID
+//       description: formData.description,
+//       image: formData.image.image, // If you want to send image as base64 or URL, handle accordingly
+//       ingredients: formData.ingredients,
+//       instructions: formData.instructions,
+//       chef_notes: formData.chef_notes,
+//     };
+
+//     // If you want to send image as base64 string:
+//     // if (formData.image) {
+//     //   const base64 = await toBase64(formData.image);
+//     //   recipeData.image = base64;
+//     // }
+
+//     await recipeCreate(recipeData).unwrap();
+//     setSuccess('Recipe created successfully!');
+
+//     // Reset form
+//     setFormData({
+//       title: '',
+//       category: '',
+//       categoryID: '',
+//       description: '',
+//       image: null,
+//       imagePreview: null,
+//       ingredients: [{ name: '', quantity: '', unit: '' }],
+//       instructions: [{ text: '' }],
+//       chef_notes: [{ text: '' }],
+//     });
+//   } catch (err) {
+//     setError(err.data?.message || 'Failed to create recipe. Please try again.');
+//   }
+// };
+
 
   return (
     <div>
-      <div className="px-12  lora">
+      <div className="px-12 lora">
         <h1 className="text-[34px] font-semibold text-[#5B21BD] my-2">Recipes Details View</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Title */}
-          <div>
-            <label className="block text-xl font-medium text-[#5B21BD] mb-2">Recipe Title</label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-              placeholder="Classic Chocolate Soufflé"
-              className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md focus:outline-none"
-            />
-          </div>
-
-          {/* Category Dropdown */}
-          <CategoryDropdown formData={formData} setFormData={setFormData} categories={categories} />
-
-          {/* Description */}
-          <div>
-            <label className="block text-xl font-medium text-[#5B21BD] mb-2">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              placeholder="A light and airy dessert with a molten center"
-              className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md focus:outline-none h-24 resize-none"
-            />
-          </div>
-
-          {/* Image Upload */}
-          <div>
-            <label className="block text-xl font-medium text-[#5B21BD] mb-2">Upload Image</label>
-            <div className="w-full h-24 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md flex items-center justify-center resize-none">
-              {formData.image ? (
-                <img src={formData.image} alt="Uploaded Preview" className="max-h-full max-w-full object-contain" />
-              ) : (
-                <label className="cursor-pointer relative">
-                  <LuUpload className="text-[20px] text-[#5B21BD] absolute bottom-5 left-11" />
-                  <span className="text-[#5B21BD]">Upload Image</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="hidden"
+        {success && <p className="text-green-500 mb-4">{success}</p>}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-xl font-medium text-[#5B21BD] mb-2">Recipe Title</label>
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                placeholder="Classic Chocolate Soufflé"
+                className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md focus:outline-none"
+              />
+            </div>
+            <CategoryDropdown formData={formData} setFormData={setFormData} />
+            <div>
+              <label className="block text-xl font-medium text-[#5B21BD] mb-2">Description</label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                placeholder="A light and airy dessert with a molten center"
+                className="w-full p-2 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md focus:outline-none h-24 resize-none"
+              />
+            </div>
+            <div>
+              <label className="block text-xl font-medium text-[#5B21BD] mb-2">Upload Image</label>
+              <div className="w-full h-24 border bg-[#FFFFFF] border-[#CCBAEB] rounded-md flex items-center justify-center resize-none">
+                {formData.imagePreview ? (
+                  <img
+                    src={formData.imagePreview}
+                    alt="Uploaded Preview"
+                    className="max-h-full p-1 max-w-full object-contain"
                   />
-                </label>
-              )}
+                ) : (
+                  <label className="cursor-pointer relative">
+                    <LuUpload className="text-[20px] text-[#5B21BD] absolute bottom-5 left-11" />
+                    <span className="text-[#5B21BD]">Upload Image</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                  </label>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Recipe Ingredients */}
-        <div>
-          <h2 className="text-xl font-semibold text-[#5B21BD] py-4 ">Recipe Ingredients</h2>
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="flex text-[#999999] gap-6 my-6">
-              <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">Dark chocolate</p>
-              <p className="w-2/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3">200g</p>
-              <p className="w-4/10 border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3">70% cocoa solids</p>
+          <div>
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Recipe Ingredients</h2>
+              <LuPlus onClick={addIngredient} className="text-[#5B21BD] cursor-pointer text-2xl" />
             </div>
-          ))}
-        </div>
-
-        {/* Instructions */}
-        <div>
-          <h2 className="text-xl font-semibold text-[#5B21BD] py-4 ">Instructions:</h2>
-          {[...Array(4)].map((_, i) => (
-            <p key={i} className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3 my-6 text-[#999999]">
-              {i + 1}. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-            </p>
-          ))}
-        </div>
-
-        {/* Chef's Note */}
-        <div>
-          <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Chef's Note:</h2>
-          {[...Array(4)].map((_, i) => (
-            <p key={i} className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3 my-6 text-[#999999]">
-              {i + 1}. For the crust: Combine flour, butter, and powdered sugar in a food processor until crumbly.
-            </p>
-          ))}
-        </div>
-      </div>
-
-      {/* Edit Button */}
-      <div className="mb-10">
-        <Link
-          to="/chef_dashboard/chef_recipese_edit_page"
-          className="text-xl text-white bg-[#5B21BD] py-1 px-5 rounded-[10px] ml-12 cursor-pointer"
-        >
-          Edit
-        </Link>
+            {formData.ingredients.map((ingredient, index) => (
+              <div key={index} className="flex text-[#999999] gap-6 my-6 items-center">
+                <input
+                  type="text"
+                  value={ingredient.name}
+                  onChange={(e) => handleIngredientChange(index, 'name', e.target.value)}
+                  placeholder="Dark chocolate"
+                  className="w-[40%] border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3"
+                />
+                <input
+                  type="text"
+                  value={ingredient.quantity}
+                  onChange={(e) => handleIngredientChange(index, 'quantity', e.target.value)}
+                  placeholder="200g"
+                  className="w-[20%] border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] text-center py-3 px-3"
+                />
+                <input
+                  type="text"
+                  value={ingredient.unit}
+                  onChange={(e) => handleIngredientChange(index, 'unit', e.target.value)}
+                  placeholder="70% cocoa solids"
+                  className="w-[40%] border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3"
+                />
+                <LuTrash2
+                  onClick={() => deleteIngredient(index)}
+                  className="text-[#FF0000] cursor-pointer text-xl"
+                />
+              </div>
+            ))}
+          </div>
+          <div>
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Instructions:</h2>
+              <LuPlus onClick={addInstruction} className="text-[#5B21BD] cursor-pointer text-2xl" />
+            </div>
+            {formData.instructions.map((instruction, index) => (
+              <div key={index} className="flex items-center gap-6 my-6">
+                <p className="text-[#999999]">{index + 1}.</p>
+                <input
+                  type="text"
+                  value={instruction.text}
+                  onChange={(e) => handleInstructionChange(index, e.target.value)}
+                  placeholder="Combine flour, butter, and sugar in a processor..."
+                  className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3 text-[#999999]"
+                />
+                <LuTrash2
+                  onClick={() => deleteInstruction(index)}
+                  className="text-[#FF0000] cursor-pointer text-xl"
+                />
+              </div>
+            ))}
+          </div>
+          <div>
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-[#5B21BD] py-4">Chef's Note:</h2>
+              <LuPlus onClick={addChefNote} className="text-[#5B21BD] cursor-pointer text-2xl" />
+            </div>
+            {formData.chef_notes.map((note, index) => (
+              <div key={index} className="flex items-center gap-6 my-6">
+                <p className="text-[#999999]">{index + 1}.</p>
+                <input
+                  type="text"
+                  value={note.text}
+                  onChange={(e) => handleChefNoteChange(index, e.target.value)}
+                  placeholder="Use fresh eggs for better rise..."
+                  className="w-full border bg-[#FFFFFF] border-[#CCBAEB] rounded-[10px] py-3 px-3 text-[#999999]"
+                />
+                <LuTrash2
+                  onClick={() => deleteChefNote(index)}
+                  className="text-[#FF0000] cursor-pointer text-xl"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex items-center my-8">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`text-xl text-white bg-[#5B21BD] py-2 px-6 rounded-[10px] cursor-pointer ${
+                isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit Recipe'}
+            </button>
+            <div>
+              <Link
+                to="/chef_dashboard/chef_recipese_edit_page"
+                className="text-xl text-white bg-[#5B21BD] py-1 px-5 rounded-[10px] ml-12 cursor-pointer"
+              >
+                Edit
+              </Link>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

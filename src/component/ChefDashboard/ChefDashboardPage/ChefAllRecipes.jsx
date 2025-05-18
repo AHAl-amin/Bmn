@@ -221,13 +221,16 @@ function ChefAllRecipes() {
                     )}
                   </div>
                 </div>
-                <div className="flex gap-4 py-2">
-                  <p className="text-sm text-white bg-[#5B21BD] inline-block px-4 py-1 rounded-[29px] capitalize">
+                <div className="flex  gap-4 py-2">
+                  <p className="text-sm text-white bg-[#5B21BD] inline-block px-2 py-1 rounded-[29px] capitalize">
                     {recipe.category}
                   </p>
-                  <p className="text-white text-sm bg-[#5B21BD] px-4 py-1 rounded-full">
+                  <Link className="text-white text-sm bg-[#91E2CE] px-2 py-1 rounded-full">
                     Published
-                  </p>
+                  </Link>
+                  <Link className="text-white text-sm bg-[#CCBAEB] px-2 py-1 rounded-full">
+                    AI train
+                  </Link>
                 </div>
                 <p className="mt-2 text-[#676767] text-[16px]">{recipe.description}</p>
                 <div className="mt-3 flex justify-between items-center">

@@ -102,7 +102,7 @@ const ChefDashboardSideber = () => {
                     </NavLink>
 
                     <NavLink
-                        to="/chef_dashboard/facebook_user"
+                        to="/chef_dashboard/user_feedback"
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-3 py-2 transition-colors duration-200 w-full ${isActive
                                 ? 'bg-[#5B21BD] text-white rounded-md'
@@ -114,17 +114,6 @@ const ChefDashboardSideber = () => {
                         <h1 className="text-lg font-medium text-white">User Feedback</h1>
                     </NavLink>
 
-                    {/* <NavLink
-          to="/dashboard/user_wallet"
-          className={({ isActive }) =>
-            `flex items-center gap-3 px-3  py-2 transition-colors duration-200 w-full ${
-              isActive ? 'bg-[#0D95DD] rounded-md ' : 'hover:bg-[#0daddd] hover:text-white  rounded-md'
-            }`
-          }
-        >
-          <IoSettingsOutline className="h-6 w-6 text-[#004C3F] hover:text-white  " />
-          <h1 className="text-lg font-medium text-white">Profile & setting</h1>
-        </NavLink> */}
 
                     <NavLink
                         to="/chef_dashboard/chef_subscribtion"
