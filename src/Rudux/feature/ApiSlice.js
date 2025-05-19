@@ -23,7 +23,7 @@ export const ApiSlice = createApi({
   baseQuery,
   tagTypes: ["Profile", "ChefDashboard", "Project", "Employees"],
   endpoints: (builder) => ({
-// chef dashboard
+    // chef dashboard
 
     recipeCreate: builder.mutation({
       query: (formDataToSend) => ({
@@ -44,12 +44,27 @@ export const ApiSlice = createApi({
       query: () => "/api/recipe/v1/all/",
 
     }),
-  deleteChefRecipe: builder.mutation({
+    deleteChefRecipe: builder.mutation({
       query: (id) => ({
         url: `/api/recipe/v1/delete/${id}/`,
         method: "DELETE",
       }),
       invalidatesTags: ["ChefDashboard"],
+    }),
+
+    // chefAiChat: builder.mutation({
+    //   query: (formDataToSend) => ({
+    //     url: "/api/recipe/v1/ai-train/create/1/",
+    //     method: "POST",
+    //     body: formDataToSend, // do not stringify!
+    //   }),
+    // }),
+    aiTraining: builder.mutation({
+      query: (formDataToSend) => ({
+        url: "/api/recipe/v1/ai-train/create/1/",
+        method: "POST",
+        body: formDataToSend, // do not stringify!
+      }),
     }),
   }),
 });
@@ -58,7 +73,7 @@ export const ApiSlice = createApi({
 export const {
   useRecipeCreateMutation,
 
-  useGetCategoryListQuery,useGetCreateRecipeQuery, useDeleteChefRecipeMutation
+  useGetCategoryListQuery, useGetCreateRecipeQuery, useDeleteChefRecipeMutation, useAiTrainingMutation
 } = ApiSlice;
 
 export default ApiSlice;

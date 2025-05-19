@@ -341,24 +341,24 @@ function ChefAllRecipes() {
 
 
   const handleDelete = async (id) => {
-  try {
-    await deleteChefRecipe(id).unwrap();
-    // Optimistically update the local state
-    const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
-    setRecipes(updatedRecipes);
-    const filtered = updatedRecipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredRecipes(filtered);
-    setOpenDropdownId(null);
+    try {
+      await deleteChefRecipe(id).unwrap();
+      // Optimistically update the local state
+      const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
+      setRecipes(updatedRecipes);
+      const filtered = updatedRecipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredRecipes(filtered);
+      setOpenDropdownId(null);
 
-    // Show success toast
-    toast.success('Recipe deleted successfully!');
-  } catch (err) {
-    console.error('Failed to delete recipe:', err);
-    toast.error('Failed to delete recipe. Please try again.');
-  }
-};
+      // Show success toast
+      toast.success('Recipe deleted successfully!');
+    } catch (err) {
+      console.error('Failed to delete recipe:', err);
+      toast.error('Failed to delete recipe. Please try again.');
+    }
+  };
 
   // Handle category filter
   const handleFilter = (category) => {
@@ -397,14 +397,28 @@ function ChefAllRecipes() {
           <div className="relative flex gap-6 md:w-2/5" ref={filterRef}>
             <div className="flex items-center relative w-full">
               <IoSearchOutline className="text-[#5B21BD] absolute ml-3 opacity-100 transition-opacity duration-200" />
+           
+
               <input
                 type="search"
                 placeholder="Search recipes"
-                className="placeholder-[color:#5B21BD] focus:placeholder-transparent w-full py-3 border border-[#5B21BD] rounded-full pl-8"
+                className="placeholder-[color:#5B21BD] focus:placeholder-[#5B21BD] w-full py-3 border border-[#5B21BD] rounded-full pl-8"
                 value={searchQuery}
                 onChange={handleSearchInput}
+                // style={{
+                //   WebkitAppearance: 'none',
+                //   // appearance: 'none',
+                // }}
               />
+
+
+
+
             </div>
+
+
+
+
             <button
               onClick={() => setIsFilterOpen((prev) => !prev)}
               className="text-[#5B21BD] border border-[#5B21BD] py-2 px-6 rounded-full flex items-center gap-2 cursor-pointer"
@@ -436,7 +450,7 @@ function ChefAllRecipes() {
               <div className="relative">
                 <img
                   className="w-full h-48 object-cover"
-                  src={recipe.image}
+                   src={`http://192.168.10.124:3000/${recipe.image}`}
                   alt={recipe.title}
                 />
               </div>
@@ -478,7 +492,7 @@ function ChefAllRecipes() {
                 </div>
                 <div className="flex gap-4 py-2">
                   <p className="text-sm text-white bg-[#5B21BD] inline-block px-2 py-1 rounded-[29px] capitalize">
-                    {recipe.category}
+                    {recipe.category_name}
                   </p>
                   <Link className="text-white text-sm bg-[#91E2CE] px-2 py-1 rounded-full">
                     Published
@@ -532,7 +546,7 @@ function ChefAllRecipes() {
           </Link>
         </div>
       </div>
-      <Toaster position='top-right'/>
+      <Toaster position='top-right' />
     </div>
   );
 }

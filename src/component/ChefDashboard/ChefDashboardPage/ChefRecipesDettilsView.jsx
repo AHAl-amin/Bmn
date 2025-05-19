@@ -327,7 +327,7 @@ function ChefRecipesDettilsView() {
             <div>
               <Link
                 to="/chef_dashboard/chef_recipese_edit_page"
-                className="text-xl text-white bg-[#5B21BD] py-1 px-5 rounded-[10px] ml-12 cursor-pointer"
+                className="text-xl text-white bg-[#5B21BD] py-2 px-6  rounded-[10px] ml-12 cursor-pointer"
               >
                 Edit
               </Link>
