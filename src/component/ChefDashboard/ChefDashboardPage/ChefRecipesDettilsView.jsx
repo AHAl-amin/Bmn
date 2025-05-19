@@ -1,11 +1,11 @@
 
 
 
-
 import React, { useState } from 'react';
 import { LuUpload, LuChevronDown, LuPlus, LuTrash2 } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { useGetCategoryListQuery, useRecipeCreateMutation } from '../../../Rudux/feature/ApiSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 // Reusable Category Dropdown Component
 const CategoryDropdown = ({ formData, setFormData }) => {
@@ -61,8 +61,6 @@ function ChefRecipesDettilsView() {
     instructions: [{ text: 'Preheat the oven to 350°F.' }],
     chef_notes: [{ text: 'Use high-quality cocoa powder for the best flavor.' }],
   });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
 
   const [recipeCreate, { isLoading: isSubmitting }] = useRecipeCreateMutation();
 
@@ -138,9 +136,7 @@ function ChefRecipesDettilsView() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
-    setSuccess(null);
-    console.log("formData", formData)
+    console.log("formData", formData);
 
     try {
       const formDataToSend = new FormData();
@@ -156,13 +152,12 @@ function ChefRecipesDettilsView() {
       formDataToSend.append('instructions', JSON.stringify(formData.instructions));
       formDataToSend.append('chef_notes', JSON.stringify(formData.chef_notes));
 
-
       for (let [key, value] of formDataToSend.entries()) {
         console.log(`${key}:`, value);
       }
 
       const response = await recipeCreate(formDataToSend).unwrap();
-      setSuccess('Recipe created successfully!');
+      toast.success('Recipe created successfully!'); // Show success toast
       console.log('Backend Response:', response);
 
       // Clean up image preview
@@ -184,61 +179,14 @@ function ChefRecipesDettilsView() {
       });
     } catch (err) {
       console.error('Error creating recipe:', err);
-      setError(err.data?.message || 'Failed to create recipe. Please try again.');
+      toast.error(err.data?.message || 'Failed to create recipe. Please try again.'); // Show error toast
     }
   };
-
-//   e.preventDefault();
-//   setError(null);
-//   setSuccess(null);
-
-//   try {
-//     // Prepare the data as a plain JS object
-//     const categoryID = localStorage.getItem("categoryID")
-  
-//     const recipeData = {
-//       title: formData.title,
-//       category: categoryID, // send the ID
-//       description: formData.description,
-//       image: formData.image.image, // If you want to send image as base64 or URL, handle accordingly
-//       ingredients: formData.ingredients,
-//       instructions: formData.instructions,
-//       chef_notes: formData.chef_notes,
-//     };
-
-//     // If you want to send image as base64 string:
-//     // if (formData.image) {
-//     //   const base64 = await toBase64(formData.image);
-//     //   recipeData.image = base64;
-//     // }
-
-//     await recipeCreate(recipeData).unwrap();
-//     setSuccess('Recipe created successfully!');
-
-//     // Reset form
-//     setFormData({
-//       title: '',
-//       category: '',
-//       categoryID: '',
-//       description: '',
-//       image: null,
-//       imagePreview: null,
-//       ingredients: [{ name: '', quantity: '', unit: '' }],
-//       instructions: [{ text: '' }],
-//       chef_notes: [{ text: '' }],
-//     });
-//   } catch (err) {
-//     setError(err.data?.message || 'Failed to create recipe. Please try again.');
-//   }
-// };
-
 
   return (
     <div>
       <div className="px-12 lora">
         <h1 className="text-[34px] font-semibold text-[#5B21BD] my-2">Recipes Details View</h1>
-        {success && <p className="text-green-500 mb-4">{success}</p>}
-        {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -387,6 +335,7 @@ function ChefRecipesDettilsView() {
           </div>
         </form>
       </div>
+      <Toaster position='top-right' />
     </div>
   );
 }

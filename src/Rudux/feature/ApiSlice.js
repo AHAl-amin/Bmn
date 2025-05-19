@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://192.168.10.124:3000",
- 
+
   prepareHeaders: (headers, { getState, endpoint }) => {
     const accessToken = localStorage.getItem("access_token");
     const token = getState().auth.token || accessToken;
@@ -23,23 +23,34 @@ export const ApiSlice = createApi({
   baseQuery,
   tagTypes: ["Profile", "ChefDashboard", "Project", "Employees"],
   endpoints: (builder) => ({
+// chef dashboard
 
-
- recipeCreate: builder.mutation({
-  query: (formDataToSend) => ({
-    url: "api/recipe/v1/create/",
-    method: "POST",
-    body: formDataToSend, // ⬅️ do not stringify!
-  }),
-  invalidatesTags: ["ChefDashboard"],
-}),
+    recipeCreate: builder.mutation({
+      query: (formDataToSend) => ({
+        url: "api/recipe/v1/create/",
+        method: "POST",
+        body: formDataToSend, // do not stringify!
+      }),
+      invalidatesTags: ["ChefDashboard"],
+    }),
 
 
 
     getCategoryList: builder.query({
-      query:()=>"/api/recipe/v1/categories/",
+      query: () => "/api/recipe/v1/categories/",
 
-    })
+    }),
+    getCreateRecipe: builder.query({
+      query: () => "/api/recipe/v1/all/",
+
+    }),
+  deleteChefRecipe: builder.mutation({
+      query: (id) => ({
+        url: `/api/recipe/v1/delete/${id}/`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["ChefDashboard"],
+    }),
   }),
 });
 
@@ -47,7 +58,7 @@ export const ApiSlice = createApi({
 export const {
   useRecipeCreateMutation,
 
-  useGetCategoryListQuery,
+  useGetCategoryListQuery,useGetCreateRecipeQuery, useDeleteChefRecipeMutation
 } = ApiSlice;
 
 export default ApiSlice;

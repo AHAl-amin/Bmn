@@ -1,81 +1,43 @@
 
 
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoMdAdd } from 'react-icons/io';
 import { IoSearchOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-
-// JSON data for recipes (unchanged)
-const initialRecipes = [
-  {
-    id: 1,
-    title: 'Joss Chocolate Soufflé',
-    category: 'Chocolate',
-    description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
-    rating: 4.8,
-    updated: '2023-11-15',
-  },
-  {
-    id: 2,
-    title: 'Classic Chocolate Soufflé',
-    category: 'Desserts',
-    description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
-    rating: 4.8,
-    updated: '2023-11-15',
-  },
-  {
-    id: 3,
-    title: 'Classic Chocolate Soufflé',
-    category: 'Chocolate',
-    description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
-    rating: 4.8,
-    updated: '2023-11-15',
-  },
-  {
-    id: 4,
-    title: 'Dessers Chocolate Soufflé',
-    category: 'Desserts',
-    description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/NdC53ZPN/image-1.jpg',
-    rating: 4.8,
-    updated: '2023-11-15',
-  },
-  {
-    id: 5,
-    title: 'Classic Chocolate Soufflé',
-    category: 'Chocolate',
-    description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/XfKX16Nq/image.png',
-    rating: 4.8,
-    updated: '2023-11-15',
-  },
-  {
-    id: 6,
-    title: 'Classic Chocolate Soufflé',
-    category: 'Ice-cream',
-    description: 'A light and airy chocolate dessert with a molten center....',
-    image: 'https://i.ibb.co.com/9k6pmKqJ/image-1.png',
-    rating: 4.8,
-    updated: '2023-11-15',
-  },
-];
+import { useDeleteChefRecipeMutation, useGetCreateRecipeQuery } from '../../../Rudux/feature/ApiSlice';
 
 function ChefAllRecipes() {
-  const [recipes, setRecipes] = useState(initialRecipes);
-  const [filteredRecipes, setFilteredRecipes] = useState(initialRecipes);
-  const [searchQuery, setSearchQuery] = useState(''); // New state for search query
+  const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const dropdownRefs = useRef({});
   const filterRef = useRef(null);
 
-  const categories = ['All', ...new Set(initialRecipes.map((recipe) => recipe.category))];
+  // Fetch recipes using the RTK Query hook
+  const { data: recipesData, isLoading, isError, error } = useGetCreateRecipeQuery();
+  const {deleteChefRecipe}  = useDeleteChefRecipeMutation();
+
+  // Set recipes when data is fetched
+  useEffect(() => {
+    if (recipesData) {
+      // Ensure recipesData is an array; adjust based on actual API response structure
+      const dataArray = Array.isArray(recipesData)
+        ? recipesData
+        : recipesData?.data || []; // Adjust if data is nested, e.g., { data: [...] }
+      setRecipes(dataArray);
+      setFilteredRecipes(dataArray); // Initialize filteredRecipes with fetched data
+    }
+  }, [recipesData]);
+
+  // Extract unique categories from recipes, with safeguard
+  const categories = recipes.length > 0
+    ? ['All', ...new Set(recipes.map((recipe) => recipe.category))]
+    : ['All'];
 
   // Handle search functionality
   const handleSearch = (query) => {
@@ -92,6 +54,7 @@ function ChefAllRecipes() {
     handleSearch(query);
   };
 
+  // Handle click outside to close dropdowns and filter
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -109,10 +72,10 @@ function ChefAllRecipes() {
     };
   }, []);
 
+  // Handle delete (client-side, for demo; ideally, this would be an API call)
   const handleDelete = (id) => {
     const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
     setRecipes(updatedRecipes);
-    // Apply search filter to updated recipes
     const filtered = updatedRecipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -120,12 +83,12 @@ function ChefAllRecipes() {
     setOpenDropdownId(null);
   };
 
+  // Handle category filter
   const handleFilter = (category) => {
     let filtered = recipes;
     if (category !== 'All') {
       filtered = recipes.filter((recipe) => recipe.category === category);
     }
-    // Apply search filter after category filter
     filtered = filtered.filter((recipe) =>
       recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -133,11 +96,24 @@ function ChefAllRecipes() {
     setIsFilterOpen(false);
   };
 
+  // Render loading or error states
+  if (isLoading) {
+    return <div className="text-center py-10">Loading recipes...</div>;
+  }
+
+  if (isError) {
+    return (
+      <div className="text-center py-10 text-red-500">
+        Error fetching recipes: {error?.message || 'Something went wrong'}
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="md:px-10 py-6 lora">
         <div className="flex items-center justify-between px-2">
-          <div className='md:w-1/2'>
+          <div className="md:w-1/2">
             <h1 className="text-[#5B21BD] text-[34px] font-semibold">All Recipes</h1>
             <p className="text-[#A2A2A2] text-[20px]">Manage your recipes and AI training data</p>
           </div>
@@ -176,7 +152,7 @@ function ChefAllRecipes() {
           </div>
         </div>
 
-        {/* Card section (unchanged) */}
+        {/* Card section */}
         <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-between gap-6 pt-6">
           {filteredRecipes.map((recipe) => (
             <div key={recipe.id} className="w-full shadow rounded-xl overflow-hidden">
@@ -187,7 +163,7 @@ function ChefAllRecipes() {
                   alt={recipe.title}
                 />
               </div>
-              <div className="p-4 border-x-2 border-b-2 rounded-b-xl border-gray-100 space-y-2">
+              <div className="p-4 rounded-b-xl  space-y-2">
                 <div className="flex justify-between items-center">
                   <h2 className="text-xl font-semibold text-[#5B21BD] lora capitalize">{recipe.title}</h2>
                   <div
@@ -207,7 +183,7 @@ function ChefAllRecipes() {
                     {openDropdownId === recipe.id && (
                       <ul className="absolute right-0 z-50 mt-2 w-30 origin-top-right rounded-md border border-[#5B21BD] bg-gray-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none menu menu-sm p-2">
                         <li>
-                          <Link to='/chef_dashboard/chef_recipese_dettails_view' className="cursor-pointer">Edit</Link>
+                          <Link to="/chef_dashboard/chef_recipese_dettails_view" className="cursor-pointer">Edit</Link>
                         </li>
                         <li>
                           <button
@@ -221,7 +197,7 @@ function ChefAllRecipes() {
                     )}
                   </div>
                 </div>
-                <div className="flex  gap-4 py-2">
+                <div className="flex gap-4 py-2">
                   <p className="text-sm text-white bg-[#5B21BD] inline-block px-2 py-1 rounded-[29px] capitalize">
                     {recipe.category}
                   </p>
@@ -245,7 +221,20 @@ function ChefAllRecipes() {
                     </svg>
                     <span className="ml-1 text-gray-600">{recipe.rating}</span>
                   </div>
-                  <p className="text-sm text-gray-500">Updated: {recipe.updated}</p>
+                  {/* <p className="text-sm text-gray-500">
+                    Updated: {new Date(recipe.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </p> */}
+                  <p className="text-sm text-gray-500">
+                    Updated: {new Date(recipe.created_at).toLocaleString([], {
+                      year: 'numeric',
+                      month: 'short',
+                      day: '2-digit',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: true, // use false for 24-hour format
+                    })}
+                  </p>
+
                 </div>
               </div>
             </div>
