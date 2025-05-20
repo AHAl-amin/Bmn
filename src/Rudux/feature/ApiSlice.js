@@ -1,3 +1,4 @@
+import js from "@eslint/js";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
@@ -60,12 +61,16 @@ export const ApiSlice = createApi({
     //   }),
     // }),
     aiTraining: builder.mutation({
-      query: (formDataToSend) => ({
-        url: "/api/recipe/v1/ai-train/create/1/",
+      query: ({ formDataToSend, id }) => ({
+        url: `/api/recipe/v1/ai-train/create/${id}/`,
         method: "POST",
-        body: formDataToSend, // do not stringify!
+        body: JSON.stringify(formDataToSend), // Capital "JSON"
+        headers: {
+          "Content-Type": "application/json", // Don't forget to set headers
+        },
       }),
     }),
+
   }),
 });
 
