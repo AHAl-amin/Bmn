@@ -1,4 +1,4 @@
-import js from "@eslint/js";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
@@ -65,9 +65,9 @@ export const ApiSlice = createApi({
         url: `/api/recipe/v1/ai-train/create/${id}/`,
         method: "POST",
         body: JSON.stringify(formDataToSend), // Capital "JSON"
-        headers: {
-          "Content-Type": "application/json", // Don't forget to set headers
-        },
+        // headers: {
+        //   "Content-Type": "application/json", 
+        // },
       }),
     }),
 
