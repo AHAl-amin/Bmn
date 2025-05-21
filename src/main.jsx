@@ -38,8 +38,8 @@ import ProfileAndSetting from './component/UsersDashboard/UserDashboardPages/Pro
 import ChefDashboardLayout from './component/ChefDashboard/ChefDashboardLayout/ChefDashboardLayout.jsx';
 import ChefDashboardPage from './component/ChefDashboard/ChefDashboardPage/ChefDashboardPage.jsx';
 import ChefAllRecipes from './component/ChefDashboard/ChefDashboardPage/ChefAllRecipes.jsx';
-import ChefRecipesDettilsView from './component/ChefDashboard/ChefDashboardPage/ChefRecipesDettilsView.jsx';
-import ChefRecipesEditPage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesEditPage.jsx';
+
+// import ChefRecipesEditPage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesAddpage.jsx';
 import AiTraining from './component/ChefDashboard/ChefDashboardPage/AiTraining.jsx';
 import ChefSettingAndPrivecy from './component/ChefDashboard/ChefDashboardPage/ChefSettingAndPrivecy.jsx';
 
@@ -61,6 +61,8 @@ import store from './Rudux/store.js';
 import ForgetPasswordVerification from './component/Shared/Verification/ForgetPasswordVerification.jsx';
 import Verification from './component/Shared/Verification/Verification.jsx';
 import UserFeedback from './component/ChefDashboard/ChefDashboardPage/UserFeedback.jsx';
+import ChefRecipesAddpage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesAddpage.jsx';
+import ChefRecipesEditPage from './component/ChefDashboard/ChefDashboardPage/ChefRecipesEditPage.jsx';
 // import ConfirmEmail from './component/Shared/ConfirmEmail/ConfirmEmail.jsx';
 // import UserSingin from './component/Shared/UserSignin/UserSignin.jsx';
 
@@ -146,12 +148,12 @@ const router = createBrowserRouter([
       element: <ChefAllRecipes/>
     },
     {
-      path:'chef_recipese_dettails_view',
-      element: <ChefRecipesDettilsView/>
+      path:'chef_recipese_edit_page/:id',
+      element: <ChefRecipesEditPage/>
     },
     {
-      path:'chef_recipese_edit_page',
-      element: <ChefRecipesEditPage/>
+      path:'chef_recipese_addd_page',
+      element: <ChefRecipesAddpage/>
     },
     {
       path:'ai_training',

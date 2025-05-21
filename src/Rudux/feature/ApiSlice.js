@@ -27,10 +27,10 @@ export const ApiSlice = createApi({
     // chef dashboard
 
     recipeCreate: builder.mutation({
-      query: (formDataToSend) => ({
+      query: (data) => ({
         url: "api/recipe/v1/create/",
         method: "POST",
-        body: formDataToSend, // do not stringify!
+        body: data, // do not stringify!
       }),
       invalidatesTags: ["ChefDashboard"],
     }),
@@ -43,6 +43,10 @@ export const ApiSlice = createApi({
     }),
     getCreateRecipe: builder.query({
       query: () => "/api/recipe/v1/all/",
+
+    }),
+    getRecipeDettails: builder.query({
+      query: (id) => `/api/recipe/v1/details/${id}/`,
 
     }),
     deleteChefRecipe: builder.mutation({
@@ -65,11 +69,22 @@ export const ApiSlice = createApi({
         url: `/api/recipe/v1/ai-train/create/${id}/`,
         method: "POST",
         body: JSON.stringify(formDataToSend), // Capital "JSON"
-        // headers: {
-        //   "Content-Type": "application/json", 
-        // },
+        headers: {
+          "Content-Type": "application/json", 
+        },
       }),
     }),
+   recipeUpdate: builder.mutation({
+  query: ({ id, formDataToSend }) => ({
+    url: `/api/recipe/v1/update/${id}/`,
+    method: "PUT",
+    body: JSON.stringify(formDataToSend),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }),
+}),
+
 
   }),
 });
@@ -78,7 +93,7 @@ export const ApiSlice = createApi({
 export const {
   useRecipeCreateMutation,
 
-  useGetCategoryListQuery, useGetCreateRecipeQuery, useDeleteChefRecipeMutation, useAiTrainingMutation
+  useGetCategoryListQuery, useGetCreateRecipeQuery, useDeleteChefRecipeMutation, useAiTrainingMutation, useRecipeUpdateMutation, useGetRecipeDettailsQuery
 } = ApiSlice;
 
 export default ApiSlice;
