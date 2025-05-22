@@ -9,7 +9,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoMdAdd } from 'react-icons/io';
 import { IoSearchOutline } from 'react-icons/io5';
 import { Link, NavLink } from 'react-router-dom';
-import { useDeleteChefRecipeMutation, useGetCreateRecipeQuery } from '../../../Rudux/feature/ApiSlice';
+import { useDeleteChefRecipeMutation, useGetCreateRecipeQuery, useGetRecipeDettailsQuery } from '../../../Rudux/feature/ApiSlice';
 import toast, { Toaster } from 'react-hot-toast';
 
 function ChefAllRecipes() {
@@ -25,6 +25,7 @@ function ChefAllRecipes() {
   const { data: recipesData, isLoading, isError, error } = useGetCreateRecipeQuery();
   console.log("asdfsfdf",recipesData);
   const [deleteChefRecipe, { isLoading: isDeleting }] = useDeleteChefRecipeMutation();
+
 
 
 
@@ -145,10 +146,7 @@ function ChefAllRecipes() {
                 className="placeholder-[color:#5B21BD] focus:placeholder-[#5B21BD] w-full py-3 border border-[#5B21BD] rounded-full pl-8"
                 value={searchQuery}
                 onChange={handleSearchInput}
-              // style={{
-              //   WebkitAppearance: 'none',
-              //   // appearance: 'none',
-              // }}
+            
               />
 
 
@@ -190,7 +188,7 @@ function ChefAllRecipes() {
               <div className="relative">
                 <img
                   className="w-full h-48 object-cover"
-                  src={`http://192.168.10.124:3000/${recipe.image}`}
+                  src={`http://192.168.10.124:3000/${recipe.image }`}
                   alt={recipe.title}
                 />
               </div>
@@ -324,6 +322,7 @@ export default ChefAllRecipes;
 //   // Fetch recipes using the RTK Query hook
 //   const { data: recipesData, isLoading, isError, error } = useGetCreateRecipeQuery();
 //   const [deleteChefRecipe, { isLoading: isDeleting }] = useDeleteChefRecipeMutation();
+//   console.log("asdfsfdf", recipesData);
 
 //   // Set recipes when data is fetched
 //   useEffect(() => {
@@ -561,7 +560,7 @@ export default ChefAllRecipes;
 //             </div>
 //           ))}
 //           <Link
-//             to="/chef_dashboard/chef_recipese_dettails_view"
+//             to="/chef_dashboard/chef_recipese_addd_page"
 //             className="shadow h-full rounded-xl p-2 text-white flex justify-center items-center cursor-pointer"
 //           >
 //             <div className="space-y-4 py-4">

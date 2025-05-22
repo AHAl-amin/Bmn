@@ -185,28 +185,56 @@ function ChefRecipesEditPage() {
     setFormData({ ...formData, chef_notes: updatedChefNotes });
   };
 
-  const handleSectionSave = async (e) => {
-    e.preventDefault();
-    try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('title', formData.title);
-      formDataToSend.append('category', formData.categoryID);
-      formDataToSend.append('description', formData.description);
-      if (formData.image) {
-        formDataToSend.append('image', formData.image);
-      }
+  // const handleSectionSave = async (e) => {
 
-      const response = await recipeUpdate({ id, data: formDataToSend }).unwrap(); // Pass ID to update
-      toast.success('Section updated successfully!');
-      setIsSectionEditable(false);
-      if (formData.imagePreview) {
-        URL.revokeObjectURL(formData.imagePreview);
-      }
-    } catch (err) {
-      console.error('Error updating section:', err);
-      toast.error(err.data?.message || 'Failed to update section. Please try again.');
+
+  //   e.preventDefault();
+  //   try {
+  //     const formDataToSend = new FormData();
+  //     formDataToSend.append('title', formData.title);
+  //     formDataToSend.append('category', formData.categoryID);
+  //     formDataToSend.append('description', formData.description);
+  //     if (formData.image) {
+  //       formDataToSend.append('image', formData.image);
+  //     }
+
+  //     const response = await recipeUpdate({ id, data: formDataToSend }).unwrap(); // Pass ID to update
+  //     toast.success('Section updated successfully!');
+  //     setIsSectionEditable(false);
+  //     if (formData.imagePreview) {
+  //       URL.revokeObjectURL(formData.imagePreview);
+  //     }
+  //   } catch (err) {
+  //     console.error('Error updating section:', err);
+  //     toast.error(err.data?.message || 'Failed to update section. Please try again.');
+  //   }
+  // };
+
+
+const handleSectionSave = async (e) => {
+  e.preventDefault();
+  try {
+    const formDataToSend = new FormData();
+    formDataToSend.append('title', formData.title);
+    formDataToSend.append('category', formData.categoryID);
+    formDataToSend.append('description', formData.description);
+    
+    if (formData.image) {
+      formDataToSend.append('image', formData.image);
     }
-  };
+
+    const response = await recipeUpdate({
+      id: id,
+      formData: formDataToSend
+    }).unwrap();
+    
+    toast.success('Section updated successfully!');
+    setIsSectionEditable(false);
+  } catch (err) {
+    console.error('Error updating section:', err);
+    toast.error(err.data?.message || 'Failed to update section. Please try again.');
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -27,10 +27,10 @@ export const ApiSlice = createApi({
     // chef dashboard
 
     recipeCreate: builder.mutation({
-      query: (data) => ({
+      query: (formattedData) => ({
         url: "api/recipe/v1/create/",
         method: "POST",
-        body: data, // do not stringify!
+        body: formattedData, // do not stringify!
       }),
       invalidatesTags: ["ChefDashboard"],
     }),
@@ -41,9 +41,11 @@ export const ApiSlice = createApi({
       query: () => "/api/recipe/v1/categories/",
 
     }),
+   
+
     getCreateRecipe: builder.query({
       query: () => "/api/recipe/v1/all/",
-
+      providesTags: ["ChefDashboard"],
     }),
     getRecipeDettails: builder.query({
       query: (id) => `/api/recipe/v1/details/${id}/`,
@@ -57,33 +59,35 @@ export const ApiSlice = createApi({
       invalidatesTags: ["ChefDashboard"],
     }),
 
-    // chefAiChat: builder.mutation({
-    //   query: (formDataToSend) => ({
-    //     url: "/api/recipe/v1/ai-train/create/1/",
-    //     method: "POST",
-    //     body: formDataToSend, // do not stringify!
-    //   }),
-    // }),
+  
     aiTraining: builder.mutation({
       query: ({ formDataToSend, id }) => ({
         url: `/api/recipe/v1/ai-train/create/${id}/`,
         method: "POST",
         body: JSON.stringify(formDataToSend), // Capital "JSON"
         headers: {
-          "Content-Type": "application/json", 
+          "Content-Type": "application/json",
         },
       }),
     }),
-   recipeUpdate: builder.mutation({
+    // recipeUpdate: builder.mutation({
+    //   query: ({ id, formDataToSend }) => ({
+    //     url: `/api/recipe/v1/update/${id}/`,
+    //     method: "PUT",
+    //     body: JSON.stringify(formDataToSend),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }),
+    // }),
+recipeUpdate: builder.mutation({
   query: ({ id, formDataToSend }) => ({
     url: `/api/recipe/v1/update/${id}/`,
     method: "PUT",
-    body: JSON.stringify(formDataToSend),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    body: formDataToSend, // 
   }),
 }),
+  
 
 
   }),

@@ -174,7 +174,7 @@ const AiTraining = () => {
         <p className="text-[#9E9E9E] text-xl mb-4">Upload and manage your culinary content</p>
 
         {/* Progress Steps */}
-        <div className="relative mb-8 px-6">
+        {/* <div className="relative mb-8 px-6">
           <div className="flex justify-between relative">
             <div
               className="absolute bottom-8 left-0 h-1 bg-[#5B21BD] z-10 transition-all duration-300"
@@ -201,7 +201,64 @@ const AiTraining = () => {
                   >
                     {step}
                   </span>
+
                 </div>
+                <p>Select content type</p>
+                <p>SUpload files</p>
+                <p>Add metadata</p>
+                <p>Review & confirm</p>
+              </div>
+            ))}
+          </div>
+        </div> */}
+
+
+        <div className="relative mb-8 px-6">
+          <div className="flex justify-between relative">
+            {/* Progress bar background */}
+            <div className="absolute bottom-13 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2"></div>
+            {/* Progress bar foreground */}
+            <div
+              className="absolute bottom-13 left-0 h-1 bg-[#5B21BD] z-10 transition-all duration-300"
+              style={{
+                width: `${((maxStepReached - 1) / (totalSteps - 1)) * 100}%`,
+                transform: 'translateY(-50%)',
+              }}
+            ></div>
+
+            {/* Steps */}
+            {[
+              { step: 1, label: 'Select content type', image: '/path/to/step1-image.png' },
+              { step: 2, label: 'Upload files', image: '/path/to/step2-image.png' },
+              { step: 3, label: 'Add metadata', image: '/path/to/step3-image.png' },
+              { step: 4, label: 'Review & confirm', image: '/path/to/step4-image.png' },
+            ].map(({ step, label, image }) => (
+              <div key={step} className="relative z-10 flex flex-col items-center">
+                {/* Step Circle and Image */}
+                <div
+                  className={`relative w-14 h-14 mx-auto mb-2 rounded-full ${maxStepReached >= step ? 'bg-[#5B21BD]' : 'bg-gray-200'
+                    }`}
+                >
+                  <img
+                    src={img} // Replace with your image source logic
+                    alt={`Step ${step}`}
+                    className={`w-14 h-14 object-cover rounded-full ${maxStepReached >= step ? 'opacity-100' : 'opacity-50'
+                      }`}
+                  />
+                  <span
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold ${maxStepReached >= step ? 'text-white' : 'text-gray-500'
+                      }`}
+                  >
+                    {step}
+                  </span>
+                </div>
+                {/* Step Label */}
+                <p
+                  className={`text-sm font-medium ${maxStepReached >= step ? 'text-[#5B21BD]' : 'text-gray-500'
+                    }`}
+                >
+                  {label}
+                </p>
               </div>
             ))}
           </div>
@@ -210,7 +267,7 @@ const AiTraining = () => {
 
 
 
-       
+
 
         {/* Step Content */}
         {currentStep === 1 && (
@@ -307,7 +364,7 @@ const AiTraining = () => {
 
         {currentStep === 3 && (
           <div className="p-6 bg-white rounded-lg border border-gray-200">
-            <h2 className="text-4xl font-bold text-[#5B21BD] mb-2">Add Metadata & Categorize</h2>
+            <h2 className="text-4xl font-bold text-[#5B21BD] mb-2">Add Metadata & Recipe</h2>
             <p className="text-sm text-gray-500 mb-6">
               Add details to your uploaded file to help the AI understand and organize your content.
             </p>
