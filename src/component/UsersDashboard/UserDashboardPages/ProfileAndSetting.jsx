@@ -6,6 +6,7 @@ import {
 } from "../../../Rudux/feature/ApiSlice";
 import { useForm } from "react-hook-form";
 import { apiBaseURL } from "../../../lib/dotenv";
+import { toast, Toaster } from "react-hot-toast";
 
 function ProfileAndSetting() {
 	const { data: profileList } = useGetProfileQuery();
@@ -43,17 +44,6 @@ function ProfileAndSetting() {
 
 	const [submitUpdate, { isLoading }] = useUpdateProfileMutation();
 
-	// const handlePhotoChange = (e) => {
-	// 	const file = e.target.files[0];
-	// 	if (file) {
-	// 		const reader = new FileReader();
-	// 		reader.onload = (event) => {
-	// 			setFormData({ ...formData, photo: event.target.result });
-	// 		};
-	// 		reader.readAsDataURL(file);
-	// 	}
-	// };
-
 	const onSubmit = async (data) => {
 		try {
 			console.log(data);
@@ -66,16 +56,8 @@ function ProfileAndSetting() {
 				formDataToSubmit.append("image", data.photo[0]);
 			}
 
-			console.log("Form data to submit:", formDataToSubmit);
 			const response = await submitUpdate(formDataToSubmit).unwrap();
-			console.log(response);
-
-			if (response?.status === 200) {
-				toast.success(
-					response?.data?.message || "Profile updated successfully!"
-				);
-				window.location.reload();
-			}
+			toast.success(response?.detail || "Profile updated successfully!");
 		} catch (err) {
 			console.error("Error submitting form data:", err);
 		}
@@ -200,13 +182,20 @@ function ProfileAndSetting() {
 					<div>
 						<button
 							type="submit"
-							className=" bg-[#5B21BD] text-[20px] text-white p-2 rounded-[10px]  px-4"
+							disabled={isLoading}
+							className={`bg-[#5B21BD] text-white rounded-lg px-6 py-2 mt-4 text-lg font-semibold transition-opacity ${
+								isLoading
+									? "opacity-50 cursor-not-allowed"
+									: "hover:bg-[#4A1A9C]"
+							}`}
 						>
-							Save Changes
+							{isLoading ? "Saving..." : "Save Changes"}
 						</button>
 					</div>
 				</div>
 			</form>
+
+			<Toaster position="top-right" />
 		</div>
 	);
 }
