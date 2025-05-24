@@ -236,7 +236,7 @@ const router = createBrowserRouter([
 	// .................Admin Authentications.................
 
 	{
-		path: "/Admin_login",
+		path: "/admin_login",
 		element: <Admin_login />,
 	},
 	{

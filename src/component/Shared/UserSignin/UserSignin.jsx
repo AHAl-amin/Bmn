@@ -3,7 +3,6 @@ import login_img from "../../../assets/image/user_login_img.jpg";
 import login_img2 from "../../../assets/image/Admin_login_img.png";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-// import { useLoginMutation } from '../../../Redux/feature/authApi'; // Fixed typo: Rudux → Redux
 import { toast, Toaster } from "react-hot-toast";
 import { useLoginMutation } from "../../../Rudux/feature/authApi";
 import { useForm } from "react-hook-form";
@@ -47,20 +46,27 @@ function UserSignin() {
 			if (response.access_token) {
 				// Store the access token in redux state
 				dispatch(setUser({ accessToken: response?.access_token }));
+				// Store tokens only if rememberMe is checked
+				if (rememberMe) {
+					// add the access token and refresh token to localStorage
+					localStorage.setItem(
+						"access_token",
+						response?.access_token
+					);
+					localStorage.setItem(
+						"refresh_token",
+						response.refresh_token
+					);
+				}
+				toast.success(response?.message || "Login successful!");
+				// Navigate to the desired route (e.g., login or dashboard)
+				setTimeout(() => {
+					navigate("/dashboard");
+				}, 2000); // 2 seconds delay
 			} else {
 				console.warn("No access token found in response");
 			}
-			// Store tokens only if rememberMe is checked
-			if (rememberMe) {
-				// add the access token and refresh token to localStorage
-				localStorage.setItem("access_token", response?.access_token);
-				localStorage.setItem("refresh_token", response.refresh_token);
-			}
-			toast.success(response?.message || "Login successful!");
-			// Navigate to the desired route (e.g., login or dashboard)
-			setTimeout(() => {
-				navigate("/dashboard");
-			}, 2000); // 2 seconds delay
+			return;
 		} catch (err) {
 			const errorMessage =
 				err?.data?.message ||

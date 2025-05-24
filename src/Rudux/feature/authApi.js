@@ -76,5 +76,4 @@ export const {
 	//  useForgetPasswordMutation,
 	//   useForgetpasswordVerificationMutation, useConfrimPasswordMutation, useForgetRecentVerificationMutation
 } = authApi;
-console.log("authApi", authApi);
 export default authApi;

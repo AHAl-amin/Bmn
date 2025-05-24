@@ -1,92 +1,93 @@
 import { useState, useEffect } from "react";
 import { GoBellFill } from "react-icons/go";
-import { IoIosArrowDown, IoMdAdd } from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 import { PiChefHatFill } from "react-icons/pi";
 import { Link, NavLink } from "react-router-dom";
 import { useGetProfileQuery } from "../../../Rudux/feature/ApiSlice";
 import { apiBaseURL } from "../../../lib/dotenv";
 
-const UserDashboardNavbar = () => {
+const UserDashboardNavbar = ({ brands, onBrandChange }) => {
+	console.log("brands", brands);
 	const [userImageUrl, setUserImageUrl] = useState(
 		"https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
 	);
-	const [userName, setUserName] = useState("");
 	const { data: profileList } = useGetProfileQuery();
+	const [userName, setUserName] = useState("");
 
 	useEffect(() => {
 		if (profileList?.user) {
-			setUserName(profileList?.user.username || "");
+			setUserName(profileList.user.username || "");
 			setUserImageUrl(
-				`${apiBaseURL}/${profileList.user.image}` ||
-					"https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
+				profileList.user.image
+					? `${apiBaseURL}/${profileList.user.image}`
+					: "https://i.ibb.co.com/x2wkVkr/Whats-App-Image-2024-07-04-at-10-43-40-AM.jpg"
 			);
 		}
 	}, [profileList]);
 
 	const [showAddChefModal, setShowAddChefModal] = useState(false);
 	const toggleAddChefModal = () => {
-		setShowAddChefModal(!showAddChefModal);
+		setShowAddChefModal((prev) => !prev);
 	};
 
-	// Only show modal if current path is /dashboard/community
-
 	return (
-		<>
-			<div className="flex items-center justify-end pt-10 lora h-16 px-6 bg-white md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)]">
-				<div className="flex items-center space-x-8">
-					<div className="hidden md:block">
-						<div className="flex gap-10">
-							{/* Conditionally render "Add Chefs" or "New Creation" based on path */}
+		<div className="flex items-center justify-end pt-10 lora h-16 px-6 bg-white md:max-w-[170vh] mx-auto md:ml-[260px] md:w-[calc(100%-240px)]">
+			<div className="flex items-center space-x-8">
+				<div className="hidden md:flex gap-10">
+					<Link
+						to="/"
+						onClick={toggleAddChefModal}
+						className="flex items-center gap-2 px-4 py-2 text-white bg-[#5B21BD] rounded-[10px] cursor-pointer"
+					>
+						<PiChefHatFill />
+						<span className="font-medium">Add Chefs</span>
+						<IoMdAdd />
+					</Link>
 
-							<Link
-								to="/"
-								onClick={toggleAddChefModal}
-								className="flex items-center gap-2 px-4 py-2 text-white bg-[#5B21BD] rounded-[10px] cursor-pointer"
-							>
-								<PiChefHatFill />
-								<span className="font-medium">Add Chefs</span>
-								<IoMdAdd />
-							</Link>
-
-							{/* Profile button */}
-							<button className="flex items-center text-[#5B21BD] gap-2 px-4 py-2 border-[#CCBAEB] border rounded-[10px] cursor-pointer">
-								<PiChefHatFill />
-								<span className="text-[#5B21BD] font-medium">
-									Bobon lina
-								</span>
-								<IoIosArrowDown className="h-5 w-5 text-[#5B21BD]" />
-							</button>
-						</div>
-					</div>
-
-					{/* Notifications */}
-					<NavLink to="/dashboard/user_notifications">
-						<div className="relative">
-							<button className="p-2 rounded-full hover:bg-gray-100 transition-transform duration-200 cursor-pointer">
-								<GoBellFill className="h-7 w-7 text-[#5B21BD]" />
-							</button>
-							<div className="absolute text-[10px] p-[5px] top-[6px] right-[10px] bg-gray-200 rounded-full"></div>
-						</div>
-					</NavLink>
-
-					{/* User Profile */}
-					<div className="flex items-center space-x-2">
-						<div className="hidden md:block">
-							<img
-								src={userImageUrl}
-								alt="User profile"
-								className="h-10 w-10 rounded-full"
-							/>
-						</div>
-						<span className="text-[17px] font-medium md:block hidden">
-							{userName}
-						</span>
+					<div className="flex items-center gap-2 text-[#5B21BD] px-4 py-2 border-[#CCBAEB] border rounded-[10px] font-medium">
+						<PiChefHatFill className="text-2xl" />
+						<select
+							name="brand"
+							id="brand"
+							className="outline-none bg-transparent text-[#5B21BD] font-medium"
+							onChange={(e) => console.log(e.target.value)}
+						>
+							<option value="" disabled selected>
+								Select a Brand
+							</option>
+							{/* {brands.map((brand) => (
+								<option
+									key={brand.brand_id}
+									value={brand.brand_id}
+								>
+									{brand.brand_name}
+								</option>
+							))} */}
+						</select>
 					</div>
 				</div>
-			</div>
 
-			{/* Add Chef Modal - Only shows when path is /dashboard/community */}
-		</>
+				<NavLink to="/dashboard/user_notifications">
+					<div className="relative">
+						<button className="p-2 rounded-full hover:bg-gray-100 transition-transform duration-200 cursor-pointer">
+							<GoBellFill className="h-7 w-7 text-[#5B21BD]" />
+						</button>
+						<div className="absolute text-[10px] p-[5px] top-[6px] right-[10px] bg-gray-200 rounded-full"></div>
+					</div>
+				</NavLink>
+
+				<div className="flex items-center space-x-2">
+					<img
+						src={userImageUrl}
+						alt="User profile"
+						className="h-10 w-10 rounded-full hidden md:block"
+					/>
+					<span className="text-[17px] font-medium hidden md:block">
+						{userName}
+					</span>
+				</div>
+			</div>
+		</div>
 	);
 };
 

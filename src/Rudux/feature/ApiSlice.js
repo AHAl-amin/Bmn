@@ -3,15 +3,15 @@ import { apiBaseURL } from "../../lib/dotenv";
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: apiBaseURL,
-
 	prepareHeaders: (headers, { getState, endpoint }) => {
-		const refreshToken = localStorage.getItem("refresh_token");
 		const token = getState().auth.token;
 		if (token) {
 			headers.set("Authorization", `Bearer ${token}`);
 		}
 		// Only set Content-Type to application/json for non-file uploads
-		if (!["recipeCreate", "updateProfile"].includes(endpoint)) {
+		if (
+			!["recipeCreate", "updateProfile", "aiTraining"].includes(endpoint)
+		) {
 			headers.set("Content-Type", "application/json");
 		}
 		return headers;
@@ -21,9 +21,15 @@ const baseQuery = fetchBaseQuery({
 export const ApiSlice = createApi({
 	reducerPath: "ApiSlice",
 	baseQuery,
-	tagTypes: ["Profile", "ChefDashboard", "Project", "Employees"],
+	tagTypes: [
+		"Profile",
+		"ChefDashboard",
+		"UserDashboard",
+		"Project",
+		"Employees",
+	],
 	endpoints: (builder) => ({
-		// user dashboard
+		// User dashboard
 		getProfile: builder.query({
 			query: () => "/api/auth/v1/profile/",
 			providesTags: ["Profile"],
@@ -33,17 +39,35 @@ export const ApiSlice = createApi({
 			query: (formDataToSend) => ({
 				url: "/api/auth/v1/update-profile/",
 				method: "PUT",
-				body: formDataToSend, // do not stringify!
+				body: formDataToSend, // FormData, do not stringify
 			}),
 			invalidatesTags: ["Profile"],
 		}),
 
-		// chef dashboard
+		// User dashboard - Modified to support brand_id filtering
+		getAllRecipes: builder.query({
+			query: (brand_id = null) =>
+				brand_id
+					? `/api/main/v1/recipes/${brand_id}`
+					: "/api/recipe/v1/all/1",
+			providesTags: ["UserDashboard"],
+		}),
+
+		getAllBrands: builder.query({
+			query: () => "/api/main/v1/chef/brands/",
+			providesTags: ["UserDashboard"],
+		}),
+
+		getCreateRecipe: builder.query({
+			query: () => "/api/recipe/v1/all/",
+		}),
+
+		// Chef dashboard
 		recipeCreate: builder.mutation({
 			query: (formDataToSend) => ({
 				url: "/api/recipe/v1/create/",
 				method: "POST",
-				body: formDataToSend, // do not stringify!
+				body: formDataToSend, // FormData, do not stringify
 			}),
 			invalidatesTags: ["ChefDashboard"],
 		}),
@@ -51,9 +75,12 @@ export const ApiSlice = createApi({
 		getCategoryList: builder.query({
 			query: () => "/api/recipe/v1/categories/",
 		}),
-		getCreateRecipe: builder.query({
-			query: () => "/api/recipe/v1/all/",
-		}),
+
+		// Removed redundant getCreateRecipe endpoint
+		// getCreateRecipe: builder.query({
+		//   query: () => "/api/recipe/v1/all/",
+		// }),
+
 		deleteChefRecipe: builder.mutation({
 			query: (id) => ({
 				url: `/api/recipe/v1/delete/${id}/`,
@@ -62,21 +89,11 @@ export const ApiSlice = createApi({
 			invalidatesTags: ["ChefDashboard"],
 		}),
 
-		// chefAiChat: builder.mutation({
-		//   query: (formDataToSend) => ({
-		//     url: "/api/recipe/v1/ai-train/create/1/",
-		//     method: "POST",
-		//     body: formDataToSend, // do not stringify!
-		//   }),
-		// }),
 		aiTraining: builder.mutation({
 			query: ({ formDataToSend, id }) => ({
 				url: `/api/recipe/v1/ai-train/create/${id}/`,
 				method: "POST",
-				body: JSON.stringify(formDataToSend), // Capital "JSON"
-				// headers: {
-				//   "Content-Type": "application/json",
-				// },
+				body: formDataToSend, // Let RTK Query handle serialization
 			}),
 		}),
 	}),
@@ -86,9 +103,11 @@ export const ApiSlice = createApi({
 export const {
 	useGetProfileQuery,
 	useUpdateProfileMutation,
+	useGetAllRecipesQuery,
+	useGetCreateRecipeQuery,
+	useGetAllBrandsQuery,
 	useRecipeCreateMutation,
 	useGetCategoryListQuery,
-	useGetCreateRecipeQuery,
 	useDeleteChefRecipeMutation,
 	useAiTrainingMutation,
 } = ApiSlice;

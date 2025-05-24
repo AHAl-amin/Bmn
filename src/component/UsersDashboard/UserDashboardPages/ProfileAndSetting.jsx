@@ -52,7 +52,7 @@ function ProfileAndSetting() {
 			formDataToSubmit.append("last_name", data.lastName);
 			formDataToSubmit.append("email", data.email);
 			formDataToSubmit.append("phone", data.phone);
-			if (typeof data.photo[0] === "File") {
+			if (data.photo[0] instanceof File) {
 				formDataToSubmit.append("image", data.photo[0]);
 			}
 

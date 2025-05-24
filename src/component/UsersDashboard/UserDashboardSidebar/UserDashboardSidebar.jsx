@@ -46,6 +46,7 @@ const UserDashboardSidebar = () => {
 
 	const handleLogout = () => {
 		dispatch(logout());
+		localStorage.removeItem("access_token");
 		localStorage.removeItem("refresh_token");
 		navigate("/user_signin");
 		toast.success("Logout successful!");
