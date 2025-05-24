@@ -8,11 +8,14 @@ import img from "../../../assets/image/subsbription.png"; // Light mode image
 import img1 from "../../../assets/image/subsbription.png"; // Dark mode image
 import { Check, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useChefPlanCreateMutation } from "../../../Rudux/feature/ApiSlice";
 // import { useDarkMode } from "../../context/ThemeContext"; // Import useDarkMode
+
 
 const ChefSubscribtion = () => {
     const [billingCycle, setBillingCycle] = useState("monthly");
-
+ const [chefPlanCreate] = useChefPlanCreateMutation();
+ console.log(chefPlanCreate);
     const monthlyPlans = [
         {
             name: "BASIC",
@@ -123,7 +126,7 @@ const ChefSubscribtion = () => {
     return (
         <div id="pricing" className="  md:px-4 lora">
             <div className="max-w-6xl mx-auto">
-               
+
 
                 <div className="mb-6 md:mb-12">
                     <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#5B21BD] mb-3 md:mb-4">
@@ -268,45 +271,45 @@ const ChefSubscribtion = () => {
                     </AnimatePresence>
                 </div>
 
-                <div className="p-6 bg-gray-100  flex justify-center items-center">
-          <div className=" w-full py-10 space-y-4">
-            <h1 className="text-[34px] font-semibold text-[#5B21BD] mb-2">Annual Discount Settings</h1>
-            <p className="text-gray-500 mb-6">Configure discounts for annual subscriptions</p>
-            
-            <div className="flex flex-col md:flex-row gap-4 mb-6">
-              <div className="flex-1">
-                <label className="block text-[#5B21BD] mb-2">Basic Plan Discount (%)</label>
-                <input
-                  type="number"
-                  defaultValue="15"
-                  className="w-full p-2 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
-                />
-              </div>
-              <div className="flex-1">
-                <label className="block text-[#5B21BD] mb-2">Professional Plan Discount (%)</label>
-                <input
-                  type="number"
-                  defaultValue="20"
-                  className="w-full p-2 border border-gray-300  bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
-                />
-              </div>
-            </div>
+                <div className="p-6  flex justify-center items-center">
+                    <div className=" w-full py-10 space-y-4">
+                        <h1 className="text-[34px] font-semibold text-[#5B21BD] mb-2">Annual Discount Settings</h1>
+                        <p className="text-gray-500 mb-6">Configure discounts for annual subscriptions</p>
 
-            <div className="flex flex-col md:flex-row gap-4 items-end">
-              <div className="flex-1">
-                <label className="block text-[#5B21BD] mb-2">Premium Plan Discount (%)</label>
-                <input
-                  type="number"
-                  defaultValue="15"
-                  className="w-full p-2 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
-                />
-              </div>
-              <button className="bg-[#5B21BD] cursor-pointer text-white px-4 py-2 rounded-lg">
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </div>
+                        <div className="flex flex-col md:flex-row gap-4 mb-6">
+                            <div className="flex-1">
+                                <label className="block text-[#5B21BD] mb-2">Basic Plan Discount (%)</label>
+                                <input
+                                    type="number"
+                                    defaultValue="15"
+                                    className="w-full p-2 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
+                                />
+                            </div>
+                            <div className="flex-1">
+                                <label className="block text-[#5B21BD] mb-2">Professional Plan Discount (%)</label>
+                                <input
+                                    type="number"
+                                    defaultValue="20"
+                                    className="w-full p-2 border border-gray-300  bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col md:flex-row gap-4 items-end">
+                            <div className="flex-1">
+                                <label className="block text-[#5B21BD] mb-2">Premium Plan Discount (%)</label>
+                                <input
+                                    type="number"
+                                    defaultValue="15"
+                                    className="w-full p-2 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5B21BD]"
+                                />
+                            </div>
+                            <button className="bg-[#5B21BD] cursor-pointer text-white px-4 py-2 rounded-lg">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
